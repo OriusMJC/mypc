@@ -2,12 +2,17 @@
     {
         "id": "1",
         "title" : "Procesador Ryzen 5",
+        "photo": "url",
         "price": 200,
+        "type": "full | motherboard | procesador | grafica | ram | ssd | hdd | cooler | monitor | mouse | teclado | cables | fuente",
         "description": "descripcion Ryzen 5",
         "likes": 5,
-        "comments": ["comentario 1", "comentario 2"],
+        "comments": [
+            {"name":"matias", "avatar": "https://i.pravatar.cc/150?u=matias","comment":"Te sirven 50?"}, 
+            {"name":"Carlitos", "avatar": "https://i.pravatar.cc/150?u=carlos","comment":"De que generacion es??"}
+            ],
         "status": "Nuevo",
-        "UserInfo": [{
+        "sellerInfo": [{
             "id": "1gv2g3v32g2hhd",
             "name" : "Marcelo",
             "email": "email@gmail.com",
@@ -17,12 +22,17 @@
     {
         "id": "2",
         "title" : "GTX 1080ti",
+        "photo": "url",
         "price": 500,
+        "type": "full | motherboard | procesador | grafica | ram | ssd | hdd | cooler | monitor | mouse | teclado | cables | fuente",
         "description": "descripcion de gtx 1080ti",
         "likes": 2,
-        "comments": ["comentario 1", "comentario 2"],
+        "comments": [
+            {"name":"Lauti", "avatar": "https://i.pravatar.cc/150?u=lautaro","comment":"Te ofrezco dos chelines y me estoy arriesgando"}, 
+            {"name":"Tobi El front", "avatar": "https://i.pravatar.cc/150?u=tobias","comment":"Hostia pedrin, que oferton."}
+            ],
         "status": "Usado",
-        "UserInfo": [{
+        "sellerInfo": [{
             "id": "1sdsddf",
             "name" : "Juan",
             "email": "emailjuan@gmail.com",
@@ -32,12 +42,17 @@
     {
         "id": "3",
         "title" : "PC Geimer full free fire 4K HD",
+        "photo": "url",
         "price": 150,
+        "type": "full | motherboard | procesador | grafica | ram | ssd | hdd | cooler | monitor | mouse | teclado | cables | fuente",
         "description": "Se puede jugar fri faier",
         "likes": 5,
-        "comments": ["comentario 1", "comentario 2"],
+        "comments": [
+            {"name":"Mr popo", "avatar": "https://i.pravatar.cc/150?u=caca","comment":"Team para jugar fri fire?"}, 
+            {"name":"Santi", "avatar": "https://i.pravatar.cc/150?u=santiago","comment":"Imbox"}
+            ],
         "status": "Usado",
-        "UserInfo": [{
+        "sellerInfo": [{
             "id": "12345",
             "name" : "marcos",
             "email": "marquitos@gmail.com",

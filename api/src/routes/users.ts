@@ -3,20 +3,28 @@ import { Router } from 'express';
 const router = Router();
 
 
-
-router.get('/',(_req,res:any)=>{
+//obtener a todos los usuarios
+router.get('/',(_req,res)=>{
     res.send('users')
 })
-router.get('/:id',(req,res)=>{
-    const id = req.params.id
+
+//obtener al usuario en especifico que se acaba de logear
+//Dar un msj de error en caso de no estar registrado.
+router.get('/:idUser',(req,res)=>{
+    const id = req.params.idUser
     res.send('user ' + id)
 })
 
+//crear nuevo usuario en DB con los datos por body
 router.post('/',(_req,res)=>{
     res.send('User posted')
 })
-router.put('/',(_req,res)=>{
-    res.send('User update')
+
+//modificar info (body) de usuario (params)
+router.put('/:idUser',(req,res)=>{
+    const id = req.params.idUser
+    // const newDataUser = req.body
+    res.send('User update' + id)
 })
 
 

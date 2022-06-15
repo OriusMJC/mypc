@@ -4,16 +4,27 @@
         "name" : "Marcelo",
         "email": "email@gmail.com",
         "password": "eldelasnenas12345",
+        "phone": "011 1234 9876",
         "avatar": "https://i.pravatar.cc/150?u=marcelo",
-        "fav": ["id del producto 1", "id del product 2"],
-        "buy": ["id del producto 1", "id del product 2"],
+        "fav": [
+            {"id": "3","title" : "PC Geimer full free fire 4K HD","photo": "url","price": 150},
+            {"id": "3","title" : "PC Geimer full free fire 4K HD","photo": "url","price": 150}
+            ],
+        "buy": [
+            {"id": "3","title" : "PC Geimer full free fire 4K HD","photo": "url","price": 150},
+            {"id": "3","title" : "PC Geimer full free fire 4K HD","photo": "url","price": 150}
+            ],
         "sell": [{
             "id": "1",
             "title" : "Procesador Ryzen 5",
+            "photo": "url",
             "price": 200,
             "description": "descripcion Ryzen 5",
             "likes": 5,
-            "comments": ["comentario 1", "comentario 2"],
+            "comments": [
+                {"name":"matias", "avatar": "https://i.pravatar.cc/150?u=matias","comment":"Te sirven 50?"}, 
+                {"name":"Carlitos", "avatar": "https://i.pravatar.cc/150?u=carlos","comment":"De que generacion es??"}
+                ],
             "status": "Nuevo"
             }
         ]
@@ -23,16 +34,27 @@
         "name" : "Juan",
         "email": "emailjuan@gmail.com",
         "password": "eldelasnenas12345",
+        "phone": "011 1234 9876",
         "avatar": "https://i.pravatar.cc/150?u=juan",
-        "fav": ["id del producto 1", "id del product 2"],
-        "buy": ["id del producto 1", "id del product 2"],
+        "fav": [
+            {"id": "3","title" : "PC Geimer full free fire 4K HD","photo": "url","price": 150},
+            {"id": "3","title" : "PC Geimer full free fire 4K HD","photo": "url","price": 150}
+            ],
+        "buy": [
+            {"id": "3","title" : "PC Geimer full free fire 4K HD","photo": "url","price": 150},
+            {"id": "3","title" : "PC Geimer full free fire 4K HD","photo": "url","price": 150}
+            ],
         "sell": [{
             "id": "2",
             "title" : "GTX 1080ti",
             "price": 500,
             "description": "descripcion de gtx 1080ti",
+            "photo": "url",
             "likes": 2,
-            "comments": ["comentario 1", "comentario 2"],
+            "comments": [
+                {"name":"Lauti", "avatar": "https://i.pravatar.cc/150?u=lautaro","comment":"Te ofrezco dos chelines y me estoy arriesgando"}, 
+                {"name":"Tobi El front", "avatar": "https://i.pravatar.cc/150?u=tobias","comment":"Hostia pedrin, que oferton."}
+                ],
             "status": "Usado"
             }
         ]
@@ -42,16 +64,27 @@
         "name" : "marcos",
         "email": "marquitos@gmail.com",
         "password": "marcosCapo12345",
+        "phone": "011 1234 9876",
         "avatar": "https://i.pravatar.cc/150?u=marcos",
-        "fav": ["id del producto 1", "id del product 2"],
-        "buy": ["id del producto 1", "id del product 2"],
+        "fav": [
+            {"id": "3","title" : "PC Geimer full free fire 4K HD","photo": "url","price": 150},
+            {"id": "3","title" : "PC Geimer full free fire 4K HD","photo": "url","price": 150}
+            ],
+        "buy": [
+            {"id": "3","title" : "PC Geimer full free fire 4K HD","photo": "url","price": 150},
+            {"id": "3","title" : "PC Geimer full free fire 4K HD","photo": "url","price": 150}
+            ],
         "sell": [{
             "id": "3",
             "title" : "PC Geimer full free fire 4K HD",
+            "photo": "url",
             "price": 150,
             "description": "Se puede jugar fri faier",
             "likes": 5,
-            "comments": ["comentario 1", "comentario 2"],
+            "comments": [
+                {"name":"Mr popo", "avatar": "https://i.pravatar.cc/150?u=caca","comment":"Team para jugar fri fire?"}, 
+                {"name":"Santi", "avatar": "https://i.pravatar.cc/150?u=santiago","comment":"Imbox"}
+                ],
             "status": "Usado"
             }
         ]
