@@ -15,7 +15,7 @@ router.get('/:id',(req,res)=>{
     res.send('Product ' + id)
 })
 
-//crear un nuevo producto () y añadirselo al usuario (params)
+//crear un nuevo producto (body) y añadirselo al usuario (params)
 router.post('/:idUser',(req,res)=>{
     const newProduct = req.body
     res.send('Product posted' + newProduct)

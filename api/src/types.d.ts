@@ -32,3 +32,47 @@
 
 // //        con Omit omitimos     Aca le decimos de donde  y aca lo que tiene que omitir
 // export type NonSensitiveInfoDiaryEntry = Omit<DiaryEntry, 'comment'>
+
+
+export type PcTypes = 'full' | 'motherboard' | 'procesador' | 'grafica' | 'ram' | 'ssd' | 'hdd' | 'cooler' | 'monitor' | 'mouse' | 'teclado' | 'cables' | 'fuente'
+export type PcStatus = 'Nuevo' | 'Usado'
+export type NonSensitiveUserInfo = Pick<User, 'id','name','email','avatar','phone'>
+
+export interface User {
+    id:string,
+    name:string,
+    email:string,
+    password:string,
+    phone?:string,
+    avatar?:string,
+    fav?: Array<{
+        id:string,
+        title:string,
+        photo:string,
+        price:number
+    }>,
+    buy?: Array<{
+        id:string,
+        title:string,
+        photo:string,
+        price:number
+    }>,
+    sell?: Products[]
+}
+
+export interface Products{
+    id:string,
+    title:string,
+    photo:string,
+    price:number,
+    type: PcTypes,
+    description?:string,
+    likes:number,
+    comments?: Array<{
+        name:string,
+        avatar?:string,
+        comment:string
+    }>,
+    status: PcStatus,
+    sellerInfo: NonSensitiveUserInfo
+}
