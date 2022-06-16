@@ -37,6 +37,7 @@
 export type PcTypes = 'full' | 'motherboard' | 'procesador' | 'grafica' | 'ram' | 'ssd' | 'hdd' | 'cooler' | 'monitor' | 'mouse' | 'teclado' | 'cables' | 'fuente'
 export type PcStatus = 'Nuevo' | 'Usado'
 export type NonSensitiveUserInfo = Pick<User, 'id','name','email','avatar','phone'>
+export type basicProductInfo = Pick<Products, 'id','title','photo','price'>
 
 export interface User {
     id:string,
@@ -45,18 +46,8 @@ export interface User {
     password:string,
     phone?:string,
     avatar?:string,
-    fav?: Array<{
-        id:string,
-        title:string,
-        photo:string,
-        price:number
-    }>,
-    buy?: Array<{
-        id:string,
-        title:string,
-        photo:string,
-        price:number
-    }>,
+    fav?: Array<basicProductInfo>,
+    buy?: Array<basicProductInfo>,
     sell?: Products[]
 }
 
