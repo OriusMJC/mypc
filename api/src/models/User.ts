@@ -1,14 +1,53 @@
-import { DataTypes } from 'sequelize';
+//import { DataTypes } from 'sequelize';
+const { DataTypes } = require('sequelize')
 // Exportamos una funcion que define el modelo
 // Luego le injectamos la conexion a sequelize.
 module.exports = (sequelize:any) => {
-  // defino el modelo
   sequelize.define('user', {
     //users
+    id: {
+      type: DataTypes.UUID,
+      defaultValue: DataTypes.UUIDV4,
+      allownull: false,
+      primaryKey: true
+    },
+    name: {
+      type: DataTypes.STRING(30),
+      allownull: false
+    },
+    email: {
+      type: DataTypes.STRING,
+      allownull: false,
+      validate: {
+        isEmail: true,
+        isAlphanumeric: true,
+        isLowercase: true,
+      }
+    },
+    password: {
+      type: DataTypes.STRING(20),
+      allownull: false
+    },
+    phone: { 
+      type: DataTypes.INTEGER(13),
+    allownull: false
+  },
+  avatar: {
+    type: DataTypes.STRING,
+    allownull: false
+  },
+  fav: {
+    type: DataTypes.ARRAY,
+  },
+  buy: {
+    type: DataTypes.ARRAY,
+  },
   },{
     timestamps: false
   });
 };
+
+export {}
 
 // {
 //   "id": "1gv2g3v32g2hhd",
