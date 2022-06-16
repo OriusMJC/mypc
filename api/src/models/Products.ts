@@ -41,6 +41,10 @@ module.exports = (sequelize:any) => {
       type: DataTypes.ENUM('nuevo', 'usado'),
       allownull: false
     },
+    sell: {
+      type: DataTypes.BOOLEAN,
+      default: false
+    },
     sellerInfo: {
       type: DataTypes.ARRAY,
     }
