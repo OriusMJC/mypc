@@ -65,5 +65,6 @@ export interface Products{
         comment:string
     }>,
     status: PcStatus,
+    sell:boolean,
     sellerInfo: NonSensitiveUserInfo
 }
