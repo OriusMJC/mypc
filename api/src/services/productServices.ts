@@ -39,3 +39,10 @@ export const updateDataProduct = async(newProductData:types.Products):Promise<st
     await Product.update(newProductData, {where: {id: newProductData.id}})
     return 'Cambios en el producto realizados correctamente'
 }
+
+export const productSelled = async(idProduct:string):Promise<string>=>{
+    let product = Product.findByPk(idProduct)
+    product.sell = true
+    await product.save()
+    return 'Producto vendido con éxito'
+}

@@ -39,3 +39,10 @@ export const updateDataUser = async(newUserData: types.User): Promise<string> =>
     await User.update(newUserData, {where: {id: newUserData.id}})
     return 'Cambios hechos correctamente'
 }
+
+export const userBuyProduct = async(idUser:string,productSelled:types.basicProductInfo):Promise<string>=>{
+    let user = User.findByPk(idUser)
+    user.buy = [...user.buy,productSelled]
+    await user.save()
+    return 'Producto comprado con éxito'
+}
