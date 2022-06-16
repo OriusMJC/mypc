@@ -20,17 +20,17 @@ export const getProductByName = async(productTitle:string):Promise<types.Product
     return productsFinds
 }
 
-export const addSellProduct = async(idUser:string,idProduct:string):Promise<string>=>{
-    let userFind = await User.findByPk(idUser)
-    await userFind.addProduct(idProduct)
-    return 'Producto en venta agregado con éxito'
-}
 
 export const addNewProduct = async(userData:types.NonSensitiveUserInfo,newProduct:types.Products):Promise<string> => {
     let productToCreate = {...newProduct, sellerInfo: userData}
     await Product.create(productToCreate)
     await addSellProduct(userData.id, newProduct.id)
     return 'Producto creado con éxito'
+}
+export const addSellProduct = async(idUser:string,idProduct:string):Promise<string>=>{
+    let userFind = await User.findByPk(idUser)
+    await userFind.addProduct(idProduct)
+    return 'Producto en venta agregado con éxito'
 }
 
 export const updateDataProduct = async(newProductData:types.Products):Promise<string> => {

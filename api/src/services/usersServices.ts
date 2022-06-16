@@ -28,6 +28,21 @@ export const getUserById = async(id:string): Promise<types.User | string>=> {
     return 'No se ha encontrado ningun usuario registrado con esa id: ' + id
 }
 
+export const getBasicUserInfo = async(id:string): Promise<types.NonSensitiveUserInfo | string>=> {
+    let userData = await User.findByPk(id)
+    if(userData){
+        const user = {
+            id: userData.dataValues.id,
+            name: userData.dataValues.name,
+            email: userData.dataValues.email,
+            avatar: userData.dataValues.avatar,
+            phone: userData.dataValues.phone
+        }
+        return user
+    }
+    return 'No se ha encontrado ningun usuario registrado con esa id: ' + id
+}
+
 export const addNewUser = async(user: types.User): Promise<string> => {
     await User.create(user)
     return 'Usuario guardado con éxito'
