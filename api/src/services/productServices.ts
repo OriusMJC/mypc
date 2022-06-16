@@ -11,6 +11,14 @@ export const getProductById = async(idProduct:string):Promise<types.Products | s
     if(!product.dataValues) return 'No se ha encontrado ningun producto'
     return {...product.dataValues}
 }
+export const getProductByName = async(productTitle:string):Promise<types.Products[] | string> => {
+    let allProduct = await getAllProducts() 
+    let productsFinds = allProduct.filter(product => 
+        product.title.toLowerCase().includes(productTitle.toLowerCase())
+        )
+    if(!productsFinds.length) return 'No se ha encontrado ningun producto'
+    return productsFinds
+}
 
 export const addSellProduct = async(idUser:string,idProduct:string):Promise<string>=>{
     let userFind = await User.findByPk(idUser)
