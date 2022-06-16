@@ -1,24 +1,13 @@
 import * as types from '../types'
 const { Product, User } = require('../db');
 
-const sellerInfo = {
-    include: {
-        model: User,
-        as: 'sellerInfo',
-        attributes: ['id','name','email','avatar','phone'],
-        through:{
-            attributes: []
-        }
-    }
-}
-
 export const getAllProducts = async(): Promise<types.Products[]> => {
-    let allProducts = await Product.findAll(sellerInfo)
+    let allProducts = await Product.findAll()
     return allProducts
 }
 
 export const getProductById = async(idProduct:string):Promise<types.Products | string> => {
-    let product = await Product.findByPk(idProduct, sellerInfo)
+    let product = await Product.findByPk(idProduct)
     if(!product.dataValues) return 'No se ha encontrado ningun producto'
     return {...product.dataValues}
 }
