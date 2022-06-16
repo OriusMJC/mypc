@@ -32,7 +32,7 @@ let sequelize =
         ssl: true,
       })
     : new Sequelize(
-        `postgres://postgres:123456@localhost/mypc`,
+        `postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/mypc`,
         { logging: false, native: false }
       );
 
