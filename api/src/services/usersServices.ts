@@ -34,13 +34,8 @@ export const addNewUser = async(user: types.User): Promise<string> => {
 }
 
 export const updateDataUser = async(newUserData: types.User): Promise<string> => {
-    let userOldData = await User.findByPk(newUserData.id)
-    await userOldData.update(newUserData, {where: {id: newUserData.id}})
+    // let userOldData = await User.findByPk(newUserData.id)
+    // await userOldData.update(newUserData, {where: {id: newUserData.id}})
+    await User.update(newUserData, {where: {id: newUserData.id}})
     return 'Cambios hechos correctamente'
-}
-
-export const addSellProduct = async(idUser:string,idProduct:string):Promise<string>=>{
-    let userFind = await User.findByPk(idUser)
-    await userFind.addProduct(idProduct)
-    return 'Producto en venta agregado con éxito'
 }
