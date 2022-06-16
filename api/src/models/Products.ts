@@ -1,10 +1,53 @@
-import { DataTypes } from 'sequelize';
+//import { DataTypes } from 'sequelize';
+const { DataTypes } = require('sequelize')
 // Exportamos una funcion que define el modelo
 // Luego le injectamos la conexion a sequelize.
 module.exports = (sequelize:any) => {
   // defino el modelo
   sequelize.define('product', {
     //users
+    id: {
+      type: DataTypes.INTEGER,
+      allownull: false,
+      primaryKey: true,
+      serial: true,
+    },
+    tittle: {
+      type: DataTypes.STRING(50),
+      allownull: false
+    },
+    photo: {
+      type: DataTypes.STRING,
+      allownull: false
+    },
+    price: {
+      type: DataTypes.NUMBER,
+      allownull: false
+    },
+    type: {
+      type: DataTypes.ENUM('full', 'motherboar', 'procesador', 'grafica', 'ram', 'ssd', 'hdd', 'cooler', 'monitor', 'mouse', 'teclado', 'cables', 'fuente')
+    },
+    description: {
+      type: DataTypes.TEXT,
+      allownull: false
+    },
+    likes: {
+      type: DataTypes.INTEGER,
+    },
+    comments: {
+      type: DataTypes.ARRAY,
+    },
+    status: {
+      type: DataTypes.ENUM('nuevo', 'usado'),
+      allownull: false
+    },
+    sell: {
+      type: DataTypes.BOOLEAN,
+      default: false
+    },
+    sellerInfo: {
+      type: DataTypes.ARRAY,
+    }
   },{
     timestamps: false
   });
