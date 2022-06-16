@@ -1,16 +1,15 @@
-//import { DataTypes } from 'sequelize';
-const { DataTypes } = require('sequelize')
+import { DataTypes } from 'sequelize';
+// const { DataTypes } = require('sequelize')
 // Exportamos una funcion que define el modelo
 // Luego le injectamos la conexion a sequelize.
 module.exports = (sequelize:any) => {
   // defino el modelo
   sequelize.define('product', {
-    //users
     id: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.UUID,
+      defaultValue: DataTypes.UUIDV4,
       allownull: false,
       primaryKey: true,
-      serial: true,
     },
     tittle: {
       type: DataTypes.STRING(50),
@@ -21,7 +20,7 @@ module.exports = (sequelize:any) => {
       allownull: false
     },
     price: {
-      type: DataTypes.NUMBER,
+      type: DataTypes.INTEGER,
       allownull: false
     },
     type: {
@@ -35,7 +34,7 @@ module.exports = (sequelize:any) => {
       type: DataTypes.INTEGER,
     },
     comments: {
-      type: DataTypes.ARRAY,
+      type: DataTypes.ARRAY(DataTypes.JSON),
     },
     status: {
       type: DataTypes.ENUM('nuevo', 'usado'),
@@ -46,7 +45,7 @@ module.exports = (sequelize:any) => {
       default: false
     },
     sellerInfo: {
-      type: DataTypes.ARRAY,
+      type: DataTypes.JSON,
     }
   },{
     timestamps: false

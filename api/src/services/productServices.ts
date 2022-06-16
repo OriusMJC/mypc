@@ -1,5 +1,5 @@
 import * as types from '../types'
-const { Product, User } = require('../db');
+const { Product} = require('../db');
 
 export const getAllProducts = async(): Promise<types.Products[]> => {
     let allProducts = await Product.findAll()
@@ -24,14 +24,15 @@ export const getProductByName = async(productTitle:string):Promise<types.Product
 export const addNewProduct = async(userData:types.NonSensitiveUserInfo,newProduct:types.Products):Promise<string> => {
     let productToCreate = {...newProduct, sellerInfo: userData}
     await Product.create(productToCreate)
-    await addSellProduct(userData.id, newProduct.id)
+    // await addSellProduct(userData.id, newProduct.id)
     return 'Producto creado con éxito'
 }
-export const addSellProduct = async(idUser:string,idProduct:string):Promise<string>=>{
-    let userFind = await User.findByPk(idUser)
-    await userFind.addProduct(idProduct)
-    return 'Producto en venta agregado con éxito'
-}
+// export const addSellProduct = async(idUser:string,idProduct:string):Promise<string>=>{
+//     let userFind = await User.findByPk(idUser)
+//     console.log('user a: ', userFind)
+//     await userFind.addProduct(idProduct)
+//     return 'Producto en venta agregado con éxito'
+// }
 
 export const updateDataProduct = async(newProductData:types.Products):Promise<string> => {
     // let productOldData = await Product.findByPk(newProductData.id)
@@ -41,8 +42,6 @@ export const updateDataProduct = async(newProductData:types.Products):Promise<st
 }
 
 export const productSelled = async(idProduct:string):Promise<string>=>{
-    let product = Product.findByPk(idProduct)
-    product.sell = true
-    await product.save()
+    await Product.update({sell: true},{where: {id: idProduct}})
     return 'Producto vendido con éxito'
 }
