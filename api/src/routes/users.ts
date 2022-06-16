@@ -1,30 +1,67 @@
 import { Router } from 'express';
-
+import { getAllUsers, getUserById, addNewUser, updateDataUser,userBuyProduct} from '../services/usersServices';
+import * as types from '../types'
 const router = Router();
 
 
 //obtener a todos los usuarios
-router.get('/',(_req,res)=>{
-    res.send('users')
+router.get('/', async (_req,res,next)=>{
+    try{
+        const users: Array<types.User> = await getAllUsers();
+        res.json(users)
+      }
+      
+      catch(err){
+          next(err)
+      }
 })
 
 //obtener al usuario en especifico que se acaba de logear
 //Dar un msj de error en caso de no estar registrado.
-router.get('/:idUser',(req,res)=>{
+router.get('/:idUser',async (req,res)=>{
     const id = req.params.idUser
-    res.send('user ' + id)
+    try{
+        const userById = await getUserById(id)
+        res.json(userById) 
+    }
+    catch{ 
+        res.status(404).json({msg:`User doesn't exist`})
+    }
 })
 
 //crear nuevo usuario en DB con los datos por body
-router.post('/',(_req,res)=>{
-    res.send('User posted')
+router.post('/',async(req,res, next)=>{
+    try{ 
+        const response =  await addNewUser(req.body) 
+        res.send(response)
+    }
+
+    catch(err){ 
+        next(err)
+    }
 })
 
 //modificar info (body) de usuario (params)
-router.put('/:idUser',(req,res)=>{
-    const id = req.params.idUser
-    // const newDataUser = req.body
-    res.send('User update' + id)
+router.put('/:idUser',async(req,res,next)=>{
+    const newDataUser = req.body
+    try{
+        let response= await updateDataUser(newDataUser)
+        res.json(response)
+   }
+   catch(err){ 
+       next(err)
+    }
+})
+
+router.put('/buy/:idUser',async(req,res,next)=>{
+    try {
+        const {idUser} = req.params
+        const productData = req.body
+        const response = await userBuyProduct(idUser,productData)
+        res.json(response)
+    } catch (error) {
+        next(error)
+    }
 })
 
 
