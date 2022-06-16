@@ -1,7 +1,5 @@
 export default function ProductComments(){
-    return (
-        <div>
-            <h1>ProductComments</h1>
-        </div>
-    )
+  return (
+    <h1>Product Coments</h1>
+  )
 }

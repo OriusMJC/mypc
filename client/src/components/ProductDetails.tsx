@@ -1,7 +1,5 @@
 export default function ProductDetails(){
-    return (
-        <div>
-            <h1>ProductDetails</h1>
-        </div>
-    )
+ return(
+    <h1>Detail</h1>
+ )
 }
