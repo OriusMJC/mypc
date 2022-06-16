@@ -32,7 +32,7 @@ let sequelize =
         ssl: true,
       })
     : new Sequelize(
-        `postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/mypc`,
+        `postgres://postgres:123456@localhost/mypc`,
         { logging: false, native: false }
       );
 
@@ -63,9 +63,14 @@ sequelize.models = Object.fromEntries(capsEntries);
 // En sequelize.models están todos los modelos importados como propiedades
 // Para relacionarlos hacemos un destructuring
 
+const { User, Products } = sequelize.models;
+
 
 // Aca vendrian las relaciones
 // Product.hasMany(Reviews);
+
+User.hasMany(Products, { through: 'user_products'});
+Products.BelongsTo(User, { through: 'user_products'});
 
 
 module.exports = {
