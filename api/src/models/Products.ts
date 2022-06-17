@@ -11,45 +11,27 @@ module.exports = (sequelize:any) => {
       allownull: false,
       primaryKey: true,
     },
-    title: {
+    tittle: {
       type: DataTypes.STRING(50),
-      allownull: false,
-      validate: {
-        len: [10,50],
-        isAlphanumeric: true
-      }
+      allownull: false
     },
     photo: {
       type: DataTypes.STRING,
       allownull: false
     },
     price: {
-      type: DataTypes.FLOAT,
-      allownull: false,
-      validate: {
-        isNumeric: true,
-        isFloat: true,
-        isAlpha: false,
-        not: /^[a-zA-ZÀ-ÿ\u00f1\u00d1]+$/,
-        min: 0.01,
-        max: 999999.00,
-      }
+      type: DataTypes.INTEGER,
+      allownull: false
     },
     type: {
       type: DataTypes.ENUM('full', 'motherboar', 'procesador', 'grafica', 'ram', 'ssd', 'hdd', 'cooler', 'monitor', 'mouse', 'teclado', 'cables', 'fuente')
     },
     description: {
       type: DataTypes.TEXT,
-      allownull: false,
-      validate: {
-        len:[10,500]
-      }
+      allownull: false
     },
     likes: {
       type: DataTypes.INTEGER,
-      validate: {
-        isInt: true,
-      }
     },
     comments: {
       type: DataTypes.ARRAY(DataTypes.JSON),
@@ -60,7 +42,7 @@ module.exports = (sequelize:any) => {
     },
     sell: {
       type: DataTypes.BOOLEAN,
-      defaultValue: false
+      default: false
     },
     sellerInfo: {
       type: DataTypes.JSON,
@@ -69,3 +51,24 @@ module.exports = (sequelize:any) => {
     timestamps: false
   });
 };
+
+// {
+//   "id": "1",
+//   "title" : "Procesador Ryzen 5",
+//   "photo": "url",
+//   "price": 200,
+//   "type": "full | motherboard | procesador | grafica | ram | ssd | hdd | cooler | monitor | mouse | teclado | cables | fuente",
+//   "description": "descripcion Ryzen 5",
+//   "likes": 5,
+//   "comments": [
+//       {"name":"matias", "avatar": "https://i.pravatar.cc/150?u=matias","comment":"Te sirven 50?"}, 
+//       {"name":"Carlitos", "avatar": "https://i.pravatar.cc/150?u=carlos","comment":"De que generacion es??"}
+//       ],
+//   "status": "Nuevo",
+//   "sellerInfo": [{
+//       "id": "1gv2g3v32g2hhd",
+//       "name" : "Marcelo",
+//       "email": "email@gmail.com",
+//       "avatar": "https://i.pravatar.cc/150?u=marcelo"
+//   }]
+// }

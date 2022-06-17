@@ -19,11 +19,11 @@ export const getUserById = async(id:string): Promise<types.User | string>=> {
 export const getBasicUserInfo = async(id:string): Promise<types.NonSensitiveUserInfo | string>=> {
     let userData = await User.findByPk(id)
     const user = {
-        id: userData.dataValues.id,
-        name: userData.dataValues.name,
-        email: userData.dataValues.email,
-        avatar: userData.dataValues.avatar,
-        phone: userData.dataValues.phone
+        id: userData?.dataValues.id,
+        name: userData?.dataValues.name,
+        email: userData?.dataValues.email,
+        avatar: userData?.dataValues.avatar,
+        phone: userData?.dataValues.phone
     }
     return user
 }
