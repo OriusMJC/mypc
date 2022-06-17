@@ -2,11 +2,11 @@ import { useState } from 'react';
 import { getName } from '../redux/actions/index'
 import { useAppDispatch } from '../config/config'
 
-type SearchBar = string
+
 
 export default function Searchbar(){
   const dispatch = useAppDispatch();
-  const [name, setName] = useState<SearchBar>("")
+  const [name, setName] = useState("")
 
   function handleInputChange(e){
     e.preventDefault();
@@ -14,6 +14,7 @@ export default function Searchbar(){
   }
 
   function handleSubmit(e){
+    e.preventDefault()
     dispatch(getName(name));
     setName("")
   }
@@ -21,8 +22,10 @@ export default function Searchbar(){
 
   return(
     <div>
-      <input type="text" placeholder = " Search Components" onChange = {e => handleInputChange(e)}/>
-      <button type="submit" onClick={e => handleSubmit(e)}></button>
+      <form onSubmit={e => handleSubmit(e)}>
+        <input type="text" placeholder = " Search Components" onChange = {e => handleInputChange(e)}/>
+        <button type="submit">Buscar</button>
+      </form>
     </div>
   )
 }

@@ -10,8 +10,8 @@ export const userRegister = async (email:string,password:string) => {
     // return user.user
     }   
 
-    export const userLogin = (email:string,password:string) =>
-        signInWithEmailAndPassword(auth,email,password)
+export const userLogin = (email:string,password:string) =>
+    signInWithEmailAndPassword(auth,email,password)
 
 export const userSingOut = () => signOut(auth)
 

@@ -1,25 +1,63 @@
-type pages = {
-    pageNumbers: Array<number>
-}
+import {useState} from 'react'
+import ProductsCards from './ProductsCards';
 
-function Pages({productsPerPage, allComponents, paginado}) {
-    const pageNumbers: pages["pageNumbers"] = [];
-    const rounded = Math.ceil(allComponents / productsPerPage);
 
-    for (let i = 1; i <= rounded; i++){
-        pageNumbers.push(i);
+function Pages({productsPerPage, allComponents, refresh}) {
+     
+    const cantPages = Math.ceil(allComponents.length /productsPerPage) 
+    const [currentPage, setCurrentPage] = useState(1);
+    const indexOfLastProduct = currentPage * productsPerPage;
+    const indexOfFirstProduct = indexOfLastProduct - productsPerPage;
+    const currentProduct = allComponents?.slice(indexOfFirstProduct, indexOfLastProduct);
+
+    const pageNumbers = [];
+    
+    if(typeof allComponents !== 'string'){
+        for (let i = 1; i <= cantPages; i++){
+            pageNumbers.push(
+                <button value={i} onClick={()=>{setCurrentPage(i)}}>
+                    {i}
+                </button>)
+        }
+    }
+    if(currentPage !== 1 && currentPage > cantPages) {
+        setCurrentPage(1)
     }
 
     return(
         <div>
-        <ul>
-        {pageNumbers && pageNumbers.map((n) => (
-            <li key = {n}>
-                <a onClick = {() => paginado(n)}>{n}</a>
-            </li>
-        ))}
-        </ul>
+            <div>
+                {pageNumbers}
+            </div>
+            <div>
+            {
+                refresh && currentProduct.length?
+                typeof allComponents !== 'string'?
+                currentProduct.map(prod=>{
+                    return(
+                    <ProductsCards 
+                        key={prod && prod.id} 
+                        id={prod && prod.id} 
+                        title={prod && prod.title} 
+                        photo={prod && prod.photo}
+                        price={prod && prod.price} 
+                        type = {prod.type}
+                        description = {prod.description}
+                        likes = {prod.likes}
+                        comments = {prod.comments}
+                        status = {prod.status}
+                        sellerInfo = {prod.sellerInfo}
+                        />)
+                })
+                :
+                <h2>{allComponents}</h2>
+                :
+                // <Loading/>
+                <h1>Cargando...</h1>
+            }
+            </div>
         </div>
+        
     )
 
 }

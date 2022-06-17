@@ -1,18 +1,18 @@
 import { useState, useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
+import {useSelector } from 'react-redux';
+// import { Link } from 'react-router-dom';
 import { getAllComponents, filterComponentsByCategory, orderComponentsByPrice, filterComponentsByState, orderComponentsByPopulation} from '../redux/actions';
 import { useAppDispatch  } from '../config/config';
 import { Products } from '../../types'
-import ProductsCards from './ProductsCards';
+// import ProductsCards from './ProductsCards';
 import Pages from './Pages';
 import Searchbar from './Searchbar';
 
 //seteo de estados
-interface AppState {
-  currentPage: number;
-  productsPerPage: number;
-}
+// interface AppState {
+//   currentPage: number;
+//   productsPerPage: number;
+// }
 
 //tipos
 type ProductsCards = Products;
@@ -20,28 +20,13 @@ type ProductsCards = Products;
 export default function Home() {
   const dispatch = useAppDispatch();
   const allComponents = useSelector((state: any) => state.components);
-  console.log(allComponents)
-
+  const types = useSelector((state:any)=> state.types)
+  const [productsPerPage, setProductsPerPage] = useState(12);
+  const [refresh,setRefresh] = useState(1)
   useEffect(() => {
     dispatch(getAllComponents());
  }, []); 
 
-  //Paginado
-  const [currentPage, setCurrentPage] = useState<AppState["currentPage"]>(1);
-  const [productsPerPage, setProductsPerPage] = useState<AppState["productsPerPage"]>(10);
-
-  const indexOfLastProduct = currentPage * productsPerPage;
-  const indexOfFirstProduct = indexOfLastProduct - productsPerPage;
-  const currentProduct = allComponents && allComponents.slice(indexOfFirstProduct, indexOfLastProduct);
-
-  const handlePaginado = Math.ceil(allComponents.length /productsPerPage) 
-  if(currentPage !== 1 && currentPage > handlePaginado) {
-  setCurrentPage(1)
-  }
-
-  const paginado = (pageNumbers) => {
-    setCurrentPage(pageNumbers);
-  };
   
   //filtrado y ordenamiento
   function value(e){
@@ -49,39 +34,39 @@ export default function Home() {
   }
 
   //filtrado 
-  const types = [];
-  allComponents.forEach(c => {
-    !types.includes(c.types) && types.push(c.types)
-  })
   function handleFilter (e) {
     dispatch(filterComponentsByCategory(value(e)))
+    setRefresh(refresh+1)
   }
   function handleFilterState(e){
     dispatch(filterComponentsByState(value(e)))
+    setRefresh(refresh+1)
   }
-
+  
   //Ordenamientos
   function handleOrderPrice(e){
     dispatch(orderComponentsByPrice(value(e)))
+    setRefresh(refresh+1)
   }
   function handleOrderPopularity(e){
     dispatch(orderComponentsByPopulation(value(e)))
+    setRefresh(refresh+1)
   }
  
 
   return(  
     <div>
       <h1>Home</h1>
-      {/* Paginado */}
-      <Pages 
-      productsPerPage  = {productsPerPage}
-      allComponents = {allComponents.length}
-      paginado = {paginado}
-      />
       {/* Busqueda */}
       <Searchbar />
       {/* Ordenamientos*/}
       {/* Ordenamiento por precio */}
+      <label>Productos</label>
+      <select onChange={e => setProductsPerPage(+e.target.value)}>
+        <option value="12">12</option>
+        <option value="24">24</option>
+        <option value="48">48</option>
+      </select>
       <label>Price</label>
       <select onChange={e => handleOrderPrice(e)}>
         <option value="All">All</option>
@@ -100,7 +85,7 @@ export default function Home() {
       <div>
         <select onChange = {e => handleFilter(e)}>
           {types && types.map(t => (
-            <option value = {t}>{t}</option>
+            <option value ={t}>{t}</option>
           ))}
         </select>
       </div>
@@ -108,27 +93,14 @@ export default function Home() {
       <label>State</label>
       <select onChange={e => handleFilterState(e)}>
         <option value="All">All</option>
-        <option value="New">New</option>
-        <option value="Used">Used</option>
+        <option value="nuevo">New</option>
+        <option value="usado">Used</option>
       </select>
       {/* Renderizado */}
       {
-        currentProduct && currentProduct.map(prod => {
-          return( 
-            <ProductsCards
-            key = {prod.id}
-            title = {prod.title}
-            photo = {prod.photo}
-            price = {prod.price}
-            type = {prod.type}
-            description = {prod.description}
-            likes = {prod.likes}
-            comments = {prod.comments}
-            status = {prod.status}
-            sellerInfo = {prod.sellerInfo}
-            />
-          )
-        })
+        <Pages productsPerPage  = {productsPerPage}
+        allComponents = {allComponents}
+        refresh = {refresh}/>
       }
     </div>
   )
