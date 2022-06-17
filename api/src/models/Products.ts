@@ -16,8 +16,7 @@ module.exports = (sequelize:any) => {
       allownull: false,
       validate: {
         len: [10,50],
-        isAlphanumeric: true,
-        notNull: true,
+        isAlphanumeric: true
       }
     },
     photo: {
@@ -32,7 +31,6 @@ module.exports = (sequelize:any) => {
         isFloat: true,
         isAlpha: false,
         not: /^[a-zA-ZÀ-ÿ\u00f1\u00d1]+$/,
-        notNull: true,
         min: 0.01,
         max: 999999.00,
       }
@@ -44,8 +42,7 @@ module.exports = (sequelize:any) => {
       type: DataTypes.TEXT,
       allownull: false,
       validate: {
-        len:[10,500],
-        notNull: true
+        len:[10,500]
       }
     },
     likes: {
