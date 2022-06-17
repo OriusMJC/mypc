@@ -10,9 +10,19 @@ module.exports = (sequelize:any) => {
       allownull: false,
       primaryKey: true
     },
-    name: {
+    userName:{
       type: DataTypes.STRING(30),
       allownull: false
+    },
+    name: {
+      type: DataTypes.STRING(30),
+      allownull: false,
+      validate: {
+        isAlpha: true,
+        isAlphanumeric: false,
+        isNumeric: false,
+        len: [8,30]
+      }
     },
     email: {
       type: DataTypes.STRING,
@@ -24,18 +34,28 @@ module.exports = (sequelize:any) => {
     },
     password: {
       type: DataTypes.STRING(20),
-      allownull: false
+      allownull: false,
+      validate: {
+        isAlphanumeric: true,
+        is: /^[a-zA-ZÀ-ÿ\u00f1\u00d1]+$/,
+        len: [6,20]
+      }
     },
     phone: { 
       type: DataTypes.STRING,
-      allownull: false
+      allownull: false,
+      validate: {
+/* Con 0-15 son 13 numeros; sin 0-15 son 10 */
+        min: 8,
+        max:16
+      }
     },
     avatar: {
-    type: DataTypes.STRING,
-    allownull: false
+      type: DataTypes.STRING,
+      allownull: false
     },
     fav: {
-    type: DataTypes.ARRAY(DataTypes.JSON),
+      type: DataTypes.ARRAY(DataTypes.JSON),
     },
     buy: {
       type: DataTypes.ARRAY(DataTypes.JSON),
@@ -44,35 +64,3 @@ module.exports = (sequelize:any) => {
     timestamps: false
   });
 };
-
-
-// {
-//   "id": "1gv2g3v32g2hhd",
-//   "name" : "Marcelo",
-//   "email": "email@gmail.com",
-//   "password": "eldelasnenas12345",
-//   "phone": "011 1234 9876",
-//   "avatar": "https://i.pravatar.cc/150?u=marcelo",
-//   "fav": [
-//       {"id": "3","title" : "PC Geimer full free fire 4K HD","photo": "url","price": 150},
-//       {"id": "3","title" : "PC Geimer full free fire 4K HD","photo": "url","price": 150}
-//       ],
-//   "buy": [
-//       {"id": "3","title" : "PC Geimer full free fire 4K HD","photo": "url","price": 150},
-//       {"id": "3","title" : "PC Geimer full free fire 4K HD","photo": "url","price": 150}
-//       ],
-//   "sell": [{
-//       "id": "1",
-//       "title" : "Procesador Ryzen 5",
-//       "photo": "url",
-//       "price": 200,
-//       "description": "descripcion Ryzen 5",
-//       "likes": 5,
-//       "comments": [
-//           {"name":"matias", "avatar": "https://i.pravatar.cc/150?u=matias","comment":"Te sirven 50?"}, 
-//           {"name":"Carlitos", "avatar": "https://i.pravatar.cc/150?u=carlos","comment":"De que generacion es??"}
-//           ],
-//       "status": "Nuevo"
-//       }
-//   ]
-// }
