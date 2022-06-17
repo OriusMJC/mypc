@@ -20,7 +20,7 @@ module.exports = (sequelize:any) => {
       allownull: false
     },
     price: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.FLOAT,
       allownull: false
     },
     type: {

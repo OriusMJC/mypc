@@ -12,6 +12,12 @@ return  (
             <h4>Likes: {likes}</h4>
             <h4>Status: {status}</h4>
         </Link>
+        <button>
+            ❤
+        </button>
+        <button>
+            🦽
+        </button>
     </div>
 )
 }
