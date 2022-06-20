@@ -42,11 +42,8 @@ function Pages({productsPerPage, allComponents, refresh}) {
                         photo={prod && prod.photo}
                         price={prod && prod.price} 
                         type = {prod.type}
-                        description = {prod.description}
                         likes = {prod.likes}
-                        comments = {prod.comments}
                         status = {prod.status}
-                        sellerInfo = {prod.sellerInfo}
                         />)
                 })
                 :
