@@ -1,9 +1,8 @@
-export default function Pages({videogamesPerPage, videogame, paginado}) {
+export default function Pages({productsPerPage, products, paginado}) {
     const pageNumbers = [];    
-        for (let i = 1; i <= Math.ceil(videogame/videogamesPerPage) ; i++) {
+        for (let i = 1; i <= Math.ceil(products/productsPerPage) ; i++) {
             pageNumbers.push(i)            
         }
-
     return (
         <nav >
             <ul>
