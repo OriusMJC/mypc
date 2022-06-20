@@ -34,8 +34,8 @@
 // export type NonSensitiveInfoDiaryEntry = Omit<DiaryEntry, 'comment'>
 
 
-// export type PcTypes = 'full' | 'motherboard' | 'procesador' | 'grafica' | 'ram' | 'ssd' | 'hdd' | 'cooler' | 'monitor' | 'mouse' | 'teclado' | 'cables' | 'fuente'
-// export type PcStatus = 'Nuevo' | 'Usado'
+export type PcTypes = 'full' | 'motherboard' | 'procesador' | 'grafica' | 'ram' | 'ssd' | 'hdd' | 'cooler' | 'monitor' | 'mouse' | 'teclado' | 'cables' | 'fuente'
+export type PcStatus = 'Nuevo' | 'Usado'
 // export type NonSensitiveUserInfo = Pick<User, 'id','name','email','avatar','phone'>
 // export type basicProductInfo = Pick<Products, 'id','title','photo','price'>
 
@@ -51,19 +51,19 @@
 //     sell?: Products[]
 // }
 
-// export interface Products{
-//     id:string,
-//     title:string,
-//     photo:string,
-//     price:number,
-//     type: PcTypes,
-//     description?:string,
-//     likes:number,
-//     comments?: Array<{
-//         name:string,
-//         avatar?:string,
-//         comment:string
-//     }>,
-//     status: PcStatus,
-//     sellerInfo: NonSensitiveUserInfo
-// }
+export interface Products{
+    id:string,
+    title:string,
+    photo:string,
+    price:number,
+    type: PcTypes,
+    description?:string,
+    likes:number,
+    comments?: Array<{
+        name:string,
+        avatar?:string,
+        comment:string
+    }>,
+    status: PcStatus,
+    // sellerInfo: NonSensitiveUserInfo
+}

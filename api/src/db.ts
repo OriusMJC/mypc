@@ -37,18 +37,14 @@ let sequelize =
       );
 
 
-//asi estaba antes la db
-// const sequelize = new Sequelize(`postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/food`, {
-//   logging: false, // set to console.log to see the raw SQL queries
-//   native: false, // lets Sequelize know we can use pg-native for ~30% more speed
-// });
+
 const basename = path.basename(__filename);
 
 const modelDefiners:any[] = [];
-
+//hola
 // Leemos todos los archivos de la carpeta Models, los requerimos y agregamos al arreglo modelDefiners
 fs.readdirSync(path.join(__dirname, '/models'))
-  .filter((file:any) => (file.indexOf('.') !== 0) && (file !== basename) && (file.slice(-3) === '.js'))
+  .filter((file:any) => (file.indexOf('.') !== 0) && (file !== basename) && (file.slice(-3) === '.ts'))
   .forEach((file:any) => {
     modelDefiners.push(require(path.join(__dirname, '/models', file)));
   });
@@ -63,14 +59,14 @@ sequelize.models = Object.fromEntries(capsEntries);
 // En sequelize.models están todos los modelos importados como propiedades
 // Para relacionarlos hacemos un destructuring
 
-const { User, Products } = sequelize.models;
+const { User, Product } = sequelize.models;
 
 
 // Aca vendrian las relaciones
-// Product.hasMany(Reviews);
 
-User.hasMany(Products, { through: 'user_products'});
-Products.BelongsTo(User, { through: 'user_products'});
+User.hasMany(Product, {foreignKey:'user_id', targetKey:'id', as:'sell'});
+// User.hasMany(Product);
+Product.belongsTo(User);
 
 
 module.exports = {
