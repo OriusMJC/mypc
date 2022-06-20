@@ -21,13 +21,14 @@ interface Info {
 export default function ProductDetails(){
    const dispatch = useAppDispatch()
    const {idProduct} = useParams()
-   let product = useSelector((state:any) => state.details)
+   let product = useSelector((state:any) => state.productDetails)
    useEffect(():any=>{
       dispatch(getAllDetails(idProduct))
       // return (
       //    product = {}
       // )
-   },[])
+   },[dispatch,idProduct])
+   console.log(product)
    return(
       <div>
          <Link to='/'>
@@ -37,7 +38,7 @@ export default function ProductDetails(){
             product.id?
             <div key={product.key}>
                <h2>{product.title}</h2>
-               <img src={product.photo} ></img>
+               <img src={product.photo} alt={product.title}></img>
                <h3>Price: ${product.price}</h3>
                {/* <h3>VER RENDER TIPO</h3> */}
                <p>Description: {product.description}</p>

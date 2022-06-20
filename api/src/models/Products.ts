@@ -11,7 +11,7 @@ module.exports = (sequelize:any) => {
       allownull: false,
       primaryKey: true,
     },
-    tittle: {
+    title: {
       type: DataTypes.STRING(50),
       allownull: false
     },

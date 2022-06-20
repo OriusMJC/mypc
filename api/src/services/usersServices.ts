@@ -40,8 +40,22 @@ export const updateDataUser = async(newUserData: types.User): Promise<string> =>
     return 'Cambios hechos correctamente'
 }
 
+export const userFavProduct = async(idUser:string,product:types.basicProductInfo):Promise<string>=>{
+    let user = User.findByPk(idUser)
+    let newFavArr = user.fav.length? [user.fav,product] : [product]
+    await User.update({fav: newFavArr},{where:{id: idUser}})
+    return 'Producto likeado con éxito'
+}
+export const userDelFavProduct = async(idUser:string,idProduct:string):Promise<string>=>{
+    let user = User.findByPk(idUser)
+    let newFavArr = user.fav.filter((prod:any) => prod.id !== idProduct )
+    await User.update({fav: newFavArr},{where:{id: idUser}})
+    return 'Producto likeado con éxito'
+}
+
 export const userBuyProduct = async(idUser:string,productSelled:types.basicProductInfo):Promise<string>=>{
     let user = User.findByPk(idUser)
-    await User.update({buy: [user.buy,productSelled]},{where:{id: idUser}})
+    let newBuyArr = user.buy.length? [user.buy,productSelled] : [productSelled]
+    await User.update({buy: newBuyArr},{where:{id: idUser}})
     return 'Producto comprado con éxito'
 }

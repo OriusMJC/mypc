@@ -3,6 +3,8 @@ import { Dispatch } from 'redux';
 export const GET_ALL_COMPONENTS = "GET_ALL_COMPONENTS";
 export const GET_ALL_DETAILS = "GET_ALL_DETAILS";
 export const GET_NAME = "GET_NAME";
+export const ADD_PRODUCT_CART = "ADD_PRODUCT_CART";
+export const DEL_PRODUCT_CART = "DEL_PRODUCT_CART";
 export const FILTER_CATEGORY = "FILTER_CATEGORY";
 export const ORDER_POPULATION = "ORDER_POPULATION";
 export const ORDER_PRICE = "ORDER_PRICE";
@@ -45,6 +47,46 @@ export function getName(name: string){
         }
     }
 }
+
+export function addFavUser(idUser: string, product:any){
+    return async() => {
+        try {
+            await axios.put(`/fav/${idUser}`,product);
+        } catch (error) {
+            console.log(error)
+        }
+    }
+}
+export function delFavUser(idUser: string, idProduct:any){
+    return async() => {
+        try {
+            await axios.delete(`/fav/${idUser}`,idProduct);
+        } catch (error) {
+            console.log(error)
+        }
+    }
+}
+
+export function delProductCart(idProduct:any){
+    return async(dispatch: Dispatch<Action>) => {
+        try {
+            dispatch({type: DEL_PRODUCT_CART, payload: idProduct})
+        } catch (error) {
+            console.log(error)
+        }
+    }
+}
+export function addProductCart(product:any){
+    return async(dispatch: Dispatch<Action>) => {
+        try {
+            dispatch({type: DEL_PRODUCT_CART, payload: product})
+        } catch (error) {
+            console.log(error)
+        }
+    }
+}
+
+
 
 export function filterComponentsByCategory(payload: string){
     return {
