@@ -1,3 +1,4 @@
+import { async } from '@firebase/util';
 import axios from 'axios';
 import { Dispatch } from 'redux';
 export const GET_ALL_COMPONENTS = "GET_ALL_COMPONENTS";
@@ -9,6 +10,7 @@ export const FILTER_CATEGORY = "FILTER_CATEGORY";
 export const ORDER_POPULATION = "ORDER_POPULATION";
 export const ORDER_PRICE = "ORDER_PRICE";
 export const FILTER_STATE = "FILTER_STATE";
+export const LOGIN_USER = "LOGIN_USER";
 
 type Action = {
     type: string,
@@ -42,6 +44,28 @@ export function getName(name: string){
         try {
             let res = await axios(`/products?name=${name}`);
             dispatch({type: GET_NAME, payload: res.data})
+        } catch (error) {
+            console.log(error)
+        }
+    }
+}
+
+export function createUser(user){
+    return async(dispatch: Dispatch<Action>) => {
+        try {
+            let resp = await axios.post("/users", user)
+            return resp;
+        } catch (error) {
+            console.log(error)
+        }
+    }
+}
+
+export function loginUser(id){
+    return async(dispatch: Dispatch<Action>) => {
+        try {
+            let resp = await axios(`/users/${id}`)
+            dispatch({type: LOGIN_USER, payload: resp.data})
         } catch (error) {
             console.log(error)
         }

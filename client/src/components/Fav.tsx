@@ -7,8 +7,8 @@ import ProductsCards from "./ProductsCards"
 export default function Fav(){
   const dispatch = useAppDispatch()
     const user = useSelector((store:any)=> store.userDetails)
-    const productsFav = useSelector((store:any)=> store.userDetails?.fav)
-    function handleNavi(){
+    // const productsFav = useSelector((store:any)=> store.userDetails?.fav)
+    function HandleNavi(){
         const navigate = useNavigate()
         navigate('/login')
     }
@@ -19,8 +19,8 @@ export default function Fav(){
         <div>
             {
                 user.id?
-                    productsFav.length?
-                    productsFav.map((prod)=>
+                    user.fav.length?
+                    user.fav.map((prod)=>
                         <div key={prod.key}>
                             <Link to={`detail/${prod.id}`}>
                                 <h2>{prod.title}</h2>
@@ -37,7 +37,7 @@ export default function Fav(){
                     :
                     <h1>Aún no has agregado nada a favorito!</h1>
                 :
-                handleNavi()
+                HandleNavi()
             }
         </div>
     )

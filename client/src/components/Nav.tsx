@@ -11,6 +11,8 @@ export default function Nav({refresh,setRefresh,setProductsPerPage}){
     const user = useSelector((store:any)=> store.userDetails)
     const types = useSelector((state:any)=> state.types)
 
+    console.log(user);
+
      //filtrado y ordenamiento
     function value(e){
         return e.target.value
@@ -55,8 +57,8 @@ export default function Nav({refresh,setRefresh,setProductsPerPage}){
                     </Link>
                 </div>
                 <div>
-                    <button>{user.name??'Register'}</button>
-                    <button>{user.name? 'Sing Out' : 'Login'}</button>
+                    {!user.name??<Link to='user/register'><button>Register</button></Link>}
+                    {user.name? <button>Sing Out</button> : <Link to='user/login'><button>Login</button></Link>}
                 </div>
             </section>
             <section>
