@@ -1,4 +1,19 @@
-import { GET_ALL_COMPONENTS, GET_ALL_DETAILS, GET_NAME, FILTER_CATEGORY, ORDER_POPULATION, ORDER_PRICE, FILTER_STATE, ADD_PRODUCT_CART, DEL_PRODUCT_CART, LOGIN_USER} from "../actions"
+import { 
+    GET_ALL_COMPONENTS, 
+    GET_ALL_DETAILS, 
+    GET_NAME, 
+    FILTER_CATEGORY, 
+    ORDER_POPULATION, 
+    ORDER_PRICE, 
+    FILTER_STATE, 
+    ADD_PRODUCT_CART, 
+    DEL_PRODUCT_CART,
+    LOGIN_USER, 
+    ADD_COMMENT, 
+    SINGOUT_USER, 
+    // ADD_FAV, 
+    // DEL_FAV
+} from "../actions"
 // import { Products } from '../../../types';
 
 function orderMayMen(array,prop){
@@ -22,8 +37,8 @@ const initialState = {
     components: [],
     allComponents:[],
     types: ['full', 'motherboard', 'procesador', 'grafica', 'ram', 'ssd', 'hdd', 'cooler', 'monitor', 'mouse', 'teclado','cables', 'fuente'],
-    userDetails: {},
-    productDetails: {},
+    userDetails: {fav:[]},
+    productDetails: {comments: []},
     cart: []
 }
 
@@ -51,6 +66,11 @@ export default function rootReducer(state = initialState, action: any){
                 ...state,
                 userDetails: action.payload
             }
+        case SINGOUT_USER:
+            return {
+                ...state,
+                userDetails: {}
+            }
         case ADD_PRODUCT_CART:
             let prodExist = state.cart.find(prod => prod.id === action.payload.id)
             if(prodExist) return state 
@@ -60,11 +80,30 @@ export default function rootReducer(state = initialState, action: any){
             }
         case DEL_PRODUCT_CART:
             let newArrProd = state.cart.filter(prod => prod.id !== action.payload)
-            if(prodExist) return state 
+            console.log(newArrProd)
             return {
                 ...state,
                 cart: newArrProd
             }
+        case ADD_COMMENT:
+            let product = state.productDetails
+            product.comments = [...state.productDetails.comments, action.payload.comment]
+            return {
+                ...state,
+                productDetails: product
+            }
+        // case ADD_FAV:
+        //     const newFav = [...state.userDetails.fav, action.payload]
+        //     return {
+        //         ...state,
+        //         fav: newFav
+        //     }
+        // case DEL_FAV:
+        //     const newFavArr = state.userDetails.fav.filter((prod:any)=> prod.id !== action.payload)
+        //     return {
+        //         ...state,
+        //         fav: newFavArr
+        //     }
 
         case FILTER_CATEGORY:
             const allComponents = state.allComponents;

@@ -1,8 +1,9 @@
+import { useEffect} from "react"
 import { useSelector } from "react-redux"
 import { Link } from "react-router-dom"
 import { useAppDispatch } from "src/config/config"
 import { delProductCart } from "src/redux/actions"
-import ProductsCards from "./ProductsCards"
+// import ProductsCards from "./ProductsCards"
 
 export default function Cart(){
   const dispatch = useAppDispatch()
@@ -11,6 +12,8 @@ export default function Cart(){
   function handleKickCart(id){
     dispatch(delProductCart(id))
   }
+  useEffect(()=>{
+  },[productsCart])
   return (
       <div>
         <section>
@@ -48,6 +51,9 @@ export default function Cart(){
               }
             </button>
         </section>
+        <button>
+          <Link to='/'>Seguir comprando</Link>
+        </button>
       </div>
   )
 }

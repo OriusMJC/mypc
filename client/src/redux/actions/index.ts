@@ -1,16 +1,20 @@
-import { async } from '@firebase/util';
 import axios from 'axios';
 import { Dispatch } from 'redux';
+import { userSingOut } from 'src/services/userFirebase';
 export const GET_ALL_COMPONENTS = "GET_ALL_COMPONENTS";
 export const GET_ALL_DETAILS = "GET_ALL_DETAILS";
 export const GET_NAME = "GET_NAME";
 export const ADD_PRODUCT_CART = "ADD_PRODUCT_CART";
 export const DEL_PRODUCT_CART = "DEL_PRODUCT_CART";
+export const ADD_COMMENT = "ADD_COMMENT";
 export const FILTER_CATEGORY = "FILTER_CATEGORY";
 export const ORDER_POPULATION = "ORDER_POPULATION";
 export const ORDER_PRICE = "ORDER_PRICE";
 export const FILTER_STATE = "FILTER_STATE";
 export const LOGIN_USER = "LOGIN_USER";
+export const SINGOUT_USER = "SINGOUT_USER";
+// export const ADD_FAV = "ADD_FAV";
+// export const DEL_FAV = "DEL_FAV";
 
 type Action = {
     type: string,
@@ -51,7 +55,7 @@ export function getName(name: string){
 }
 
 export function createUser(user){
-    return async(dispatch: Dispatch<Action>) => {
+    return async() => {
         try {
             let resp = await axios.post("/users", user)
             return resp;
@@ -71,20 +75,32 @@ export function loginUser(id){
         }
     }
 }
-
-export function addFavUser(idUser: string, product:any){
-    return async() => {
+export function singOutUser(){
+    return async(dispatch: Dispatch<Action>) => {
         try {
-            await axios.put(`/fav/${idUser}`,product);
+            await userSingOut()
+            dispatch({type: SINGOUT_USER, payload: {}})
         } catch (error) {
             console.log(error)
         }
     }
 }
-export function delFavUser(idUser: string, idProduct:any){
-    return async() => {
+
+export function addFavUser(idUser: string, product:any){
+    return async(dispatch: Dispatch<Action>) => {
         try {
-            await axios.delete(`/fav/${idUser}`,idProduct);
+            await axios.put(`/users/fav/${idUser}`,product);
+            // dispatch({type: ADD_FAV, payload: product})
+        } catch (error) {
+            console.log(error)
+        }
+    }
+}
+export function delFavUser(idUser: string, idProduct:string){
+    return async(dispatch: Dispatch<Action>) => {
+        try {
+            await axios.delete(`/users/fav/${idUser}/${idProduct}`);
+            // dispatch({type: DEL_FAV, payload: idProduct})
         } catch (error) {
             console.log(error)
         }
@@ -103,7 +119,17 @@ export function delProductCart(idProduct:any){
 export function addProductCart(product:any){
     return async(dispatch: Dispatch<Action>) => {
         try {
-            dispatch({type: DEL_PRODUCT_CART, payload: product})
+            dispatch({type: ADD_PRODUCT_CART, payload: product})
+        } catch (error) {
+            console.log(error)
+        }
+    }
+}
+export function addProductComment(id:string,comment:any){
+    return async(dispatch: Dispatch<Action>) => {
+        try {
+            await axios.put(`/products/comments/${id}`,comment)
+            dispatch({type: ADD_COMMENT, payload: {id,comment}})
         } catch (error) {
             console.log(error)
         }
