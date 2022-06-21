@@ -8,7 +8,11 @@ export default function ProductsCards({key, id,title, photo, price, type, likes,
     const dispatch = useAppDispatch()
     const idUser = useSelector((store:any)=> store.userDetails.id)
     function handleFav(){
-        dispatch(addFavUser(idUser,{key, id,title, photo, price, type, likes, status}))
+        if(idUser){
+            dispatch(addFavUser(idUser,{key, id,title, photo, price, type, likes, status}))
+        }else{
+            alert('Debes iniciar sesión para poder agregar productos a favoritos!')
+        }
     }
 
     function handleCart(){

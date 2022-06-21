@@ -31,7 +31,7 @@ module.exports = (sequelize:any) => {
       allownull: false
     },
     avatar: {
-    type: DataTypes.STRING,
+    type: DataTypes.STRING(5000),
     allownull: false
     },
     fav: {

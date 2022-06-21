@@ -3,15 +3,13 @@ import {filterComponentsByCategory, orderComponentsByPrice, filterComponentsBySt
 import Searchbar from "./Searchbar";
 import { useAppDispatch  } from '../config/config';
 import { Link } from "react-router-dom";
+import NavButtons from "./NavButtons";
 
 // import * as types from '../../types'
 
 export default function Nav({refresh,setRefresh,setProductsPerPage}){
     const dispatch = useAppDispatch();
-    const user = useSelector((store:any)=> store.userDetails)
     const types = useSelector((state:any)=> state.types)
-
-    console.log(user);
 
      //filtrado y ordenamiento
     function value(e){
@@ -39,28 +37,8 @@ export default function Nav({refresh,setRefresh,setProductsPerPage}){
     }
     return (
         <nav>
-            <section>
-                <Searchbar/>
-            </section>
-            <section>
-                <div>
-                    <Link to='/fav'>
-                        <button>❤</button>
-                    </Link>
-                    <Link to='/cart'>
-                        <button>🦽</button>
-                    </Link>
-                </div>
-                <div>
-                    <Link to=''>
-                        <button>🙍‍♂️</button>
-                    </Link>
-                </div>
-                <div>
-                    {!user.name??<Link to='user/register'><button>Register</button></Link>}
-                    {user.name? <button>Sing Out</button> : <Link to='user/login'><button>Login</button></Link>}
-                </div>
-            </section>
+            <Searchbar/>
+            <NavButtons/>
             <section>
                 <label>Productos</label>
                 <select onChange={e => setProductsPerPage(+e.target.value)}>

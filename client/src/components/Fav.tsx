@@ -1,20 +1,24 @@
+import { useEffect } from "react"
 import { useSelector } from "react-redux"
 import { Link, useNavigate } from "react-router-dom"
 import { useAppDispatch } from "src/config/config"
-import { delFavUser } from "src/redux/actions"
+import { delFavUser, loginUser } from "src/redux/actions"
 import ProductsCards from "./ProductsCards"
 
 export default function Fav(){
   const dispatch = useAppDispatch()
     const user = useSelector((store:any)=> store.userDetails)
     // const productsFav = useSelector((store:any)=> store.userDetails?.fav)
-    function HandleNavi(){
-        const navigate = useNavigate()
-        navigate('/login')
-    }
+    // function HandleNavi(){
+    //     const navigate = useNavigate()
+    //     navigate('/user/login')
+    // }
     function handleKickFav(isUser,idProd){
         dispatch(delFavUser(isUser,idProd))
       }
+    useEffect(()=>{
+        dispatch(loginUser(user.id))
+    },[handleKickFav])
     return (
         <div>
             {
@@ -37,7 +41,12 @@ export default function Fav(){
                     :
                     <h1>Aún no has agregado nada a favorito!</h1>
                 :
-                HandleNavi()
+                <div>
+                    <h1>Aún no has iniciado sesión!</h1>
+                    <Link to='/user/login'>
+                        <button>Login</button>
+                    </Link>
+                </div>
             }
         </div>
     )
