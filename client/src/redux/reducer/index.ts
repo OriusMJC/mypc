@@ -1,4 +1,4 @@
-import { GET_ALL_COMPONENTS, GET_ALL_DETAILS, GET_NAME, FILTER_CATEGORY, ORDER_POPULATION, ORDER_PRICE, FILTER_STATE, ADD_PRODUCT_CART, DEL_PRODUCT_CART } from "../actions"
+import { GET_ALL_COMPONENTS, GET_ALL_DETAILS, GET_NAME, FILTER_CATEGORY, ORDER_POPULATION, ORDER_PRICE, FILTER_STATE, ADD_PRODUCT_CART, DEL_PRODUCT_CART, LOGIN_USER} from "../actions"
 // import { Products } from '../../../types';
 
 function orderMayMen(array,prop){
@@ -45,6 +45,11 @@ export default function rootReducer(state = initialState, action: any){
                 ...state,
                 allComponents: action.payload,
                 components: action.payload
+            }
+        case LOGIN_USER:
+            return {
+                ...state,
+                userDetails: action.payload
             }
         case ADD_PRODUCT_CART:
             let prodExist = state.cart.find(prod => prod.id === action.payload.id)
