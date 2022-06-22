@@ -5,6 +5,7 @@ import { useAppDispatch  } from '../config/config';
 import Pages from './Pages';
 import Nav from './Nav';
 import s from './Styles/Home.module.css'
+import { userData } from 'src/services/userFirebase';
 // import { Link } from 'react-router-dom';
 // import { Products } from '../../types'
 // import ProductsCards from './ProductsCards';
@@ -24,6 +25,8 @@ export default function Home() {
   const [productsPerPage, setProductsPerPage] = useState(12);
   const [refresh,setRefresh] = useState(1)
   useEffect(() => {
+    let res = userData()
+    console.log(res)
     dispatch(getAllComponents());
  }, [dispatch]); 
 
