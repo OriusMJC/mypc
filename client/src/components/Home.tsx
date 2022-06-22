@@ -6,6 +6,7 @@ import Pages from './Pages';
 import Nav from './NavFilter';
 import Footer from './Footer'
 import s from './Styles/Home.module.css'
+import { userData } from 'src/services/userFirebase';
 // import { Link } from 'react-router-dom';
 // import { Products } from '../../types'
 // import ProductsCards from './ProductsCards';
@@ -24,7 +25,19 @@ export default function Home() {
   const allComponents = useSelector((state: any) => state.components);
   const [productsPerPage, setProductsPerPage] = useState(12);
   const [refresh,setRefresh] = useState(1)
+  
+  // const isUserLogin= async()=>{
+  //   let resId = await userData()
+  //   if(resId){
+  //     dispatch(loginUser(resId))
+  //   }
+  // }
+  
+
   useEffect(() => {
+    let res = userData()
+    console.log(res)
+    // isUserLogin()
     dispatch(getAllComponents());
  }, [dispatch]); 
 

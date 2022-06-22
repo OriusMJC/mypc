@@ -28,8 +28,8 @@ export default function NavButtons(){
                 </Link>
             </div>
             <div>
-                {!user.name? <Link to='/user/register'><button>Register</button></Link> : <></>}
-                {user.name? <button onClick={handleSingOut}>Sing Out</button> : <Link to='/user/login'><button>Login</button></Link>}
+                {!user?.name? <Link to='/user/register'><button>Register</button></Link> : <></>}
+                {user?.name? <button onClick={handleSingOut}>Sing Out</button> : <Link to='/user/login'><button>Login</button></Link>}
             </div>
         </section>
     )

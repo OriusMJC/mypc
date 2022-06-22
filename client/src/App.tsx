@@ -1,6 +1,7 @@
 import {Route, Routes} from 'react-router-dom';
 import Home from './components/Home';
-import s from './App.module.css';
+// import s from './App.module.css';
+import './App.css'
 import ProductDetails from './components/ProductDetails';
 import UserDetail from './components/UserDetail';
 import Fav from './components/Fav';
@@ -10,16 +11,13 @@ import Login from './components/Login';
 import Contact from './components/Contact'
 import Searchbar from './components/Searchbar';
 import Footer from './components/Footer'
-import NavButtons from './components/NavButtons'
+// import NavButtons from './components/NavButtons'
 
 function App()  {
   return (
-    <div className={s.App}>
-      <div className = {s.nav}>
+    <div className='App'>
       <Searchbar/>
-      <NavButtons/>
-      </div>
-      <div className = {s.routes}>
+      {/* <NavButtons/> */}
       <Routes>
         <Route path='/' element={<Home/>}/>
         <Route path='/detail/:idProduct' element={<ProductDetails/>}/>
@@ -31,10 +29,7 @@ function App()  {
         <Route path='/user/login' element={<Login/>}/>
         <Route path='/contact' element={<Contact/>}/>
       </Routes>
-      </div>
-      <div className = {s.footer}>
-        <Footer/>
-      </div>
+      <Footer/>
     </div>
   );
 }
