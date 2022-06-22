@@ -1,12 +1,12 @@
 import {Route, Routes} from 'react-router-dom';
-import Home from './components/Home';
+import Home from './components/Home/Home';
 import './App.css';
-import ProductDetails from './components/ProductDetails';
-import UserDetails from './components/UserDetail';
-import Fav from './components/Fav';
-import Register from './components/Register';
-import Cart from './components/Cart';
-import Login from './components/Login';
+import ProductDetails from './components/Product/ProductDetails';
+import UserDetails from './components/User/UserDetail';
+import Fav from './components/User/Fav';
+import Register from './components/Login/Register';
+import Cart from './components/User/Cart';
+import Login from './components/Login/Login';
 
 function App()  {
   return (

@@ -3,9 +3,9 @@ import { useSelector} from "react-redux"
 import { Link, useParams } from "react-router-dom"
 import { useAppDispatch } from "src/config/config"
 import { addProductCart, getAllDetails } from "src/redux/actions"
-import NavButtons from "./NavButtons"
+import NavButtons from "../NavBar/NavButtons"
 import ProductComments from "./ProductComments"
-import Searchbar from "./Searchbar"
+import Searchbar from "../NavBar/Searchbar"
 // import { Products } from "types"
 
 interface Info {

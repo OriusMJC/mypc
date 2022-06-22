@@ -3,7 +3,7 @@ import { useSelector } from "react-redux"
 import { Link, useNavigate } from "react-router-dom"
 import { useAppDispatch } from "src/config/config"
 import { addProductCart, delFavUser, loginUser } from "src/redux/actions"
-import s from './Styles/Fav.module.css'
+import s from '../Styles/Fav.module.css'
 // import { userData } from "src/services/userFirebase"
 // import ProductsCards from "./ProductsCards"
 

@@ -1,9 +1,9 @@
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom'
-import { userRegister, userLogin} from '../services/userFirebase'
-import { useAppDispatch } from '../config/config'
-import { createUser } from '../redux/actions/index'
-import s from './Styles/Register.module.css'
+import { userRegister, userLogin} from '../../services/userFirebase'
+import { useAppDispatch } from '../../config/config'
+import { createUser } from '../../redux/actions/index'
+import s from '../Styles/Register.module.css'
 
 export default function Register(){
 

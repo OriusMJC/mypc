@@ -1,9 +1,9 @@
 import { useState, useEffect } from 'react';
 import {useSelector } from 'react-redux';
-import { getAllComponents} from '../redux/actions';
-import { useAppDispatch  } from '../config/config';
-import Pages from './Pages';
-import Nav from './Nav';
+import { getAllComponents} from '../../redux/actions';
+import { useAppDispatch  } from '../../config/config';
+import Pages from '../ProductPage/Pages';
+import Nav from '../NavBar/Nav';
 import s from './Styles/Home.module.css'
 // import { Link } from 'react-router-dom';
 // import { Products } from '../../types'

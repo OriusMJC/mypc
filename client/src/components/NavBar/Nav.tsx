@@ -1,10 +1,10 @@
 import { useSelector } from "react-redux";
-import {filterComponentsByCategory, orderComponentsByPrice, filterComponentsByState, orderComponentsByPopulation} from '../redux/actions';
+import {filterComponentsByCategory, orderComponentsByPrice, filterComponentsByState, orderComponentsByPopulation} from '../../redux/actions';
 import Searchbar from "./Searchbar";
-import { useAppDispatch  } from '../config/config';
+import { useAppDispatch  } from '../../config/config';
 // import { Link } from "react-router-dom";
 import NavButtons from "./NavButtons";
-import s from './Styles/Nav.module.css'
+import s from '../Styles/Nav.module.css'
 
 // import * as types from '../../types'
 
@@ -37,8 +37,16 @@ export default function Nav({refresh,setRefresh,setProductsPerPage}){
         setRefresh(refresh+1)
     }
     return (
-        <nav className={s.navContainer}>
-            <Searchbar/>
+        <nav className={s.nav}>
+            <div className={s.navContainer}>
+                <div className={s.logo}></div>
+                <div className={s.searchBar}>
+                    <Searchbar/>
+                </div>
+                <div className={s.dynamicButtons}></div>
+            </div>
+            
+            {/* <Searchbar/>
             <NavButtons/>
             <section className={s.filterContent}>
                 <div>
@@ -81,7 +89,7 @@ export default function Nav({refresh,setRefresh,setProductsPerPage}){
                         <option value="usado">Used</option>
                     </select>
                 </div>
-            </section>
+            </section> */}
         </nav>
     )
 }
