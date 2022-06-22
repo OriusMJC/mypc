@@ -23,17 +23,15 @@ export default function ProductsCards({key, id,title, photo, price, type, likes,
 
     return  (
         <div key={key} className={s.productCards}>
+            <h2>{title}</h2>
             <Link to={`detail/${id}`}>
-                <h2>{title}</h2>
-                <div className={s.cardImageCont}>
-                    <img src={photo} alt='Image Product'/>
-                </div>
-                <div>
-                    <h3>Price: ${price}</h3>
-                    <h3>Status: {status}</h3>
-                </div>
-                <h4>Likes: {likes}</h4>
+                <img src={photo} alt='Image Product'/>
             </Link>
+            <div className = {s.cardInfo}>
+                <h3>${price}</h3>
+                <h3>Status: {status}</h3>
+                <h4>Likes: {likes}</h4>
+            </div>
             <button onClick={handleFav}>
                 ❤
             </button>

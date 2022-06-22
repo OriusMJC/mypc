@@ -38,9 +38,9 @@ export default function Nav({refresh,setRefresh,setProductsPerPage}){
     return (
         <nav className={s.navContainer}>
             <section className={s.filterContent}>
-                <div>
+                <div >
                     <label>Productos</label>
-                    <select onChange={e => setProductsPerPage(+e.target.value)}>
+                    <select onChange={e => setProductsPerPage(+e.target.value)} className = {s.filters}>
                         <option value="12">12</option>
                         <option value="24">24</option>
                         <option value="48">48</option>
@@ -48,7 +48,7 @@ export default function Nav({refresh,setRefresh,setProductsPerPage}){
                 </div>
                 <div>
                     <label>Precio</label>
-                    <select onChange={e => handleOrderPrice(e)}>
+                    <select onChange={e => handleOrderPrice(e)} className = {s.filters}>
                         <option value="All">All</option>
                         <option value="More price">More price</option>
                         <option value="Lower price">Lower price</option>
@@ -56,7 +56,7 @@ export default function Nav({refresh,setRefresh,setProductsPerPage}){
                 </div>
                 <div>
                     <label>Popularidad</label>
-                    <select onChange ={e => handleOrderPopularity(e)}>
+                    <select onChange ={e => handleOrderPopularity(e)} className = {s.filters}>
                         <option value = "All">All</option>
                         <option value="More Popularity">More Popularity</option>
                         <option value="Lower Popularity">Lower Popularity</option>
@@ -64,7 +64,7 @@ export default function Nav({refresh,setRefresh,setProductsPerPage}){
                 </div>
                 <div>
                     <label>Categoria</label>
-                    <select onChange = {e => handleFilter(e)}>
+                    <select onChange = {e => handleFilter(e)} className = {s.filters}>
                     {types && types.map(t => (
                         <option value ={t}>{t}</option>
                     ))}
@@ -72,7 +72,7 @@ export default function Nav({refresh,setRefresh,setProductsPerPage}){
                 </div>
                 <div>
                     <label>Estado</label>
-                    <select onChange={e => handleFilterState(e)}>
+                    <select onChange={e => handleFilterState(e)} className = {s.filters}> 
                         <option value="All">All</option>
                         <option value="nuevo">New</option>
                         <option value="usado">Used</option>

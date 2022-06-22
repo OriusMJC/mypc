@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { getName } from '../redux/actions/index'
 import { useAppDispatch } from '../config/config'
+import { Link } from 'react-router-dom';
 import s from './Styles/SearchBar.module.css'
 import NavButtons from './NavButtons';
 
@@ -25,7 +26,9 @@ export default function Searchbar(){
   return(
     <section className={s.searchBarContainer}>
       <div className={s.contLogo}>
+        <Link to = "/"> 
         <h1>logo</h1>
+        </Link>
       </div>
       <form onSubmit={e => handleSubmit(e)}>
         <input value={name} type="text" placeholder = " Search Components" onChange = {e => handleInputChange(e)}/>

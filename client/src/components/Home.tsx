@@ -44,17 +44,35 @@ export default function Home() {
  
 
   return(  
-    <div>
+    <div className = {s.homeContainer}>
+      <div>
       <Nav 
         refresh={refresh} 
         setRefresh={setRefresh} 
         setProductsPerPage={setProductsPerPage}
         />
+      <div className = {s.slider}>
+        <ul>
+          <li>
+            <img src="https://i.pinimg.com/originals/2e/8c/c8/2e8cc8d8577a27b2829b75269dda0f29.jpg"></img>
+          </li>
+          <li>
+            <img src="https://i.pinimg.com/originals/20/f5/35/20f535c616bbe807a1166e5661b396fd.jpg"></img>
+          </li>
+          <li>
+            <img src="https://wallpapercave.com/wp/wp4585047.jpg"></img>
+          </li>
+          <li>
+            <img src="https://cutewallpaper.org/21/gaming-setup-wallpaper/1920x1080-Gaming-Setup-Gaming-Setups-Wallbang-.jpg"></img>
+          </li>
+        </ul>
+      </div>
       <Pages 
         productsPerPage  = {productsPerPage}
         allComponents = {allComponents}
         refresh = {refresh}
         />
+      </div>
     </div>
   )
 }
