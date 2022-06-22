@@ -3,7 +3,7 @@ import {useSelector } from 'react-redux';
 import { getAllComponents} from '../redux/actions';
 import { useAppDispatch  } from '../config/config';
 import Pages from './Pages';
-import Nav from './Nav';
+import Nav from './NavFilter';
 import Footer from './Footer'
 import s from './Styles/Home.module.css'
 // import { Link } from 'react-router-dom';
@@ -42,10 +42,6 @@ export default function Home() {
         allComponents = {allComponents}
         refresh = {refresh}
         />
-      
-      <footer>
-        <Footer/>
-      </footer>
     </div>
   )
 }
