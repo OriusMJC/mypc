@@ -25,9 +25,19 @@ export default function Home() {
   const allComponents = useSelector((state: any) => state.components);
   const [productsPerPage, setProductsPerPage] = useState(12);
   const [refresh,setRefresh] = useState(1)
+  
+  // const isUserLogin= async()=>{
+  //   let resId = await userData()
+  //   if(resId){
+  //     dispatch(loginUser(resId))
+  //   }
+  // }
+  
+
   useEffect(() => {
     let res = userData()
     console.log(res)
+    // isUserLogin()
     dispatch(getAllComponents());
  }, [dispatch]); 
 
