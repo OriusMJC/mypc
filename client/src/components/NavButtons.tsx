@@ -25,9 +25,15 @@ export default function NavButtons(){
                     <button>🙍‍♂️</button>
                 </Link>
             </div>
+<<<<<<< HEAD
             <div className = {s.userRegister}>
                 {!user.name? <Link to='/user/register'><button>Register</button></Link> : <></>}
                 {user.name? <button onClick={handleSingOut}>Sing Out</button> : <Link to='/user/login'><button>Login</button></Link>}
+=======
+            <div>
+                {!user?.name? <Link to='/user/register'><button>Register</button></Link> : <></>}
+                {user?.name? <button onClick={handleSingOut}>Sing Out</button> : <Link to='/user/login'><button>Login</button></Link>}
+>>>>>>> development
             </div>
         </section>
     )

@@ -3,6 +3,7 @@
     align-items: center;
     flex-direction: column;
     width: 98vw;
+    min-height: 75vh;
     padding-top: 20px;
     margin:0 ;
 }

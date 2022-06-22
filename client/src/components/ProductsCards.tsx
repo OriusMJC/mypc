@@ -7,7 +7,7 @@ import s from './Styles/ProductsCards.module.css'
 
 export default function ProductsCards({key, id,title, photo, price, type, likes, status}){
     const dispatch = useAppDispatch()
-    const idUser = useSelector((store:any)=> store.userDetails.id)
+    const idUser = useSelector((store:any)=> store.userDetails?.id)
     function handleFav(){
         if(idUser){
             dispatch(addFavUser(idUser,{key, id,title, photo, price, type, likes, status}))
