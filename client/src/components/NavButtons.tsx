@@ -17,7 +17,7 @@ export default function NavButtons(){
 
     return(
         <section className={s.navButtons}>
-            <div>
+            <div className = {s.userButtons}>
                 <Link to='/fav'>
                     <button>
                         <img src={favIcon}/>
@@ -28,8 +28,6 @@ export default function NavButtons(){
                         <img src={cartIcon}/>
                     </button>
                 </Link>
-            </div>
-            <div>
                 <Link to='/userdetail'>
                     <button>
                         <img src={userDefaultIcon}/>

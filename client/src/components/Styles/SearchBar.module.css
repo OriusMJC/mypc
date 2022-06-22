@@ -10,7 +10,7 @@
     display: flex;
     justify-content: space-evenly;
     align-items: center;
-    height: 7vh;
+    min-height: 5vh;
 }
 .searchBarContainer form{
     margin: 5px;

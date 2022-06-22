@@ -2,15 +2,23 @@
     display: flex;
     justify-content: center;
     flex-direction: column;
-    background-color: red;
-    height: 4vh;
+    height: 5vh;
+    background-color: #F2F2F2;
 }
 
 .filterContent{
     display: flex;
     justify-content: space-evenly;
     margin: 5px;
+    gap: 15px;
 }
 .filterContent select{
     margin: 0px 5px;
+    
 }
+
+.filterContent div{
+    display: flex;
+    gap: 5px;
+}
+
