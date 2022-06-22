@@ -23,10 +23,10 @@ module.exports = (sequelize:any) => {
       type: DataTypes.FLOAT,
       allownull: false
     },
-    cant: {
-      type: DataTypes.INTEGER,
-      allownull: false
-    },
+    // cant: {
+    //   type: DataTypes.INTEGER,
+    //   allownull: false
+    // },
     type: {
       type: DataTypes.ENUM('full', 'motherboar', 'procesador', 'grafica', 'ram', 'ssd', 'hdd', 'cooler', 'monitor', 'mouse', 'teclado', 'cables', 'fuente')
     },

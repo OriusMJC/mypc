@@ -54,9 +54,6 @@ function Pages({productsPerPage, allComponents, refresh}) {
                 <h1>Cargando...</h1>
             }
             </div>
-            <div className={s.buttonsPage}>
-                {pageNumbers}
-            </div>
         </section>
         
     )
