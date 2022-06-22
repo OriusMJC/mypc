@@ -38,8 +38,6 @@ export default function Nav({refresh,setRefresh,setProductsPerPage}){
     }
     return (
         <nav className={s.navContainer}>
-            <Searchbar/>
-            <NavButtons/>
             <section className={s.filterContent}>
                 <div>
                     <label>Productos</label>
