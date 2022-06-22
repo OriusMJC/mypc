@@ -2,7 +2,7 @@ import { useSelector } from "react-redux"
 import { Link } from "react-router-dom"
 import { useAppDispatch } from "src/config/config"
 import { singOutUser } from "src/redux/actions"
-import { userSingOut } from "src/services/userFirebase"
+import s from './Styles/NavButtons.module.css'
 
 export default function NavButtons(){
     const dispatch =useAppDispatch()
@@ -13,7 +13,7 @@ export default function NavButtons(){
     }
 
     return(
-        <section>
+        <section className={s.navButtons}>
             <div>
                 <Link to='/fav'>
                     <button>❤</button>

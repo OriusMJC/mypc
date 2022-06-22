@@ -1,0 +1,19 @@
+.searchBarContainer{
+    display: flex;
+    justify-content: center;
+}
+.searchBarContainer form{
+    margin: 5px;
+}
+.searchBarContainer form input{
+    height: 25px;
+    width: 300px;
+    border: none;
+    border-radius: 5px 0px 0px 5px;
+}
+.searchBarContainer form button{
+    height: 28px;
+    width: 60px;
+    border: none;
+    border-radius: 0px 5px 5px 0px;
+}

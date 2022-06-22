@@ -1,12 +1,13 @@
 import { useState, useEffect } from 'react';
 import {useSelector } from 'react-redux';
-// import { Link } from 'react-router-dom';
 import { getAllComponents} from '../redux/actions';
 import { useAppDispatch  } from '../config/config';
-// import { Products } from '../../types'
-// import ProductsCards from './ProductsCards';
 import Pages from './Pages';
 import Nav from './Nav';
+import s from './Styles/Home.module.css'
+// import { Link } from 'react-router-dom';
+// import { Products } from '../../types'
+// import ProductsCards from './ProductsCards';
 
 //seteo de estados
 // interface AppState {
@@ -30,13 +31,17 @@ export default function Home() {
 
   return(  
     <div>
-      <h1>MyPC</h1>
-      <Nav refresh={refresh} setRefresh={setRefresh} setProductsPerPage={setProductsPerPage}/>
-      {
-        <Pages productsPerPage  = {productsPerPage}
+      <Nav 
+        refresh={refresh} 
+        setRefresh={setRefresh} 
+        setProductsPerPage={setProductsPerPage}
+        />
+      <Pages 
+        productsPerPage  = {productsPerPage}
         allComponents = {allComponents}
-        refresh = {refresh}/>
-      }
+        refresh = {refresh}
+        />
+      
       <footer>
         <p>Soy el footer</p>
       </footer>
