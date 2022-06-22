@@ -4,16 +4,20 @@
     align-items: center;
     flex-direction: column;
     height: 100vh;
+    background-color: #d6d6d6;
+    font-style: #000; 
+    font-weight: bold;   
 }
 
 .formLogin{
-    background-color: red;
+    background-color: #f2f2f2;
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
     height: 300px;
     width: 280px;
+    border-radius: 5px;
 }
 .formLogin input{
     height: 20px;
@@ -22,4 +26,15 @@
     margin-bottom: 30px;
     border: none;
     border-radius: 5px;
+   
+}
+.formLoginContainer button{
+    margin-bottom: 20px;
+    background-color: #f2f2f2;
+    border-radius: 3px;
+    cursor: pointer;   
+}
+.formLoginContainer button:hover{
+    padding: 5px;
+background-color: #d6d6d6;
 }

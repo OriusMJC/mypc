@@ -39,10 +39,11 @@ export default function Register(){
         <input type="password" placeholder = "Enter password" name ="password" value = {user.password} onChange={handleChange}/>
 
         <button type="submit">Login</button>
-      </form>
-      <Link to='/user/register'>
+        <Link to='/user/register'>
         <button>Registrarse</button>
       </Link>
+      </form>
+     
     </div>
   )
 }
