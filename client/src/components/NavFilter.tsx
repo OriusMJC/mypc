@@ -3,7 +3,6 @@ import {filterComponentsByCategory, orderComponentsByPrice, filterComponentsBySt
 import Searchbar from "./Searchbar";
 import { useAppDispatch  } from '../config/config';
 // import { Link } from "react-router-dom";
-import NavButtons from "./NavButtons";
 import s from './Styles/Nav.module.css'
 
 // import * as types from '../../types'

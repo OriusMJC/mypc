@@ -48,8 +48,6 @@ export default function ProductDetails(){
    },[dispatch,idProduct])
    return(
       <div>
-         <Searchbar/>
-         <NavButtons/>
          <div key={product?.key}>
             <section>
                <div>

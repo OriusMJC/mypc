@@ -14,20 +14,18 @@ export default function NavButtons(){
 
     return(
         <section className={s.navButtons}>
-            <div>
+            <div className = {s.userButtons}>
                 <Link to='/fav'>
                     <button>❤</button>
                 </Link>
                 <Link to='/cart'>
                     <button>🦽</button>
                 </Link>
-            </div>
-            <div>
                 <Link to='/userdetail'>
                     <button>🙍‍♂️</button>
                 </Link>
             </div>
-            <div>
+            <div className = {s.userRegister}>
                 {!user.name? <Link to='/user/register'><button>Register</button></Link> : <></>}
                 {user.name? <button onClick={handleSingOut}>Sing Out</button> : <Link to='/user/login'><button>Login</button></Link>}
             </div>
