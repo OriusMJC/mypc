@@ -3,6 +3,9 @@ import { Link } from "react-router-dom"
 import { useAppDispatch } from "src/config/config"
 import { singOutUser } from "src/redux/actions"
 import s from './Styles/NavButtons.module.css'
+import favIcon from './icons/fav.png'
+import cartIcon from './icons/cartIcon.png'
+import userDefaultIcon from './icons/userDefaultIcon.png'
 
 export default function NavButtons(){
     const dispatch =useAppDispatch()
@@ -16,18 +19,24 @@ export default function NavButtons(){
         <section className={s.navButtons}>
             <div>
                 <Link to='/fav'>
-                    <button>❤</button>
+                    <button>
+                        <img src={favIcon}/>
+                    </button>
                 </Link>
                 <Link to='/cart'>
-                    <button>🦽</button>
+                    <button>
+                        <img src={cartIcon}/>
+                    </button>
                 </Link>
             </div>
             <div>
                 <Link to='/userdetail'>
-                    <button>🙍‍♂️</button>
+                    <button>
+                        <img src={userDefaultIcon}/>
+                    </button>
                 </Link>
             </div>
-            <div>
+            <div id={s.buttonsLogins}>
                 {!user?.name? <Link to='/user/register'><button>Register</button></Link> : <></>}
                 {user?.name? <button onClick={handleSingOut}>Sing Out</button> : <Link to='/user/login'><button>Login</button></Link>}
             </div>
