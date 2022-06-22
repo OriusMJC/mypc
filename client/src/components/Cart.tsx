@@ -3,6 +3,7 @@ import { useSelector } from "react-redux"
 import { Link } from "react-router-dom"
 import { useAppDispatch } from "src/config/config"
 import { delProductCart } from "src/redux/actions"
+import s from './Styles/Cart.module.css'
 // import ProductsCards from "./ProductsCards"
 
 export default function Cart(){

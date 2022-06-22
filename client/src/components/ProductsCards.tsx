@@ -2,6 +2,7 @@ import { useSelector } from 'react-redux'
 import {Link} from 'react-router-dom'
 import { useAppDispatch } from 'src/config/config'
 import { addFavUser, addProductCart } from 'src/redux/actions'
+import s from './Styles/ProductsCards.module.css'
 
 
 export default function ProductsCards({key, id,title, photo, price, type, likes, status}){
@@ -21,13 +22,17 @@ export default function ProductsCards({key, id,title, photo, price, type, likes,
 
 
     return  (
-        <div key={key}>
+        <div key={key} className={s.productCards}>
             <Link to={`detail/${id}`}>
                 <h2>{title}</h2>
-                <img src={photo} ></img>
-                <h3>Price: ${price}</h3>
+                <div className={s.cardImageCont}>
+                    <img src={photo} alt='Image Product'/>
+                </div>
+                <div>
+                    <h3>Price: ${price}</h3>
+                    <h3>Status: {status}</h3>
+                </div>
                 <h4>Likes: {likes}</h4>
-                <h4>Status: {status}</h4>
             </Link>
             <button onClick={handleFav}>
                 ❤

@@ -1,5 +1,6 @@
 import {useState} from 'react'
 import ProductsCards from './ProductsCards';
+import s from './Styles/Pages.module.css'
 
 
 function Pages({productsPerPage, allComponents, refresh}) {
@@ -25,11 +26,11 @@ function Pages({productsPerPage, allComponents, refresh}) {
     }
 
     return(
-        <div>
-            <div>
+        <section className={s.pageContainer}>
+            <div className={s.buttonsPage}>
                 {pageNumbers}
             </div>
-            <div>
+            <div className={s.containerProdCards}>
             {
                 refresh && currentProduct.length?
                 typeof allComponents !== 'string'?
@@ -53,7 +54,10 @@ function Pages({productsPerPage, allComponents, refresh}) {
                 <h1>Cargando...</h1>
             }
             </div>
-        </div>
+            <div className={s.buttonsPage}>
+                {pageNumbers}
+            </div>
+        </section>
         
     )
 

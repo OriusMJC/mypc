@@ -3,6 +3,7 @@ import { Link, useNavigate } from 'react-router-dom'
 import {  userLogin, userData } from '../services/userFirebase'
 import { loginUser } from 'src/redux/actions';
 import { useAppDispatch } from '../config/config'
+import s from './Styles/Login.module.css'
 
 export default function Register(){
 
@@ -29,16 +30,19 @@ export default function Register(){
   }
 
   return (
-    <>
-    <form onSubmit={handleSubmit}>
-      <label>Email</label>
-      <input type= "email" placeholder = "Enter email" name="email" value = {user.email} onChange={handleChange}/>
+    <div className={s.formLoginContainer}>
+      <form onSubmit={handleSubmit} className={s.formLogin}>
+        <label>Email</label>
+        <input type= "email" placeholder = "Enter email" name="email" value = {user.email} onChange={handleChange}/>
 
-      <label>Password</label>
-      <input type="password" placeholder = "Enter password" name ="password" value = {user.password} onChange={handleChange}/>
+        <label>Password</label>
+        <input type="password" placeholder = "Enter password" name ="password" value = {user.password} onChange={handleChange}/>
 
-      <button type="submit">Login</button>
-    </form>
-    </>
+        <button type="submit">Login</button>
+      </form>
+      <Link to='/user/register'>
+        <button>Registrarse</button>
+      </Link>
+    </div>
   )
 }

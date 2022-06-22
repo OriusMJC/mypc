@@ -1,0 +1,27 @@
+.favContainer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+.prodFav{
+    background-color: red;
+    display: flex;
+    justify-content: space-around;
+    flex-direction: row;
+    height: 200px;
+    width: 80%;
+    margin: 10px 0px;
+}
+.prodFav a{
+    display: flex;
+    flex-direction: row;
+}
+.imgProdFav{
+    height: 100px;
+    width: 200px;
+}
+.imgProdFav img{
+    width: 100%;
+}
