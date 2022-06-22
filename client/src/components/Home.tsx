@@ -5,7 +5,7 @@ import { useAppDispatch  } from '../config/config';
 import Pages from './Pages';
 import Nav from './NavFilter';
 // import Footer from './Footer'
-// import s from './Styles/Home.module.css'
+import s from './Styles/Home.module.css'
 import { userData } from 'src/services/userFirebase';
 // import { Link } from 'react-router-dom';
 // import { Products } from '../../types'
