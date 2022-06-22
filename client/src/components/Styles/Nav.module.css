@@ -1,0 +1,16 @@
+.navContainer{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    background-color: red;
+    height: 4vh;
+}
+
+.filterContent{
+    display: flex;
+    justify-content: space-evenly;
+    margin: 5px;
+}
+.filterContent select{
+    margin: 0px 5px;
+}

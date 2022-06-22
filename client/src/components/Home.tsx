@@ -1,12 +1,15 @@
 import { useState, useEffect } from 'react';
 import {useSelector } from 'react-redux';
-// import { Link } from 'react-router-dom';
 import { getAllComponents} from '../redux/actions';
 import { useAppDispatch  } from '../config/config';
+import Pages from './Pages';
+import Nav from './NavFilter';
+import Footer from './Footer'
+import s from './Styles/Home.module.css'
+import { userData } from 'src/services/userFirebase';
+// import { Link } from 'react-router-dom';
 // import { Products } from '../../types'
 // import ProductsCards from './ProductsCards';
-import Pages from './Pages';
-import Nav from './Nav';
 
 //seteo de estados
 // interface AppState {
@@ -22,7 +25,19 @@ export default function Home() {
   const allComponents = useSelector((state: any) => state.components);
   const [productsPerPage, setProductsPerPage] = useState(12);
   const [refresh,setRefresh] = useState(1)
+  
+  // const isUserLogin= async()=>{
+  //   let resId = await userData()
+  //   if(resId){
+  //     dispatch(loginUser(resId))
+  //   }
+  // }
+  
+
   useEffect(() => {
+    let res = userData()
+    console.log(res)
+    // isUserLogin()
     dispatch(getAllComponents());
  }, [dispatch]); 
 
@@ -30,16 +45,16 @@ export default function Home() {
 
   return(  
     <div>
-      <h1>MyPC</h1>
-      <Nav refresh={refresh} setRefresh={setRefresh} setProductsPerPage={setProductsPerPage}/>
-      {
-        <Pages productsPerPage  = {productsPerPage}
+      <Nav 
+        refresh={refresh} 
+        setRefresh={setRefresh} 
+        setProductsPerPage={setProductsPerPage}
+        />
+      <Pages 
+        productsPerPage  = {productsPerPage}
         allComponents = {allComponents}
-        refresh = {refresh}/>
-      }
-      <footer>
-        <p>Soy el footer</p>
-      </footer>
+        refresh = {refresh}
+        />
     </div>
   )
 }

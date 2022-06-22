@@ -1,0 +1,8 @@
+.navButtons {
+    display: flex;
+    justify-content: center;
+    height: 4vh;
+}
+.navButtons button{
+    margin: 5px 15px;
+}

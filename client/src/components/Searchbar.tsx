@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import { getName } from '../redux/actions/index'
 import { useAppDispatch } from '../config/config'
+import s from './Styles/SearchBar.module.css'
+import NavButtons from './NavButtons';
 
 
 
@@ -21,11 +23,15 @@ export default function Searchbar(){
 
 
   return(
-    <div>
+    <section className={s.searchBarContainer}>
+      <div className={s.contLogo}>
+        <h1>logo</h1>
+      </div>
       <form onSubmit={e => handleSubmit(e)}>
         <input value={name} type="text" placeholder = " Search Components" onChange = {e => handleInputChange(e)}/>
         <button type="submit">Buscar</button>
       </form>
-    </div>
+      <NavButtons/>
+    </section>
   )
 }

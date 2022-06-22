@@ -1,0 +1,23 @@
+.pageContainer{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    width: 98vw;
+    min-height: 75vh;
+    padding-top: 20px;
+    margin:0 ;
+}
+.pageContainer a{
+    text-decoration: none;
+}
+.containerProdCards{
+    display: flex;
+    justify-content: space-evenly;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 85vw;
+}
+
+.buttonsPage button{
+    margin: 0px 5px;
+}
