@@ -1,0 +1,78 @@
+.container{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(234, 234, 234);
+}
+
+.user{
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    align-items: center;
+    justify-content:space-around;
+    margin-top: 30px;
+    box-shadow: 2px 1px 1px rgba(0, 0, 0, 0.2);
+    background-color: white;
+    width: 800px;
+    height: 250px;
+}
+
+.user img{
+    width: 200px;
+    height: 80%;
+    border-radius: 10px;
+}
+
+.container li{
+    list-style: none;
+}
+
+.userProducts{
+    width: 800px;
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 2px 1px 1px rgba(0, 0, 0, 0.2);
+    background-color: white;
+
+}
+
+.userProducts div {
+    width: 80%;
+}
+
+.productFaved {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    border-top: 1px solid grey;
+    padding: 5px;
+}
+
+.productFaved img{
+    width: 300px;
+}
+
+.buttonButton{
+    position: absolute;
+    top: 30px;
+    right: 70px;
+    height: 60px;
+    width: 100px;
+    border: none;
+    box-shadow: 2px 1px 1px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    background-color: white;
+    cursor: pointer;
+}
+
+.buttonButton :hover{
+    background-color: rgb(148, 145, 145);
+    color: white;
+}

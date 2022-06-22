@@ -23,7 +23,7 @@ export default function NavButtons(){
                 </Link>
             </div>
             <div>
-                <Link to=''>
+                <Link to='/userdetail'>
                     <button>🙍‍♂️</button>
                 </Link>
             </div>

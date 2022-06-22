@@ -4,6 +4,7 @@ import { getAllComponents} from '../redux/actions';
 import { useAppDispatch  } from '../config/config';
 import Pages from './Pages';
 import Nav from './Nav';
+import Footer from './Footer'
 import s from './Styles/Home.module.css'
 import { userData } from 'src/services/userFirebase';
 // import { Link } from 'react-router-dom';
@@ -46,7 +47,7 @@ export default function Home() {
         />
       
       <footer>
-        <p>Soy el footer</p>
+        <Footer/>
       </footer>
     </div>
   )
