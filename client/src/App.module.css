@@ -1,0 +1,24 @@
+.App {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.nav {
+    width: 100%;
+    height: 5vh;
+}
+
+.routes{
+    width: 100%;
+    height: 85vh;
+}
+
+
+.footer{
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+    height: 10vh;
+
+}

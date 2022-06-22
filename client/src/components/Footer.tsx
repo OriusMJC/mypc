@@ -9,6 +9,7 @@ function Footer() {
         <Link to = "/contact">
             <Contact/>
         </Link>
+        <p>Powered by ©My-Pc</p>
         LOGO
     </div>
   )
