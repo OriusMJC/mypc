@@ -86,7 +86,7 @@ export default function rootReducer(state = initialState, action: any){
                 cart: newArrProd
             }
         case ADD_COMMENT:
-            let product = {...state.productDetails,comments:[...state.productDetails.comments,action.payload.comment]}
+            let product = {...state.productDetails,comments:[action.payload.comment,...state.productDetails.comments]}
             return {
                 ...state,
                 productDetails: product
