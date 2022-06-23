@@ -2,17 +2,10 @@ import { useEffect, useState } from "react"
 import { useSelector} from "react-redux"
 import { Link, useParams } from "react-router-dom"
 import { useAppDispatch } from "src/config/config"
-<<<<<<< HEAD:client/src/components/Product/ProductDetails.tsx
-import { addProductCart, getAllDetails } from "src/redux/actions"
-import NavButtons from "../NavBar/NavButtons"
-import ProductComments from "./ProductComments"
-import Searchbar from "../NavBar/Searchbar"
-=======
 import { addFavUser, addProductCart, getAllDetails } from "src/redux/actions"
 import ProductComments from "./ProductComments"
 import s from './Styles/ProductDetails.module.css'
 import nolike from './icons/nolike.png'
->>>>>>> c3656707ecb0b877b274db756de97de2fb3e57b2:client/src/components/ProductDetails.tsx
 // import { Products } from "types"
 
 interface Info {
