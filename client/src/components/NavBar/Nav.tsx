@@ -36,14 +36,15 @@ export default function Nav({refresh,setRefresh,setProductsPerPage}){
         setRefresh(refresh+1)
     }
     return (
-        <nav className={s.nav}>
-            <div className={s.navContainer}>
+        <nav className="">
+            <Searchbar/>
+            {/* <div className={s.navContainer}>
                 <div className={s.logo}></div>
                 <div className={s.searchBar}>
                     <Searchbar/>
                 </div>
                 <div className={s.dynamicButtons}></div>
-            </div>
+            </div> */}
             
             {/* <Searchbar/>
             <NavButtons/>

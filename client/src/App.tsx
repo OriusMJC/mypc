@@ -8,7 +8,7 @@ import Register from './components/Login/Register';
 import Cart from './components/User/Cart';
 import Login from './components/Login/Login';
 import Contact from './components/Contact'
-import Searchbar from './components/Searchbar';
+import Searchbar from './components/NavBar/Searchbar';
 import Footer from './components/Footer'
 // import NavButtons from './components/NavButtons'
 
