@@ -19,23 +19,6 @@ export default function Cart() {
       <section className={s.section}>
         {productsCart.length ? (
           productsCart.map((prod) => (
-            // <div key={prod.key} className = {s.product}>
-            //   <Link to={`/detail/${prod.id}`}>
-            //     <div className = {s.productDetails}>
-            //       <h2>{prod.title}</h2>
-            //       <img src={prod.photo} ></img>
-            //       <h3>Price: ${prod.price}</h3>
-            //       <h4>Likes: {prod.likes}</h4>
-            //       <h4>Status: {prod.status}</h4>
-            //     </div>
-            //   </Link>
-            //   <div className = {s.divButton}>
-            //   <button onClick={()=>{handleKickCart(prod.id)}}>
-            //       ❌
-            //   </button>
-            //   </div>
-
-            // </div>
             <div key={prod.key} className={s.prodFav}>
               <div className={s.containerProduct}>
                 <Link to={`/detail/${prod.id}`}>
@@ -76,7 +59,7 @@ export default function Cart() {
         <Link to="/">
           <button className={s.button}>Seguir comprando</button>
         </Link>
-          {user.id ? (
+          {user ? user.id ? (
             <Link to="/buy">
               <button className={s.button}>Comprar</button>
             </Link>
@@ -84,7 +67,7 @@ export default function Cart() {
             <Link to="/user/login">
               <button className={s.button}>Logearse</button>
             </Link>
-          )}
+          ) : null}
       </section>
     </div>
   );

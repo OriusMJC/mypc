@@ -56,6 +56,7 @@
   user-select: none;
 }
 .showMenu ul {
+  border: 1px solid gray;
   list-style: none;
   padding: 15px 30px;
   position: absolute;
