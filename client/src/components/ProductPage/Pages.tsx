@@ -36,6 +36,7 @@ function Pages({productsPerPage, allComponents, refresh}) {
                 typeof allComponents !== 'string'?
                 currentProduct.map(prod=>{
                     return(
+                        
                     <ProductCard 
                         key={prod && prod.id} 
                         id={prod && prod.id} 
@@ -45,6 +46,7 @@ function Pages({productsPerPage, allComponents, refresh}) {
                         type = {prod.type}
                         likes = {prod.likes}
                         status = {prod.status}
+
                         />)
                 })
                 :
@@ -52,10 +54,7 @@ function Pages({productsPerPage, allComponents, refresh}) {
                 :
                 // <Loading/>
                 <h1>Cargando...</h1>
-            }
-            </div>
-            <div className={s.buttonsPage}>
-                {pageNumbers}
+            }      
             </div>
         </section>
         

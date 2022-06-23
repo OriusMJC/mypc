@@ -1,9 +1,9 @@
 import { useSelector } from "react-redux";
-import {filterComponentsByCategory, orderComponentsByPrice, filterComponentsByState, orderComponentsByPopulation} from '../../redux/actions';
+import {filterComponentsByCategory, orderComponentsByPrice, filterComponentsByState, orderComponentsByPopulation} from '../redux/actions';
 import Searchbar from "./Searchbar";
-import { useAppDispatch  } from '../../config/config';
+import { useAppDispatch  } from '../config/config';
 // import { Link } from "react-router-dom";
-import NavButtons from "./NavButtons";
+import NavButtons from "./NavBar/NavButtons";
 import s from '../Styles/Nav.module.css'
 // import * as types from '../../types'
 

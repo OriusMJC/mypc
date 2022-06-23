@@ -1,15 +1,14 @@
 import { createUserWithEmailAndPassword, onAuthStateChanged, sendEmailVerification, signInWithEmailAndPassword, signOut, updateProfile } from "firebase/auth";
-import { createContext, useContext } from 'react';
+// import { createContext, useContext } from 'react';
 import { auth } from "../firebase/client";
-import { getAuth } from 'firebase/auth';
+// import { getAuth } from 'firebase/auth';
 
 
 
 export const userRegister = async (email:string,password:string) => {
     const user = await createUserWithEmailAndPassword(auth,email,password);
+    await sendEmailVerification(user.user)
     return user;
-    //await sendEmailVerification(user.user)
-    // return user.user
     }   
 
 export const userLogin = (email:string,password:string) =>
@@ -18,7 +17,7 @@ export const userLogin = (email:string,password:string) =>
 export const userSingOut = () => signOut(auth)
 
 
-export function userData(){
+export const userData= async ()=>{
     const user = auth.currentUser;
     if(user){
         const uid = user.uid;
