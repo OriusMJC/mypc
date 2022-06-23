@@ -40,7 +40,6 @@ export const loginVerifycation = async (dispatch:any)=>{
     if(user.email){
         await userLogin(user.email,user.password)
         const id = await userData();
-        console.log(id)
         dispatch(loginUser(id));
    }
 }
