@@ -25,7 +25,7 @@ export function getAllComponents() {
     return async(dispatch: Dispatch<Action>) => {
         try {
             let res = await axios('/products')
-            dispatch({type: GET_ALL_COMPONENTS, payload: res.data})
+            dispatch({type: GET_ALL_COMPONENTS, payload: res.data.reverse()})
         } catch (error) {
             console.log(error)
         }
@@ -69,7 +69,6 @@ export function loginUser(id){
     return async(dispatch: Dispatch<Action>) => {
         try {
             let resp = await axios(`/users/${id}`)
-            console.log(resp)
             dispatch({type: LOGIN_USER, payload: resp.data})
         } catch (error) {
             console.log(error)

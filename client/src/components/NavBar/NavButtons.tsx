@@ -27,7 +27,7 @@ export default function NavButtons() {
     menuShow = document.getElementById("showMenu");
     // setMenuShow(aux)
   }, [user]);
-console.log(user)
+  
   if (user && user.name) {
     return (
       <section className={s.navButtons}>
