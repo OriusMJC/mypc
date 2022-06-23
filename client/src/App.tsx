@@ -11,9 +11,13 @@ import Login from './components/Login';
 import Contact from './components/Contact'
 import Searchbar from './components/Searchbar';
 import Footer from './components/Footer'
+import { loginVerifycation } from './services/userFirebase';
+import { useAppDispatch } from './config/config';
 // import NavButtons from './components/NavButtons'
 
 function App()  {
+  const dispatch = useAppDispatch()
+  loginVerifycation(dispatch)
   return (
     <div className='App'>
       <Searchbar/>

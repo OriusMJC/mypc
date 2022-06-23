@@ -35,8 +35,8 @@ export default function Home() {
   
 
   useEffect(() => {
-    let res = userData()
-    console.log(res)
+    // let res = userData()
+    // console.log(res)
     // isUserLogin()
     dispatch(getAllComponents());
  }, [dispatch]); 
