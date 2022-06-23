@@ -5,6 +5,7 @@
     justify-content: center;
     align-items: center;
     background-color: rgb(234, 234, 234);
+    min-height: 80vh;
 }
 
 .user{

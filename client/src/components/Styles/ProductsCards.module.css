@@ -9,8 +9,8 @@
 }
 
 .productCards img{
-    width: 80%;
-    height: 40%; 
+    min-width: 50%;
+    max-height: 40%; 
     cursor: pointer;
     transition: 0.2s;
 }
