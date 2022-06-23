@@ -28,6 +28,12 @@ router.put('/:idUser',(req,res)=>{
 })
 
 
+/* 
+router.get('/:idUser/orders', getUserOrders)
+
+router.get('/:idUser/orders/:idOrder', getUserOrder)
+*/
+
 
 
 
