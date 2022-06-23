@@ -29,7 +29,7 @@ export default function NavButtons() {
     // setMenuShow(aux)
   }, [user]);
 
-  if (user.name) {
+  if (user?.name) {
     return (
       <section className={s.navButtons}>
         <div className={s.userButtons}>

@@ -10,10 +10,14 @@ import Login from './components/Login/Login';
 import Contact from './components/Contact'
 import NavBar from './components/NavBar/NavBar';
 import Footer from './components/Footer'
+import { loginVerifycation } from './services/userFirebase';
+import { useAppDispatch } from './config/config';
 import style from './App.module.css'
 // import NavButtons from './components/NavButtons'
 
 function App()  {
+  const dispatch = useAppDispatch()
+  loginVerifycation(dispatch)
   return (
     <div className={style.App}>
       <NavBar/>
