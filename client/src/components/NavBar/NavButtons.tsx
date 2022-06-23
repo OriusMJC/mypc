@@ -8,15 +8,13 @@ import s from "../Styles/NavButtons.module.css";
 export default function NavButtons() {
   const dispatch = useAppDispatch();
   const user = useSelector((store: any) => store.userDetails);
-  let menuShow
+  let menuShow;
 
   function handleSingOut() {
     dispatch(singOutUser());
   }
 
   let handleShowMenu = (event) => {
-    // console.log(menuShow.style.display)
-    console.log(menuShow)
     if (menuShow) {
       menuShow.style.display === "block"
         ? (menuShow.style.display = "none")
@@ -28,8 +26,8 @@ export default function NavButtons() {
     menuShow = document.getElementById("showMenu");
     // setMenuShow(aux)
   }, [user]);
-
-  if (user?.name) {
+console.log(user)
+  if (user && user.name) {
     return (
       <section className={s.navButtons}>
         <div className={s.userButtons}>
@@ -82,11 +80,32 @@ export default function NavButtons() {
               <i className="fa-solid fa-cart-shopping"></i>
             </button>
           </Link>
-          <Link to="/user/register">
-            <button>
-              <i className="fa-solid fa-arrow-right-to-bracket"></i>
+          <div className={s.menuUser}>
+            {/* <div className="button" onClick={(event) => handleShowMenu(event)}> */}
+            <button onClick={(event) => handleShowMenu(event)}>
+              <i className="fa-solid fa-circle-user"></i>
             </button>
-          </Link>
+            {/* </div> */}
+            <div id="showMenu" className={s.showMenu}>
+              <ul>
+                <li>
+                  <Link to="/user/register">
+                    {/* <button> */}
+                    {/* <i className="fa-solid fa-arrow-right-to-bracket"></i> */}
+                    <i className="fa-solid fa-address-card"></i>
+                    <span>Register</span>
+                    {/* </button> */}
+                  </Link>
+                </li>
+                <li onClick={handleSingOut}>
+                  <Link to="/user/login">
+                    <i className="fa-solid fa-arrow-right-from-bracket"></i>
+                    <span>Login</span>
+                  </Link>
+                </li>
+              </ul>
+            </div>
+          </div>
           {/* ) : (
             <></>
           )}
