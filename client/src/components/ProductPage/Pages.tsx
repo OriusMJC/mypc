@@ -1,6 +1,6 @@
 import {useState} from 'react'
-import ProductsCards from './ProductsCards';
-import s from './Styles/Pages.module.css'
+import ProductCard from '../reusable/ProductCard';
+import s from '../Styles/Pages.module.css'
 
 
 function Pages({productsPerPage, allComponents, refresh}) {
@@ -37,7 +37,7 @@ function Pages({productsPerPage, allComponents, refresh}) {
                 currentProduct.map(prod=>{
                     return(
                         
-                    <ProductsCards 
+                    <ProductCard 
                         key={prod && prod.id} 
                         id={prod && prod.id} 
                         title={prod && prod.title} 
