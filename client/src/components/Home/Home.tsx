@@ -4,7 +4,7 @@ import { getAllComponents} from '../../redux/actions';
 import { useAppDispatch  } from '../../config/config';
 import Pages from '../ProductPage/Pages';
 import Nav from '../NavBar/Nav';
-import s from './Styles/Home.module.css'
+import s from '../Styles/Home.module.css'
 import { userData } from 'src/services/userFirebase';
 // import { Link } from 'react-router-dom';
 // import { Products } from '../../types'

@@ -2,7 +2,7 @@ import { useState } from "react"
 import { useSelector } from "react-redux"
 import { useAppDispatch } from "src/config/config"
 import { addProductComment } from "src/redux/actions"
-import s from './Styles/ProductComments.module.css'
+import s from '../Styles/ProductComments.module.css'
 
 export default function ProductComments({idProd,comments}){
   const dispatch = useAppDispatch()
