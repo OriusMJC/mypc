@@ -1,6 +1,6 @@
 import { useSelector } from "react-redux";
 import {filterComponentsByCategory, orderComponentsByPrice, filterComponentsByState, orderComponentsByPopulation} from '../redux/actions';
-import Searchbar from "./NavBar/Searchbar";
+import NavBar from "./NavBar/NavBar";
 import { useAppDispatch  } from '../config/config';
 // import { Link } from "react-router-dom";
 import NavButtons from "./NavBar/NavButtons";
@@ -40,7 +40,7 @@ export default function Nav({refresh,setRefresh,setProductsPerPage}){
             <div className={s.navContainer}>
                 <div className={s.logo}></div>
                 <div className={s.searchBar}>
-                    <Searchbar/>
+                    <NavBar/>
                 </div>
                 <div className={s.dynamicButtons}></div>
             </div>

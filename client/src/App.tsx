@@ -8,14 +8,15 @@ import Register from './components/Login/Register';
 import Cart from './components/User/Cart';
 import Login from './components/Login/Login';
 import Contact from './components/Contact'
-import Searchbar from './components/NavBar/Searchbar';
+import NavBar from './components/NavBar/NavBar';
 import Footer from './components/Footer'
+import style from './App.module.css'
 // import NavButtons from './components/NavButtons'
 
 function App()  {
   return (
-    <div className='App'>
-      <Searchbar/>
+    <div className={style.App}>
+      <NavBar/>
       {/* <NavButtons/> */}
       <Routes>
         <Route path='/' element={<Home/>}/>
