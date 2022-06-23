@@ -2,10 +2,10 @@ import { useSelector } from 'react-redux'
 import {Link} from 'react-router-dom'
 import { useAppDispatch } from 'src/config/config'
 import { addFavUser, addProductCart } from 'src/redux/actions'
-import s from './Styles/ProductsCards.module.css'
+import s from '../Styles/ProductsCards.module.css'
 
 
-export default function ProductsCards({key, id,title, photo, price, type, likes, status}){
+export default function ProductCard({key, id,title, photo, price, type, likes, status}){
     const dispatch = useAppDispatch()
     const idUser = useSelector((store:any)=> store.userDetails?.id)
     function handleFav(){
