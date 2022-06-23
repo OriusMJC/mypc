@@ -62,9 +62,10 @@
 #buttonFav{
     height: 25px !important;
     width: 30px !important;
+    /* margin-left: 80% !important; */
     position: relative;
-    top: -100px;
-    right: -280px;
+    top: -10%;
+    right: -80%;
 }
 #buttonFav img{
     margin: 4px 0px;
