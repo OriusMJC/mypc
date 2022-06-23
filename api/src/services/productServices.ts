@@ -43,7 +43,7 @@ export const updateDataProduct = async(newProductData:types.Products):Promise<st
 
 export const addComment = async(idProduct:string,comment:any):Promise<string>=>{
     const product = await Product.findByPk(idProduct)
-    let newCommentArr = [...product?.dataValues.comments,comment]
+    let newCommentArr = [comment,...product?.dataValues.comments]
     await Product.update({comments: newCommentArr},{where: {id: idProduct}})
     return 'Comentario agregado con éxito'
 }
