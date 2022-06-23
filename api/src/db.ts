@@ -60,7 +60,7 @@ sequelize.models = Object.fromEntries(capsEntries);
 // Para relacionarlos hacemos un destructuring
 
 
-const { User, Products, Orders } = sequelize.models;
+const { User, Product, Order } = sequelize.models;
 
 
 
@@ -73,12 +73,12 @@ User.hasMany(Product, {foreignKey:'user_id', targetKey:'id', as:'sell'});
 Product.belongsTo(User);
 
 /* Un usuario tiene muchos pedidos // Un pedido pertenece a un usuario */
-User.hasMany(Orders);
-Orders.BelongsTo(User);
+// User.hasMany(Order);
+// Order.BelongsTo(User);
 
 /* Un pedido tiene muchos procutos // Un producto pertenece a muchos pedidos */
-Orders.hasMany(Products);
-Products.BelongsTo(Orders);
+// Order.hasMany(Product);
+// Product.BelongsTo(Order);
 
 
 
