@@ -37,7 +37,6 @@ export const userData= async ()=>{
 
 export const loginVerifycation = async (dispatch:any)=>{
     let user = await JSON.parse(window.localStorage.getItem('userData'))
-   console.log(user.email)
     if(user.email){
         await userLogin(user.email,user.password)
         const id = await userData();
