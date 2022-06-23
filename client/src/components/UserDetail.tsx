@@ -1,7 +1,5 @@
 export default function UserDetails(){
-    return (
-        <div>
-            <h1>UserDetails</h1>
-        </div>
-    )
+return(
+    <h1>Users Detail</h1>
+)
 }

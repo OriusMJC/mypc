@@ -45,6 +45,7 @@ module.exports = (sequelize:any) => {
   });
 };
 
+
 // {
 //   "id": "1gv2g3v32g2hhd",
 //   "name" : "Marcelo",
