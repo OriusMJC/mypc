@@ -25,6 +25,18 @@ function CreateProduct() {
         sell: false,
     });
 
+    let boolean = false;
+    if(
+        product.title !== "" &&
+        product.photo !== "" &&
+        product.price > 0 &&
+        product.type !== "" &&
+        product.description !== "" &&
+        product.likes > 0 &&
+        product.cant > 0 &&
+        product.status !== ""
+    ) boolean = true;
+
     function handleChange(e){
         setProduct({
             ...product,
@@ -47,7 +59,7 @@ function CreateProduct() {
     }
 
     function handleSubmit(e){
-        if(product.title.length != 0){
+        if(boolean){
             e.preventDefault();
             dispatch(createProduct(id, product));
             alert("Product created");
