@@ -11,20 +11,11 @@
   height: 4vh;
   /* width: 370px; */
 }
-<<<<<<< HEAD
-.navButtons button{
-    margin: 5px 10px;
-    height: 32px;
-    width: 35px;
-    border: none;
-    border-radius: 10px;
-    cursor:pointer;
-=======
 .navButtons a {
   color: #000;
   text-decoration: none;
   margin: 5px 10px;
->>>>>>> development
+  cursor:pointer;
 }
 .navButtons button {
   border: none;

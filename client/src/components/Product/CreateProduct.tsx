@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom'
 import { useAppDispatch } from '../../config/config';
 import { createProduct} from '../../redux/actions/index';
-import s from './Styles/CreateProduct.module.css'
+import s from '../Styles/CreateProduct.module.css'
 
 function CreateProduct() {
     const dispatch = useAppDispatch();
