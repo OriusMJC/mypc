@@ -18,6 +18,7 @@
     width: 35px;
     border: none;
     border-radius: 10px;
+    cursor:pointer;
 }
 .navButtons button:hover{
     background-color: var(--gray-dark);

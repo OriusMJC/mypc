@@ -72,7 +72,25 @@
     cursor: pointer;
 }
 
-.buttonButton :hover{
+.buttonButton:hover{
+    background-color: rgb(148, 145, 145);
+    color: white;
+}
+
+.buttonCreate{
+    position: absolute;
+    top: 100px;
+    right: 70px;
+    height: 60px;
+    width: 100px;
+    border: none;
+    box-shadow: 2px 1px 1px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    background-color: white;
+    cursor: pointer;
+}
+
+.buttonCreate:hover{
     background-color: rgb(148, 145, 145);
     color: white;
 }

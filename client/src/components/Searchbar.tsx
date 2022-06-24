@@ -4,7 +4,7 @@ import { useAppDispatch } from '../config/config'
 import { Link } from 'react-router-dom';
 import s from './Styles/SearchBar.module.css'
 import NavButtons from './NavButtons';
-import { Link } from 'react-router-dom';
+import logo from '../media/logo1.png'
 
 
 
@@ -28,7 +28,7 @@ export default function Searchbar(){
     <section className={s.searchBarContainer}>
       <div className={s.contLogo}>
         <Link to='/'>
-          <h1>MyPC</h1>
+          <img src = {logo} width = "50px" height = "50px"></img>
         </Link>
       </div>
       <form onSubmit={e => handleSubmit(e)}>

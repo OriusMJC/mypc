@@ -10,7 +10,8 @@ import Cart from './components/Cart';
 import Login from './components/Login';
 import Contact from './components/Contact'
 import Searchbar from './components/Searchbar';
-import Footer from './components/Footer'
+import Footer from './components/Footer';
+import CreateProduct from './components/CreateProduct';
 // import NavButtons from './components/NavButtons'
 
 function App()  {
@@ -28,6 +29,7 @@ function App()  {
         <Route path='/user/register' element={<Register/>}/>
         <Route path='/user/login' element={<Login/>}/>
         <Route path='/contact' element={<Contact/>}/>
+        <Route path='/user/createProduct' element={<CreateProduct/>}/>
       </Routes>
       <Footer/>
     </div>

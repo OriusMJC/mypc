@@ -47,6 +47,11 @@ return(
             Go home
         </button>
         </Link>
+        <Link to = "/user/createProduct">
+        <button className={s.buttonCreate}>
+            Create Product
+        </button>
+        </Link>
         </div>
     </div>
     

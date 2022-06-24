@@ -14,6 +14,7 @@
 }
 .searchBarContainer form{
     margin: 5px;
+    gap: 30px;
 }
 .searchBarContainer form input{
     height: 25px;
@@ -26,6 +27,11 @@
     width: 60px;
     border: none;
     border-radius: 0px 5px 5px 0px;
+    cursor: pointer;
+}
+
+.searchBarContainer form button:hover{
+    background-color: var(--gray-dark);
 }
 
 .contLogo{
