@@ -1,12 +1,12 @@
-import { useSelector } from 'react-redux'
-import {Link} from 'react-router-dom'
-import { useAppDispatch } from 'src/config/config'
-import { addFavUser, addProductCart } from 'src/redux/actions'
-import s from '../Styles/ProductsCards.module.css'
+import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
+import { useAppDispatch } from "src/config/config";
+import { addFavUser, addProductCart } from "src/redux/actions";
+import s from "../Styles/ProductsCards.module.css";
 
 
 export default function ProductCard({id,title, photo, price, type, likes, status}){
-    const dispatch = useAppDispatch()
+  const dispatch = useAppDispatch()
     const idUser = useSelector((store:any)=> store.userDetails?.id)
     function handleFav(){
         if(idUser){
@@ -20,24 +20,24 @@ export default function ProductCard({id,title, photo, price, type, likes, status
         dispatch(addProductCart({id,title, photo, price, type, likes, status}))
     }
 
-
-    return  (
-        <div key={id} className={s.productCards}>
-            <h2>{title}</h2>
-            <Link to={`detail/${id}`}>
-                <img src={photo} alt='Image Product'/>
-            </Link>
-            <div className = {s.cardInfo}>
-                <h3>${price}</h3>
-                <h3>Status: {status}</h3>
-                <h4>Likes: {likes}</h4>
-            </div>
-            <button onClick={handleFav}>
-                ❤
-            </button>
-            <button onClick={handleCart}>
-                🦽
-            </button>
-        </div>
-    )
+  return (
+    <div key={id} className={s.productCards}>
+        <h3 className={s.status}>{status}</h3>
+      <h2>{title}</h2>
+      <Link to={`detail/${id}`}>
+        <img src={photo} alt="Image Product" />
+      </Link>
+      <div className={s.cardInfo}>
+        <h3>${price}</h3>
+        <h3>Status: {status}</h3>
+        <h4>Likes: {likes}</h4>
+      </div>
+      <button onClick={handleFav}>
+        <i className="fa-solid fa-heart"></i>
+      </button>
+      <button onClick={handleCart}>
+        <i className="fa-solid fa-cart-shopping"></i>
+      </button>
+    </div>
+  );
 }

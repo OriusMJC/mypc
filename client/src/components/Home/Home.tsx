@@ -5,6 +5,7 @@ import { useAppDispatch } from "../../config/config";
 import Pages from "../ProductPage/Pages";
 import s from "../Styles/Home.module.css";
 import { userData } from "src/services/userFirebase";
+import Slider from "./Slider";
 // import { Link } from 'react-router-dom';
 // import { Products } from '../../types'
 // import ProductsCards from './ProductsCards';
@@ -40,31 +41,7 @@ export default function Home() {
   return (
     <div className={s.homeContainer}>
       <div>
-        <div className={s.slider}>
-          <ul>
-            <li>
-              <img
-                src="https://i.pinimg.com/originals/2e/8c/c8/2e8cc8d8577a27b2829b75269dda0f29.jpg"
-                alt=""
-              />
-            </li>
-            <li>
-              <img
-                src="https://i.pinimg.com/originals/20/f5/35/20f535c616bbe807a1166e5661b396fd.jpg"
-                alt=""
-              />
-            </li>
-            <li>
-              <img src="https://wallpapercave.com/wp/wp4585047.jpg" alt="" />
-            </li>
-            <li>
-              <img
-                src="https://cutewallpaper.org/21/gaming-setup-wallpaper/1920x1080-Gaming-Setup-Gaming-Setups-Wallbang-.jpg"
-                alt=""
-              />
-            </li>
-          </ul>
-        </div>
+        <Slider/>
         <Pages
           productsPerPage={productsPerPage}
           allComponents={allComponents}

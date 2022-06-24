@@ -1,11 +1,10 @@
-import {useState} from 'react'
-import ProductCard from '../reusable/ProductCard';
-import s from '../Styles/Pages.module.css'
+import { useState } from "react";
+import ProductCard from "../reusable/ProductCard";
+import s from "../Styles/Pages.module.css";
+import './style.css'
 
-
-function Pages({productsPerPage, allComponents, refresh}) {
-     
-    const cantPages = Math.ceil(allComponents.length /productsPerPage) 
+function Pages({ productsPerPage, allComponents, refresh }) {
+  const cantPages = Math.ceil(allComponents.length /productsPerPage) 
     const [currentPage, setCurrentPage] = useState(1);
     const indexOfLastProduct = currentPage * productsPerPage;
     const indexOfFirstProduct = indexOfLastProduct - productsPerPage;
@@ -26,41 +25,49 @@ function Pages({productsPerPage, allComponents, refresh}) {
     }
 
     return(
-        <section className={s.pageContainer}>
-            <div className={s.buttonsPage}>
-                {pageNumbers}
-            </div>
-            <div className={s.containerProdCards}>
-            {
-                refresh && currentProduct.length?
-                typeof allComponents !== 'string'?
-                    currentProduct.map(prod=>{
-                        return(
-                            
-                        <ProductCard 
-                            key={prod && prod.id} 
-                            id={prod && prod.id} 
-                            title={prod && prod.title} 
-                            photo={prod && prod.photo}
-                            price={prod && prod.price} 
-                            type = {prod.type}
-                            likes = {prod.likes}
-                            status = {prod.status}
+      <section className={s.pageContainer}>
+          <div className={s.buttonsPage}>
+              {pageNumbers}
+          </div>
+          <div className={s.containerProdCards}>
+          {
+              refresh && currentProduct.length?
+              typeof allComponents !== 'string'?
+                  currentProduct.map(prod=>{
+                      return(
+                          
+                      <ProductCard 
+                          key={prod && prod.id} 
+                          id={prod && prod.id} 
+                          title={prod && prod.title} 
+                          photo={prod && prod.photo}
+                          price={prod && prod.price} 
+                          type = {prod.type}
+                          likes = {prod.likes}
+                          status = {prod.status}
 
-                            />)
-                    })
-                    :
-                    <h2>{allComponents}</h2>
-                :
-                // <Loading/>
-                <h1>Cargando...</h1>
-            }      
-            </div>
-        </section>
-        
-    )
-
+                          />)
+                  })
+                  :
+                  <h2>{allComponents}</h2>
+              :
+              // <Loading/>
+              <div className={"loading"}>
+                <div className="ball"></div>
+                <div className="ball"></div>
+                <div className="ball"></div>
+                <div className="ball"></div>
+                <div className="ball"></div>
+                <div className="ball"></div>
+                <div className="ball"></div>
+              </div>
+          }      
+          </div>
+      </section>
+      
+  )
 }
 
 export default Pages;
+
 
