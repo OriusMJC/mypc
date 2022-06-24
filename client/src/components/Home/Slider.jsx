@@ -10,9 +10,9 @@ export default function Slider() {
   ];
   let [restart, setRestart] = useState(0);
 
-  async function timeLapse () {
+  function timeLapse () {
    for(let i = 0; i < 20; i++) {
-    await setTimeout(() => {
+    setTimeout(() => {
      if(restart === imgs.length - 1) {
       setRestart(0);
      } else {
