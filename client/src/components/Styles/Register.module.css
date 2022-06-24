@@ -37,6 +37,17 @@
 }
 
 .formRegisterContainer a{
-    text-decoration: none;
-   
+    text-decoration: none;   
 }
+.error{
+    font-size: 14px;
+    color : #d60808;
+    margin: 3px 1px;
+}
+
+.formRegisterContainer input::-webkit-outer-spin-button,
+.formRegisterContainer input::-webkit-inner-spin-button{
+    -webkit-appearance: none;
+    margin: 0;
+}
+    
