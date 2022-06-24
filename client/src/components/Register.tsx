@@ -1,10 +1,13 @@
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom'
-import { userRegister, userLogin} from '../services/userFirebase'
+import { userRegister} from '../services/userFirebase'
 import { useAppDispatch } from '../config/config'
 import { createUser } from '../redux/actions/index'
-import s from './Styles/Register.module.css'
-import { listeners } from 'process';
+import s from './Styles/Register.module.css';
+import validator from 'validator';
+import { FileDrop } from 'react-file-drop';
+
+
 
 interface User {
   name: string
@@ -20,20 +23,31 @@ function validate(user){
     email: "",
     password: ""
   } 
-  let validateEmail = /^[a-zA-Z0-9.!#$%&'+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)$/
-  if(!user.email || !validateEmail ){
+  
+  if(!user.email ){
       errors.email = '*email required'
   }else if( !user.password ){
       errors.password = "*password required"      
   }  else if(!user.name){
-    errors.name = "*name required" 
+    errors.name = "*name required"   
+  }  else if(!validator.isEmail(user.email)){
+    errors.email = "*pls enter a valid email like 'example@example.com'" 
   }
   return errors;
 }
 
 
 export default function Register(){
-
+  const fileInputRef = useRef(null);
+  const onFileInputChange = (event: React.ChangeEvent<HTMLInputElement> ) => {
+      const { files } = event.target;
+      // do something with your files...
+      console.log(files)
+    }
+    const onTargetClick = () => {
+      fileInputRef.current.click()
+    }
+      console.log(FileDrop)
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
   const [userValidate, setuserValidate] = useState("")
@@ -98,6 +112,11 @@ export default function Register(){
 
         <label>Email</label>
           {error.email && (<p className={s.error}> {error.email}</p>)}
+          { userValidate ? 
+            <span>x</span> 
+            :  
+            <span> ✔</span>
+          }
         <input type= "email"  required minLength={7} placeholder = "example@example" name="email" value = {user.email} onChange={handleChange}/>
 
         <label>Password</label>
@@ -105,10 +124,21 @@ export default function Register(){
         <input type="password" required minLength={6} maxLength={12}  placeholder = "Enter password" name ="password" value = {user.password} onChange={handleChange}/>
 
         <button type="submit">Create</button>
+        <input
+                    onChange={onFileInputChange}
+                    ref={fileInputRef}
+                    type="file"
+                    className="hidden"
+                    />
       </form>
       <Link to = "/user/login">
         Already have an account
       </Link>
+      {/* <FileDrop 
+       onTargetClick ={onTargetClick}       
+      /> */}
+        
+       
     </div>
   )
 }

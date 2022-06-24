@@ -4,7 +4,7 @@ import {  userLogin, userData } from '../services/userFirebase'
 import { loginUser } from 'src/redux/actions';
 import { useAppDispatch } from '../config/config'
 import s from './Styles/Login.module.css'
-
+import validator from 'validator';
 
 interface User {
   email: string
@@ -16,11 +16,16 @@ function validate(user){
     email: "",
     password: ""
   } 
-  if(!user.email  ){
-      errors.email = '*email required'
+  if(!user.email ){
+      errors.email = '*email required'     
+  }else if( !validator.isEmail(user.email) ){
+      errors.email = "*use a valid email like 'example@example.com'"      
+    
   }else if( !user.password ){
       errors.password = "*password required"      
-  }  
+  }  else if( !validator.isLowercase(user.password) ){
+    errors.password = "*password must be 'lowercase'"      
+}  
   return errors;
 }
 
@@ -69,7 +74,7 @@ export default function Login(){
       {userValidate && <p>{userValidate}</p>}
       <form onSubmit={handleSubmit} className={s.formLogin}>
         <label>Email</label>
-        <input type= "email"  required minLength={7} placeholder = "example@example.com" name="email" value = {user.email} onChange={handleChange}/>
+        <input type= "email"  required minLength={7} placeholder = "example@example.com" name="email" value ={user.email} onChange={handleChange}/>
         
 
         <label>Password</label>
