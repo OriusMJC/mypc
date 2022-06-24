@@ -10,8 +10,9 @@ export default function NavButtons() {
   const user = useSelector((store: any) => store.userDetails);
   let menuShow;
 
-  function handleSingOut() {
+  function handleSingOut(e) {
     dispatch(singOutUser());
+    handleShowMenu(e)
   }
 
   let handleShowMenu = (event) => {
@@ -26,7 +27,7 @@ export default function NavButtons() {
     menuShow = document.getElementById("showMenu");
     // setMenuShow(aux)
   }, [user]);
-console.log(user)
+  
   if (user && user.name) {
     return (
       <section className={s.navButtons}>
@@ -49,15 +50,17 @@ console.log(user)
             {/* </div> */}
             <div id="showMenu" className={s.showMenu}>
               <ul>
-                <li>
+                <li onClick={handleShowMenu}>
                   <Link to="/userdetail">
                     <i className="fa-solid fa-user"></i>
                     <span>Acount</span>
                   </Link>
                 </li>
                 <li onClick={handleSingOut}>
-                  <i className="fa-solid fa-arrow-right-from-bracket"></i>
-                  <span>Sign Out</span>
+                  <Link to='/'>
+                    <i className="fa-solid fa-arrow-right-from-bracket"></i>
+                    <span>Sign Out</span>
+                  </Link>
                 </li>
               </ul>
             </div>
