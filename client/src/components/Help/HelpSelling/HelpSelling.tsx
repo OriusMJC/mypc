@@ -1,8 +1,9 @@
 import { Link } from "react-router-dom";
+import s from "../../Styles/HelpSelling.module.css"
 
 export default function HelpSelling(){
     return (
-        <div>
+        <div className={s.container} >
             <Link to='/help'>
                 <button>Ayuda</button>
             </Link>

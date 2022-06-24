@@ -22,14 +22,13 @@ export default function ProductCard({id,title, photo, price, type, likes, status
 
   return (
     <div key={id} className={s.productCards}>
-        <h3 className={s.status}>{status}</h3>
+      <h3 className={s.status}>{status}</h3>
       <h2>{title}</h2>
       <Link to={`detail/${id}`}>
         <img src={photo} alt="Image Product" />
       </Link>
       <div className={s.cardInfo}>
         <h3>${price}</h3>
-        <h3>Status: {status}</h3>
         <h4>Likes: {likes}</h4>
       </div>
       <button onClick={handleFav}>
