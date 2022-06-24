@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { useAppDispatch } from "src/config/config";
-import { singOutUser } from "src/redux/actions";
+import { singOutUser } from '../../redux/actions/index';
 import s from "../Styles/NavButtons.module.css";
 
 export default function NavButtons() {

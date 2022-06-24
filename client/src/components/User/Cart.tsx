@@ -8,6 +8,7 @@ import s from "../Styles/Cart.module.css";
 
 export default function Cart() {
   const dispatch = useAppDispatch();
+  let products = true;
   const user = useSelector((store: any) => store.userDetails);
   const productsCart = useSelector((store: any) => store.cart);
   function handleKickCart(id) {
@@ -52,14 +53,17 @@ export default function Cart() {
             </div>
           ))
         ) : (
+          <div>
           <h1>Aún no has agregado nada al carrito!</h1>
+          {products = false}
+          </div>
         )}
       </section>
       <section className={s.sectionButtons}>
         <Link to="/">
           <button className={s.button}>Seguir comprando</button>
         </Link>
-          {user ? user.id ? (
+          {user && products === true ? user.id ? (
             <Link to="/buy">
               <button className={s.button}>Comprar</button>
             </Link>

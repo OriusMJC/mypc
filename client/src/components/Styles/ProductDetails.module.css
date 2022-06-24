@@ -66,11 +66,19 @@
     position: relative;
     top: -10%;
     right: -80%;
+    cursor: pointer;
+    transition: .2s
 }
 #buttonFav img{
     margin: 4px 0px;
     height: 15px;
 }
+
+#buttonFav:hover{
+    transform: scale(1.2);
+}
+
+
 #buttonBuy{
     background-color: rgb(52, 218, 52) !important;
 }
