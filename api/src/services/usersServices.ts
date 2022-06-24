@@ -42,7 +42,15 @@ export const updateDataUser = async(newUserData: types.User): Promise<string> =>
 
 export const userFavProduct = async(idUser:string,product:types.basicProductInfo):Promise<string>=>{
     let user = await User.findByPk(idUser)
-    let newFavArr = user.fav.length? [...user.fav,product] : [product]
+    let newFavArr:any = [];
+    if(user.fav.lenght){
+        if(!user.fav.includes(product)){
+            newFavArr = [...user.fav, product]
+        }
+    }else{
+        newFavArr = [product]
+    }
+    // let newFavArr = user.fav.length? [...user.fav,product] : [product]
     await User.update({fav: newFavArr},{where:{id: idUser}})
     return 'Producto likeado con éxito'
 }
