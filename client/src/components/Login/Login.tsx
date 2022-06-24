@@ -4,7 +4,7 @@ import {  userLogin, userData } from '../../services/userFirebase'
 import { loginUser } from '../../redux/actions';
 import { useAppDispatch } from '../../config/config'
 import s from "../Styles/Login.module.css";
-import validator from 'validator';
+import {validator} from 'validator';
 
 
 
