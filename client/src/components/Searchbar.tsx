@@ -3,7 +3,7 @@ import { getName } from '../redux/actions/index'
 import { useAppDispatch } from '../config/config'
 import { Link } from 'react-router-dom';
 import s from './Styles/SearchBar.module.css'
-import NavButtons from './NavButtons';
+import NavButtons from './NavBar/NavButtons';
 import logo from '../media/logo1.png'
 
 

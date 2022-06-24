@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import {useSelector } from 'react-redux';
 import { getAllComponents} from '../redux/actions';
 import { useAppDispatch  } from '../config/config';
-import Pages from './Pages';
+import Pages from './ProductPage/Pages';
 import Nav from './NavFilter';
 // import Footer from './Footer'
 import s from './Styles/Home.module.css'

@@ -10,7 +10,7 @@ import Login from './components/Login/Login';
 import Contact from './components/Contact'
 import NavBar from './components/NavBar/NavBar';
 import Footer from './components/Footer';
-import CreateProduct from './components/CreateProduct'
+import CreateProduct from './components/Product/CreateProduct'
 import { loginVerifycation } from './services/userFirebase';
 import { useAppDispatch } from './config/config';
 import style from './App.module.css'
