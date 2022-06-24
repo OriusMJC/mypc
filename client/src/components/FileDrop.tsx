@@ -1,5 +1,5 @@
 import React, { useRef } from 'react'
-import { FileDrop } from 'react-file-drop';
+// import { FileDrop } from 'react-file-drop';
 
 function FileDrop() {
     const fileInputRef = useRef(null);

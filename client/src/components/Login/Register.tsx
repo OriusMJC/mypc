@@ -3,8 +3,8 @@ import { Link, useNavigate } from 'react-router-dom'
 import { userRegister} from '../../services/userFirebase'
 import { useAppDispatch } from '../../config/config'
 import { createUser } from '../../redux/actions/index'
-import s from './Styles/Register.module.css';
-import validator from 'validator';
+import s from '../Styles/Register.module.css';
+import {validator} from 'validator';
 
 
 
