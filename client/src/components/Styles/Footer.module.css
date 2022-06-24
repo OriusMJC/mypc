@@ -3,5 +3,8 @@
     flex-direction: row-reverse;
     justify-content: space-around;
     align-items: center;
-    min-height: 5vh;
+    min-height: 5vh;   
+   position: fixed;
+   bottom: 5px;
+   width: 100%;
 }

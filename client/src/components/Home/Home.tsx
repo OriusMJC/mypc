@@ -7,9 +7,11 @@ import s from "../Styles/Home.module.css";
 import { userData } from "src/services/userFirebase";
 import NavFilter from '../NavFilter'
 import Slider from "./Slider";
+
 // import { Link } from 'react-router-dom';
 // import { Products } from '../../types'
 // import ProductsCards from './ProductsCards';
+
 
 //seteo de estados
 // interface AppState {
@@ -41,7 +43,7 @@ export default function Home() {
 
   return (
     <div className={s.homeContainer}>
-      <div>
+      <div>       
         <NavFilter refresh={refresh} setRefresh={setRefresh} setProductsPerPage={setProductsPerPage}/>
         <Slider/>
         <Pages
