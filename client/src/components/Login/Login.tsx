@@ -1,10 +1,12 @@
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom'
-import {  userLogin, userData } from '../services/userFirebase'
-import { loginUser } from 'src/redux/actions';
-import { useAppDispatch } from '../config/config'
-import s from './Styles/Login.module.css'
+import {  userLogin, userData } from '../../services/userFirebase'
+import { loginUser } from '../../redux/actions';
+import { useAppDispatch } from '../../config/config'
+import s from "../Styles/Login.module.css";
 import validator from 'validator';
+
+
 
 interface User {
   email: string

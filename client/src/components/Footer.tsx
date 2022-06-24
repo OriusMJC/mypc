@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import Contact from './Contact'
 import s from './Styles/Footer.module.css'
+import logo from '../media/logo1.png'
 
 
 function Footer() {
@@ -10,7 +11,7 @@ function Footer() {
             <Contact/>
         </Link>
         <p>Powered by ©My-Pc</p>
-        LOGO
+        <img src = {logo} width="60px" height="60px"></img>
     </div>
   )
 }
