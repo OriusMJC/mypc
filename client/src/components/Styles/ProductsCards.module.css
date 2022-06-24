@@ -1,7 +1,7 @@
 .productCards{
     background-color: white;
     width: 300px;
-    height: 350px;
+    height: 380px;
     text-align: center;
     border-radius: 10px;
     margin: 20px;   
@@ -9,8 +9,8 @@
 }
 
 .productCards img{
-    width: 80%;
-    height: 40%; 
+    min-width: 50%;
+    max-height: 40%; 
     cursor: pointer;
     transition: 0.2s;
 }
@@ -40,7 +40,7 @@
 }
 
 .productCards h2{
-    height: 5%
+    height: 5%;
 }
 
 .cardInfo {
@@ -49,4 +49,13 @@
     align-items: center;
     height: 30%;    
     line-height: 0;   
+}
+.status {
+    position: absolute;
+    /* top: 0; */
+    margin-top: 0;
+    margin-left: 4px;
+    /* text-align: end; */
+    font-style: italic;
+    color: #d6d6d6;
 }

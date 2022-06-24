@@ -1,13 +1,13 @@
 import { useSelector } from "react-redux";
 import {filterComponentsByCategory, orderComponentsByPrice, filterComponentsByState, orderComponentsByPopulation} from '../redux/actions';
-import Searchbar from "./Searchbar";
+import NavBar from "./NavBar/NavBar";
 import { useAppDispatch  } from '../config/config';
 // import { Link } from "react-router-dom";
-import s from './Styles/Nav.module.css'
-
+// import NavButtons from "./NavBar/NavButtons";
+import s from './Styles/NavFilter.module.css'
 // import * as types from '../../types'
 
-export default function Nav({refresh,setRefresh,setProductsPerPage}){
+export default function NavFilter({refresh,setRefresh,setProductsPerPage}){
     const dispatch = useAppDispatch();
     const types = useSelector((state:any)=> state.types)
 
@@ -36,7 +36,17 @@ export default function Nav({refresh,setRefresh,setProductsPerPage}){
         setRefresh(refresh+1)
     }
     return (
-        <nav className={s.navContainer}>
+        <nav className={s.navFilter}>
+            {/* <div className={s.navContainer}>
+                <div className={s.logo}></div>
+                <div className={s.searchBar}>
+                    <NavBar/>
+                </div>
+                <div className={s.dynamicButtons}></div>
+            </div> */}
+            
+            {/* <Searchbar/>
+            <NavButtons/> */}
             <section className={s.filterContent}>
                 <div>
                     <label>Productos</label>

@@ -4,23 +4,23 @@ import { Link, useParams } from "react-router-dom"
 import { useAppDispatch } from "src/config/config"
 import { addFavUser, addProductCart, getAllDetails } from "src/redux/actions"
 import ProductComments from "./ProductComments"
-import s from './Styles/ProductDetails.module.css'
-import nolike from './icons/nolike.png'
+import s from '../Styles/ProductDetails.module.css'
+import nolike from '../icons/nolike.png'
 // import { Products } from "types"
 
-interface Info {
-   comment: {
-       name: string,
-       avatar: string,
-       comment: string
-   }
-   seller: {
-       id: any,
-       name: string,
-       email: string,
-       avatar: string,
-   }
-}
+// interface Info {
+//    comment: {
+//        name: string,
+//        avatar: string,
+//        comment: string
+//    }
+//    seller: {
+//        id: any,
+//        name: string,
+//        email: string,
+//        avatar: string,
+//    }
+// }
 export default function ProductDetails(){
    const dispatch = useAppDispatch()
    const {idProduct} = useParams()

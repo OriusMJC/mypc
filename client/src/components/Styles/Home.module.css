@@ -10,8 +10,13 @@
 }
 
 
+<<<<<<< HEAD
 .slider{
     width: 100%;
+=======
+/* .slider{
+    width: 95%;
+>>>>>>> development
     height: 700px;
     overflow: hidden;
 }
@@ -44,4 +49,4 @@
 
     75%{margin-left: -300%;}
     100%{margin-left: -300%;}
-}
+} */

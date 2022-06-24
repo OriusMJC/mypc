@@ -2,31 +2,20 @@ import { useState } from "react"
 import { useSelector } from "react-redux"
 import { useAppDispatch } from "src/config/config"
 import { addProductComment } from "src/redux/actions"
-import s from './Styles/ProductComments.module.css'
+import s from '../Styles/ProductComments.module.css'
 
 export default function ProductComments({idProd,comments}){
   const dispatch = useAppDispatch()
   let userData = useSelector((state:any) => state.userDetails)
-  const [newComment,setNewComment] = useState({
-    name: userData?.name,
-    avatar: userData?.avatar,
-    comment: ''
-  })
+  const [newComment,setNewComment] = useState('')
   function handleChange(e:any){
-    setNewComment({
-      ...newComment,
-      comment: e.target.value
-    })
+    setNewComment(e.target.value)
   }
   function handleSubmit(e){
     e.preventDefault()
-    if(userData.id){
-      dispatch(addProductComment(idProd,newComment))
-      setNewComment({
-        name: userData?.name,
-        avatar: userData?.avatar,
-        comment: ''
-      })
+    if(userData.id && userData.name && userData.avatar){
+      dispatch(addProductComment(idProd,{name:userData.name,avatar:userData.avatar,comment: newComment}))
+      setNewComment('')
     }else{
       alert('Debes inciar sesión para poder comentar')
     }
@@ -35,7 +24,7 @@ export default function ProductComments({idProd,comments}){
     <section id={s.sectionComments}>
         <h3>Haz tu pregunta aquí</h3>
       <form onSubmit={handleSubmit}>
-        <input type='text' value={newComment.comment} onChange={handleChange}/>
+        <input type='text' value={newComment} onChange={handleChange}/>
         <button type="submit">Enviar</button>
       </form>
       <div id={s.commentsContainer}>

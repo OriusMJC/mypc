@@ -84,6 +84,12 @@ router.put('/buy/:idUser',async(req,res,next)=>{
 })
 
 
+/* 
+router.get('/:idUser/orders', getUserOrders)
+
+router.get('/:idUser/orders/:idOrder', getUserOrder)
+*/
+
 
 
 

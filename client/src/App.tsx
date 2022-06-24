@@ -1,23 +1,27 @@
 import {Route, Routes} from 'react-router-dom';
-import Home from './components/Home';
-// import s from './App.module.css';
-import './App.css'
-import ProductDetails from './components/ProductDetails';
-import UserDetail from './components/UserDetail';
-import Fav from './components/Fav';
-import Register from './components/Register';
-import Cart from './components/Cart';
-import Login from './components/Login';
+import Home from './components/Home/Home';
+import './App.css';
+import ProductDetails from './components/Product/ProductDetails';
+import UserDetail from './components/User/UserDetail';
+import Fav from './components/User/Fav';
+import Register from './components/Login/Register';
+import Cart from './components/User/Cart';
+import Login from './components/Login/Login';
 import Contact from './components/Contact'
-import Searchbar from './components/Searchbar';
+import NavBar from './components/NavBar/NavBar';
 import Footer from './components/Footer';
-import CreateProduct from './components/CreateProduct';
+import CreateProduct from './components/CreateProduct'
+import { loginVerifycation } from './services/userFirebase';
+import { useAppDispatch } from './config/config';
+import style from './App.module.css'
 // import NavButtons from './components/NavButtons'
 
 function App()  {
+  const dispatch = useAppDispatch()
+  loginVerifycation(dispatch)
   return (
-    <div className='App'>
-      <Searchbar/>
+    <div className={style.App}>
+      <NavBar/>
       {/* <NavButtons/> */}
       <Routes>
         <Route path='/' element={<Home/>}/>

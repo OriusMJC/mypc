@@ -1,62 +1,57 @@
 [
     {
-        "id": "1",
-        "title" : "Procesador Ryzen 5",
-        "photo": "url",
-        "price": 200,
-        "type": "full | motherboard | procesador | grafica | ram | ssd | hdd | cooler | monitor | mouse | teclado | cables | fuente",
-        "description": "descripcion Ryzen 5",
-        "likes": 5,
-        "comments": [
-            {"name":"matias", "avatar": "https://i.pravatar.cc/150?u=matias","comment":"Te sirven 50?"}, 
-            {"name":"Carlitos", "avatar": "https://i.pravatar.cc/150?u=carlos","comment":"De que generacion es??"}
-            ],
-        "status": "Nuevo",
-        "sellerInfo": [{
-            "id": "1gv2g3v32g2hhd",
-            "name" : "Marcelo",
-            "email": "email@gmail.com",
-            "avatar": "https://i.pravatar.cc/150?u=marcelo"
-        }]
+        "title" : "rtx 3090ti",
+        "photo": "https://http2.mlstatic.com/D_NQ_NP_682557-MLA50301338538_062022-W.jpg",
+        "price": 405050,
+        "type": "grafica",
+        "description": "Corre Read Dead Redemption a 120fps en 4K Ultra",
+        "likes": 0,
+            "cant": 5,
+        "comments": [],
+        "status": "nuevo"
     },
     {
-        "id": "2",
-        "title" : "GTX 1080ti",
-        "photo": "url",
-        "price": 500,
-        "type": "full | motherboard | procesador | grafica | ram | ssd | hdd | cooler | monitor | mouse | teclado | cables | fuente",
-        "description": "descripcion de gtx 1080ti",
-        "likes": 2,
-        "comments": [
-            {"name":"Lauti", "avatar": "https://i.pravatar.cc/150?u=lautaro","comment":"Te ofrezco dos chelines y me estoy arriesgando"}, 
-            {"name":"Tobi El front", "avatar": "https://i.pravatar.cc/150?u=tobias","comment":"Hostia pedrin, que oferton."}
-            ],
-        "status": "Usado",
-        "sellerInfo": [{
-            "id": "1sdsddf",
-            "name" : "Juan",
-            "email": "emailjuan@gmail.com",
-            "avatar": "https://i.pravatar.cc/150?u=juan"
-        }]
+        "title" : "PC Gamer",
+        "photo": "https://mla-s1-p.mlstatic.com/733026-MLA49762406952_042022-F.jpg",
+        "price": 150000,
+        "type": "full",
+        "description": "Gtx 1060, Ryzen 5 2600, 16 Ram. Puedes jugar a todos los últimos títulos con esta gran PC GAMER!!!",
+        "likes": 0,
+            "cant": 15,
+        "comments": [],
+        "status": "nuevo"
     },
     {
-        "id": "3",
-        "title" : "PC Geimer full free fire 4K HD",
-        "photo": "url",
-        "price": 150,
-        "type": "full | motherboard | procesador | grafica | ram | ssd | hdd | cooler | monitor | mouse | teclado | cables | fuente",
-        "description": "Se puede jugar fri faier",
-        "likes": 5,
-        "comments": [
-            {"name":"Mr popo", "avatar": "https://i.pravatar.cc/150?u=caca","comment":"Team para jugar fri fire?"}, 
-            {"name":"Santi", "avatar": "https://i.pravatar.cc/150?u=santiago","comment":"Imbox"}
-            ],
-        "status": "Usado",
-        "sellerInfo": [{
-            "id": "12345",
-            "name" : "marcos",
-            "email": "marquitos@gmail.com",
-            "avatar": "https://i.pravatar.cc/150?u=marcos"
-        }]
+        "title" : "PC Gamer Full 4K 60FPS",
+        "photo": "https://s3-sa-east-1.amazonaws.com/saasargentina/7cxjzsVb2E5myGXbQbOd/imagen",
+        "price": 370000,
+        "type": "full",
+        "description": "Gtx 3080, Ryzen 9, 32 Ram. Puedes jugar a todos los últimos títulos con esta gran PC GAMER!!!",
+        "likes": 0,
+            "cant": 15,
+        "comments": [],
+        "status": "nuevo"
+    },
+    {
+        "title" : "Ryzen 7 Como nuevo!",
+        "photo": "https://www.qloud.ar/SITES/IMG/gaming-point-06-2021/221_31-01-2022-03-01-15-procesador-amd-ryzen-7-5800x-1-1_ccexpress.png",
+        "price": 60000,
+        "type": "procesador",
+        "description": "Procesador Ryzen 7 en perfecto estado. 6 meses de uso!",
+        "likes": 0,
+            "cant": 1,
+        "comments": [],
+        "status": "usado"
+    },
+    {
+        "title" : "Cable Sata Datos Para Disco Rigido Grabadora Noga Sata Datos",
+        "photo": "https://http2.mlstatic.com/D_NQ_NP_608730-MLA42448960952_072020-O.webp",
+        "price": 190,
+        "type": "cables",
+        "description": "Cable Sata Datos Para Disco Rigido Grabadora Noga Sata Datos",
+        "likes": 0,
+            "cant": 15,
+        "comments": [],
+        "status": "nuevo"
     }
 ]
