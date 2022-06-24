@@ -1,8 +1,9 @@
 import { Link } from "react-router-dom";
+import s from '../../Styles/Faq.module.css'
 
 export default function Faq(){
     return (
-        <div>
+        <div className={s.container}>
             <Link to='/help'>
                 <button>Ayuda</button>
             </Link>
