@@ -48,7 +48,7 @@ export default function NavFilter({refresh,setRefresh,setProductsPerPage}){
             {/* <Searchbar/>
             <NavButtons/> */}
             <section className={s.filterContent}>
-                <div >
+                <div>
                     <label>Productos</label>
                     <select onChange={e => setProductsPerPage(+e.target.value)} className = {s.filters}>
                         <option value="12">12</option>

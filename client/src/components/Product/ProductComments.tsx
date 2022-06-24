@@ -29,7 +29,7 @@ export default function ProductComments({idProd,comments}){
       </form>
       <div id={s.commentsContainer}>
         {
-          comments.length? comments.map((obj:any)=>{
+          typeof comments !== null && comments.length? comments.map((obj:any)=>{
           return(
             <div className={s.comments}>
               <img src={obj.avatar} alt={obj.name}/>

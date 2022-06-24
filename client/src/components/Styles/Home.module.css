@@ -10,16 +10,21 @@
 }
 
 
+<<<<<<< HEAD
+.slider{
+    width: 100%;
+=======
 /* .slider{
     width: 95%;
+>>>>>>> development
     height: 700px;
     overflow: hidden;
 }
 
 .slider ul{
     display: flex;
-    animation: cambio 20s infinite alternate linear;
-    width: 400%
+    animation: cambio 15s infinite alternate linear;
+    width: 300%
 }
 
 .slider li{
@@ -28,7 +33,7 @@
 }
 
 .slider img{
-    width: 100%;
+    width: 150%;
     height: 100%;
 }
 
