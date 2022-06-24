@@ -4,7 +4,7 @@
     justify-content: space-around;
     align-items: center;
     min-height: 5vh;   
-   position: absolute;
+   position: fixed;
    bottom: 5px;
    width: 100%;
 }
