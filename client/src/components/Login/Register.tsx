@@ -4,7 +4,7 @@ import { userRegister} from '../../services/userFirebase'
 import { useAppDispatch } from '../../config/config'
 import { createUser } from '../../redux/actions/index'
 import s from '../Styles/Register.module.css';
-import {validator} from 'validator';
+import validator from 'validator';
 
 
 
