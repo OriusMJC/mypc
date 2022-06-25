@@ -7,6 +7,18 @@ export default function UserDetail() {
   console.log(user);
   return (
     <div className={s.container}>
+      <div className={s.button}>
+        <Link to="/">
+          <button className={s.buttonButton}>
+            Go home
+          </button>
+        </Link>
+        <Link to = "/user/createProduct">
+          <button className={s.buttonCreate}>
+              Create Product
+          </button>
+        </Link>
+      </div>
       <div className={s.user}>
         <div className={s.userDetails}>
           <h1>{user && user.name}</h1>
@@ -46,16 +58,6 @@ export default function UserDetail() {
               );
             })}
         </div>
-      </div>
-      <div className={s.button}>
-        <Link to="/">
-          <button className={s.buttonButton}>Go home</button>
-        </Link>
-        <Link to = "/user/createProduct">
-          <button className={s.buttonCreate}>
-              Create Product
-          </button>
-        </Link>
       </div>
     </div>
   );
