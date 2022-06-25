@@ -2,6 +2,7 @@ import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { useAppDispatch } from "src/config/config";
 import { addFavUser, addProductCart } from "src/redux/actions";
+import { addCartLH } from "src/services/functionsServices";
 import s from "../Styles/ProductsCards.module.css";
 
 

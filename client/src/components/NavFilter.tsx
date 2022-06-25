@@ -75,9 +75,10 @@ export default function NavFilter({refresh,setRefresh,setProductsPerPage}){
                 <div>
                     <label>Categoria</label>
                     <select onChange = {e => handleFilter(e)} className = {s.filters}>
-                    {types && types.map(t => (
-                        <option value ={t}>{t}</option>
-                    ))}
+                        <option value = "All">All</option>
+                        {types && types.map(t => (
+                            <option value ={t}>{t}</option>
+                        ))}
                     </select>
                 </div>
                 <div>
