@@ -20,8 +20,8 @@ export default function ProductComments({idProd,comments}){
       alert('Debes inciar sesión para poder comentar')
     }
   }
-  console.log(newComment)
-  console.log(userData)
+  // console.log(newComment)
+  // console.log(userData)
   return (
     <section id={s.sectionComments}>
         <h3>Haz tu pregunta aquí</h3>
