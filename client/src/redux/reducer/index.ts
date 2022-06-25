@@ -10,7 +10,8 @@ import {
     DEL_PRODUCT_CART,
     LOGIN_USER, 
     ADD_COMMENT, 
-    SINGOUT_USER, 
+    SINGOUT_USER,
+    GET_PRODUCT_CART, 
     // ADD_FAV, 
     // DEL_FAV
 } from "../actions"
@@ -47,8 +48,8 @@ export default function rootReducer(state = initialState, action: any){
         case GET_ALL_COMPONENTS:
             return {
                 ...state,
-                components: action.payload,
-                allComponents: action.payload
+                components: [...action.payload],
+                allComponents: [...action.payload]
             }
         case GET_ALL_DETAILS:
             return {
@@ -58,8 +59,8 @@ export default function rootReducer(state = initialState, action: any){
         case GET_NAME:
             return {
                 ...state,
-                allComponents: action.payload,
-                components: action.payload
+                allComponents: [...action.payload],
+                components: [...action.payload]
             }
         case LOGIN_USER:
             return {
@@ -70,6 +71,11 @@ export default function rootReducer(state = initialState, action: any){
             return {
                 ...state,
                 userDetails: {}
+            }
+        case GET_PRODUCT_CART:
+            return {
+                ...state,
+                cart: [...action.payload]
             }
         case ADD_PRODUCT_CART:
             let prodExist = state.cart.find(prod => prod.id === action.payload.id)
@@ -105,14 +111,13 @@ export default function rootReducer(state = initialState, action: any){
         //     }
 
         case FILTER_CATEGORY:
-            const allComponents = state.allComponents;
             const status = action.payload;
-            if(status){
-                var componentsFiltered = allComponents.filter(comp => comp.type === status)
+            if(status !== 'All'){
+                var componentsFiltered = [...state.allComponents].filter(comp => comp.type === status)
             }
             return {
                 ...state,
-                components: componentsFiltered
+                components: status !== 'All' ? componentsFiltered : [...state.allComponents]
             }
 
          case FILTER_STATE:
@@ -122,7 +127,7 @@ export default function rootReducer(state = initialState, action: any){
             }
             return{
                 ...state,
-                components: action.payload === "All" ? state.allComponents : filteredStates
+                components: action.payload === "All" ? [...state.allComponents] : filteredStates
             }
                 
         case ORDER_POPULATION:
@@ -131,7 +136,7 @@ export default function rootReducer(state = initialState, action: any){
             orderMenMay(state.components,'likes')
             return {
                 ...state,
-                components: action.payload === "All" ? state.allComponents : sortedPopularity
+                components: action.payload === "All" ? [...state.allComponents] : sortedPopularity
             }
         case ORDER_PRICE:
             let sortedPrice = action.payload === "More price" ?
@@ -139,7 +144,7 @@ export default function rootReducer(state = initialState, action: any){
             orderMenMay(state.components,'price')
             return {
                 ...state,
-                components: action.payload === "All" ? state.allComponents : sortedPrice
+                components: action.payload === "All" ? [...state.allComponents] : sortedPrice
             }
         default: 
             return state
