@@ -10,7 +10,7 @@ function CreateProduct() {
     const navigate = useNavigate();
     const user = useSelector((state:any) => state.userDetails)
     const types = useSelector((state:any) => state.types)
-    const filterTypes = types.filter(t => t !== 'full');
+    // const filterTypes = types.filter(t => t !== 'full');
     const id = user.id
     const [product, setProduct] = useState({
         title: "",
@@ -69,7 +69,6 @@ function CreateProduct() {
         // }    
     }
 
-
   return (
     <div className = {s.container}>
         <form onSubmit={handleSubmit} className = {s.form}>
@@ -91,7 +90,7 @@ function CreateProduct() {
             <label>Type: </label>
             <select onChange={handleType}>
                 <option hidden>Select Type</option>
-                {filterTypes?.map((t) => (
+                {types?.map((t) => (
                     <option key={t} value={t}>
                         {t}
                     </option>

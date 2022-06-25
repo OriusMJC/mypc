@@ -43,7 +43,6 @@ export const updateDataUser = async(newUserData: types.User): Promise<string> =>
 export const userFavProduct = async(idUser:string,product:types.basicProductInfo):Promise<string>=>{
     let user = await User.findByPk(idUser)
     let newFavArr:any = [...user.dataValues.fav];
-    console.log(user.dataValues)
     if(newFavArr.length){
         if(!newFavArr.find((p:any)=> p.id === product.id)){
             newFavArr.push(product)
