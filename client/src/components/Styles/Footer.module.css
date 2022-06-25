@@ -1,9 +1,10 @@
 .container {
+    background-color: #fff;
     display: flex;
     flex-direction: row-reverse;
     justify-content: space-around;
     align-items: center;
-    min-height: 5vh;
+    min-height: 10vh;
    bottom: 5px;
    width: 100%;
 }
