@@ -1,9 +1,11 @@
 import axios from 'axios';
 import { Dispatch } from 'redux';
+import { addCartLH, getCartLH, removeCartLH } from 'src/services/functionsServices';
 import { userSingOut } from 'src/services/userFirebase';
 export const GET_ALL_COMPONENTS = "GET_ALL_COMPONENTS";
 export const GET_ALL_DETAILS = "GET_ALL_DETAILS";
 export const GET_NAME = "GET_NAME";
+export const GET_PRODUCT_CART = "GET_PRODUCT_CART";
 export const ADD_PRODUCT_CART = "ADD_PRODUCT_CART";
 export const DEL_PRODUCT_CART = "DEL_PRODUCT_CART";
 export const ADD_COMMENT = "ADD_COMMENT";
@@ -109,7 +111,7 @@ export function delFavUser(idUser: string, idProduct:string){
 }
 
 export function createProduct(idUser: string, product:any){
-    return async(dispatch: Dispatch<Action>) => {
+    return async() => {
         try{
             let resp = await axios.post(`/products/${idUser}`, product)
             return resp;
@@ -119,10 +121,13 @@ export function createProduct(idUser: string, product:any){
     }
 }
 
-export function delProductCart(idProduct:any){
+
+export function getProductsLHtoCart(){
     return async(dispatch: Dispatch<Action>) => {
+        const cart = await getCartLH()
+        let product = cart? cart : []
         try {
-            dispatch({type: DEL_PRODUCT_CART, payload: idProduct})
+            dispatch({type: GET_PRODUCT_CART, payload: product})
         } catch (error) {
             console.log(error)
         }
@@ -130,8 +135,19 @@ export function delProductCart(idProduct:any){
 }
 export function addProductCart(product:any){
     return async(dispatch: Dispatch<Action>) => {
+        await addCartLH(product)
         try {
             dispatch({type: ADD_PRODUCT_CART, payload: product})
+        } catch (error) {
+            console.log(error)
+        }
+    }
+}
+export function delProductCart(idProduct:any){
+    return async(dispatch: Dispatch<Action>) => {
+        await removeCartLH(idProduct)
+        try {
+            dispatch({type: DEL_PRODUCT_CART, payload: idProduct})
         } catch (error) {
             console.log(error)
         }

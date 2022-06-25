@@ -1,4 +1,6 @@
 import { useState } from "react";
+import {useSelector} from 'react-redux';
+import { Link } from 'react-router-dom';
 import ProductCard from "../reusable/ProductCard";
 import s from "../Styles/Pages.module.css";
 import './style.css'
@@ -24,6 +26,11 @@ function Pages({ productsPerPage, allComponents, refresh }) {
         setCurrentPage(1)
     }
 
+    const products = useSelector((state:any) => state.allComponents)
+    const user = useSelector((state:any) => state.userDetails)
+
+    console.log(user);
+
     return(
       <section className={s.pageContainer}>
           <div className={s.buttonsPage}>
@@ -31,11 +38,22 @@ function Pages({ productsPerPage, allComponents, refresh }) {
           </div>
           <div className={s.containerProdCards}>
           {
+              !products.length ? 
+              <div className = {s.containerHome}>
+              <h2>Aun no hay productos cargados!</h2>
+              {
+                user && user.id? 
+                <Link to='/user/createProduct'>
+                    <button className = {s.buttonHomeCreate}>Crear producto</button>
+                </Link> :
+                <h2>Logeate para crear uno!</h2>
+              }
+              
+              </div> :
               refresh && currentProduct.length?
               typeof allComponents !== 'string'?
                   currentProduct.map(prod=>{
-                      return(
-                          
+                      return( 
                       <ProductCard 
                           key={prod && prod.id} 
                           id={prod && prod.id} 
@@ -50,7 +68,9 @@ function Pages({ productsPerPage, allComponents, refresh }) {
                   })
                   :
                   <h2>{allComponents}</h2>
+
               :
+                          
               // <Loading/>
               <div className={"loading"}>
                 <div className="ball"></div>

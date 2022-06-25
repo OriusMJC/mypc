@@ -110,14 +110,15 @@ export default function Register(){
          {error.password && (<p className={s.error}> {error.password}</p>)}
         <input type="password" required minLength={6} maxLength={12}  placeholder = "Enter password" name ="password" value = {user.password} onChange={handleChange}/>
 
-        <button type="submit">Create</button>
+        <button type="submit">Register</button>
        
       </form>
+
       <Link to = "/user/login">
-        Already have an account
+        <h4 className = {s.haveAccount}>
+        Already have an account?
+        </h4>
       </Link>
-     
-        
        
     </div>
   )

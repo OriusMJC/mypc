@@ -21,3 +21,34 @@
   margin: 0px 5px;
 }
 
+.containerHome{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 20%;
+  height: 20%;
+}
+
+.containerHome h2{
+  width: 100%;
+  text-align: center;
+}
+
+.buttonHomeCreate{
+  border: none;
+  width: 100px;
+  height: 60px;
+  background-color: rgb(52, 218, 52);
+  border-radius: 15px;
+  font-size: 15px;
+  font-family: "Helvetica";
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.buttonHomeCreate:hover{
+  transform: scale(1.02);
+  color: rgba(255, 255, 255, 0.762);
+}

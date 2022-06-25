@@ -9,6 +9,8 @@ function CreateProduct() {
     const dispatch = useAppDispatch();
     const navigate = useNavigate();
     const user = useSelector((state:any) => state.userDetails)
+    const types = useSelector((state:any) => state.types)
+    const filterTypes = types.filter(t => t !== 'full');
     const id = user.id
     const [product, setProduct] = useState({
         title: "",
@@ -23,15 +25,41 @@ function CreateProduct() {
         sell: false,
     });
 
-    function handleChange(e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>){
+    let boolean = false;
+    if(
+        product.title !== "" &&
+        product.photo !== "" &&
+        product.price > 0 &&
+        product.type !== "" &&
+        product.description !== "" &&
+        product.likes > 0 &&
+        product.cant > 0 &&
+        product.status !== ""
+    ) boolean = true;
+
+    function handleChange(e){
         setProduct({
             ...product,
             [e.target.name]: e.target.value
         })
     }
 
+    function handleType(e){
+        setProduct({
+            ...product,
+            type: e.target.value
+        })
+    }
+
+    function handleStatus(e){
+        setProduct({
+            ...product,
+            status: e.target.value
+        })
+    }
+
     function handleSubmit(e){
-        if(product.title.length != 0){
+        if(boolean){
             e.preventDefault();
             dispatch(createProduct(id, product));
             alert("Product created");
@@ -55,22 +83,33 @@ function CreateProduct() {
             onChange={handleChange}/>
 
             <label>Title: </label>
-            <input type="text" name="title" value={product.title.toLowerCase()} onChange={handleChange}></input>
+            <input type="text" name="title" value={product.title} onChange={handleChange}></input>
             
             <label>Price: </label>
             <input type="number" name="price" value={product.price} onChange={handleChange}></input>
 
             <label>Type: </label>
-            <input type="text" name="type" value={product.type.toLowerCase()} onChange={handleChange}></input>
+            <select onChange={handleType}>
+                <option hidden>Select Type</option>
+                {filterTypes?.map((t) => (
+                    <option key={t} value={t}>
+                        {t}
+                    </option>
+                ))}
+            </select>
 
             <label>Status: </label>
-            <input type="text" name="status" value={product.status.toLowerCase()} onChange={handleChange}></input>
+            <select onChange={handleStatus}>
+                <option hidden>Select Status</option>
+                <option value="nuevo">nuevo</option>
+                <option value="usado">usado</option>
+            </select>
             
             <label>Stock: </label>
             <input type="number" name="cant" value={product.cant} onChange={handleChange}></input>
 
             <label>Description: </label>
-            <textarea name="description" value={product.description} onChange={handleChange}></textarea>
+            <input type="text" name="description" value={product.description} onChange={handleChange} className={s.descriptionInput}></input>
 
         <div className = {s.button}>
             <button type="submit">Create Product</button>

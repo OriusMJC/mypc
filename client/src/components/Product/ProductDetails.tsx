@@ -6,6 +6,7 @@ import { addFavUser, addProductCart, getAllDetails } from "src/redux/actions"
 import ProductComments from "./ProductComments"
 import s from '../Styles/ProductDetails.module.css'
 import nolike from '../icons/nolike.png'
+import { addCartLH } from "src/services/functionsServices"
 // import { Products } from "types"
 
 // interface Info {

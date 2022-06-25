@@ -55,9 +55,11 @@
   display: none;
   position: absolute;
   user-select: none;
+  z-index: 100;
 }
 .showMenu ul {
   border: 1px solid gray;
+  border-radius: 10px;
   list-style: none;
   padding: 15px 30px;
   position: absolute;
@@ -69,7 +71,13 @@
   font-size: 20px;
   margin-top: 7px;
   padding: 7px 10px;
+  transition: 0.1s;
 }
+
+.showMenu ul li:hover{
+  background-color: rgb(187, 185, 185);
+}
+
 .showMenu ul li a {
   display: flex;
   flex-direction: row;
