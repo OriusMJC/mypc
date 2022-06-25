@@ -29,7 +29,6 @@ function Pages({ productsPerPage, allComponents, refresh }) {
     const products = useSelector((state:any) => state.allComponents)
     const user = useSelector((state:any) => state.userDetails)
 
-    console.log(user);
 
     return(
       <section className={s.pageContainer}>
