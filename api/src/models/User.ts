@@ -10,6 +10,10 @@ module.exports = (sequelize:any) => {
       allownull: false,
       primaryKey: true
     },
+    admin:{
+      type: DataTypes.BOOLEAN,
+      defaultValue: false
+    },
     name: {
       type: DataTypes.STRING(30),
       allownull: false

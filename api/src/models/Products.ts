@@ -28,7 +28,7 @@ module.exports = (sequelize:any) => {
       allownull: false
     },
     type: {
-      type: DataTypes.ENUM('full', 'motherboar', 'procesador', 'grafica', 'ram', 'ssd', 'hdd', 'cooler', 'monitor', 'mouse', 'teclado', 'cables', 'fuente')
+      type: DataTypes.ENUM('full', 'motherboard', 'procesador', 'grafica', 'ram', 'ssd', 'hdd', 'cooler', 'monitor', 'mouse', 'teclado', 'cables', 'fuente')
     },
     description: {
       type: DataTypes.TEXT,
