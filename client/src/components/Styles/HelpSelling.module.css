@@ -2,7 +2,7 @@
     display: flex;
     justify-content: start;
     flex-direction: column;
-    margin: 5px;
+    margin: 10px 50px;
     min-height: 80vh;
 }
 

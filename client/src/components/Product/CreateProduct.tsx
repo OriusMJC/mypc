@@ -10,7 +10,7 @@ function CreateProduct() {
     const navigate = useNavigate();
     const user = useSelector((state:any) => state.userDetails)
     const types = useSelector((state:any) => state.types)
-    const filterTypes = types.filter(t => t !== 'full');
+    // const filterTypes = types.filter(t => t !== 'full');
     const id = user.id
     const [product, setProduct] = useState({
         title: "",
@@ -25,17 +25,17 @@ function CreateProduct() {
         sell: false,
     });
 
-    let boolean = false;
-    if(
-        product.title !== "" &&
-        product.photo !== "" &&
-        product.price > 0 &&
-        product.type !== "" &&
-        product.description !== "" &&
-        product.likes > 0 &&
-        product.cant > 0 &&
-        product.status !== ""
-    ) boolean = true;
+    // let boolean = false;
+    // if(
+    //     product.title !== "" &&
+    //     product.photo !== "" &&
+    //     product.price > 0 &&
+    //     product.type !== "" &&
+    //     product.description !== "" &&
+    //     product.likes > 0 &&
+    //     product.cant > 0 &&
+    //     product.status !== ""
+    // ) boolean = true;
 
     function handleChange(e){
         setProduct({
@@ -59,16 +59,15 @@ function CreateProduct() {
     }
 
     function handleSubmit(e){
-        if(boolean){
+        // if(boolean){
             e.preventDefault();
             dispatch(createProduct(id, product));
             alert("Product created");
             navigate("/")
-        }else {
-            alert("Please complete create form")
-        }    
+        // }else {
+        //     alert("Please complete create form")
+        // }    
     }
-
 
   return (
     <div className = {s.container}>
@@ -91,7 +90,7 @@ function CreateProduct() {
             <label>Type: </label>
             <select onChange={handleType}>
                 <option hidden>Select Type</option>
-                {filterTypes?.map((t) => (
+                {types?.map((t) => (
                     <option key={t} value={t}>
                         {t}
                     </option>
