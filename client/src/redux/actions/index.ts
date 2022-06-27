@@ -16,6 +16,7 @@ export const FILTER_STATE = "FILTER_STATE";
 export const LOGIN_USER = "LOGIN_USER";
 export const SINGOUT_USER = "SINGOUT_USER";
 export const CREATE_PRODUCT = "CREATE_PRODUCT";
+export const GET_ALL_USERS = "GET_ALL_USERS";
 export const DELETE_PRODUCT = "DELETE_PRODUCT";
 // export const ADD_FAV = "ADD_FAV";
 // export const DEL_FAV = "DEL_FAV";
@@ -203,5 +204,16 @@ export function orderComponentsByPrice(payload: any){
     return{
         type: ORDER_PRICE,
         payload,
+    }
+}
+
+export function getAllUsers(){
+    return async(dispatch: Dispatch<Action>) => {
+        try {
+            let allUsers = await axios('/users')
+            dispatch({type: GET_ALL_USERS, payload: allUsers.data})
+        } catch (error) {
+            console.log(error)
+        }
     }
 }
