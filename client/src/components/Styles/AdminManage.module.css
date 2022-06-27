@@ -1,0 +1,53 @@
+#adminManageContainer{
+    display: flex;
+    justify-content: center;
+}
+
+#adminContainer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 80vh;
+    min-width: 80vw;
+}
+#adminContainer table{
+    border: 1px solid #000;
+    border-collapse: collapse;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+#adminContainer div{
+    display: flex;
+    justify-content: space-evenly;
+    width: 100%;
+    margin: 20px 0px;
+}
+
+#adminContainer table thead tr th{
+    border: 1px solid #000;
+    height: 50px;
+    margin: 0;
+    padding: 0;
+}
+.listUsers td{
+    border: 1px solid #000;
+    height: 60px;
+    margin: 0;
+    padding-left: 10px;
+    vertical-align:middle;
+}
+.listUsers td img{
+    width: 50px;
+    border-radius: 50%;
+}
+.listProd td{
+    border: 1px solid #000;
+    height: 80px;
+    margin: 0;
+    padding-left: 10px;
+    vertical-align:middle;
+}
+.listProd td img{
+    width: 80px;
+}

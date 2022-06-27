@@ -11,7 +11,8 @@ import {
     LOGIN_USER, 
     ADD_COMMENT, 
     SINGOUT_USER,
-    GET_PRODUCT_CART, 
+    GET_PRODUCT_CART,
+    GET_ALL_USERS, 
     // ADD_FAV, 
     // DEL_FAV
 } from "../actions"
@@ -38,6 +39,7 @@ const initialState = {
     components: [],
     allComponents:[],
     types: ['full', 'motherboard', 'procesador', 'grafica', 'ram', 'ssd', 'hdd', 'cooler', 'monitor', 'mouse', 'teclado','cables', 'fuente'],
+    allUsers: [],
     userDetails: {fav:[]},
     productDetails: {comments: []},
     cart: []
@@ -61,6 +63,11 @@ export default function rootReducer(state = initialState, action: any){
                 ...state,
                 allComponents: [...action.payload],
                 components: [...action.payload]
+            }
+        case GET_ALL_USERS:
+            return {
+                ...state,
+                allUsers: action.payload
             }
         case LOGIN_USER:
             return {
