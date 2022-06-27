@@ -5,6 +5,16 @@
     justify-content: space-around;
     align-items: center;
     min-height: 10vh;
-   bottom: 5px;
-   width: 100%;
+    bottom: 5px;
+    width: 100%;
+}
+
+.contact {
+    font-size: 10px;
+    text-decoration: underline;
+    transition: .2s;
+}
+
+.contact:hover{
+    transform: scale(1.1)
 }
