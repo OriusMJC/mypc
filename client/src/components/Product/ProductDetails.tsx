@@ -87,6 +87,9 @@ export default function ProductDetails(){
                   <button onClick={handleCart}>
                      Añadir al carrito
                   </button>
+                  <button>
+                     Editar
+                  </button>
                </div>
             </section>
             <section>

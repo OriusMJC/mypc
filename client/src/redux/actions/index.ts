@@ -16,6 +16,7 @@ export const FILTER_STATE = "FILTER_STATE";
 export const LOGIN_USER = "LOGIN_USER";
 export const SINGOUT_USER = "SINGOUT_USER";
 export const CREATE_PRODUCT = "CREATE_PRODUCT";
+export const DELETE_PRODUCT = "DELETE_PRODUCT";
 // export const ADD_FAV = "ADD_FAV";
 // export const DEL_FAV = "DEL_FAV";
 
@@ -111,11 +112,22 @@ export function delFavUser(idUser: string, idProduct:string){
 }
 
 export function createProduct(idUser: string, product:any){
-    return async() => {
+    return async(dispatch: Dispatch<Action>) => {
         try{
             let resp = await axios.post(`/products/${idUser}`, product)
             return resp;
         } catch(error){
+            console.log(error)
+        }
+    }
+}
+
+export function deleteProduct(idProduct: string){
+    return async(dispatch: Dispatch<Action>) => {
+        try {
+            let res = await axios.delete(`/products/${idProduct}`)
+            dispatch({type: DELETE_PRODUCT, payload:res.data})
+        } catch (error) {
             console.log(error)
         }
     }
