@@ -4,6 +4,7 @@ import { useAppDispatch } from "../../config/config";
 import { Link } from "react-router-dom";
 import s from "../Styles/NavBar.module.css";
 import NavButtons from "./NavButtons";
+import { useSelector } from "react-redux";
 
 export default function NavBar() {
   const dispatch = useAppDispatch();

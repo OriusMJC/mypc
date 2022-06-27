@@ -14,7 +14,7 @@ function Pages({ productsPerPage, allComponents, refresh }) {
 
     const pageNumbers = [];
     
-    if(typeof allComponents !== 'string'){
+    if(typeof allComponents[0] !== 'string'){
         for (let i = 1; i <= cantPages; i++){
             pageNumbers.push(
                 <button key={i} value={i} onClick={()=>{setCurrentPage(i)}}>
@@ -50,7 +50,7 @@ function Pages({ productsPerPage, allComponents, refresh }) {
               
               </div> :
               refresh && currentProduct.length?
-              typeof allComponents !== 'string'?
+              typeof allComponents[0] !== 'string'?
                   currentProduct.map(prod=>{
                       return( 
                       <ProductCard 

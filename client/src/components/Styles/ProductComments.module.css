@@ -29,6 +29,7 @@
 
 #commentsContainer{
     width: 600px;
+    
 }
 
 .comments{
@@ -39,8 +40,8 @@
     width: 600px;
     min-height: 120px;
     text-align: left;
-    border: 1px solid #d6d6d6;
-    border-radius: 10px;
+    border: 3px solid #d6d6d6;
+    border-radius: 2em 1em 4em / 0.5em 3em;
     margin: 5px 0px;
     padding: 5px;
 }
