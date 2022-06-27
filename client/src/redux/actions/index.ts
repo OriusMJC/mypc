@@ -213,7 +213,7 @@ export function resetProductDetail(){
         payload: {comments: []},
         }
       }
-   }
+   
 
 export function getAllUsers(){
     return async(dispatch: Dispatch<Action>) => {
