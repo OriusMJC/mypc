@@ -53,5 +53,104 @@
             "cant": 15,
         "comments": [],
         "status": "nuevo"
+    },
+    {
+        "title" : "Placa madre de la ostia",
+        "photo": "https://axa.com.ar/webaxa/21658/motherboard-intel-asus-prime-h410m-e-10th-socket-1200.jpg",
+        "price": 30200,
+        "type": "motherboard",
+        "description": "motherboard socket 1200",
+        "likes": 0,
+            "cant": 15,
+        "comments": [],
+        "status": "nuevo"
+    },
+    {
+        "title" : "16 gb ram ddr4 3600mhz ballistix ",
+        "photo": "https://www.venex.com.ar/products_images/1547130625_cmw16gx4m2c3600c18wgalleryvegeancergbprowht042up.png",
+        "price": 16000,
+        "type": "ram",
+        "description": "16 gb ram 2x8 3600mhz",
+        "likes": 0,
+            "cant": 15,
+        "comments": [],
+        "status": "nuevo"
+    },
+    {
+        "title" : "ssd 120 gb gigabyte",
+        "photo": "https://www.venex.com.ar/products_images/1537278903_gpgstfs31120gntd03.png",
+        "price": 3000,
+        "type": "ssd",
+        "description": "ssd bien basico",
+        "likes": 0,
+            "cant": 15,
+        "comments": [],
+        "status": "nuevo"
+    },
+    {
+        "title" : "hdd 1TB Western Digital",
+        "photo": "https://mesajil.com/wp-content/uploads/2021/04/11366-4.jpg",
+        "price": 6000,
+        "type": "hdd",
+        "description": "Western Digital blue 1TB",
+        "likes": 0,
+            "cant": 15,
+        "comments": [],
+        "status": "nuevo"
+    },
+    {
+        "title" : "Cooler RGB",
+        "photo": "https://http2.mlstatic.com/D_NQ_NP_966158-MLA45712219442_042021-W.jpg",
+        "price": 3000,
+        "type": "cooler",
+        "description": "Western Digital blue 1TB",
+        "likes": 0,
+            "cant": 15,
+        "comments": [],
+        "status": "nuevo"
+    },
+    {
+        "title" : "Monitor 28 pulgadas 4k nativo",
+        "photo": "https://www.hdcsa.com.ar/Temp/App_WebSite/App_PictureFiles/Items/HDC4K2020_800.jpg",
+        "price": 70000,
+        "type": "monitor",
+        "description": "Monitor HDC 4K nativo",
+        "likes": 0,
+            "cant": 15,
+        "comments": [],
+        "status": "nuevo"
+    },
+    {
+        "title" : "Mouse Logitech g603",
+        "photo": "https://d3ugyf2ht6aenh.cloudfront.net/stores/001/375/073/products/mouse-logitech-g603-lightspeed-wireless-gaming-black-pn910-0051001-3af15469d9f424bfe116069469790332-640-0.jpg",
+        "price": 10000,
+        "type": "mouse",
+        "description": "Mouse inalambrico 16000 dpi",
+        "likes": 0,
+            "cant": 15,
+        "comments": [],
+        "status": "nuevo"
+    },
+    {
+        "title" : "Teclado Redragon Kumara",
+        "photo": "https://gorilagames.com/img/Public/1019-producto-redragon-kumara-rgb-2894.jpg",
+        "price": 6000,
+        "type": "teclado",
+        "description": "teclado 60%",
+        "likes": 0,
+            "cant": 15,
+        "comments": [],
+        "status": "nuevo"
+    },
+    {
+        "title" : "Fuente seasonic 750w Reales",
+        "photo": "https://www.ozeros.com/wp-content/uploads/2018/10/Fuente-8.jpg",
+        "price": 30000,
+        "type": "fuente",
+        "description": "fuente modular 750w 30A salida",
+        "likes": 0,
+            "cant": 15,
+        "comments": [],
+        "status": "nuevo"
     }
 ]
