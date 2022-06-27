@@ -84,7 +84,7 @@ export default function ProductDetails(){
                   <button id={s.buttonBuy}>
                      Comprar
                   </button>
-                  <button onClick={handleCart}>
+                  <button className={s.btnSend} onClick={handleCart}>
                      Añadir al carrito
                   </button>
                </div>
