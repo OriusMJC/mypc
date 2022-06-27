@@ -9,7 +9,6 @@ import { useSelector } from "react-redux";
 export default function NavBar() {
   const dispatch = useAppDispatch();
   const [name, setName] = useState("");
-  const componentsasd = useSelector((state:any) => state.components)
 
   function handleInputChange(e) {
     e.preventDefault();
@@ -21,7 +20,6 @@ export default function NavBar() {
     dispatch(getName(name));
     setName("");
   }
-  console.log(componentsasd)
 
   return (
     <nav className={s.searchBarContainer}>
