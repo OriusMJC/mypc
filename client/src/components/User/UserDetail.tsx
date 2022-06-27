@@ -1,10 +1,12 @@
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
+import UserProducts from './UserProducts';
 import s from "../Styles/userDetails.module.css";
 
 export default function UserDetail() {
   const user = useSelector((state: any) => state.userDetails);
-  console.log(user);
+  const products = useSelector((state:any) => state.allComponents);
+
   return (
     <div className={s.container}>
       <div className={s.button}>
@@ -16,6 +18,16 @@ export default function UserDetail() {
         <Link to = "/user/createProduct">
           <button className={s.buttonCreate}>
               Create Product
+          </button>
+        </Link>
+        <Link to ='/user/userProducts'>
+          <button>
+            Created
+          </button>
+        </Link>
+        <Link to = '/user/admin'>
+          <button>
+            Go admin panel chaval
           </button>
         </Link>
       </div>

@@ -12,6 +12,8 @@ import {
     ADD_COMMENT, 
     SINGOUT_USER,
     GET_PRODUCT_CART, 
+    CREATE_PRODUCT,
+    DELETE_PRODUCT,
     // ADD_FAV, 
     // DEL_FAV
 } from "../actions"
@@ -40,6 +42,7 @@ const initialState = {
     types: ['full', 'motherboard', 'procesador', 'grafica', 'ram', 'ssd', 'hdd', 'cooler', 'monitor', 'mouse', 'teclado','cables', 'fuente'],
     userDetails: {fav:[]},
     productDetails: {comments: []},
+    // productsCreated: [],
     cart: []
 }
 
@@ -96,6 +99,7 @@ export default function rootReducer(state = initialState, action: any){
                 ...state,
                 productDetails: product
             }
+            
         // case ADD_FAV:
         //     const newFav = [...state.userDetails.fav, action.payload]
         //     return {
@@ -145,6 +149,13 @@ export default function rootReducer(state = initialState, action: any){
                 ...state,
                 components: action.payload === "All" ? [...state.allComponents] : sortedPrice
             }
+        // case CREATE_PRODUCT:
+        //     return {
+        //         ...state,
+        //         productsCreated: [...state.productsCreated, action.payload]
+        //     }
+        case DELETE_PRODUCT:
+            console.log(action.payload)
         default: 
             return state
     }
