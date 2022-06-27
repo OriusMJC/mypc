@@ -14,7 +14,6 @@ export default function ProductComments({idProd,comments}){
   function handleSubmit(e){
     e.preventDefault()
     if(newComment.length){
-
       if(userData.id && userData.name && userData.avatar){
         dispatch(addProductComment(idProd,{name:userData.name,avatar:userData.avatar,comment: newComment}))
         setNewComment('')
