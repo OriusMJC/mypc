@@ -16,6 +16,7 @@ export const FILTER_STATE = "FILTER_STATE";
 export const LOGIN_USER = "LOGIN_USER";
 export const SINGOUT_USER = "SINGOUT_USER";
 export const CREATE_PRODUCT = "CREATE_PRODUCT";
+export const RESET_PRODUCT_DETAIL = "RESET_PRODUCT_DETAIL";
 export const GET_ALL_USERS = "GET_ALL_USERS";
 export const DELETE_PRODUCT = "DELETE_PRODUCT";
 // export const ADD_FAV = "ADD_FAV";
@@ -206,6 +207,13 @@ export function orderComponentsByPrice(payload: any){
         payload,
     }
 }
+export function resetProductDetail(){
+    return {
+        type: RESET_PRODUCT_DETAIL,
+        payload: {comments: []},
+        }
+      }
+   }
 
 export function getAllUsers(){
     return async(dispatch: Dispatch<Action>) => {

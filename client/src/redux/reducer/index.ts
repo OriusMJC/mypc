@@ -12,6 +12,7 @@ import {
     ADD_COMMENT, 
     SINGOUT_USER,
     GET_PRODUCT_CART,
+    RESET_PRODUCT_DETAIL, 
     GET_ALL_USERS,
     CREATE_PRODUCT,
     DELETE_PRODUCT,
@@ -156,6 +157,11 @@ export default function rootReducer(state = initialState, action: any){
                 ...state,
                 components: action.payload === "All" ? [...state.allComponents] : sortedPrice
             }
+        case RESET_PRODUCT_DETAIL:
+            return{
+                ...state,
+                productDetails: action.payload
+              }
         // case CREATE_PRODUCT:
         //     return {
         //         ...state,
