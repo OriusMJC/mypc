@@ -86,7 +86,6 @@ export default function rootReducer(state = initialState, action: any){
             }
         case DEL_PRODUCT_CART:
             let newArrProd = state.cart.filter(prod => prod.id !== action.payload)
-            console.log(newArrProd)
             return {
                 ...state,
                 cart: newArrProd
