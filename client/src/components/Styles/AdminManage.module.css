@@ -1,0 +1,75 @@
+:root{
+    --color-primary: #fff;
+    --gray-light: #f2f2f2;
+    --gray-medium: #eaeaea;
+    --gray-dark: #d6d6d6;
+    --color-secundary: #000
+}
+
+#adminManageContainer{
+    background-color: var(--gray-dark);
+    display: flex;
+    justify-content: center;
+}
+
+#adminContainer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 80vh;
+    min-width: 80vw;
+}
+#adminContainer table{
+    border: 1px solid #000;
+    border-collapse: collapse;
+    width: 100%;
+    margin: 20px;
+    padding: 0;
+}
+#adminContainer div{
+    display: flex;
+    justify-content: space-evenly;
+    width: 100%;
+    margin: 20px 0px;
+}
+#adminContainer div button{
+    height: 35px;
+    width: 100px;
+    border: none;
+    box-shadow: 2px 1px 1px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    background-color: white;
+    cursor: pointer;
+}
+#adminContainer div button:hover{
+    background-color: rgb(148, 145, 145);
+    color: white;
+}
+
+#adminContainer table thead tr th{
+    border: 1px solid #000;
+    height: 50px;
+    margin: 0;
+    padding: 0;
+}
+.listUsers td{
+    border: 1px solid #000;
+    height: 60px;
+    margin: 0;
+    padding-left: 10px;
+    vertical-align:middle;
+}
+.listUsers td img{
+    width: 50px;
+    border-radius: 50%;
+}
+.listProd td{
+    border: 1px solid #000;
+    height: 80px;
+    margin: 0;
+    padding-left: 10px;
+    vertical-align:middle;
+}
+.listProd td img{
+    width: 80px;
+}
