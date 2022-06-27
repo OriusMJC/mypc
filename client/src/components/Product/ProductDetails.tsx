@@ -2,7 +2,7 @@ import { useEffect, useState } from "react"
 import { useSelector} from "react-redux"
 import { Link, useParams } from "react-router-dom"
 import { useAppDispatch } from "src/config/config"
-import { addFavUser, addProductCart, getAllDetails } from "src/redux/actions"
+import { addFavUser, addProductCart, getAllDetails, resetProductDetail } from "src/redux/actions"
 import ProductComments from "./ProductComments"
 import s from '../Styles/ProductDetails.module.css'
 import nolike from '../icons/nolike.png'
@@ -61,9 +61,7 @@ export default function ProductDetails(){
 
    useEffect(():any=>{
       dispatch(getAllDetails(idProduct))
-      // return (
-      //    product = {}
-      // )
+       return () => dispatch(resetProductDetail())
    },[dispatch,idProduct])
    return(
       <div id={s.prodContainer}>
