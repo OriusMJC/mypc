@@ -29,7 +29,7 @@ export default function ProductComments({idProd,comments}){
         <h3>Haz tu pregunta aquí</h3>
       <form onSubmit={handleSubmit}>
         <input type='text' value={newComment} onChange={handleChange}/>
-        <button type="submit">Enviar</button>
+        <button className={s.btnSend} type="submit">Enviar</button>
       </form>
       <div id={s.commentsContainer}>
         {
