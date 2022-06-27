@@ -63,11 +63,10 @@ router.put('/fav/:idUser',async(req,res,next)=>{
         next(error)
     }
 })
-router.delete('/fav/:idUser',async(req,res,next)=>{
+router.delete('/fav/:idUser/:idProduct',async(req,res,next)=>{
     try {
-        const {idUser} = req.params
-        const productID = req.body
-        const response = await userDelFavProduct(idUser,productID)
+        const {idUser,idProduct} = req.params
+        const response = await userDelFavProduct(idUser,idProduct)
         res.json(response)
     } catch (error) {
         next(error)
@@ -84,6 +83,12 @@ router.put('/buy/:idUser',async(req,res,next)=>{
     }
 })
 
+
+/* 
+router.get('/:idUser/orders', getUserOrders)
+
+router.get('/:idUser/orders/:idOrder', getUserOrder)
+*/
 
 
 

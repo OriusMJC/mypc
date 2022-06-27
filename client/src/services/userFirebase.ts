@@ -1,29 +1,47 @@
 import { createUserWithEmailAndPassword, onAuthStateChanged, sendEmailVerification, signInWithEmailAndPassword, signOut, updateProfile } from "firebase/auth";
-import { createContext, useContext } from 'react';
+import { loginUser } from "src/redux/actions";
+// import { createContext, useContext } from 'react';
 import { auth } from "../firebase/client";
-import { getAuth } from 'firebase/auth';
+// import { getAuth } from 'firebase/auth';
 
 
 
 export const userRegister = async (email:string,password:string) => {
     const user = await createUserWithEmailAndPassword(auth,email,password);
+    await sendEmailVerification(user.user)
     return user;
-    //await sendEmailVerification(user.user)
-    // return user.user
     }   
+    
+export const userLogin = async (email:string,password:string) => {
+    await signInWithEmailAndPassword(auth,email,password)
+    let user = window.localStorage.getItem('userData')
+    if(!user){
+        window.localStorage.setItem('userData', JSON.stringify({email, password}))
+    }
+}
 
-export const userLogin = (email:string,password:string) =>
-    signInWithEmailAndPassword(auth,email,password)
 
-export const userSingOut = () => signOut(auth)
+export const userSingOut = async() => {
+    await signOut(auth)
+    window.localStorage.removeItem('userData')
+}
 
 
-export function userData(){
+export const userData= async ()=>{
     const user = auth.currentUser;
     if(user){
         const uid = user.uid;
         return uid;
     }
+}
+
+export const loginVerifycation = async (dispatch:any)=>{
+    let user = await JSON.parse(window.localStorage.getItem('userData'))
+    if(user.email){
+        await userLogin(user.email,user.password)
+        const id = await userData();
+        dispatch(loginUser(id));
+   }
 }
 
 

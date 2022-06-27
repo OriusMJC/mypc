@@ -1,62 +1,156 @@
 [
     {
-        "id": "1",
-        "title" : "Procesador Ryzen 5",
-        "photo": "url",
-        "price": 200,
-        "type": "full | motherboard | procesador | grafica | ram | ssd | hdd | cooler | monitor | mouse | teclado | cables | fuente",
-        "description": "descripcion Ryzen 5",
-        "likes": 5,
-        "comments": [
-            {"name":"matias", "avatar": "https://i.pravatar.cc/150?u=matias","comment":"Te sirven 50?"}, 
-            {"name":"Carlitos", "avatar": "https://i.pravatar.cc/150?u=carlos","comment":"De que generacion es??"}
-            ],
-        "status": "Nuevo",
-        "sellerInfo": [{
-            "id": "1gv2g3v32g2hhd",
-            "name" : "Marcelo",
-            "email": "email@gmail.com",
-            "avatar": "https://i.pravatar.cc/150?u=marcelo"
-        }]
+        "title" : "rtx 3090ti",
+        "photo": "https://http2.mlstatic.com/D_NQ_NP_682557-MLA50301338538_062022-W.jpg",
+        "price": 405050,
+        "type": "grafica",
+        "description": "Corre Read Dead Redemption a 120fps en 4K Ultra",
+        "likes": 0,
+            "cant": 5,
+        "comments": [],
+        "status": "nuevo"
     },
     {
-        "id": "2",
-        "title" : "GTX 1080ti",
-        "photo": "url",
-        "price": 500,
-        "type": "full | motherboard | procesador | grafica | ram | ssd | hdd | cooler | monitor | mouse | teclado | cables | fuente",
-        "description": "descripcion de gtx 1080ti",
-        "likes": 2,
-        "comments": [
-            {"name":"Lauti", "avatar": "https://i.pravatar.cc/150?u=lautaro","comment":"Te ofrezco dos chelines y me estoy arriesgando"}, 
-            {"name":"Tobi El front", "avatar": "https://i.pravatar.cc/150?u=tobias","comment":"Hostia pedrin, que oferton."}
-            ],
-        "status": "Usado",
-        "sellerInfo": [{
-            "id": "1sdsddf",
-            "name" : "Juan",
-            "email": "emailjuan@gmail.com",
-            "avatar": "https://i.pravatar.cc/150?u=juan"
-        }]
+        "title" : "PC Gamer",
+        "photo": "https://mla-s1-p.mlstatic.com/733026-MLA49762406952_042022-F.jpg",
+        "price": 150000,
+        "type": "full",
+        "description": "Gtx 1060, Ryzen 5 2600, 16 Ram. Puedes jugar a todos los últimos títulos con esta gran PC GAMER!!!",
+        "likes": 0,
+            "cant": 15,
+        "comments": [],
+        "status": "nuevo"
     },
     {
-        "id": "3",
-        "title" : "PC Geimer full free fire 4K HD",
-        "photo": "url",
-        "price": 150,
-        "type": "full | motherboard | procesador | grafica | ram | ssd | hdd | cooler | monitor | mouse | teclado | cables | fuente",
-        "description": "Se puede jugar fri faier",
-        "likes": 5,
-        "comments": [
-            {"name":"Mr popo", "avatar": "https://i.pravatar.cc/150?u=caca","comment":"Team para jugar fri fire?"}, 
-            {"name":"Santi", "avatar": "https://i.pravatar.cc/150?u=santiago","comment":"Imbox"}
-            ],
-        "status": "Usado",
-        "sellerInfo": [{
-            "id": "12345",
-            "name" : "marcos",
-            "email": "marquitos@gmail.com",
-            "avatar": "https://i.pravatar.cc/150?u=marcos"
-        }]
+        "title" : "PC Gamer Full 4K 60FPS",
+        "photo": "https://s3-sa-east-1.amazonaws.com/saasargentina/7cxjzsVb2E5myGXbQbOd/imagen",
+        "price": 370000,
+        "type": "full",
+        "description": "Gtx 3080, Ryzen 9, 32 Ram. Puedes jugar a todos los últimos títulos con esta gran PC GAMER!!!",
+        "likes": 0,
+            "cant": 15,
+        "comments": [],
+        "status": "nuevo"
+    },
+    {
+        "title" : "Ryzen 7 Como nuevo!",
+        "photo": "https://www.qloud.ar/SITES/IMG/gaming-point-06-2021/221_31-01-2022-03-01-15-procesador-amd-ryzen-7-5800x-1-1_ccexpress.png",
+        "price": 60000,
+        "type": "procesador",
+        "description": "Procesador Ryzen 7 en perfecto estado. 6 meses de uso!",
+        "likes": 0,
+            "cant": 1,
+        "comments": [],
+        "status": "usado"
+    },
+    {
+        "title" : "Cable Sata Datos Para Disco Rigido",
+        "photo": "https://http2.mlstatic.com/D_NQ_NP_608730-MLA42448960952_072020-O.webp",
+        "price": 190,
+        "type": "cables",
+        "description": "Cable Sata Datos Para Disco Rigido Grabadora Noga Sata Datos",
+        "likes": 0,
+            "cant": 15,
+        "comments": [],
+        "status": "nuevo"
+    },
+    {
+        "title" : "Placa madre de la ostia",
+        "photo": "https://axa.com.ar/webaxa/21658/motherboard-intel-asus-prime-h410m-e-10th-socket-1200.jpg",
+        "price": 30200,
+        "type": "motherboard",
+        "description": "motherboard socket 1200",
+        "likes": 0,
+            "cant": 15,
+        "comments": [],
+        "status": "nuevo"
+    },
+    {
+        "title" : "16 gb ram ddr4 3600mhz ballistix ",
+        "photo": "https://www.venex.com.ar/products_images/1547130625_cmw16gx4m2c3600c18wgalleryvegeancergbprowht042up.png",
+        "price": 16000,
+        "type": "ram",
+        "description": "16 gb ram 2x8 3600mhz",
+        "likes": 0,
+            "cant": 15,
+        "comments": [],
+        "status": "nuevo"
+    },
+    {
+        "title" : "ssd 120 gb gigabyte",
+        "photo": "https://www.venex.com.ar/products_images/1537278903_gpgstfs31120gntd03.png",
+        "price": 3000,
+        "type": "ssd",
+        "description": "ssd bien basico",
+        "likes": 0,
+            "cant": 15,
+        "comments": [],
+        "status": "nuevo"
+    },
+    {
+        "title" : "hdd 1TB Western Digital",
+        "photo": "https://mesajil.com/wp-content/uploads/2021/04/11366-4.jpg",
+        "price": 6000,
+        "type": "hdd",
+        "description": "Western Digital blue 1TB",
+        "likes": 0,
+            "cant": 15,
+        "comments": [],
+        "status": "nuevo"
+    },
+    {
+        "title" : "Cooler RGB",
+        "photo": "https://http2.mlstatic.com/D_NQ_NP_966158-MLA45712219442_042021-W.jpg",
+        "price": 3000,
+        "type": "cooler",
+        "description": "Western Digital blue 1TB",
+        "likes": 0,
+            "cant": 15,
+        "comments": [],
+        "status": "nuevo"
+    },
+    {
+        "title" : "Monitor 28 pulgadas 4k nativo",
+        "photo": "https://www.hdcsa.com.ar/Temp/App_WebSite/App_PictureFiles/Items/HDC4K2020_800.jpg",
+        "price": 70000,
+        "type": "monitor",
+        "description": "Monitor HDC 4K nativo",
+        "likes": 0,
+            "cant": 15,
+        "comments": [],
+        "status": "nuevo"
+    },
+    {
+        "title" : "Mouse Logitech g603",
+        "photo": "https://d3ugyf2ht6aenh.cloudfront.net/stores/001/375/073/products/mouse-logitech-g603-lightspeed-wireless-gaming-black-pn910-0051001-3af15469d9f424bfe116069469790332-640-0.jpg",
+        "price": 10000,
+        "type": "mouse",
+        "description": "Mouse inalambrico 16000 dpi",
+        "likes": 0,
+            "cant": 15,
+        "comments": [],
+        "status": "nuevo"
+    },
+    {
+        "title" : "Teclado Redragon Kumara",
+        "photo": "https://gorilagames.com/img/Public/1019-producto-redragon-kumara-rgb-2894.jpg",
+        "price": 6000,
+        "type": "teclado",
+        "description": "teclado 60%",
+        "likes": 0,
+            "cant": 15,
+        "comments": [],
+        "status": "nuevo"
+    },
+    {
+        "title" : "Fuente seasonic 750w Reales",
+        "photo": "https://www.ozeros.com/wp-content/uploads/2018/10/Fuente-8.jpg",
+        "price": 30000,
+        "type": "fuente",
+        "description": "fuente modular 750w 30A salida",
+        "likes": 0,
+            "cant": 15,
+        "comments": [],
+        "status": "nuevo"
     }
 ]

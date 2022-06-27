@@ -1,0 +1,75 @@
+:root{
+    --color-primary: #fff;
+    --gray-light: #f2f2f2;
+    --gray-medium: #eaeaea;
+    --gray-dark: #d6d6d6;
+    --color-secundary: #000
+}
+
+.searchBarContainer{
+    padding: 20px 0px;
+    width: 100vw;
+    background-color: var(--color-primary);
+    /* display: block; */
+}
+.contain {
+    display: flex;
+    align-items: center;
+    margin: auto;
+    max-width: 1150px;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+.searchBar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    flex: 1;
+    margin: 0px 30px;
+}
+.searchBar input{
+    /* height: 25px; */
+    padding: 5px 10px;
+    /* width: 300px; */
+    width: 60%;
+    border: 1px solid var(--gray-light);
+    border-radius: 5px 0px 0px 5px;
+    outline: none;
+    font-size: 17px;
+}
+.searchBar button{
+    /* height: 30px; */
+    width: 60px;
+    font-size: 17px;
+    padding: 6px;
+    border: none;
+    border-radius: 0px 5px 5px 0px;
+    cursor: pointer;
+}
+
+.contLogo{
+    /* width: 20%; */
+    font-size:20px;
+    /* margin-right: 30px; */
+}
+.contLogo a{
+    color: #000;
+    text-decoration: none;
+}
+.contLogo h1 {
+    margin: 0;
+}
+
+.logo{
+    border: none;
+    height: 40px;
+    width: 100px;
+    font-size: 30px;
+    background-color: white;
+    cursor: pointer;
+    font-weight: bold;
+}

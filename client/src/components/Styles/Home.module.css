@@ -1,0 +1,47 @@
+.homeContainer{
+    background-color: rgb(234, 234, 234);
+    width: 100vw;
+    margin: 0;
+    padding: 0;
+    min-height: 90vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+/* .slider{
+    width: 95%;
+    height: 700px;
+    overflow: hidden;
+}
+
+.slider ul{
+    display: flex;
+    animation: cambio 15s infinite alternate linear;
+    width: 300%
+}
+
+.slider li{
+    width: 100%;
+    list-style: none;
+}
+
+.slider img{
+    width: 150%;
+    height: 100%;
+}
+
+@keyframes cambio{
+    0%{margin-left: 0;}
+    20%{margin-left: 0;}
+
+    25%{margin-left: -100%;}
+    45%{margin-left: -100%;}
+
+    50%{margin-left: -200%;}
+    70%{margin-left: -200%;}
+
+    75%{margin-left: -300%;}
+    100%{margin-left: -300%;}
+} */
