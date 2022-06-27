@@ -24,7 +24,6 @@ export default function ProductComments({idProd,comments}){
       alert('No puedes enviar un comentario vacio')
     }
   }
- 
   return (
     <section id={s.sectionComments}>
         <h3>Haz tu pregunta aquí</h3>
