@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom'
-import {  userLogin, userData } from '../../services/userFirebase'
+import {  userLogin, userData, signInWithGoogle } from '../../services/userFirebase'
 import { loginUser } from '../../redux/actions';
 import { useAppDispatch } from '../../config/config'
 import s from "../Styles/Login.module.css";
@@ -69,7 +69,10 @@ export default function Login(){
       // setuserValidate(error.code)  
     }
   }
- 
+
+  function handleSignInGoogle () {
+    signInWithGoogle()
+  }
 
   return (
     <div className={s.formLoginContainer}>
@@ -94,6 +97,7 @@ export default function Login(){
           <span>Don't have account?</span>
         <Link to='/user/register'>
         <button>Registrarse</button>
+        <button onClick={handleSignInGoogle}>Sign In With Google</button>
       </Link>
       </form>
       {errors.email && (<p className={s.error}> {errors.email}</p>)}
