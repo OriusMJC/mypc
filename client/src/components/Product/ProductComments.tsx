@@ -13,21 +13,23 @@ export default function ProductComments({idProd,comments}){
   }
   function handleSubmit(e){
     e.preventDefault()
-    if(userData.id && userData.name && userData.avatar){
-      dispatch(addProductComment(idProd,{name:userData.name,avatar:userData.avatar,comment: newComment}))
-      setNewComment('')
+    if(newComment.length){
+      if(userData.id && userData.name && userData.avatar){
+        dispatch(addProductComment(idProd,{name:userData.name,avatar:userData.avatar,comment: newComment}))
+        setNewComment('')
+      }else{
+        alert('Debes inciar sesión para poder comentar')
+      }
     }else{
-      alert('Debes inciar sesión para poder comentar')
+      alert('No puedes enviar un comentario vacio')
     }
   }
-  // console.log(newComment)
-  // console.log(userData)
   return (
     <section id={s.sectionComments}>
         <h3>Haz tu pregunta aquí</h3>
       <form onSubmit={handleSubmit}>
         <input type='text' value={newComment} onChange={handleChange}/>
-        <button type="submit">Enviar</button>
+        <button className={s.btnSend} type="submit">Enviar</button>
       </form>
       <div id={s.commentsContainer}>
         {

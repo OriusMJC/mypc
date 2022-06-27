@@ -10,7 +10,8 @@ import Login from './components/Login/Login';
 import Contact from './components/Contact'
 import NavBar from './components/NavBar/NavBar';
 import Footer from './components/Footer';
-import CreateProduct from './components/Product/CreateProduct'
+import CreateProduct from './components/Product/CreateProduct';
+import UserProducts from './components/User/UserProducts';
 import { loginVerifycation } from './services/userFirebase';
 import { useAppDispatch } from './config/config';
 import style from './App.module.css'
@@ -55,7 +56,8 @@ function App()  {
         <Route path='/user/login' element={<Login/>}/>
         <Route path='/contact' element={<Contact/>}/>
         <Route path='/contact' element={<Contact/>}/>
-        <Route path='/user/createProduct' element={<CreateProduct/>}/>      
+        <Route path='/user/createProduct' element={<CreateProduct/>}/>
+        <Route path='/user/userProducts' element={<UserProducts/>}/>   
         <Route path='/help' element={<Help/>}/>
         <Route path='/user/admin' element={<AdminManage/>}/>
         <Route path="help">

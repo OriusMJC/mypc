@@ -29,6 +29,7 @@
 
 #commentsContainer{
     width: 600px;
+    
 }
 
 .comments{
@@ -39,8 +40,8 @@
     width: 600px;
     min-height: 120px;
     text-align: left;
-    border: 1px solid #d6d6d6;
-    border-radius: 10px;
+    border: 3px solid #d6d6d6;
+    border-radius: 2em 1em 4em / 0.5em 3em;
     margin: 5px 0px;
     padding: 5px;
 }
@@ -55,4 +56,21 @@
 }
 .comments div h4{
     margin: 0;
+}
+.btnSend{       
+    background-color: #eaeaea;
+    cursor: pointer;
+    border-radius: 10px;
+    padding: 20px;
+    font-size: 20px;
+    text-align: center;    
+    transition: 0.2s;     
+       
+}
+.btnSend:hover {
+    transform: scale(1.02);
+    color: rgb(52, 218, 52);
+    font-weight: bold;
+    
+   
 }

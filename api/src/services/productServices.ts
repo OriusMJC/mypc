@@ -51,3 +51,8 @@ export const productSelled = async(idProduct:string):Promise<string>=>{
     await Product.update({sell: true},{where: {id: idProduct}})
     return 'Producto vendido con éxito'
 }
+
+export const deleteProduct = async(idProduct:string):Promise<string> =>{
+    await Product.destroy({where: {id: idProduct}});
+    return 'Producto eliminado con exito'
+}

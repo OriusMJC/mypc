@@ -12,7 +12,9 @@ import {
     ADD_COMMENT, 
     SINGOUT_USER,
     GET_PRODUCT_CART,
-    GET_ALL_USERS, 
+    GET_ALL_USERS,
+    CREATE_PRODUCT,
+    DELETE_PRODUCT,
     // ADD_FAV, 
     // DEL_FAV
 } from "../actions"
@@ -42,6 +44,7 @@ const initialState = {
     allUsers: [],
     userDetails: {fav:[]},
     productDetails: {comments: []},
+    // productsCreated: [],
     cart: []
 }
 
@@ -93,7 +96,6 @@ export default function rootReducer(state = initialState, action: any){
             }
         case DEL_PRODUCT_CART:
             let newArrProd = state.cart.filter(prod => prod.id !== action.payload)
-            console.log(newArrProd)
             return {
                 ...state,
                 cart: newArrProd
@@ -104,6 +106,7 @@ export default function rootReducer(state = initialState, action: any){
                 ...state,
                 productDetails: product
             }
+            
         // case ADD_FAV:
         //     const newFav = [...state.userDetails.fav, action.payload]
         //     return {
@@ -153,6 +156,13 @@ export default function rootReducer(state = initialState, action: any){
                 ...state,
                 components: action.payload === "All" ? [...state.allComponents] : sortedPrice
             }
+        // case CREATE_PRODUCT:
+        //     return {
+        //         ...state,
+        //         productsCreated: [...state.productsCreated, action.payload]
+        //     }
+        case DELETE_PRODUCT:
+            console.log(action.payload)
         default: 
             return state
     }

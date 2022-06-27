@@ -8,10 +8,9 @@ import s from '../Styles/CreateProduct.module.css'
 function CreateProduct() {
     const dispatch = useAppDispatch();
     const navigate = useNavigate();
-    const user = useSelector((state:any) => state.userDetails)
-    const types = useSelector((state:any) => state.types)
-    // const filterTypes = types.filter(t => t !== 'full');
-    const id = user.id
+    const user = useSelector((state:any) => state.userDetails);
+    const types = useSelector((state:any) => state.types);
+    const id = user.id;
     const [product, setProduct] = useState({
         title: "",
         photo: "",
@@ -25,48 +24,34 @@ function CreateProduct() {
         sell: false,
     });
 
-    // let boolean = false;
-    // if(
-    //     product.title !== "" &&
-    //     product.photo !== "" &&
-    //     product.price > 0 &&
-    //     product.type !== "" &&
-    //     product.description !== "" &&
-    //     product.likes > 0 &&
-    //     product.cant > 0 &&
-    //     product.status !== ""
-    // ) boolean = true;
-
     function handleChange(e){
         setProduct({
             ...product,
             [e.target.name]: e.target.value
-        })
+        });
     }
 
     function handleType(e){
         setProduct({
             ...product,
             type: e.target.value
-        })
+        });
     }
 
     function handleStatus(e){
         setProduct({
             ...product,
             status: e.target.value
-        })
+        });
     }
 
     function handleSubmit(e){
-        // if(boolean){
+        if(product.title && product.photo && product.type){
             e.preventDefault();
             dispatch(createProduct(id, product));
             alert("Product created");
             navigate("/")
-        // }else {
-        //     alert("Please complete create form")
-        // }    
+        }else alert("Product not created, please complete the form") 
     }
 
   return (
@@ -117,7 +102,7 @@ function CreateProduct() {
         <div className = {s.products}>
             <h1>{product.title}</h1>
             <div className = {s.img}>
-            <img src={product.photo.length != 0 && product.photo}></img>
+            <img src={product.photo.length && product.photo}></img>
             </div>
             <div className = {s.productInfo}>
             <h3>{product.price != 0 && product.price}</h3>

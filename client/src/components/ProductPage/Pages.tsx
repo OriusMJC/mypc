@@ -6,7 +6,7 @@ import s from "../Styles/Pages.module.css";
 import './style.css'
 
 function Pages({ productsPerPage, allComponents, refresh }) {
-  const cantPages = Math.ceil(allComponents.length /productsPerPage) 
+    const cantPages = Math.ceil(allComponents.length /productsPerPage) 
     const [currentPage, setCurrentPage] = useState(1);
     const indexOfLastProduct = currentPage * productsPerPage;
     const indexOfFirstProduct = indexOfLastProduct - productsPerPage;
@@ -14,7 +14,7 @@ function Pages({ productsPerPage, allComponents, refresh }) {
 
     const pageNumbers = [];
     
-    if(typeof allComponents !== 'string'){
+    if(typeof allComponents[0] !== 'string'){
         for (let i = 1; i <= cantPages; i++){
             pageNumbers.push(
                 <button key={i} value={i} onClick={()=>{setCurrentPage(i)}}>
@@ -28,7 +28,6 @@ function Pages({ productsPerPage, allComponents, refresh }) {
 
     const products = useSelector((state:any) => state.allComponents)
     const user = useSelector((state:any) => state.userDetails)
-
 
     return(
       <section className={s.pageContainer}>
@@ -50,7 +49,7 @@ function Pages({ productsPerPage, allComponents, refresh }) {
               
               </div> :
               refresh && currentProduct.length?
-              typeof allComponents !== 'string'?
+              typeof allComponents[0] !== 'string'?
                   currentProduct.map(prod=>{
                       return( 
                       <ProductCard 

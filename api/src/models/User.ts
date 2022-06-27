@@ -14,6 +14,10 @@ module.exports = (sequelize:any) => {
       type: DataTypes.BOOLEAN,
       defaultValue: false
     },
+    active:{
+      type: DataTypes.BOOLEAN,
+      defaultValue: true
+    },
     name: {
       type: DataTypes.STRING(30),
       allownull: false
