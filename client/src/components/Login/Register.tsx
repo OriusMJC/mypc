@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useTransition } from 'react';
 import { Link, useNavigate } from 'react-router-dom'
 import { userRegister} from '../../services/userFirebase'
 import { useAppDispatch } from '../../config/config'
@@ -69,6 +69,7 @@ export default function Register(){
       [e.target.name] : e.target.value
   }))
   }
+  console.log(user)
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>){
     e.preventDefault()
@@ -76,6 +77,7 @@ export default function Register(){
       const userData: any = await userRegister(user.email, user.password)
       dispatch(createUser({
         ...user,
+        avatar: user.avatar.length ? user.avatar : AvatarImgDefault,
         id: userData.user.uid
       }));
       alert("User created successfully");
@@ -85,13 +87,13 @@ export default function Register(){
   //  setuserValidate(error.code)
     }
   } 
-
+ const AvatarImgDefault = 'https://cdn.icon-icons.com/icons2/1378/PNG/512/avatardefault_92824.png'
   return (
     <div className={s.formRegisterContainer}>
         {userValidate && <p className={s.error}>{userValidate}</p>}
       <form onSubmit={handleSubmit} className={s.formRegister}>
         <label>Avatar</label>
-        <input type="url" name="avatar" value={user.avatar} onChange={handleChange}></input>
+        <input type="url" name="avatar" value={user.avatar } onChange={handleChange}></input>
 
         <label>Username</label>
          {error.name && (<p className={s.error}> {error.name}</p>)}

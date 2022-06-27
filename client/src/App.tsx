@@ -33,6 +33,7 @@ import ToAsk from './components/Help/HelpBuying/ToAsk';
 import CreditMarket from './components/Help/HelpBuying/CreditMarket';
 import Subscriptions from './components/Help/HelpBuying/Subscriptions';
 import HelpBuying from './components/Help/HelpBuying/HelpBuying';
+
 // import NavButtons from './components/NavButtons'
 
 function App()  {
@@ -53,7 +54,7 @@ function App()  {
         <Route path='/user/login' element={<Login/>}/>
         <Route path='/contact' element={<Contact/>}/>
         <Route path='/contact' element={<Contact/>}/>
-        <Route path='/user/createProduct' element={<CreateProduct/>}/>
+        <Route path='/user/createProduct' element={<CreateProduct/>}/>      
         <Route path='/help' element={<Help/>}/>
         <Route path="help">
             <Route path="faq" element={<Faq />} />                    
