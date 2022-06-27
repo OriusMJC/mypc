@@ -69,7 +69,7 @@ export default function Register(){
       [e.target.name] : e.target.value
   }))
   }
-  console.log(user)
+
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>){
     e.preventDefault()
