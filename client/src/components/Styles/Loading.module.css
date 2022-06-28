@@ -1,0 +1,21 @@
+.loadContainer{
+    display: flex;
+    flex-direction: column;
+    min-height: 80vh;
+    align-items: center;
+}
+
+.loadContainer img{
+    height: 150px;
+    width: 150px;
+    margin-top: 100px;
+    animation: rotate 1.5s infinite;
+}
+
+@keyframes rotate {
+    0%{
+      transform: rotate(0deg)  
+    }100%{
+        transform: rotate(360deg)
+    }
+}
