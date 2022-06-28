@@ -6,6 +6,7 @@ import {
     ORDER_POPULATION, 
     ORDER_PRICE, 
     FILTER_STATE, 
+    FILTER_USER, 
     ADD_PRODUCT_CART, 
     DEL_PRODUCT_CART,
     LOGIN_USER, 
@@ -13,7 +14,9 @@ import {
     DELETE_COMMENT,
     ADD_RESPONSE,
     SINGOUT_USER,
-    GET_PRODUCT_CART, 
+    GET_PRODUCT_CART,
+    RESET_PRODUCT_DETAIL, 
+    GET_ALL_USERS,
     CREATE_PRODUCT,
     DELETE_PRODUCT,
     // ADD_FAV, 
@@ -42,6 +45,8 @@ const initialState = {
     components: [],
     allComponents:[],
     types: ['full', 'motherboard', 'procesador', 'grafica', 'ram', 'ssd', 'hdd', 'cooler', 'monitor', 'mouse', 'teclado','cables', 'fuente'],
+    allUsers: [],
+    users:[],
     userDetails: {fav:[]},
     productDetails: {comments: []},
     // productsCreated: [],
@@ -66,6 +71,22 @@ export default function rootReducer(state = initialState, action: any){
                 ...state,
                 allComponents: [...action.payload],
                 components: [...action.payload]
+            }
+        case GET_ALL_USERS:
+            return {
+                ...state,
+                allUsers: [...action.payload],
+                users: [...action.payload]
+            }
+        case FILTER_USER:
+            let newArrUser = state.allUsers.filter((u:any)=> 
+                u.id.includes(action.payload) || 
+                u.name.toLowerCase().includes(action.payload.toLowerCase()) ||
+                u.email.includes(action.payload.toLowerCase()))
+            console.log(newArrUser)
+            return {
+                ...state,
+                users: newArrUser
             }
         case LOGIN_USER:
             return {
@@ -170,7 +191,16 @@ export default function rootReducer(state = initialState, action: any){
                 ...state,
                 components: action.payload === "All" ? [...state.allComponents] : sortedPrice
             }
-
+        case RESET_PRODUCT_DETAIL:
+            return{
+                ...state,
+                productDetails: action.payload
+              }
+        // case CREATE_PRODUCT:
+        //     return {
+        //         ...state,
+        //         productsCreated: [...state.productsCreated, action.payload]
+        //     }
         case DELETE_PRODUCT:
             let filtered = [];
             if(action.payload){

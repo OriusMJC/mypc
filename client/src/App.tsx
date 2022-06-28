@@ -35,6 +35,7 @@ import ToAsk from './components/Help/HelpBuying/ToAsk';
 import CreditMarket from './components/Help/HelpBuying/CreditMarket';
 import Subscriptions from './components/Help/HelpBuying/Subscriptions';
 import HelpBuying from './components/Help/HelpBuying/HelpBuying';
+import AdminManage from './components/Admin/AdminManage';
 
 // import NavButtons from './components/NavButtons'
 
@@ -55,11 +56,11 @@ function App()  {
         <Route path='/user/register' element={<Register/>}/>
         <Route path='/user/login' element={<Login/>}/>
         <Route path='/contact' element={<Contact/>}/>
-        <Route path='/contact' element={<Contact/>}/>
         <Route path='/user/createProduct' element={<CreateProduct/>}/>
         <Route path='/user/userProducts' element={<UserProducts/>}/>
         <Route path='/user/userEditProduct/:idProduct' element ={<UserEditProduct/>}/>   
         <Route path='/help' element={<Help/>}/>
+        <Route path='/user/admin' element={<AdminManage/>}/>
         <Route path="help">
             <Route path="faq" element={<Faq />} />                    
             <Route path="selling" element={<HelpSelling />} />                    

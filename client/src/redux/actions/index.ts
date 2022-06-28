@@ -16,9 +16,12 @@ export const FILTER_CATEGORY = "FILTER_CATEGORY";
 export const ORDER_POPULATION = "ORDER_POPULATION";
 export const ORDER_PRICE = "ORDER_PRICE";
 export const FILTER_STATE = "FILTER_STATE";
+export const FILTER_USER = "FILTER_USER";
 export const LOGIN_USER = "LOGIN_USER";
 export const SINGOUT_USER = "SINGOUT_USER";
 export const CREATE_PRODUCT = "CREATE_PRODUCT";
+export const RESET_PRODUCT_DETAIL = "RESET_PRODUCT_DETAIL";
+export const GET_ALL_USERS = "GET_ALL_USERS";
 export const DELETE_PRODUCT = "DELETE_PRODUCT";
 export const UPDATE_PRODUCT = "UPDATE_PRODUCT";
 // export const ADD_FAV = "ADD_FAV";
@@ -61,6 +64,11 @@ export function getName(name: string){
         }
     }
 }
+export function filterUser(name: string){
+    return (dispatch: Dispatch<Action>) => {
+        dispatch({type: FILTER_USER, payload: name})
+    }
+}
 
 export function createUser(user){
     return async() => {
@@ -73,6 +81,16 @@ export function createUser(user){
     }
 }
 
+export function getUserData(id){
+    return async() => {
+        try {
+            let resp = await axios(`/users/${id}`)
+            return resp.data
+        } catch (error) {
+            console.log(error)
+        }
+    }
+}
 export function loginUser(id){
     return async(dispatch: Dispatch<Action>) => {
         try {
@@ -239,4 +257,21 @@ export function orderComponentsByPrice(payload: any){
         payload,
     }
 }
+export function resetProductDetail(){
+    return {
+        type: RESET_PRODUCT_DETAIL,
+        payload: {comments: []},
+        }
+      }
+   
 
+export function getAllUsers(){
+    return async(dispatch: Dispatch<Action>) => {
+        try {
+            let allUsers = await axios('/users')
+            dispatch({type: GET_ALL_USERS, payload: allUsers.data})
+        } catch (error) {
+            console.log(error)
+        }
+    }
+}

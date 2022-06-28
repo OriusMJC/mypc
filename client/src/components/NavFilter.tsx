@@ -7,7 +7,7 @@ import { useAppDispatch  } from '../config/config';
 import s from './Styles/NavFilter.module.css'
 // import * as types from '../../types'
 
-export default function NavFilter({refresh,setRefresh,setProductsPerPage}){
+export default function NavFilter({refresh,setRefresh,setProductsPerPage,products}){
     const dispatch = useAppDispatch();
     const types = useSelector((state:any)=> state.types)
 
@@ -48,14 +48,19 @@ export default function NavFilter({refresh,setRefresh,setProductsPerPage}){
             {/* <Searchbar/>
             <NavButtons/> */}
             <section className={s.filterContent}>
-                <div>
-                    <label>Productos</label>
-                    <select onChange={e => setProductsPerPage(+e.target.value)} className = {s.filters}>
-                        <option value="12">12</option>
-                        <option value="24">24</option>
-                        <option value="48">48</option>
-                    </select>
-                </div>
+                {
+                    products?
+                    <div>
+                        <label>Productos</label>
+                        <select onChange={e => setProductsPerPage(+e.target.value)} className = {s.filters}>
+                            <option value="12">12</option>
+                            <option value="24">24</option>
+                            <option value="48">48</option>
+                        </select>
+                    </div>
+                    :
+                    <></>
+                }
                 <div>
                     <label>Precio</label>
                     <select onChange={e => handleOrderPrice(e)} className = {s.filters}>

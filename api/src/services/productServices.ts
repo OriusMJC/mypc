@@ -41,6 +41,19 @@ export const updateDataProduct = async(idProduct:string, newProductData:types.Pr
     return 'Cambios en el producto realizados correctamente'
 }
 
+export const addLikes = async(idProduct:string):Promise<string>=>{
+    const product = await Product.findByPk(idProduct)
+    let likes = product.likes + 1
+    console.log(likes)
+    await Product.update({likes},{where: {id: idProduct}})
+    return 'Like agregado con éxito'
+}
+export const deleteLike = async(idProduct:string):Promise<string>=>{
+    const product = await Product.findByPk(idProduct)
+    let likes = product.likes > 0? product.likes - 1 : 0
+    await Product.update({likes},{where: {id: idProduct}})
+    return 'Like agregado con éxito'
+}
 export const addComment = async(idProduct:string,comment:any):Promise<string>=>{
     const product = await Product.findByPk(idProduct)
     let newCommentArr = [comment,...product?.dataValues.comments]

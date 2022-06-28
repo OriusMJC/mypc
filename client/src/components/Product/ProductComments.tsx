@@ -25,9 +25,8 @@ export default function ProductComments({idProd,comments, boolean, idProduct}){
   function handleChange(e:any){
     setNewComment(e.target.value)
   }
-
-  function HandleSubmit(e){
-    e.preventDefault();
+  function handleSubmit(e){
+    e.preventDefault()
     if(newComment.length){
       if(userData.id && userData.name && userData.avatar){
         dispatch(addProductComment(idProd,{id: id, name:userData.name,avatar:userData.avatar,comment: newComment, 
@@ -70,9 +69,9 @@ export default function ProductComments({idProd,comments, boolean, idProduct}){
   return (
     <section id={s.sectionComments}>
         <h3>Haz tu pregunta aquí</h3>
-      <form onSubmit={HandleSubmit}>
+      <form onSubmit={handleSubmit}>
         <input type='text' value={newComment} onChange={handleChange}/>
-        <button type="submit">Enviar</button>
+        <button className={s.btnSend} type="submit">Enviar</button>
       </form>
       <div id={s.commentsContainer}>
         {
