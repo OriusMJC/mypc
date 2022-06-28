@@ -27,6 +27,17 @@ h1 {
     width: 60vw;
     padding: 0px;
 }
+.div a button{
+    height: 30px;
+    width: 80px;
+    border: none;
+    border-radius: 5px;
+    margin-right: 540px;
+    transition: .2s;
+}
+.div a button:hover{
+    transform: scale(1.1);
+}
 
 .form {
     color: var(--color-secundary);
@@ -51,7 +62,7 @@ h1 {
     width: 600px;
     height: 300px;
     margin-top: 40px;
-    padding: 20px;
+    padding: 10px;
     border: none;
     border-radius: 10px;
     resize: none;
@@ -70,11 +81,7 @@ h1 {
 }
 
 .button:hover {
-    margin-top: 37px;
-    height: 42px;
-    width: 105px;
-    font-size: 1.23rem;
-    border: 1px solid grey;
+    transform: scale(1.1);
 }
 
 

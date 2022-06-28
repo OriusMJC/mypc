@@ -7,6 +7,8 @@ import ProductComments from "./ProductComments"
 import s from '../Styles/ProductDetails.module.css'
 import nolike from '../icons/nolike.png'
 import { addCartLH } from "src/services/functionsServices"
+import { userInfo } from "os"
+import { userData } from "src/services/userFirebase"
 // import { Products } from "types"
 
 // interface Info {
@@ -28,9 +30,10 @@ export default function ProductDetails(){
    const navigate = useNavigate();
    let product = useSelector((state:any) => state.productDetails)
    const idUser = useSelector((store:any)=> store.userDetails?.id)
+   const admin = useSelector((store:any)=> store.userDetails?.admin)
    const productSellerId = product.sellerInfo && product.sellerInfo.id
    const boolean = productSellerId && productSellerId === idUser && true 
-
+   console.log(admin)
    function handleFav(){
       if(idUser){
           dispatch(addFavUser(idUser,{
@@ -94,9 +97,9 @@ export default function ProductDetails(){
                      Añadir al carrito
                   </button>
                   {
-                  boolean
+                  (boolean || admin)
                   &&  
-                  <div>
+                  <>
                   <Link to ={`/user/userEditProduct/${idProduct}`}>
                   <button>
                      Editar
@@ -105,7 +108,7 @@ export default function ProductDetails(){
                   <button onClick = {handleDelete}>
                      Eliminar
                   </button>
-                  </div> 
+                  </> 
                   }
                </div>
             </section>
