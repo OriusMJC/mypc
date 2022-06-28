@@ -40,7 +40,6 @@ export const updateDataProduct = async(idProduct:string, newProductData:types.Pr
     await Product.update(newProductData, {where: {id: idProduct}})
     return 'Cambios en el producto realizados correctamente'
 }
-
 export const addLikes = async(idProduct:string):Promise<string>=>{
     const product = await Product.findByPk(idProduct)
     let likes = product.likes + 1
@@ -77,7 +76,7 @@ export const addSellerResp = async(idProduct: string, sellerResp:any):Promise<st
         if(c.id === sellerResp.id) {
             c.sellerResponse = sellerResp
         }
-        return c
+        return c;
     })
     await Product.update({comments: newArr}, {where: {id: idProduct}})
     return 'Comentario actualizado';
