@@ -15,16 +15,15 @@ function UserProducts() {
       productsCreated.push(prod)
     }
     })
-  console.log(productsCreated);
-
-  function handleDelete(e){
-    dispatch(deleteProduct(e.target.value))
-  }
 
   useEffect(() => {
     dispatch(getAllComponents())
-  }, [])
+  }, []);
 
+  function handleDelete(e){
+    dispatch(deleteProduct(e.target.value));
+    dispatch(getAllComponents());
+  }
 
   return (
     <div>
@@ -49,7 +48,9 @@ function UserProducts() {
               <p>{prod.description}</p>
               <div>
                 <button onClick = {handleDelete} value={prod.id}>X</button>
+                <Link to ={`/user/userEditProduct/${prod.id}`}>
                 <button>EDIT</button>
+                </Link>
               </div>
             </div>
           )

@@ -34,10 +34,10 @@ export const addNewProduct = async(userData:types.NonSensitiveUserInfo,newProduc
 //     return 'Producto en venta agregado con éxito'
 // }
 
-export const updateDataProduct = async(newProductData:types.Products):Promise<string> => {
+export const updateDataProduct = async(idProduct:string, newProductData:types.Products):Promise<string> => {
     // let productOldData = await Product.findByPk(newProductData.id)
     // await productOldData.update(newProductData, {where: {id}})
-    await Product.update(newProductData, {where: {id: newProductData.id}})
+    await Product.update(newProductData, {where: {id: idProduct}})
     return 'Cambios en el producto realizados correctamente'
 }
 
@@ -67,5 +67,5 @@ export const productSelled = async(idProduct:string):Promise<string>=>{
 
 export const deleteProduct = async(idProduct:string):Promise<string> =>{
     await Product.destroy({where: {id: idProduct}});
-    return 'Producto eliminado con exito'
+    return idProduct;
 }

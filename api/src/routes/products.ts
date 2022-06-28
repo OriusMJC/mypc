@@ -66,8 +66,9 @@ router.delete('/:idProduct', async(req, res, next) => {
 //Modificar la informacion (body) de un producto (params)
 router.put('/:idProduct',async(req,res,next)=>{
     const newDataProduct = req.body
+    const id = req.params.idProduct
     try {
-        const response = await updateDataProduct(newDataProduct)
+        const response = await updateDataProduct(id, newDataProduct)
         res.json(response)
     } catch (error) {
         next(error)
