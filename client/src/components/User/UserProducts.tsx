@@ -10,7 +10,7 @@ function UserProducts() {
   const user = useSelector((state:any) => state.userDetails);
   let productsCreated = [];
 
-  products.map((prod:any) =>{
+  products?.map((prod:any) =>{
     if(prod.sellerInfo.id.includes(user.id)){
       productsCreated.push(prod)
     }
@@ -33,9 +33,15 @@ function UserProducts() {
         </button>
       </Link>
       {
+        user && user.id ?
         !productsCreated.length 
         ?
+        <div>
         <h1>No hay productos creados</h1>
+        <Link to = '/user/createProduct'>
+          <button>Create Product</button>
+        </Link>
+        </div>
         :
         productsCreated.map(prod => {
           return (
@@ -55,7 +61,13 @@ function UserProducts() {
             </div>
           )
         })
-
+        :
+        <div>
+          <h1>Necesitas estar logeado!</h1>
+          <Link to = '/user/login'>
+            <button>Login</button>
+          </Link>
+        </div>
       }
     </div>
   )
