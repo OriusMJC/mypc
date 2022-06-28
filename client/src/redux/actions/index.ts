@@ -17,6 +17,9 @@ export const LOGIN_USER = "LOGIN_USER";
 export const SINGOUT_USER = "SINGOUT_USER";
 export const CREATE_PRODUCT = "CREATE_PRODUCT";
 export const RESET_PRODUCT_DETAIL = "RESET_PRODUCT_DETAIL";
+export const GET_ALL_USERS = "GET_ALL_USERS";
+export const DELETE_PRODUCT = "DELETE_PRODUCT";
+export const UPDATE_PRODUCT = "UPDATE_PRODUCT";
 // export const ADD_FAV = "ADD_FAV";
 // export const DEL_FAV = "DEL_FAV";
 
@@ -69,6 +72,16 @@ export function createUser(user){
     }
 }
 
+export function getUserData(id){
+    return async() => {
+        try {
+            let resp = await axios(`/users/${id}`)
+            return resp.data
+        } catch (error) {
+            console.log(error)
+        }
+    }
+}
 export function loginUser(id){
     return async(dispatch: Dispatch<Action>) => {
         try {
@@ -122,6 +135,27 @@ export function createProduct(idUser: string, product:any){
     }
 }
 
+export function deleteProduct(idProduct: string){
+    return async() => {
+        try {
+            let res = await axios.delete(`/products/${idProduct}`)
+            return res;
+        } catch (error) {
+            console.log(error)
+        }
+    }
+}
+
+export function updateProduct(id:string, data:any){
+    return async() => {
+        try {
+            let res = await axios.put(`/products/${id}`, data)
+            return res;
+        } catch (error) {
+            console.log(error)
+        }
+    }
+}
 
 export function getProductsLHtoCart(){
     return async(dispatch: Dispatch<Action>) => {
@@ -198,5 +232,17 @@ export function resetProductDetail(){
     return {
         type: RESET_PRODUCT_DETAIL,
         payload: {comments: []},
+        }
+      }
+   
+
+export function getAllUsers(){
+    return async(dispatch: Dispatch<Action>) => {
+        try {
+            let allUsers = await axios('/users')
+            dispatch({type: GET_ALL_USERS, payload: allUsers.data})
+        } catch (error) {
+            console.log(error)
+        }
     }
 }

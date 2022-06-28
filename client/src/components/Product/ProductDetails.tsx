@@ -28,7 +28,6 @@ export default function ProductDetails(){
    let product = useSelector((state:any) => state.productDetails)
    const idUser = useSelector((store:any)=> store.userDetails?.id)
 
-   
    function handleFav(){
       if(idUser){
           dispatch(addFavUser(idUser,{
@@ -85,6 +84,9 @@ export default function ProductDetails(){
                   </button>
                   <button className={s.btnSend} onClick={handleCart}>
                      Añadir al carrito
+                  </button>
+                  <button>
+                     Editar
                   </button>
                </div>
             </section>

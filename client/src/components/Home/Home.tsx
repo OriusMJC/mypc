@@ -44,7 +44,7 @@ export default function Home() {
   return (
     <div className={s.homeContainer}>
       <div>       
-        <NavFilter refresh={refresh} setRefresh={setRefresh} setProductsPerPage={setProductsPerPage}/>
+        <NavFilter refresh={refresh} setRefresh={setRefresh} setProductsPerPage={setProductsPerPage} products={true}/>
         <Slider/>
         <Pages
           productsPerPage={productsPerPage}

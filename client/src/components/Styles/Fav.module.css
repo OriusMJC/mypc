@@ -17,6 +17,7 @@
     margin: 10px 0px;
 }
 .prodFav a{
+    overflow-wrap: break-word;
     display: flex;
     flex-direction: row;
 }
