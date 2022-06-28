@@ -149,13 +149,16 @@ export default function rootReducer(state = initialState, action: any){
                 ...state,
                 components: action.payload === "All" ? [...state.allComponents] : sortedPrice
             }
-        // case CREATE_PRODUCT:
-        //     return {
-        //         ...state,
-        //         productsCreated: [...state.productsCreated, action.payload]
-        //     }
+
         case DELETE_PRODUCT:
-            console.log(action.payload)
+            let filtered = [];
+            if(action.payload){
+                filtered = state.components.filter(c => c.id !== action.payload)
+            }
+            return {
+                ...state,
+                components: filtered
+            }
         default: 
             return state
     }

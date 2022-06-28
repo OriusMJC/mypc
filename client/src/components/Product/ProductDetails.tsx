@@ -28,7 +28,6 @@ export default function ProductDetails(){
    let product = useSelector((state:any) => state.productDetails)
    const idUser = useSelector((store:any)=> store.userDetails?.id)
 
-   
    function handleFav(){
       if(idUser){
           dispatch(addFavUser(idUser,{
