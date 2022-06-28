@@ -45,6 +45,7 @@ export default function ProductDetails(){
           alert('Debes iniciar sesión para poder agregar productos a favoritos!')
       }
   }
+  console.log(idUser)
 
    function handleCart(){
       dispatch(addProductCart({
