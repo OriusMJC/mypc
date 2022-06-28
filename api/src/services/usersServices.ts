@@ -30,7 +30,7 @@ export const getBasicUserInfo = async(id:string): Promise<types.NonSensitiveUser
 }
 
 export const addNewUser = async(user: types.User): Promise<string> => {
-    if(user.email === 'mypcecomerce@gmail.com'){
+    if(user.email === 'mypcecommerce@gmail.com'){
         await User.create({...user,admin:true})
     }else{
         await User.create(user)
