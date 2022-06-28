@@ -28,9 +28,8 @@ export default function ProductDetails(){
    const navigate = useNavigate();
    let product = useSelector((state:any) => state.productDetails)
    const idUser = useSelector((store:any)=> store.userDetails?.id)
-
-   console.log(product);
-   console.log(idUser);
+   const productSellerId = product.sellerInfo && product.sellerInfo.id
+   const boolean = productSellerId && productSellerId === idUser && true 
 
    function handleFav(){
       if(idUser){
@@ -97,7 +96,7 @@ export default function ProductDetails(){
                      Añadir al carrito
                   </button>
                   {
-                  product.sellerInfo.id && product.sellerInfo.id.includes(idUser) 
+                  boolean
                   &&  
                   <div>
                   <Link to ={`/user/userEditProduct/${idProduct}`}>
@@ -117,7 +116,7 @@ export default function ProductDetails(){
                <p>
                   {product?.description}
                </p>
-               <ProductComments idProd={product.id} comments={product.comments} idUser={idUser} product = {product}/>    
+               <ProductComments idProd={product.id} comments={product.comments} boolean = {boolean} idProduct={idProduct}/>    
             </section>
          </div>
       </div>

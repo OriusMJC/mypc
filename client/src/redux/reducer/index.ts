@@ -9,7 +9,9 @@ import {
     ADD_PRODUCT_CART, 
     DEL_PRODUCT_CART,
     LOGIN_USER, 
-    ADD_COMMENT, 
+    ADD_COMMENT,
+    DELETE_COMMENT,
+    ADD_RESPONSE,
     SINGOUT_USER,
     GET_PRODUCT_CART, 
     CREATE_PRODUCT,
@@ -99,7 +101,26 @@ export default function rootReducer(state = initialState, action: any){
                 ...state,
                 productDetails: product
             }
-            
+        case DELETE_COMMENT:
+            let commentFilter = state.productDetails.comments.filter((c:any) => c.id !== action.payload.idComment)
+            let productFiltered = {...state.productDetails,comments: commentFilter}
+
+            return {
+                ...state,
+                productDetails: productFiltered
+            }
+        case ADD_RESPONSE:
+            let commentsArr = state.productDetails.comments.map((c:any) => {
+                if(c.id === action.payload.id){
+                    c.sellerResponse = action.payload.resp
+                }
+                return c;
+            })
+            let productsFinal = {...state.productDetails, comments: commentsArr}
+            return {
+                ...state,
+                productDetails: productsFinal
+            }
         // case ADD_FAV:
         //     const newFav = [...state.userDetails.fav, action.payload]
         //     return {

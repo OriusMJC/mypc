@@ -10,9 +10,6 @@ import s from "../Styles/Fav.module.css";
 export default function Fav() {
   const dispatch = useAppDispatch();
   const user = useSelector((store: any) => store.userDetails);
-  const products = useSelector((state:any) => state.allComponents);
-  console.log(user);
-
   // const productsFav = useSelector((store:any)=> store.userDetails?.fav)
   // function HandleNavi(){
   //     const navigate = useNavigate()
@@ -32,7 +29,7 @@ export default function Fav() {
     if (user && user.id) {
       dispatch(loginUser(user.id));
     }
-  }, []);
+  }, [handleKickFav]);
 
   return (
     <div className={s.favContainer}>
