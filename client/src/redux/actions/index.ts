@@ -71,6 +71,16 @@ export function createUser(user){
     }
 }
 
+export function getUserData(id){
+    return async() => {
+        try {
+            let resp = await axios(`/users/${id}`)
+            return resp.data
+        } catch (error) {
+            console.log(error)
+        }
+    }
+}
 export function loginUser(id){
     return async(dispatch: Dispatch<Action>) => {
         try {
