@@ -87,7 +87,8 @@ export default function Login(){
           fav: []
         }))
         dispatch(loginUser(data.uid))
-    }
+      }
+    navigate("/");
   }
 
   return (

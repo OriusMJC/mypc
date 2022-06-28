@@ -43,7 +43,6 @@ export const updateDataProduct = async(idProduct:string, newProductData:types.Pr
 export const addLikes = async(idProduct:string):Promise<string>=>{
     const product = await Product.findByPk(idProduct)
     let likes = product.likes + 1
-    console.log(likes)
     await Product.update({likes},{where: {id: idProduct}})
     return 'Like agregado con éxito'
 }

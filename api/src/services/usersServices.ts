@@ -1,6 +1,7 @@
 import * as types from '../types'
 import { addLikes, deleteLike } from './productServices';
 const { User } = require('../db');
+const {DB_EMAIL} = process.env;
 
 //Aqui van las funciones para todo sobre los users
 
@@ -30,7 +31,7 @@ export const getBasicUserInfo = async(id:string): Promise<types.NonSensitiveUser
 }
 
 export const addNewUser = async(user: types.User): Promise<string> => {
-    if(user.email === 'mypcecommerce@gmail.com'){
+    if(user.email === DB_EMAIL){
         await User.create({...user,admin:true})
     }else{
         await User.create(user)

@@ -6,7 +6,7 @@ export default function Contact(){
         <div className={s.contactContainer}>
             <div className= {s.div}>
                 <Link to='/'>
-                    <button>Página principal</button>
+                    <button>Inicio</button>
                 </Link>
                 <h1>Contacta con nosotros</h1>
                 <form className= {s.form}
@@ -22,7 +22,7 @@ export default function Contact(){
                     <input
                         className={s.input}
                         type='email'
-                        placeholder='Email'
+                        placeholder='Tu email'
                         name="email"
                         required
                     />

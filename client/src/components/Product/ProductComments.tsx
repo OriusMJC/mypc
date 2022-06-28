@@ -9,6 +9,7 @@ export default function ProductComments({idProd,comments, boolean, idProduct}){
   const id = arrId.length ? Math.max(...arrId) + 1 : 0;
   const dispatch = useAppDispatch()
   let userData = useSelector((state:any) => state.userDetails)
+  const admin = useSelector((state:any)=> state.userDetails?.admin)
 
   
   const [newComment,setNewComment] = useState('')
@@ -85,7 +86,7 @@ export default function ProductComments({idProd,comments, boolean, idProduct}){
                 <p>{obj.comment}</p>
  
               {
-                boolean 
+                (boolean || admin)
                 &&
                 <div>
                 <button value={obj.id} onClick = {handleDeleteComment}>X</button>
