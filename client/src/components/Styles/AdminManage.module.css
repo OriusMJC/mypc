@@ -53,8 +53,10 @@
     padding: 0;
 }
 .listUsers td{
+    overflow-wrap: break-word;
     border: 1px solid #000;
-    height: 60px;
+    max-width: 200px;
+    min-height: 60px;
     margin: 0;
     padding-left: 10px;
     vertical-align:middle;
@@ -64,12 +66,17 @@
     border-radius: 50%;
 }
 .listProd td{
+    overflow-wrap: break-word;
+    min-width: 50px;
+    max-width: 100px;
+    text-align: justify;
     border: 1px solid #000;
-    height: 80px;
+    min-height: 80px;
     margin: 0;
     padding-left: 10px;
     vertical-align:middle;
 }
 .listProd td img{
     width: 80px;
+    margin-right: -50px;
 }

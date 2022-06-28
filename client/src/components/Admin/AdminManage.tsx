@@ -13,7 +13,7 @@ export default function AdminManage (){
     const allComponents = useSelector((store:any)=>store.components)
     const [btnView, setBtnView ] = useState('products')
     const [refresh,setRefresh] = useState(1)
-
+    console.log(allComponents[0])
     useEffect(()=>{
         dispatch(getAllUsers())
         dispatch(getAllComponents())
@@ -45,7 +45,8 @@ export default function AdminManage (){
                                 <>
                                     <thead>
                                         <tr>
-                                            <th>ID</th>
+                                            <th>ID Product</th>
+                                            <th>ID Seller</th>
                                             <th>Imagen</th>
                                             <th>Titulo</th>
                                             <th>Stock</th>
@@ -60,6 +61,7 @@ export default function AdminManage (){
                                             return (
                                             <tr key={prod.id} className={s.listProd}>
                                                 <td>{prod.id}</td>
+                                                <td>{prod.sellerInfo.id}</td>
                                                 <td><img src={prod.photo}/></td>
                                                 <td>{prod.title}</td>
                                                 <td>{prod.cant}</td>
