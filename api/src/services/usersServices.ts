@@ -1,4 +1,5 @@
 import * as types from '../types'
+import { addLikes, deleteLike } from './productServices';
 const { User } = require('../db');
 
 //Aqui van las funciones para todo sobre los users
@@ -29,7 +30,12 @@ export const getBasicUserInfo = async(id:string): Promise<types.NonSensitiveUser
 }
 
 export const addNewUser = async(user: types.User): Promise<string> => {
-    await User.create(user)
+    if(user.email === 'mypcecomerce@gmail.com'){
+        await User.create({...user,admin:true})
+    }else{
+        await User.create(user)
+    }
+
     return 'Usuario guardado con éxito'
 }
 
@@ -46,6 +52,7 @@ export const userFavProduct = async(idUser:string,product:types.basicProductInfo
     if(newFavArr.length){
         if(!newFavArr.find((p:any)=> p.id === product.id)){
             newFavArr.push(product)
+            await addLikes(product.id)
         }
     }else{
         newFavArr = [product]
@@ -57,6 +64,7 @@ export const userFavProduct = async(idUser:string,product:types.basicProductInfo
 export const userDelFavProduct = async(idUser:string,idProduct:string):Promise<string>=>{
     let user = await User.findByPk(idUser)
     let newFavArr = user?.fav.filter((prod:any) => prod.id !== idProduct )
+    await deleteLike(idProduct)
     await User.update({fav: newFavArr},{where:{id: idUser}})
     return 'Producto likeado con éxito'
 }
