@@ -15,8 +15,8 @@
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    height: 300px;
-    width: 280px;
+    height: 400px;
+    width: 350px;
     border-radius: 5px;
 }
 .formLogin input{

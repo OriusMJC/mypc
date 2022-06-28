@@ -6,12 +6,17 @@ import {
     ORDER_POPULATION, 
     ORDER_PRICE, 
     FILTER_STATE, 
+    FILTER_USER, 
     ADD_PRODUCT_CART, 
     DEL_PRODUCT_CART,
     LOGIN_USER, 
     ADD_COMMENT, 
     SINGOUT_USER,
-    GET_PRODUCT_CART, 
+    GET_PRODUCT_CART,
+    RESET_PRODUCT_DETAIL, 
+    GET_ALL_USERS,
+    CREATE_PRODUCT,
+    DELETE_PRODUCT,
     // ADD_FAV, 
     // DEL_FAV
 } from "../actions"
@@ -38,8 +43,11 @@ const initialState = {
     components: [],
     allComponents:[],
     types: ['full', 'motherboard', 'procesador', 'grafica', 'ram', 'ssd', 'hdd', 'cooler', 'monitor', 'mouse', 'teclado','cables', 'fuente'],
+    allUsers: [],
+    users:[],
     userDetails: {fav:[]},
     productDetails: {comments: []},
+    // productsCreated: [],
     cart: []
 }
 
@@ -61,6 +69,22 @@ export default function rootReducer(state = initialState, action: any){
                 ...state,
                 allComponents: [...action.payload],
                 components: [...action.payload]
+            }
+        case GET_ALL_USERS:
+            return {
+                ...state,
+                allUsers: [...action.payload],
+                users: [...action.payload]
+            }
+        case FILTER_USER:
+            let newArrUser = state.allUsers.filter((u:any)=> 
+                u.id.includes(action.payload) || 
+                u.name.toLowerCase().includes(action.payload.toLowerCase()) ||
+                u.email.includes(action.payload.toLowerCase()))
+            console.log(newArrUser)
+            return {
+                ...state,
+                users: newArrUser
             }
         case LOGIN_USER:
             return {
@@ -86,7 +110,6 @@ export default function rootReducer(state = initialState, action: any){
             }
         case DEL_PRODUCT_CART:
             let newArrProd = state.cart.filter(prod => prod.id !== action.payload)
-            console.log(newArrProd)
             return {
                 ...state,
                 cart: newArrProd
@@ -97,6 +120,7 @@ export default function rootReducer(state = initialState, action: any){
                 ...state,
                 productDetails: product
             }
+            
         // case ADD_FAV:
         //     const newFav = [...state.userDetails.fav, action.payload]
         //     return {
@@ -145,6 +169,25 @@ export default function rootReducer(state = initialState, action: any){
             return {
                 ...state,
                 components: action.payload === "All" ? [...state.allComponents] : sortedPrice
+            }
+        case RESET_PRODUCT_DETAIL:
+            return{
+                ...state,
+                productDetails: action.payload
+              }
+        // case CREATE_PRODUCT:
+        //     return {
+        //         ...state,
+        //         productsCreated: [...state.productsCreated, action.payload]
+        //     }
+        case DELETE_PRODUCT:
+            let filtered = [];
+            if(action.payload){
+                filtered = state.components.filter(c => c.id !== action.payload)
+            }
+            return {
+                ...state,
+                components: filtered
             }
         default: 
             return state

@@ -20,7 +20,7 @@ module.exports = (sequelize:any) => {
       type: DataTypes.STRING,
       allownull: false,
     },
-    products: {
+    product: {
       type: DataTypes.ARRAY(DataTypes.JSON),
       allownull: false
     },
@@ -29,7 +29,7 @@ module.exports = (sequelize:any) => {
       allownull: false,
     },
     typeOfPayment: {
-      type: DataTypes.ENUM('efectivo', 'tarjetaCred', 'tarjetaDeb', 'pagoFacil', 'rapiPago', 'mercadoPago'),
+      type: DataTypes.ENUM('efectivo', 'tarjetaCred', 'tarjetaDeb', 'pagoFacil', 'rapiPago', 'mercadoPago', 'cuotas', 'transferencia', 'deposito'),
       allownull: false,
     },
     statusOfPayment: {
