@@ -13,6 +13,7 @@ export const FILTER_CATEGORY = "FILTER_CATEGORY";
 export const ORDER_POPULATION = "ORDER_POPULATION";
 export const ORDER_PRICE = "ORDER_PRICE";
 export const FILTER_STATE = "FILTER_STATE";
+export const FILTER_USER = "FILTER_USER";
 export const LOGIN_USER = "LOGIN_USER";
 export const SINGOUT_USER = "SINGOUT_USER";
 export const CREATE_PRODUCT = "CREATE_PRODUCT";
@@ -58,6 +59,11 @@ export function getName(name: string){
         } catch (error) {
             console.log(error)
         }
+    }
+}
+export function filterUser(name: string){
+    return (dispatch: Dispatch<Action>) => {
+        dispatch({type: FILTER_USER, payload: name})
     }
 }
 

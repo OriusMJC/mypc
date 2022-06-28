@@ -6,7 +6,6 @@ import s from "../Styles/userDetails.module.css";
 export default function UserDetail() {
   const user = useSelector((state: any) => state.userDetails);
   const products = useSelector((state:any) => state.allComponents);
-  console.log(user)
   return (
     <div className={s.container}>
       <div className={s.contOptions}>

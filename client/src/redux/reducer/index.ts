@@ -6,6 +6,7 @@ import {
     ORDER_POPULATION, 
     ORDER_PRICE, 
     FILTER_STATE, 
+    FILTER_USER, 
     ADD_PRODUCT_CART, 
     DEL_PRODUCT_CART,
     LOGIN_USER, 
@@ -43,6 +44,7 @@ const initialState = {
     allComponents:[],
     types: ['full', 'motherboard', 'procesador', 'grafica', 'ram', 'ssd', 'hdd', 'cooler', 'monitor', 'mouse', 'teclado','cables', 'fuente'],
     allUsers: [],
+    users:[],
     userDetails: {fav:[]},
     productDetails: {comments: []},
     // productsCreated: [],
@@ -71,7 +73,18 @@ export default function rootReducer(state = initialState, action: any){
         case GET_ALL_USERS:
             return {
                 ...state,
-                allUsers: action.payload
+                allUsers: [...action.payload],
+                users: [...action.payload]
+            }
+        case FILTER_USER:
+            let newArrUser = state.allUsers.filter((u:any)=> 
+                u.id.includes(action.payload) || 
+                u.name.toLowerCase().includes(action.payload.toLowerCase()) ||
+                u.email.includes(action.payload.toLowerCase()))
+            console.log(newArrUser)
+            return {
+                ...state,
+                users: newArrUser
             }
         case LOGIN_USER:
             return {
