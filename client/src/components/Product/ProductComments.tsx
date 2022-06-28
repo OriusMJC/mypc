@@ -4,17 +4,18 @@ import { useAppDispatch } from "src/config/config"
 import { addProductComment } from "src/redux/actions"
 import s from '../Styles/ProductComments.module.css'
 
-export default function ProductComments({idProd,comments}){
+export default function ProductComments({idProd,comments, idUser, product}){
   const dispatch = useAppDispatch()
   let userData = useSelector((state:any) => state.userDetails)
   const [newComment,setNewComment] = useState('')
+  const [resp, setResp] = useState(false);
+  const [userResp, setUserResp] = useState('')
   function handleChange(e:any){
     setNewComment(e.target.value)
   }
   function handleSubmit(e){
     e.preventDefault()
     if(newComment.length){
-
       if(userData.id && userData.name && userData.avatar){
         dispatch(addProductComment(idProd,{name:userData.name,avatar:userData.avatar,comment: newComment}))
         setNewComment('')
@@ -25,6 +26,20 @@ export default function ProductComments({idProd,comments}){
       alert('No puedes enviar un comentario vacio')
     }
   }
+
+  function handleResp(){
+    setResp(true)
+  }
+
+  function handleUserResp(e){
+
+  }
+
+  function handleSubmitResp(e){
+    e.preventDefault();
+    
+  }
+
   return (
     <section id={s.sectionComments}>
         <h3>Haz tu pregunta aquí</h3>
@@ -42,7 +57,23 @@ export default function ProductComments({idProd,comments}){
                 <h4>{obj.name}</h4>
                 <p>{obj.comment}</p>
               </div>
+              {
+                product.sellerInfo.id && product.sellerInfo.id.includes(idUser) 
+                &&
+                <div>
+                <button onClick={handleResp}>Responder</button>
+                {
+                  resp === true &&
+                  <div>
+                    <h1>hola</h1>
+                    <button>HOLAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</button>
+                  </div>
+                  
+                }
+                </div>
+              }
             </div>
+            
             )
           })
           :

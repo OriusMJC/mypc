@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react"
 import { useSelector} from "react-redux"
-import { Link, useParams } from "react-router-dom"
+import { Link, useParams, useNavigate } from "react-router-dom"
 import { useAppDispatch } from "src/config/config"
-import { addFavUser, addProductCart, getAllDetails } from "src/redux/actions"
+import { addFavUser, addProductCart, getAllDetails, deleteProduct } from "src/redux/actions"
 import ProductComments from "./ProductComments"
 import s from '../Styles/ProductDetails.module.css'
 import nolike from '../icons/nolike.png'
@@ -25,8 +25,12 @@ import { addCartLH } from "src/services/functionsServices"
 export default function ProductDetails(){
    const dispatch = useAppDispatch()
    const {idProduct} = useParams()
+   const navigate = useNavigate();
    let product = useSelector((state:any) => state.productDetails)
    const idUser = useSelector((store:any)=> store.userDetails?.id)
+
+   console.log(product);
+   console.log(idUser);
 
    function handleFav(){
       if(idUser){
@@ -58,6 +62,12 @@ export default function ProductDetails(){
       }))
    }
 
+   function handleDelete(){
+      dispatch(deleteProduct(idProduct))
+      alert('Product deleted')
+      navigate('/')
+   }
+
    useEffect(():any=>{
       dispatch(getAllDetails(idProduct))
       // return (
@@ -86,9 +96,20 @@ export default function ProductDetails(){
                   <button onClick={handleCart}>
                      Añadir al carrito
                   </button>
+                  {
+                  product.sellerInfo.id && product.sellerInfo.id.includes(idUser) 
+                  &&  
+                  <div>
+                  <Link to ={`/user/userEditProduct/${idProduct}`}>
                   <button>
                      Editar
                   </button>
+                  </Link>
+                  <button onClick = {handleDelete}>
+                     Eliminar
+                  </button>
+                  </div> 
+                  }
                </div>
             </section>
             <section>
@@ -96,7 +117,7 @@ export default function ProductDetails(){
                <p>
                   {product?.description}
                </p>
-               <ProductComments idProd={product.id} comments={product.comments}/>    
+               <ProductComments idProd={product.id} comments={product.comments} idUser={idUser} product = {product}/>    
             </section>
          </div>
       </div>
