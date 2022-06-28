@@ -71,7 +71,7 @@ export default function AdminManage (){
                                                 <td><img src={prod.photo}/></td>
                                                 <td>{prod.title}</td>
                                                 <td>{prod.cant}</td>
-                                                <td><button>✔</button></td>
+                                                <td><Link to={`/user/userEditProduct/${prod.id}`}>Editar</Link></td>
                                                 <td><button onClick={()=>handleDelete(prod.id)}>❌</button></td>
                                                 <td><Link to={`/detail/${prod.id}`}>Visitar</Link></td>
                                             </tr>)
