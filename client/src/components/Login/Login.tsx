@@ -1,10 +1,11 @@
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom'
 import {  userLogin, userData, signInWithGoogle } from '../../services/userFirebase'
-import { loginUser } from '../../redux/actions';
+import { createUser, getUserData, loginUser } from '../../redux/actions';
 import { useAppDispatch } from '../../config/config'
 import s from "../Styles/Login.module.css";
 import validator from 'validator';
+import { useSelector } from 'react-redux';
 
 
 
@@ -69,9 +70,24 @@ export default function Login(){
       // setuserValidate(error.code)  
     }
   }
-
-  function handleSignInGoogle () {
-    signInWithGoogle()
+  
+  async function handleSignInGoogle () {
+    let data = await signInWithGoogle()
+    let res = await dispatch(getUserData(data.uid))
+    await dispatch(loginUser(data.uid))
+    if(!res.id){
+      await dispatch(createUser({
+          id:data.uid,
+          name:data.displayName,
+          email: data.email,
+          password: '1234567',
+          phone: data.phoneNumber? data.phoneNumber : '1111111111',
+          avatar: data.photoURL,
+          buy: [],
+          fav: []
+        }))
+        dispatch(loginUser(data.uid))
+    }
   }
 
   return (
@@ -96,9 +112,9 @@ export default function Login(){
         <button type="submit">Login</button>
           <span>Don't have account?</span>
         <Link to='/user/register'>
-        <button>Registrarse</button>
+          <button>Registrarse</button>
+        </Link>
         <button onClick={handleSignInGoogle}>Sign In With Google</button>
-      </Link>
       </form>
       {errors.email && (<p className={s.error}> {errors.email}</p>)}
       {errors.password && (<p className={s.error}> {errors.password}</p>)}

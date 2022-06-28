@@ -8,6 +8,7 @@ import {
 	GoogleAuthProvider,
 	signInWithPopup,
 } from "firebase/auth";
+import { useAppDispatch } from "src/config/config";
 import { loginUser } from "src/redux/actions";
 // import { createContext, useContext } from 'react';
 import { auth } from "../firebase/client";
@@ -45,12 +46,16 @@ export const userData = async () => {
 
 export const loginVerifycation = async (dispatch: any) => {
 	let user = await JSON.parse(window.localStorage.getItem("userData"));
-	if (user.email) {
+	if (user && !user.id) {
 		await userLogin(user.email, user.password);
 		const id = await userData();
-		dispatch(loginUser(id));
+		if(id){
+			dispatch(loginUser(id))
+		}
+	}else if(user?.id){
+		dispatch(loginUser(user.id))
 	}
-};
+}
 
 // export const userData = () => onAuthStateChanged(auth, user => {
 //     if(user) {
@@ -63,17 +68,14 @@ export const loginVerifycation = async (dispatch: any) => {
 
 export const signInWithGoogle = async () => {
 	const provider = new GoogleAuthProvider();
-	await signInWithPopup(auth, provider)
-		.then((response) => {
-			const credential = GoogleAuthProvider.credentialFromResult(response);
-			const token = credential.accessToken;
-			const {email, uid} = response.user;
-
-            userLogin(email, uid)
-				// window.localStorage.setItem(
-				// 	"userData",
-				// 	JSON.stringify({email, password: uid})
-				// );
-		})
-		.catch((err) => console.log(err));
+	let response = await signInWithPopup(auth, provider)
+	const {email,uid} = response.user;
+	let user = window.localStorage.getItem("userData");
+	if (!user) {
+		window.localStorage.setItem(
+			"userData",
+			JSON.stringify({ id:uid, email, password: '1234567' })
+		);
+	}
+	return response.user
 };
