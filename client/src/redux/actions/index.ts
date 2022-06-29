@@ -208,11 +208,11 @@ export function addProductComment(id:string,comment:any){
     }
 }
 
-export function addSellerResp(id:string, resp: any){
+export function addSellerResp(idProduct:string, resp: any){
     return async(dispatch: Dispatch<Action>) => {
         try {
-            await axios.put(`/products/comments/update/${id}`, resp)
-            dispatch({type: ADD_RESPONSE, payload: {id, resp}})
+            await axios.put(`/products/comments/update/${idProduct}`, resp)
+            dispatch({type: ADD_RESPONSE, payload: {idProduct, resp}})
         } catch (error) {
             console.log(error)
         }
