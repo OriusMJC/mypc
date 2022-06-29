@@ -53,6 +53,7 @@ export default function ProductComments({idProd,comments, boolean, idProduct}){
       ...sellerResponse,
       comment: '' 
     })
+    setRefresh([...refresh, 1])
   }
 
   function handleCancelResp(){
