@@ -7,6 +7,9 @@ import s from "../Styles/Pages.module.css";
 import './style.css'
 
 function Pages({ productsPerPage, allComponents, refresh }) {
+
+    
+
     const cantPages = Math.ceil(allComponents.length /productsPerPage) 
     const [currentPage, setCurrentPage] = useState(1);
     const indexOfLastProduct = currentPage * productsPerPage;

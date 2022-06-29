@@ -75,6 +75,7 @@ export default function ProductComments({idProd,comments, boolean, idProduct}){
       response: true,
     }))
     dispatch(getAllDetails(idProduct))
+    dispatch(getAllDetails(idProduct))
     setActualPosition([null,null]);
     setSellerResponse({
       ...sellerResponse,
