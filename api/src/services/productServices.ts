@@ -44,7 +44,6 @@ export const updateDataProduct = async(idProduct:string, newProductData:types.Pr
 export const addLikes = async(idProduct:string):Promise<string>=>{
     const product = await Product.findByPk(idProduct)
     let likes = product.likes + 1
-    console.log(likes)
     await Product.update({likes},{where: {id: idProduct}})
     return 'Like agregado con éxito'
 }
@@ -60,6 +59,29 @@ export const addComment = async(idProduct:string,comment:any):Promise<string>=>{
     await Product.update({comments: newCommentArr},{where: {id: idProduct}})
     return 'Comentario agregado con éxito'
 }
+
+export const deleteComment = async(idProduct: string, idComment:any):Promise<string>=>{
+    const product = await Product.findByPk(idProduct);
+    let deletedComment:any = [] 
+    product.comments.forEach((c:any)=>{
+        if(c.id != idComment) deletedComment.push(c)
+    })
+    await Product.update({comments: deletedComment}, {where: {id: idProduct}})
+    return 'Comentario eliminado con exito';
+}
+
+export const addSellerResp = async(idProduct: string, sellerResp:any):Promise<string>=>{
+    const product = await Product.findByPk(idProduct);
+    let newArr = product.comments.map((c:any) => {
+        if(c.id === sellerResp.id) {
+            c.sellerResponse = sellerResp
+        }
+        return c
+    })
+    await Product.update({comments: newArr}, {where: {id: idProduct}})
+    return 'Comentario actualizado';
+}
+
 export const productSelled = async(idProduct:string):Promise<string>=>{
     await Product.update({sell: true},{where: {id: idProduct}})
     return 'Producto vendido con éxito'

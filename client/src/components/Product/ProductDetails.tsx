@@ -1,12 +1,14 @@
 import { useEffect, useState } from "react"
 import { useSelector} from "react-redux"
-import { Link, useParams } from "react-router-dom"
+import { Link, useParams, useNavigate } from "react-router-dom"
 import { useAppDispatch } from "src/config/config"
-import { addFavUser, addProductCart, getAllDetails, resetProductDetail } from "src/redux/actions"
+import { addFavUser, addProductCart, getAllDetails, resetProductDetail, deleteProduct } from "src/redux/actions"
 import ProductComments from "./ProductComments"
 import s from '../Styles/ProductDetails.module.css'
 import nolike from '../icons/nolike.png'
 import { addCartLH } from "src/services/functionsServices"
+import { userInfo } from "os"
+import { userData } from "src/services/userFirebase"
 // import { Products } from "types"
 
 // interface Info {
@@ -25,9 +27,13 @@ import { addCartLH } from "src/services/functionsServices"
 export default function ProductDetails(){
    const dispatch = useAppDispatch()
    const {idProduct} = useParams()
+   const navigate = useNavigate();
    let product = useSelector((state:any) => state.productDetails)
    const idUser = useSelector((store:any)=> store.userDetails?.id)
-
+   const admin = useSelector((store:any)=> store.userDetails?.admin)
+   const productSellerId = product.sellerInfo && product.sellerInfo.id
+   const boolean = productSellerId && productSellerId === idUser && true 
+   console.log(admin)
    function handleFav(){
       if(idUser){
           dispatch(addFavUser(idUser,{
@@ -59,6 +65,12 @@ export default function ProductDetails(){
       }))
    }
 
+   function handleDelete(){
+      dispatch(deleteProduct(idProduct))
+      alert('Product deleted')
+      navigate('/')
+   }
+
    useEffect(():any=>{
       dispatch(getAllDetails(idProduct))
        return () => dispatch(resetProductDetail())
@@ -85,9 +97,20 @@ export default function ProductDetails(){
                   <button className={s.btnSend} onClick={handleCart}>
                      Añadir al carrito
                   </button>
+                  {
+                  (boolean || admin)
+                  &&  
+                  <>
+                  <Link to ={`/user/userEditProduct/${idProduct}`}>
                   <button>
                      Editar
                   </button>
+                  </Link>
+                  <button onClick = {handleDelete}>
+                     Eliminar
+                  </button>
+                  </> 
+                  }
                </div>
             </section>
             <section>
@@ -95,7 +118,7 @@ export default function ProductDetails(){
                <p>
                   {product?.description}
                </p>
-               <ProductComments idProd={product.id} comments={product.comments}/>    
+               <ProductComments idProd={product.id} comments={product.comments} boolean = {boolean} idProduct={idProduct}/>    
             </section>
          </div>
       </div>

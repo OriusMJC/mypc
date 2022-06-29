@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { useId } from 'react';
 import { Dispatch } from 'redux';
 import { addCartLH, getCartLH, removeCartLH } from 'src/services/functionsServices';
 import { userSingOut } from 'src/services/userFirebase';
@@ -9,10 +10,13 @@ export const GET_PRODUCT_CART = "GET_PRODUCT_CART";
 export const ADD_PRODUCT_CART = "ADD_PRODUCT_CART";
 export const DEL_PRODUCT_CART = "DEL_PRODUCT_CART";
 export const ADD_COMMENT = "ADD_COMMENT";
+export const DELETE_COMMENT = "DELETE_COMMENT";
+export const ADD_RESPONSE = "ADD_RESPONSE";
 export const FILTER_CATEGORY = "FILTER_CATEGORY";
 export const ORDER_POPULATION = "ORDER_POPULATION";
 export const ORDER_PRICE = "ORDER_PRICE";
 export const FILTER_STATE = "FILTER_STATE";
+export const FILTER_USER = "FILTER_USER";
 export const LOGIN_USER = "LOGIN_USER";
 export const SINGOUT_USER = "SINGOUT_USER";
 export const CREATE_PRODUCT = "CREATE_PRODUCT";
@@ -58,6 +62,11 @@ export function getName(name: string){
         } catch (error) {
             console.log(error)
         }
+    }
+}
+export function filterUser(name: string){
+    return (dispatch: Dispatch<Action>) => {
+        dispatch({type: FILTER_USER, payload: name})
     }
 }
 
@@ -199,7 +208,27 @@ export function addProductComment(id:string,comment:any){
     }
 }
 
+export function addSellerResp(id:string, resp: any){
+    return async(dispatch: Dispatch<Action>) => {
+        try {
+            await axios.put(`/products/comments/update/${id}`, resp)
+            dispatch({type: ADD_RESPONSE, payload: {id, resp}})
+        } catch (error) {
+            console.log(error)
+        }
+    }
+}
 
+export function deleteProductComment(id:string, idComment: any){
+    return async(dispatch: Dispatch<Action>) => {
+        try {
+            await axios.delete(`/products/comments/delete/${id}/${idComment}`)
+            dispatch({type: DELETE_COMMENT, payload: {id, idComment}})
+        } catch (error) {
+            console.log(error)
+        }
+    }
+}
 
 export function filterComponentsByCategory(payload: string){
     return {

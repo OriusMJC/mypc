@@ -109,20 +109,7 @@
    margin-top: 10px;        
 }
 
-.back{
-    margin-bottom: 20px;    
-    background-color: var(--gray-medium);
-    border-radius: 3px;
-    cursor: pointer;
-    border: none;
-    min-width: 150px;
-    height: 25px;
-    transition: 0.2s;    
-}
-.back:hover{
-    transform: scale(1.05);
-    color: rgba(255, 255, 255, 0.762)
-}
+
 
 @media screen and (max-width: 300px) {
     .imgProdFav {
