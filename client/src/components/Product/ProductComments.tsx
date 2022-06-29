@@ -53,6 +53,7 @@ export default function ProductComments({idProd,comments, boolean, idProduct}){
       ...sellerResponse,
       comment: '' 
     })
+    setRefresh([...refresh, 1])
   }
 
   function handleCancelResp(){
@@ -74,6 +75,7 @@ export default function ProductComments({idProd,comments, boolean, idProduct}){
       id: Number(actualPosition[1]),
       response: true,
     }))
+    dispatch(getAllDetails(idProduct))
     dispatch(getAllDetails(idProduct))
     setActualPosition([null,null]);
     setSellerResponse({
