@@ -19,6 +19,7 @@ import {
     GET_ALL_USERS,
     CREATE_PRODUCT,
     DELETE_PRODUCT,
+    GET_PRODUCTS_USER,
     // ADD_FAV, 
     // DEL_FAV
 } from "../actions"
@@ -71,6 +72,12 @@ export default function rootReducer(state = initialState, action: any){
                 ...state,
                 allComponents: [...action.payload],
                 components: [...action.payload]
+            }
+        case GET_PRODUCTS_USER:
+            let comp = state.allComponents.filter((p:any)=> p.sellerInfo?.id === action.payload)
+            return {
+                ...state,
+                components: [...comp]
             }
         case GET_ALL_USERS:
             return {
