@@ -10,9 +10,15 @@ export default function UserDetail() {
   return (
     <div className={s.container}>
       <div className={s.contOptions}>
-        <button>Editar perfil</button>
-        <button>Cambiar contraseña</button>
-        <button>a</button>
+        <Link to="/user/detail/edit">
+          <button>Edit profile</button>
+        </Link>
+        <Link to="/user/detail/password">
+          <button>Change contraseña</button>
+        </Link>
+        <Link to="/user/detail/mail">
+        <button>Change email</button>
+        </Link>
         <button>a</button>
       </div>
       <div className={s.userDetails}>
