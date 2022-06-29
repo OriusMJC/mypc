@@ -48,7 +48,7 @@ export default function NavButtons() {
             <div id="showMenu" className={s.showMenu}>
               <ul>
                 <li onClick={handleShowMenu}>
-                  <Link to="/userdetail">
+                  <Link to="/user/detail">
                     <i className="fa-solid fa-user"></i>
                     <span>Acount</span>
                   </Link>
@@ -86,13 +86,13 @@ export default function NavButtons() {
             <div id="showMenu" className={s.showMenu}>
               <ul>
                 <li>
-                  <Link to="/user/register">
+                  <Link to="/register">
                     <i className="fa-solid fa-address-card"></i>
                     <span>Register</span>
                   </Link>
                 </li>
                 <li onClick={handleSingOut}>
-                  <Link to="/user/login">
+                  <Link to="/login">
                     <i className="fa-solid fa-arrow-right-from-bracket"></i>
                     <span>Login</span>
                   </Link>
