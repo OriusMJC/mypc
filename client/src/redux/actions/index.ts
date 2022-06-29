@@ -1,4 +1,5 @@
 import axios from "axios";
+import { useId } from "react";
 import { Dispatch } from "redux";
 import {
 	addCartLH,
@@ -13,10 +14,13 @@ export const GET_PRODUCT_CART = "GET_PRODUCT_CART";
 export const ADD_PRODUCT_CART = "ADD_PRODUCT_CART";
 export const DEL_PRODUCT_CART = "DEL_PRODUCT_CART";
 export const ADD_COMMENT = "ADD_COMMENT";
+export const DELETE_COMMENT = "DELETE_COMMENT";
+export const ADD_RESPONSE = "ADD_RESPONSE";
 export const FILTER_CATEGORY = "FILTER_CATEGORY";
 export const ORDER_POPULATION = "ORDER_POPULATION";
 export const ORDER_PRICE = "ORDER_PRICE";
 export const FILTER_STATE = "FILTER_STATE";
+export const FILTER_USER = "FILTER_USER";
 export const LOGIN_USER = "LOGIN_USER";
 export const SINGOUT_USER = "SINGOUT_USER";
 export const CREATE_PRODUCT = "CREATE_PRODUCT";
@@ -65,6 +69,11 @@ export function getName(name: string) {
 		}
 	};
 }
+export function filterUser(name: string) {
+	return (dispatch: Dispatch<Action>) => {
+		dispatch({ type: FILTER_USER, payload: name });
+	};
+}
 
 export function createUser(user) {
 	return async () => {
@@ -101,7 +110,7 @@ export function editUserData(id: string, newDataUser: object) {
 export function loginUser(id) {
 	return async (dispatch: Dispatch<Action>) => {
 		try {
-            let resp = await axios(`/users/${id}`);
+			let resp = await axios(`/users/${id}`);
 			dispatch({ type: LOGIN_USER, payload: resp.data });
 		} catch (error) {
 			console.log(error);
@@ -172,7 +181,6 @@ export function updateProduct(id: string, data: any) {
 		}
 	};
 }
-
 export function getProductsLHtoCart() {
 	return async (dispatch: Dispatch<Action>) => {
 		const cart = await getCartLH();
@@ -209,6 +217,27 @@ export function addProductComment(id: string, comment: any) {
 		try {
 			await axios.put(`/products/comments/${id}`, comment);
 			dispatch({ type: ADD_COMMENT, payload: { id, comment } });
+		} catch (error) {
+			console.log(error);
+		}
+	};
+}
+export function addSellerResp(idProduct: string, resp: any) {
+	return async (dispatch: Dispatch<Action>) => {
+		try {
+			await axios.put(`/products/comments/update/${idProduct}`, resp);
+			dispatch({ type: ADD_RESPONSE, payload: { idProduct, resp } });
+		} catch (error) {
+			console.log(error);
+		}
+	};
+}
+
+export function deleteProductComment(id: string, idComment: any) {
+	return async (dispatch: Dispatch<Action>) => {
+		try {
+			await axios.delete(`/products/comments/delete/${id}/${idComment}`);
+			dispatch({ type: DELETE_COMMENT, payload: { id, idComment } });
 		} catch (error) {
 			console.log(error);
 		}
@@ -260,7 +289,7 @@ export function getAllUsers() {
 	};
 }
 export function emailUpdateUser(id: string, newEmail: string) {
-    return async (dispatch: Dispatch<Action>) => {
+	return async (dispatch: Dispatch<Action>) => {
 		try {
 			let newUserData = await axios.put(`/users/${id}/email`, {
 				email: newEmail,

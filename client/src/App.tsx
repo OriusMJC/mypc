@@ -47,6 +47,7 @@ function App() {
 	return (
 		<div className={style.App}>
 			<NavBar />
+			{/* <NavButtons/> */}
 			<Routes>
 				{/* LOGIN */}
 				<Route path="/register" element={<Register />} />
@@ -73,12 +74,9 @@ function App() {
 				<Route path="/user/detail/edit" element={<UserEditDetails />} />
 				<Route
 					path="/user/detail/password"
-					element={<UserEditPasswordOrMail/>}
+					element={<UserEditPasswordOrMail />}
 				/>
-				<Route
-					path="/user/detail/mail"
-					element={<UserEditPasswordOrMail/>}
-				/>
+				<Route path="/user/detail/mail" element={<UserEditPasswordOrMail />} />
 
 				{/* ADMIN */}
 				<Route path="/user/admin" element={<AdminManage />} />

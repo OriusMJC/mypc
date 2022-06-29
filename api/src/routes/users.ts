@@ -99,6 +99,8 @@ router.put("/:id/email", async (req, res, next) => {
 router.get('/:idUser/orders', getUserOrders)
 
 router.get('/:idUser/orders/:idOrder', getUserOrder)
+
+router.get('/:idUser/cart/payment')
 */
 
 module.exports = router;

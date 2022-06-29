@@ -75,7 +75,7 @@ export default function Login(){
     let data = await signInWithGoogle()
     let res = await dispatch(getUserData(data.uid))
     await dispatch(loginUser(data.uid))
-    if(res && !res.id){
+    if(!res){
       await dispatch(createUser({
           id:data.uid,
           name:data.displayName,
@@ -87,7 +87,8 @@ export default function Login(){
           fav: []
         }))
         dispatch(loginUser(data.uid))
-    }
+      }
+    navigate("/");
   }
 
   return (

@@ -6,10 +6,13 @@ import {
 	ORDER_POPULATION,
 	ORDER_PRICE,
 	FILTER_STATE,
+	FILTER_USER,
 	ADD_PRODUCT_CART,
 	DEL_PRODUCT_CART,
 	LOGIN_USER,
 	ADD_COMMENT,
+	DELETE_COMMENT,
+	ADD_RESPONSE,
 	SINGOUT_USER,
 	GET_PRODUCT_CART,
 	RESET_PRODUCT_DETAIL,
@@ -58,6 +61,7 @@ const initialState = {
 		"fuente",
 	],
 	allUsers: [],
+	users: [],
 	userDetails: { fav: [] },
 	productDetails: { comments: [] },
 	// productsCreated: [],
@@ -86,7 +90,20 @@ export default function rootReducer(state = initialState, action: any) {
 		case GET_ALL_USERS:
 			return {
 				...state,
-				allUsers: action.payload,
+				allUsers: [...action.payload],
+				users: [...action.payload],
+			};
+		case FILTER_USER:
+			let newArrUser = state.allUsers.filter(
+				(u: any) =>
+					u.id.includes(action.payload) ||
+					u.name.toLowerCase().includes(action.payload.toLowerCase()) ||
+					u.email.includes(action.payload.toLowerCase())
+			);
+			console.log(newArrUser);
+			return {
+				...state,
+				users: newArrUser,
 			};
 		case LOGIN_USER:
 			return {
@@ -125,7 +142,31 @@ export default function rootReducer(state = initialState, action: any) {
 				...state,
 				productDetails: product,
 			};
+		case DELETE_COMMENT:
+			let commentFilter = state.productDetails.comments.filter(
+				(c: any) => c.id !== action.payload.idComment
+			);
+			let productFiltered = {
+				...state.productDetails,
+				comments: commentFilter,
+			};
 
+			return {
+				...state,
+				productDetails: productFiltered,
+			};
+		case ADD_RESPONSE:
+			let commentsArr = state.productDetails.comments.map((c: any) => {
+				if (c.id === action.payload.id) {
+					c.sellerResponse = action.payload.resp;
+				}
+				return c;
+			});
+			let productsFinal = { ...state.productDetails, comments: commentsArr };
+			return {
+				...state,
+				productDetails: productsFinal,
+			};
 		// case ADD_FAV:
 		//     const newFav = [...state.userDetails.fav, action.payload]
 		//     return {
@@ -206,11 +247,11 @@ export default function rootReducer(state = initialState, action: any) {
 				...state,
 				components: filtered,
 			};
-        case UPDATE_EMAIL:
-            return {
-                ...state,
+		case UPDATE_EMAIL:
+			return {
+				...state,
 				userDetails: action.payload,
-            }
+			};
 		default:
 			return state;
 	}
