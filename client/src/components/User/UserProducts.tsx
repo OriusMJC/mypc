@@ -45,7 +45,7 @@ function UserProducts() {
               <img src={prod.photo} alt={prod.title} ></img>
               <div className={s.infoProd}>
                   <h2>{prod.title}</h2>
-                  <p>{prod.price}</p>
+                  <p>${prod.price}</p>
                   <p>{prod.type}</p>
               </div>
               </div>
