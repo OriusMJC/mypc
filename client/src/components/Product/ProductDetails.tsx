@@ -33,7 +33,8 @@ export default function ProductDetails(){
    const admin = useSelector((store:any)=> store.userDetails?.admin)
    const productSellerId = product.sellerInfo && product.sellerInfo.id
    const boolean = productSellerId && productSellerId === idUser && true 
-   console.log(admin)
+
+   
    function handleFav(){
       if(idUser){
           dispatch(addFavUser(idUser,{
@@ -75,6 +76,8 @@ export default function ProductDetails(){
       dispatch(getAllDetails(idProduct))
        return () => dispatch(resetProductDetail())
    },[dispatch,idProduct])
+
+   
    return(
       <div id={s.prodContainer}>
          <div key={product?.key} id={s.contProdDetails}>

@@ -52,7 +52,7 @@ module.exports = (sequelize:any) => {
       type: DataTypes.JSON,
     }
   },{
-    timestamps: false
+    timestamps: true
   });
 };
 
