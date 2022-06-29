@@ -10,7 +10,7 @@ export default function UserDetail() {
   return (
     <>
     {
-      user.id? 
+      user?.id? 
       <div className={s.container}>
         <div className={s.contOptions}>
           <button>Editar perfil</button>
@@ -32,7 +32,7 @@ export default function UserDetail() {
             </Link>
             <Link to ='/user/userProducts'>
               <button className={s.buttonButton}> 
-                En venta
+                Estadisticas
               </button>
             </Link>
             {
