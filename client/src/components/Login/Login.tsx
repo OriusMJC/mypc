@@ -112,7 +112,7 @@ export default function Login(){
         */}
         <button type="submit">Login</button>
           <span>Don't have account?</span>
-        <Link to='/user/register'>
+        <Link to='/register'>
           <button>Registrarse</button>
         </Link>
         <button onClick={handleSignInGoogle}>Sign In With Google</button>

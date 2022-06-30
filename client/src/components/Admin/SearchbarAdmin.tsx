@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useAppDispatch } from "src/config/config";
-import { filterUser, getName } from "src/redux/actions";
+import { filterUser, getName, getProductsUser } from "src/redux/actions";
 import s from '../Styles/SearchbarAdmin.module.css'
 
 export default function SearchbarAdmin({btnView}){
@@ -16,7 +16,11 @@ export default function SearchbarAdmin({btnView}){
     function handleSubmit(e) {
         e.preventDefault();
         if(btnView === 'products'){
-            dispatch(getName(input));
+            if(input.length === 28 && input.split(' ').length === 1 && input.split('-').length === 1){
+                dispatch(getProductsUser(input))
+            }else{
+                dispatch(getName(input));
+            }
         }else if(btnView === 'user'){
             dispatch(filterUser(input))
         }

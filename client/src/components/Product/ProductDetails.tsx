@@ -104,14 +104,14 @@ export default function ProductDetails(){
                   (boolean || admin)
                   &&  
                   <>
-                  <Link to ={`/user/userEditProduct/${idProduct}`}>
-                  <button>
-                     Editar
-                  </button>
-                  </Link>
-                  <button onClick = {handleDelete}>
-                     Eliminar
-                  </button>
+                     <Link to ={`/user/userEditProduct/${idProduct}`}>
+                        <button className={s.btnSend}>
+                           Editar
+                        </button>
+                     </Link>
+                     <button onClick = {handleDelete} className={`${s.btnDelete} ${s.btnSend}`}>
+                        Eliminar
+                     </button>
                   </> 
                   }
                </div>
