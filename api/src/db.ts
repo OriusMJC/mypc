@@ -68,15 +68,10 @@ const { User, Product, Order } = sequelize.models;
 
 
 /* Un usuario tiene muchos procutos // Un producto pertenece a muchos usuarios */
-<<<<<<< HEAD
-// User.hasMany(Product, {foreignKey:'user_id', targetKey:'id', as:'sell'});
-User.hasMany(Product);
-=======
 User.hasMany(Product, {sourceKey:'id',foreignKey:'user_id', as:'sell'});
 // console.log(sequelize.models)
 
 // User.hasMany(Product);
->>>>>>> 84f236d8a1050fc34a347d47cb4ffbea1509e452
 Product.belongsTo(User);
 
 /* Un usuario tiene muchos pedidos // Un pedido pertenece a un usuario */
