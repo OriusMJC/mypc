@@ -1,6 +1,6 @@
 import { Router } from 'express';
 import { getBasicUserInfo} from '../services/usersServices';
-import { getAllProducts,getProductById,getProductByName, addNewProduct, updateDataProduct, productSelled, addComment, deleteProduct, deleteComment, addSellerResp } from '../services/productServices';
+import { getAllProducts,getProductById,getProductByName, addNewProduct, updateDataProduct, productSelled, addComment, deleteProduct, deleteComment, addSellerResp, deleteSellerResp } from '../services/productServices';
 import * as types from '../types'
 const router = Router();
 
@@ -102,6 +102,17 @@ router.put('/comments/update/:idProduct', async(req, res, next)=>{
         const response = await addSellerResp(id, resp)
         res.json(response)
     } catch (error) {
+        next(error)
+    }
+})
+
+router.put('/comments/delete/:idProduct', async(req, res, next) => {
+    const id = req.params.idProduct
+    const resp = req.body
+    try {
+        const response = await deleteSellerResp(id, resp)
+        res.json(response)
+    }catch (error) {
         next(error)
     }
 })

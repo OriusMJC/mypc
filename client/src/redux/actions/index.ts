@@ -12,6 +12,7 @@ export const DEL_PRODUCT_CART = "DEL_PRODUCT_CART";
 export const ADD_COMMENT = "ADD_COMMENT";
 export const DELETE_COMMENT = "DELETE_COMMENT";
 export const ADD_RESPONSE = "ADD_RESPONSE";
+export const DELETE_RESPONSE = "ADD_RESPONSE";
 export const FILTER_CATEGORY = "FILTER_CATEGORY";
 export const ORDER_POPULATION = "ORDER_POPULATION";
 export const ORDER_PRICE = "ORDER_PRICE";
@@ -224,6 +225,18 @@ export function deleteProductComment(id:string, idComment: any){
         try {
             await axios.delete(`/products/comments/delete/${id}/${idComment}`)
             dispatch({type: DELETE_COMMENT, payload: {id, idComment}})
+        } catch (error) {
+            console.log(error)
+        }
+    }
+}
+
+export function deleteSellerResp(idProduct:string, resp:any){
+    console.log(idProduct, resp)
+    return async(dispatch: Dispatch<Action>) => {
+        try {
+            await axios.put(`/products/comments/delete/${idProduct}`, resp)
+            dispatch({type: DELETE_RESPONSE, payload: {idProduct, resp}})
         } catch (error) {
             console.log(error)
         }

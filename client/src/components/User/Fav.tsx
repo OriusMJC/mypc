@@ -10,6 +10,8 @@ import s from "../Styles/Fav.module.css";
 export default function Fav() {
   const dispatch = useAppDispatch();
   const user = useSelector((store: any) => store.userDetails);
+  const products = useSelector((store: any) => store)
+  var idProduct = 0;
   // const productsFav = useSelector((store:any)=> store.userDetails?.fav)
   // function HandleNavi(){
   //     const navigate = useNavigate()
@@ -20,6 +22,7 @@ export default function Fav() {
   }
 
   function handleCart(key, id, title, photo, price, type, likes, status) {
+    idProduct = id
     dispatch(
       addProductCart({ key, id, title, photo, price, type, likes, status })
     );
@@ -29,7 +32,7 @@ export default function Fav() {
     if (user && user.id) {
       dispatch(loginUser(user.id));
     }
-  }, [handleKickFav]);
+  }, [dispatch, handleKickFav]);
 
   return (
     <div className={s.favContainer}>
