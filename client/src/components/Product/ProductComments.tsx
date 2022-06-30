@@ -142,13 +142,13 @@ export default function ProductComments({idProd,comments, boolean, idProduct}){
             <div>
               {
                 obj.sellerResponse.response &&
-                <div>
+                <div >                
                 <img src = {obj.sellerResponse.avatar && obj.sellerResponse.avatar}></img>
                 <div>
                   <h4>{obj.sellerResponse.name && obj.sellerResponse.name}</h4>
                   <p>{obj.sellerResponse.comment && obj.sellerResponse.comment}</p>
+                </div>            
                 </div>
-              </div>
               }
             </div>
             </> 
