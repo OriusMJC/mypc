@@ -46,9 +46,7 @@ function CreateProduct() {
     }
 
     function handleSubmit(e){
-        console.log(product)
         if(product.title && product.photo && product.type && product.description.length > 50 && product.description.length < 500){
-            console.log('entro')
             e.preventDefault();
             dispatch(createProduct(id, product));
             alert("Product created");
