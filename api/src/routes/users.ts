@@ -49,7 +49,6 @@ router.post('/', [
     body('email', 'Ingrese un email')
         .exists()
         .isEmail()
-        .isAlphanumeric()
         .isLength({min:7}),
     body('password', 'Ingrese una contraseña valida')
         .exists()
