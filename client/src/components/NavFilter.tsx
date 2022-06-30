@@ -7,7 +7,7 @@ import { useAppDispatch  } from '../config/config';
 import s from './Styles/NavFilter.module.css'
 // import * as types from '../../types'
 
-export default function NavFilter({refresh,setRefresh,setProductsPerPage}){
+export default function NavFilter({refresh,setRefresh,setProductsPerPage,products}){
     const dispatch = useAppDispatch();
     const types = useSelector((state:any)=> state.types)
 
@@ -48,34 +48,39 @@ export default function NavFilter({refresh,setRefresh,setProductsPerPage}){
             {/* <Searchbar/>
             <NavButtons/> */}
             <section className={s.filterContent}>
-                <div>
-                    <label>Productos</label>
-                    <select onChange={e => setProductsPerPage(+e.target.value)} className = {s.filters}>
-                        <option value="12">12</option>
-                        <option value="24">24</option>
-                        <option value="48">48</option>
-                    </select>
-                </div>
+                {
+                    products?
+                    <div>
+                        <label>Productos</label>
+                        <select onChange={e => setProductsPerPage(+e.target.value)} className = {s.filters}>
+                            <option value="12">12</option>
+                            <option value="24">24</option>
+                            <option value="48">48</option>
+                        </select>
+                    </div>
+                    :
+                    <></>
+                }
                 <div>
                     <label>Precio</label>
                     <select onChange={e => handleOrderPrice(e)} className = {s.filters}>
-                        <option value="All">All</option>
-                        <option value="More price">More price</option>
-                        <option value="Lower price">Lower price</option>
+                        <option value="All">Todo</option>
+                        <option value="More price">Mayor precio</option>
+                        <option value="Lower price">Menor precio</option>
                     </select>
                 </div>
                 <div>
                     <label>Popularidad</label>
                     <select onChange ={e => handleOrderPopularity(e)} className = {s.filters}>
                         <option value = "All">All</option>
-                        <option value="More Popularity">More Popularity</option>
-                        <option value="Lower Popularity">Lower Popularity</option>
+                        <option value="More Popularity">Mayor popularidad</option>
+                        <option value="Lower Popularity">Menor popularidad</option>
                     </select>
                 </div>
                 <div>
                     <label>Categoria</label>
                     <select onChange = {e => handleFilter(e)} className = {s.filters}>
-                        <option value = "All">All</option>
+                        <option value = "All">Todo</option>
                         {types && types.map(t => (
                             <option value ={t}>{t}</option>
                         ))}
@@ -84,9 +89,9 @@ export default function NavFilter({refresh,setRefresh,setProductsPerPage}){
                 <div>
                     <label>Estado</label>
                     <select onChange={e => handleFilterState(e)} className = {s.filters}> 
-                        <option value="All">All</option>
-                        <option value="nuevo">New</option>
-                        <option value="usado">Used</option>
+                        <option value="All">Todo</option>
+                        <option value="nuevo">Nuevo</option>
+                        <option value="usado">Usado</option>
                     </select>
                 </div>
             </section>

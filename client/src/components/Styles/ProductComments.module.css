@@ -57,3 +57,51 @@
 .comments div h4{
     margin: 0;
 }
+.btnSend{       
+    background-color: #eaeaea;
+    cursor: pointer;
+    border-radius: 10px;
+    padding: 20px;
+    font-size: 20px;
+    text-align: center;    
+    transition: 0.2s;     
+       
+}
+.btnSend:hover {
+    transform: scale(1.02);
+    color: rgb(52, 218, 52);
+    font-weight: bold;
+    
+   
+}
+
+.btnsComSeller{
+    display: flex;
+    justify-content: flex-end;
+    width: 500px;
+}
+.btnsComSeller button{
+    background-color: var(--gray-dark);
+    height: 20px;
+    border: none;
+    border-radius: 3px;
+    margin: 0px 15px;
+    transition: .2s;
+}
+.btnsComSeller button:hover{
+    transform: scale(1.05);
+}
+
+.sellerResponse{
+    background-color: var(--gray-medium);
+    width: 550px;
+    margin-left: 50px;
+}
+.sellerResponse h5{
+    color: #8b8b8b;
+    margin: 0;
+    /* margin-top: -45px; */
+}
+.sellerResponse p{
+    margin: 5px 0px;
+}

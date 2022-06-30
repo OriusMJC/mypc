@@ -1,0 +1,15 @@
+.searchBarAdmin input{
+    height: 23px;
+    width: 300px;
+    border: none;
+    border-radius: 5px 0px 0px 5px;
+    padding: 2px 10px;
+}
+.searchBarAdmin button{
+    height: 27px !important;
+    width: 70px !important;
+    border: none !important;
+    border-radius: 0px 5px 5px 0px !important;
+    padding: 2px 10px !important;
+    box-shadow: none !important;
+}
