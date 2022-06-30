@@ -45,12 +45,10 @@ router.post('/:idUser', [
         .exists(),
     body('title', 'Ingrese un titulo')
         .exists()
-        .isLength({max:50})
-        .isAlphanumeric(),
+        .isLength({max:50}),
     body('price', 'Ingrese un valor')
         .exists()
-        .isNumeric()
-        .isFloat(),
+        .isNumeric(),
     body('type', 'Ingrese un tipo') 
         .exists(),
     body('status', 'Ingrese un estado')
