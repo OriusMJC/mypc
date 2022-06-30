@@ -118,7 +118,7 @@ function UserEditProduct() {
             />
         <div>
             <button type = 'submit'>
-                Create Product
+                Editar producto
             </button>
         </div>
         </form>
