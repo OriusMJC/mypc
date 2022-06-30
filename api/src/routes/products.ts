@@ -45,44 +45,47 @@ router.get("/:id", async (req, res, next) => {
 	}
 });
 //crear un nuevo producto (body) y añadirselo al usuario (params)
-router.post(
-	"/:idUser",
-	[
-		body("photo", "Ingrese una imagen").exists(),
-		body("title", "Ingrese un titulo")
-			.exists()
-			.isLength({ max: 50 })
-			.isAlphanumeric(),
-		body("price", "Ingrese un valor").exists().isNumeric().isFloat(),
-		body("type", "Ingrese un tipo").exists(),
-		body("status", "Ingrese un estado").exists(),
-		body("cant", "Ingrese una cantidad").exists().isNumeric().isInt(),
-		body("description", "Ingrese una descripcion del producto")
-			.exists()
-			.isAlphanumeric()
-			.isLength({
-				min: 50,
-				max: 500,
-			}),
-	],
-	async (req: express.Request, res: express.Response, next: any) => {
-		//en la documentacion de express-validator res y req estan asi
-		const errors = validationResult(req);
-		if (!errors.isEmpty()) {
-			return res.status(404).json({ errors: errors.array() });
-		} else {
-			const { idUser } = req.params;
-			const newProduct = req.body;
-			try {
-				const userData = await getBasicUserInfo(idUser);
-				let response = await addNewProduct(userData, newProduct);
-				res.json(response);
-			} catch (error) {
-				return next(error);
-			}
-		}
-	}
-);
+router.post('/:idUser', [
+    body('photo', 'Ingrese una imagen')
+        .exists(),
+    body('title', 'Ingrese un titulo')
+        .exists()
+        .isLength({max:50})
+        .isAlphanumeric(),
+    body('price', 'Ingrese un valor')
+        .exists()
+        .isNumeric()
+        .isFloat(),
+    body('type', 'Ingrese un tipo') 
+        .exists(),
+    body('status', 'Ingrese un estado')
+        .exists(),       
+    body('cant', 'Ingrese una cantidad')
+        .exists()
+        .isNumeric()
+        .isInt(),
+    body('description', 'Ingrese una descripcion del producto')
+        .exists()
+        .isLength({
+            min: 50,
+            max: 500
+        })
+],async (req: express.Request, res: express.Response, next:any)=>{//en la documentacion de express-validator res y req estan asi
+    const errors = validationResult(req)
+    if (!errors.isEmpty()) {
+      return res.status(404).json({ errors: errors.array() })
+    } else {
+    const {idUser} = req.params
+    const newProduct = req.body 
+    try{ 
+        const userData = await getBasicUserInfo(idUser)    
+        let response = await addNewProduct(userData, newProduct);
+        res.json(response)    
+    }
+    catch(error){ 
+        return next(error)
+    }
+}})
 
 router.delete("/:idProduct", async (req, res, next) => {
 	try {
