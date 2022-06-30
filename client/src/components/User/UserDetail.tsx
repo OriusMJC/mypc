@@ -8,34 +8,56 @@ export default function UserDetail() {
   const user = useSelector((state: any) => state.userDetails);
   const products = useSelector((state:any) => state.allComponents);
   return (
-    <>
-    {
-      user?.id? 
-      <div className={s.container}>
-        <div className={s.contOptions}>
-          <button>Editar perfil</button>
-          <button>Cambiar contraseña</button>
-          <button>a</button>
-          <button>a</button>
-        </div>
-        <div className={s.userDetails}>
-          <div className={s.buttonContainer}>
-            <Link to="/">
-              <button className={s.buttonButton}>
-                Inicio
-              </button>
-            </Link>
-            <Link to = "/user/createProduct">
-              <button className={s.buttonButton}>
-                Vender
-              </button>
-            </Link>
-            <Link to ='/user/userProducts'>
-              <button className={s.buttonButton}> 
-                Estadisticas
-              </button>
-            </Link>
-            {
+    <div className={s.container}>
+      <div className={s.contOptions}>
+        <Link to="/user/detail/edit">
+          <button>Edit profile</button>
+        </Link>
+        <Link to="/user/detail/password">
+          <button>Change contraseña</button>
+        </Link>
+        <Link to="/user/detail/mail">
+        <button>Change email</button>
+        </Link>
+        <button>a</button>
+      </div>
+      <div className={s.userDetails}>
+        <div className={s.buttonContainer}>
+          <Link to="/">
+            <button className={s.buttonButton}>
+              Inicio
+            </button>
+          </Link>
+          <Link to = "/user/createProduct">
+            <button className={s.buttonButton}>
+              Vender
+            </button>
+          </Link>
+          <Link to ='/user/userProducts'>
+            <button className={s.buttonButton}> 
+              En venta
+            </button>
+          </Link>
+          {
+            user.admin && user.email === 'mypcecommerce@gmail.com'?
+            <>
+              <Link to = '/user/admin'>
+                <button className={s.buttonButton}>
+                  Inicio
+                </button>
+              </Link>
+              <Link to = "/user/createProduct">
+                <button className={s.buttonButton}>
+                  Vender
+                </button>
+              </Link>
+              <Link to ='/user/userProducts'>
+                <button className={s.buttonButton}> 
+                  Estadisticas
+                </button>
+              </Link>
+            </> :
+            
               user.admin && user.email === 'mypcecommerce@gmail.com'?
               <Link to = '/user/admin'>
                 <button className={s.buttonButton}>
@@ -43,8 +65,8 @@ export default function UserDetail() {
                 </button>
               </Link>
               :
-              <></>
-            }
+              null
+          }            
           </div>
           <div className={s.user}>
             <div className={s.userDetails}>
@@ -88,9 +110,9 @@ export default function UserDetail() {
           </div>
         </div>
       </div>
-        :
-        <Loading load='Cargando' msgError='No estas logeado! Logeate para ver los detalles de tu cuenta.' time={3000}/>
-      }
-    </>
+      //   :
+      //   <Loading load='Cargando' msgError='No estas logeado! Logeate para ver los detalles de tu cuenta.' time={3000}/>
+      // }
+    // </>
   );
 }
