@@ -66,11 +66,65 @@
     position: relative;
     top: -10%;
     right: -80%;
+    cursor: pointer;
+    transition: .2s
 }
 #buttonFav img{
     margin: 4px 0px;
     height: 15px;
 }
+
+#buttonFav:hover{
+    transform: scale(1.2);
+}
+
+
 #buttonBuy{
     background-color: rgb(52, 218, 52) !important;
+    padding: 10px;
+    transition: 0.2s;
+    cursor: pointer;
+    font-size: 15px;    
+   
+}
+#buttonBuy:hover {
+    transform: scale(1.02);
+    color: rgba(255, 255, 255, 0.762);
+   
+}
+
+.btnDelete{
+    background-color: rgb(238, 10, 10) !important;
+}
+
+/* .button {
+    border: none;
+    cursor: pointer;
+    border-radius: 10px;
+    padding: 10px;
+    font-size: 20px;
+    text-align: center;
+    user-select: none;
+    transition: 0.2s;
+    color: red;
+    width: 300px;
+}
+.button:hover {
+    transform: scale(1.02);
+    color: rgba(255, 255, 255, 0.762)
+} */
+
+.btnSend{
+    border: none;   
+    cursor: pointer;
+    border-radius: 10px;
+    padding-bottom: 6px;
+    font-size: 15px;
+    text-align: center;
+    user-select: none;
+    transition: 0.2s;    
+}
+.btnSend:hover {
+    transform: scale(1.02);
+    color: rgba(255, 255, 255, 0.762)
 }

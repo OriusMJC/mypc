@@ -14,7 +14,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content: space-around;
     background-color: rgb(234, 234, 234);
     box-shadow: 2px 1px 1px rgba(0, 0, 0, 0.2);
     border-radius: 15px;
@@ -22,6 +22,22 @@
 
 .form input{
     margin: 20px 0;
+    border-radius: 15px;
+    border: none;
+    cursor: pointer;
+    width: 20%;
+    height: 40px;
+    text-align: center;
+}
+
+.form select{
+    margin: 20px 0;
+    border-radius: 15px;
+    border: none;
+    cursor: pointer;
+    width: 20%;
+    height: 40px;
+    text-align: center;
 }
 
 .form h1{
@@ -30,10 +46,21 @@
     text-align: center;
 }
 
+.form label{
+    font-family: "Helvetica";
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.form .descriptionInput{
+    width: 40%;
+    height: 150px;
+}
+
 .button{
-    margin-top: 10%;
+    margin-bottom: 5%;
     width: 50%;
-    height: 50px;
+    height: 80px;
     display: flex;
     justify-content: center;
 }

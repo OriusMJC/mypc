@@ -1,12 +1,14 @@
 import { useState } from "react";
-import { getName } from "../../redux/actions/index";
+import { getName, getAllComponents } from "../../redux/actions/index";
 import { useAppDispatch } from "../../config/config";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import s from "../Styles/NavBar.module.css";
 import NavButtons from "./NavButtons";
+import { useSelector } from "react-redux";
 
 export default function NavBar() {
   const dispatch = useAppDispatch();
+  const navigate = useNavigate();
   const [name, setName] = useState("");
 
   function handleInputChange(e) {
@@ -20,13 +22,18 @@ export default function NavBar() {
     setName("");
   }
 
+  function handleRefresh(e){
+    dispatch(getAllComponents());
+    navigate('/')
+  }
+
   return (
     <nav className={s.searchBarContainer}>
       <div className={s.contain}>
         <div className={s.contLogo}>
-          <Link to="/">
-            <h1>MyPC</h1>
-          </Link>
+          <button onClick = {handleRefresh} className = {s.logo}>
+            MyPC
+          </button>
         </div>
         <form onSubmit={(e) => handleSubmit(e)} className={s.searchBar}>
           <input

@@ -1,10 +1,16 @@
 import { useState } from "react";
+import {useSelector} from 'react-redux';
+import { Link } from 'react-router-dom';
+import Loading from "../Loading/Loading";
 import ProductCard from "../reusable/ProductCard";
 import s from "../Styles/Pages.module.css";
 import './style.css'
 
 function Pages({ productsPerPage, allComponents, refresh }) {
-  const cantPages = Math.ceil(allComponents.length /productsPerPage) 
+
+    
+
+    const cantPages = Math.ceil(allComponents.length /productsPerPage) 
     const [currentPage, setCurrentPage] = useState(1);
     const indexOfLastProduct = currentPage * productsPerPage;
     const indexOfFirstProduct = indexOfLastProduct - productsPerPage;
@@ -12,7 +18,7 @@ function Pages({ productsPerPage, allComponents, refresh }) {
 
     const pageNumbers = [];
     
-    if(typeof allComponents !== 'string'){
+    if(typeof allComponents[0] !== 'string'){
         for (let i = 1; i <= cantPages; i++){
             pageNumbers.push(
                 <button key={i} value={i} onClick={()=>{setCurrentPage(i)}}>
@@ -24,6 +30,9 @@ function Pages({ productsPerPage, allComponents, refresh }) {
         setCurrentPage(1)
     }
 
+    const products = useSelector((state:any) => state.allComponents)
+    const user = useSelector((state:any) => state.userDetails)
+
     return(
       <section className={s.pageContainer}>
           <div className={s.buttonsPage}>
@@ -31,11 +40,22 @@ function Pages({ productsPerPage, allComponents, refresh }) {
           </div>
           <div className={s.containerProdCards}>
           {
+              !products.length ? 
+              <div className = {s.containerHome}>
+              <h2>Aun no hay productos cargados!</h2>
+              {
+                user && user.id? 
+                <Link to='/user/createProduct'>
+                    <button className = {s.buttonHomeCreate}>Crear producto</button>
+                </Link> :
+                <h2>Logeate para crear uno!</h2>
+              }
+              
+              </div> :
               refresh && currentProduct.length?
-              typeof allComponents !== 'string'?
+              typeof allComponents[0] !== 'string'?
                   currentProduct.map(prod=>{
-                      return(
-                          
+                      return( 
                       <ProductCard 
                           key={prod && prod.id} 
                           id={prod && prod.id} 
@@ -50,17 +70,11 @@ function Pages({ productsPerPage, allComponents, refresh }) {
                   })
                   :
                   <h2>{allComponents}</h2>
+
               :
+                          
               // <Loading/>
-              <div className={"loading"}>
-                <div className="ball"></div>
-                <div className="ball"></div>
-                <div className="ball"></div>
-                <div className="ball"></div>
-                <div className="ball"></div>
-                <div className="ball"></div>
-                <div className="ball"></div>
-              </div>
+              <Loading load='Buscando producto' msgError='No se a encontrado ningun producto' time={3000}/>
           }      
           </div>
       </section>

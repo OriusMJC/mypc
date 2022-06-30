@@ -8,8 +8,9 @@ import s from '../Styles/CreateProduct.module.css'
 function CreateProduct() {
     const dispatch = useAppDispatch();
     const navigate = useNavigate();
-    const user = useSelector((state:any) => state.userDetails)
-    const id = user.id
+    const user = useSelector((state:any) => state.userDetails);
+    const types = useSelector((state:any) => state.types);
+    const id = user.id;
     const [product, setProduct] = useState({
         title: "",
         photo: "",
@@ -23,24 +24,40 @@ function CreateProduct() {
         sell: false,
     });
 
-    function handleChange(e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>){
+    function handleChange(e){
         setProduct({
             ...product,
             [e.target.name]: e.target.value
-        })
+        });
+    }
+
+    function handleType(e){
+        setProduct({
+            ...product,
+            type: e.target.value
+        });
+    }
+
+    function handleStatus(e){
+        setProduct({
+            ...product,
+            status: e.target.value
+        });
     }
 
     function handleSubmit(e){
-        if(product.title.length != 0){
+        console.log(product)
+        if(product.title && product.photo && product.type && product.description.length > 50 && product.description.length < 500){
+            console.log('entro')
             e.preventDefault();
             dispatch(createProduct(id, product));
             alert("Product created");
             navigate("/")
         }else {
-            alert("Please complete create form")
-        }    
+            e.preventDefault();
+            alert("Product not created, please complete the form")
+        } 
     }
-
 
   return (
     <div className = {s.container}>
@@ -55,22 +72,33 @@ function CreateProduct() {
             onChange={handleChange}/>
 
             <label>Title: </label>
-            <input type="text" name="title" value={product.title.toLowerCase()} onChange={handleChange}></input>
+            <input type="text" name="title" value={product.title} onChange={handleChange}></input>
             
             <label>Price: </label>
             <input type="number" name="price" value={product.price} onChange={handleChange}></input>
 
             <label>Type: </label>
-            <input type="text" name="type" value={product.type.toLowerCase()} onChange={handleChange}></input>
+            <select name="type" onChange={handleType}>
+                <option hidden>Select Type</option>
+                {types?.map((t) => (
+                    <option key={t} value={t}>
+                        {t}
+                    </option>
+                ))}
+            </select>
 
             <label>Status: </label>
-            <input type="text" name="status" value={product.status.toLowerCase()} onChange={handleChange}></input>
+            <select name="status" onChange={handleStatus}>
+                <option hidden>Select Status</option>
+                <option value="nuevo">nuevo</option>
+                <option value="usado">usado</option>
+            </select>
             
             <label>Stock: </label>
             <input type="number" name="cant" value={product.cant} onChange={handleChange}></input>
 
-            <label>Description: </label>
-            <textarea name="description" value={product.description} onChange={handleChange}></textarea>
+            <label>Description: (min: 50 - max: 500)</label>
+            <input type="text" name="description" value={product.description} onChange={handleChange} className={s.descriptionInput}></input>
 
         <div className = {s.button}>
             <button type="submit">Create Product</button>
@@ -79,7 +107,7 @@ function CreateProduct() {
         <div className = {s.products}>
             <h1>{product.title}</h1>
             <div className = {s.img}>
-            <img src={product.photo.length != 0 && product.photo}></img>
+            <img src={product.photo.length && product.photo}></img>
             </div>
             <div className = {s.productInfo}>
             <h3>{product.price != 0 && product.price}</h3>

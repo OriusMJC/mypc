@@ -3,7 +3,11 @@
     flex-direction: column;
     align-items: center;
     padding: 20px 0px;
-    min-height: 76vh;
+    min-height: 78vh;
+    background-color: #d2d2d2;
+}
+.favContainer a{
+    text-decoration: none;
 }
 
 
@@ -14,9 +18,11 @@
     flex-direction: column;
     max-width: 600px;
     width: 80%;
+    height: 250px;
     margin: 10px 0px;
 }
 .prodFav a{
+    overflow-wrap: break-word;
     display: flex;
     flex-direction: row;
 }
@@ -61,18 +67,23 @@
     flex-direction: row;
     justify-content: space-between;
 }
+.buttons a{
+    text-decoration: none;
+}
 .button {
     border: none;
-    background-color: #fff;
+    background-color: rgb(52, 218, 52);
     cursor: pointer;
     border-radius: 10px;
     padding: 10px;
     font-size: 20px;
     text-align: center;
     user-select: none;
+    transition: 0.2s;    
 }
 .button:hover {
-    background-color: #d6d6d6;
+    transform: scale(1.02);
+    color: rgba(255, 255, 255, 0.762)
 }
 .infoProduct {
     display: flex;
@@ -92,3 +103,25 @@
     flex-direction: column;
     align-items: center;
 }
+.btnUserProd{   
+   position: absolute;
+   left: 60%;
+   display: flex;  
+   flex-direction: row;
+   align-items: flex-end;
+   height: 200px;
+   margin-top: 10px;        
+}
+
+
+
+@media screen and (max-width: 300px) {
+    .imgProdFav {
+        width: 50px;
+        /* padding: 0px 30px; */
+        padding: 20px 30px 0px 30px;        
+    }
+    .favContainer h1, h2, h3, h4 , p, span{
+        font-size: 10px;
+    }
+  }
