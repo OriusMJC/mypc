@@ -44,7 +44,7 @@ const modelDefiners:any[] = [];
 //hola
 // Leemos todos los archivos de la carpeta Models, los requerimos y agregamos al arreglo modelDefiners
 fs.readdirSync(path.join(__dirname, '/models'))
-  .filter((file:any) => (file.indexOf('.') !== 0) && (file !== basename) && (file.slice(-3) === '.ts'))
+  .filter((file:any) => (file.indexOf('.') !== 0) && (file !== basename) && (file.slice(-3) === '.ts' || file.slice(-3) === '.js'))
   .forEach((file:any) => {
     modelDefiners.push(require(path.join(__dirname, '/models', file)));
   });
