@@ -61,7 +61,6 @@ router.post('/:idUser', [
         .isInt(),
     body('description', 'Ingrese una descripcion del producto')
         .exists()
-        .isAlphanumeric()
         .isLength({
             min: 50,
             max: 500
