@@ -46,12 +46,15 @@ function CreateProduct() {
     }
 
     function handleSubmit(e){
-        if(product.title && product.photo && product.type){
+        if(product.title && product.photo && product.type && product.description.length > 50 && product.description.length < 500){
             e.preventDefault();
             dispatch(createProduct(id, product));
             alert("Product created");
             navigate("/")
-        }else alert("Product not created, please complete the form") 
+        }else {
+            e.preventDefault();
+            alert("Product not created, please complete the form")
+        } 
     }
 
   return (
@@ -92,7 +95,7 @@ function CreateProduct() {
             <label>Stock: </label>
             <input type="number" name="cant" value={product.cant} onChange={handleChange}></input>
 
-            <label>Description: </label>
+            <label>Description: (min: 50 - max: 500)</label>
             <input type="text" name="description" value={product.description} onChange={handleChange} className={s.descriptionInput}></input>
 
         <div className = {s.button}>
