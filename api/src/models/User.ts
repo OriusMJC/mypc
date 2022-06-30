@@ -3,12 +3,20 @@ import { DataTypes } from 'sequelize';
 // Exportamos una funcion que define el modelo
 // Luego le injectamos la conexion a sequelize.
 module.exports = (sequelize:any) => {
-  sequelize.define('user', {
+  sequelize.define('User', {
     //users
     id: {
       type: DataTypes.STRING,
       allownull: false,
       primaryKey: true
+    },
+    admin:{
+      type: DataTypes.BOOLEAN,
+      defaultValue: false
+    },
+    active:{
+      type: DataTypes.BOOLEAN,
+      defaultValue: true
     },
     name: {
       type: DataTypes.STRING(30),
@@ -30,6 +38,55 @@ module.exports = (sequelize:any) => {
       type: DataTypes.STRING,
       allownull: false
     },
+/*    country: { 
+      type: DataTypes.STRING,
+      allownull: false,
+      validate:{
+        isNumeric: false,
+        isAlphanumeric: false,
+        isAlpha: true,
+      }
+    },
+    state: { 
+      type: DataTypes.STRING,
+      allownull: false,
+      validate:{
+        isNumeric: false,
+        isAlphanumeric: false,
+        isAlpha: true,
+      }
+    },
+    city: { 
+      type: DataTypes.STRING,
+      allownull: false,
+      validate:{
+        isNumeric: false,
+        isAlphanumeric: false,
+        isAlpha: true,
+      }
+    },
+    postalCode: { 
+      type: DataTypes.STRING,
+      allownull: false
+    },
+    address: { 
+      type: DataTypes.STRING,
+      allownull: false
+    },
+    cbu: { 
+      type: DataTypes.NUMBER,
+      validate:{
+        min:22,
+        max:22
+      }
+    },
+    debitCard: { 
+      type: DataTypes.ARRAY(DataTypes.JSON){venc. nombre. numero. codSeguridad}
+    },
+    creditCard: { 
+      type: DataTypes.ARRAY(DataTypes.JSON){venc. nombre. numero. codSeguridad}
+    },
+    */    
     avatar: {
     type: DataTypes.STRING(5000),
     allownull: false

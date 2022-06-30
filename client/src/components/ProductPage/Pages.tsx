@@ -1,11 +1,15 @@
 import { useState } from "react";
 import {useSelector} from 'react-redux';
 import { Link } from 'react-router-dom';
+import Loading from "../Loading/Loading";
 import ProductCard from "../reusable/ProductCard";
 import s from "../Styles/Pages.module.css";
 import './style.css'
 
 function Pages({ productsPerPage, allComponents, refresh }) {
+
+    
+
     const cantPages = Math.ceil(allComponents.length /productsPerPage) 
     const [currentPage, setCurrentPage] = useState(1);
     const indexOfLastProduct = currentPage * productsPerPage;
@@ -28,7 +32,6 @@ function Pages({ productsPerPage, allComponents, refresh }) {
 
     const products = useSelector((state:any) => state.allComponents)
     const user = useSelector((state:any) => state.userDetails)
-
 
     return(
       <section className={s.pageContainer}>
@@ -71,15 +74,7 @@ function Pages({ productsPerPage, allComponents, refresh }) {
               :
                           
               // <Loading/>
-              <div className={"loading"}>
-                <div className="ball"></div>
-                <div className="ball"></div>
-                <div className="ball"></div>
-                <div className="ball"></div>
-                <div className="ball"></div>
-                <div className="ball"></div>
-                <div className="ball"></div>
-              </div>
+              <Loading load='Buscando producto' msgError='No se a encontrado ningun producto' time={3000}/>
           }      
           </div>
       </section>

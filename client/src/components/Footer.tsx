@@ -10,7 +10,7 @@ function Footer() {
   return (
     <div className = {s.container}>
         <Link to = "/contact" className = {s.contact}>
-            <Contact/>
+            Contactanos!
         </Link>
         <p>
          Need Any <Link to = "/help" className={s.help}>Help?</Link>  

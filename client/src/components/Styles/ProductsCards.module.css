@@ -1,5 +1,6 @@
 .productCards{
     background-color: white;
+    overflow-wrap: break-word;
     width: 300px;
     height: 380px;
     text-align: center;

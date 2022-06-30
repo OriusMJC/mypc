@@ -1,6 +1,8 @@
+import express from 'express'
+import { body, validationResult } from 'express-validator'
 import { Router } from 'express';
 import { getBasicUserInfo} from '../services/usersServices';
-import { getAllProducts,getProductById,getProductByName, addNewProduct, updateDataProduct, productSelled, addComment } from '../services/productServices';
+import { getAllProducts,getProductById,getProductByName, addNewProduct, updateDataProduct, productSelled, addComment, deleteProduct, deleteComment, addSellerResp } from '../services/productServices';
 import * as types from '../types'
 const router = Router();
 
@@ -38,7 +40,36 @@ router.get('/:id',async (req,res,next)=>{
 })
 
 //crear un nuevo producto (body) y añadirselo al usuario (params)
-router.post('/:idUser',async (req,res,next)=>{
+router.post('/:idUser', [
+    body('photo', 'Ingrese una imagen')
+        .exists(),
+    body('title', 'Ingrese un titulo')
+        .exists()
+        .isLength({max:50})
+        .isAlphanumeric(),
+    body('price', 'Ingrese un valor')
+        .exists()
+        .isNumeric()
+        .isFloat(),
+    body('type', 'Ingrese un tipo') 
+        .exists(),
+    body('status', 'Ingrese un estado')
+        .exists(),       
+    body('cant', 'Ingrese una cantidad')
+        .exists()
+        .isNumeric()
+        .isInt(),
+    body('description', 'Ingrese una descripcion del producto')
+        .exists()
+        .isLength({
+            min: 50,
+            max: 500
+        })
+],async (req: express.Request, res: express.Response, next:any)=>{//en la documentacion de express-validator res y req estan asi
+    const errors = validationResult(req)
+    if (!errors.isEmpty()) {
+      return res.status(404).json({ errors: errors.array() })
+    } else {
     const {idUser} = req.params
     const newProduct = req.body 
     try{ 
@@ -47,17 +78,28 @@ router.post('/:idUser',async (req,res,next)=>{
         res.json(response)    
     }
     catch(error){ 
+        return next(error)
+    }
+}})
+
+router.delete('/:idProduct', async(req, res, next) => {
+    try {
+        const id = req.params.idProduct;
+        if(id){
+            let resp = await deleteProduct(id);
+            res.json(resp);
+        }
+    } catch (error) {
         next(error)
     }
-
-
 })
 
 //Modificar la informacion (body) de un producto (params)
 router.put('/:idProduct',async(req,res,next)=>{
     const newDataProduct = req.body
+    const id = req.params.idProduct
     try {
-        const response = await updateDataProduct(newDataProduct)
+        const response = await updateDataProduct(id, newDataProduct)
         res.json(response)
     } catch (error) {
         next(error)
@@ -68,6 +110,27 @@ router.put('/comments/:idProduct',async(req,res,next)=>{
     const newComment = req.body
     try {
         const response = await addComment(id,newComment)
+        res.json(response)
+    } catch (error) {
+        next(error)
+    }
+})
+
+router.delete('/comments/delete/:idProduct/:idComment', async(req, res, next)=>{
+    const {idProduct, idComment} = req.params
+    try {
+        const resp = await deleteComment(idProduct, idComment)
+        res.json(resp)
+    } catch (error) {
+        next(error)
+    }
+})
+
+router.put('/comments/update/:idProduct', async(req, res, next)=>{
+    const id = req.params.idProduct
+    const resp = req.body
+    try {
+        const response = await addSellerResp(id, resp)
         res.json(response)
     } catch (error) {
         next(error)

@@ -4,7 +4,7 @@ import { DataTypes } from 'sequelize';
 // Luego le injectamos la conexion a sequelize.
 module.exports = (sequelize:any) => {
   // defino el modelo
-  sequelize.define('product', {
+  sequelize.define('Product', {
     id: {
       type: DataTypes.UUID,
       defaultValue: DataTypes.UUIDV4,
@@ -28,7 +28,7 @@ module.exports = (sequelize:any) => {
       allownull: false
     },
     type: {
-      type: DataTypes.ENUM('full', 'motherboar', 'procesador', 'grafica', 'ram', 'ssd', 'hdd', 'cooler', 'monitor', 'mouse', 'teclado', 'cables', 'fuente')
+      type: DataTypes.ENUM('full', 'motherboard', 'procesador', 'grafica', 'ram', 'ssd', 'hdd', 'cooler', 'monitor', 'mouse', 'teclado', 'cables', 'fuente')
     },
     description: {
       type: DataTypes.TEXT,
@@ -52,7 +52,7 @@ module.exports = (sequelize:any) => {
       type: DataTypes.JSON,
     }
   },{
-    timestamps: false
+    timestamps: true
   });
 };
 

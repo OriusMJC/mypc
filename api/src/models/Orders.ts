@@ -3,7 +3,7 @@ import { DataTypes } from 'sequelize';
 // Exportamos una funcion que define el modelo
 // Luego le injectamos la conexion a sequelize.
 module.exports = (sequelize:any) => {
-  sequelize.define('order', {
+  sequelize.define('Order', {
     id: {
       type: DataTypes.STRING,
       allownull: false,
@@ -20,7 +20,7 @@ module.exports = (sequelize:any) => {
       type: DataTypes.STRING,
       allownull: false,
     },
-    products: {
+    product: {
       type: DataTypes.ARRAY(DataTypes.JSON),
       allownull: false
     },
@@ -29,7 +29,7 @@ module.exports = (sequelize:any) => {
       allownull: false,
     },
     typeOfPayment: {
-      type: DataTypes.ENUM('efectivo', 'tarjetaCred', 'tarjetaDeb', 'pagoFacil', 'rapiPago', 'mercadoPago'),
+      type: DataTypes.ENUM('efectivo', 'tarjetaCred', 'tarjetaDeb', 'pagoFacil', 'rapiPago', 'mercadoPago', 'cuotas', 'transferencia', 'deposito'),
       allownull: false,
     },
     statusOfPayment: {
