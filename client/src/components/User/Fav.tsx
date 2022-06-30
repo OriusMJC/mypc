@@ -13,7 +13,7 @@ export default function Fav() {
   // const productsFav = useSelector((store:any)=> store.userDetails?.fav)
   // function HandleNavi(){
   //     const navigate = useNavigate()
-  //     navigate('/user/login')
+  //     navigate('/login')
   // }
   function handleKickFav(isUser, idProd) {
     dispatch(delFavUser(isUser, idProd));
