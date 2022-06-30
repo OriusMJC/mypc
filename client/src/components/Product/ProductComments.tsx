@@ -130,11 +130,12 @@ export default function ProductComments({idProd,comments, boolean, idProduct}){
               {
                 (boolean || admin)
                 &&
-                <div>
-                <button value={obj.id} onClick = {handleDeleteComment}>X</button>
-                <button value={arr} 
-                onClick = {handleActualPos}
-                >Responder</button>
+                <div className={s.btnsComSeller}>
+                  <button value={obj.id} onClick = {handleDeleteComment}>X</button>
+                  <button value={arr} 
+                  onClick = {handleActualPos}>
+                    Responder
+                  </button>
                 </div>
               }
               </div>
@@ -142,13 +143,14 @@ export default function ProductComments({idProd,comments, boolean, idProduct}){
             <div>
               {
                 obj.sellerResponse.response &&
-                <div>
-                <img src = {obj.sellerResponse.avatar && obj.sellerResponse.avatar}></img>
-                <div>
-                  <h4>{obj.sellerResponse.name && obj.sellerResponse.name}</h4>
-                  <p>{obj.sellerResponse.comment && obj.sellerResponse.comment}</p>
+                <div className={`${s.sellerResponse} ${s.comments}`}>
+                  <img src = {obj.sellerResponse.avatar && obj.sellerResponse.avatar}></img>
+                  <div>
+                    <h5>Vendedor</h5>
+                    <h4>{obj.sellerResponse.name && obj.sellerResponse.name}</h4>
+                    <p>{obj.sellerResponse.comment && obj.sellerResponse.comment}</p>
+                  </div>
                 </div>
-              </div>
               }
             </div>
             </> 

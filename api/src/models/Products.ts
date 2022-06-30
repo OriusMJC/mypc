@@ -4,7 +4,7 @@ import { DataTypes } from 'sequelize';
 // Luego le injectamos la conexion a sequelize.
 module.exports = (sequelize:any) => {
   // defino el modelo
-  sequelize.define('product', {
+  sequelize.define('Product', {
     id: {
       type: DataTypes.UUID,
       defaultValue: DataTypes.UUIDV4,

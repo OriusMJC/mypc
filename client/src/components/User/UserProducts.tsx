@@ -15,8 +15,8 @@ function UserProducts() {
   const [refresh,setRefresh] = useState(1)
   let productsCreated = [];
 
-  products?.map((prod:any) =>{
-    if(prod.sellerInfo.id.includes(user.id)){
+  products.map((prod:any) =>{
+    if(prod.sellerInfo.id?.includes(user.id)){
       productsCreated.push(prod)
     }
   })
@@ -55,7 +55,7 @@ function UserProducts() {
 
   return (
     <div className={s.userProducstContainer}>
-      <Link to ='/userdetail' className={s.buttonHome}>
+      <Link to ='/user/detail' className={s.buttonHome}>
         <button>
           Inicio
         </button>

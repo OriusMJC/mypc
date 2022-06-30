@@ -14,6 +14,9 @@ export default function NavButtons() {
     dispatch(singOutUser());
     handleShowMenu(e);
   }
+  function handleOutMenu(e){
+    handleShowMenu(e);
+  }
 
   let handleShowMenu = (event) => {
     if (menuShow) {
@@ -85,7 +88,7 @@ export default function NavButtons() {
             </button>
             <div id="showMenu" className={s.showMenu}>
               <ul>
-                <li>
+                <li onClick={handleOutMenu}>
                   <Link to="/register">
                     <i className="fa-solid fa-address-card"></i>
                     <span>Register</span>
