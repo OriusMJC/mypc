@@ -73,7 +73,7 @@ function CreateProduct() {
             <input type="number" name="price" value={product.price} onChange={handleChange}></input>
 
             <label>Type: </label>
-            <select onChange={handleType}>
+            <select name="type" onChange={handleType}>
                 <option hidden>Select Type</option>
                 {types?.map((t) => (
                     <option key={t} value={t}>
@@ -83,7 +83,7 @@ function CreateProduct() {
             </select>
 
             <label>Status: </label>
-            <select onChange={handleStatus}>
+            <select name="status" onChange={handleStatus}>
                 <option hidden>Select Status</option>
                 <option value="nuevo">nuevo</option>
                 <option value="usado">usado</option>
