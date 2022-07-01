@@ -3,6 +3,7 @@ import { useSelector } from "react-redux"
 import { useAppDispatch } from "src/config/config"
 import { addProductComment, deleteProductComment, addSellerResp, getAllDetails, deleteSellerResp} from "src/redux/actions"
 import s from '../Styles/ProductComments.module.css'
+import swal from 'sweetalert';
 
 export default function ProductComments({idProd,comments, boolean, idProduct}){
   const arrId = comments.map((c:any) => Number(c.id));
@@ -36,10 +37,21 @@ export default function ProductComments({idProd,comments, boolean, idProduct}){
         dispatch(addProductComment(idProd,{id: id, name:userData.name,avatar:userData.avatar,comment: newComment,sellerResponse: sellerResponse}))
         setNewComment('');
       }else{
-        alert('Debes inciar sesión para poder comentar')
+        e.preventDefault();
+        // alert('Debes inciar sesión para poder comentar')
+        swal({
+          title: "No estas Logueado",
+          text: "Debes inciar sesión para poder comentar",
+          icon: "warning",
+        });  
       }
     }else{
-      alert('No puedes enviar un comentario vacio')
+      swal({
+        title: "Error",
+        text: "No puedes enviar un comentario vacio",
+        icon: "error",
+      })     
+      // alert('No puedes enviar un comentario vacio')  
     }
   }
 

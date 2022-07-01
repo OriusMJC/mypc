@@ -4,6 +4,7 @@ import { useSelector } from 'react-redux';
 import { useAppDispatch} from '../../config/config';
 import { updateProduct, getAllComponents } from '../../redux/actions/index';
 import s from '../Styles/UserEditProduct.module.css'
+import swal from 'sweetalert';
 
 function UserEditProduct() {
     const dispatch = useAppDispatch();
@@ -48,8 +49,13 @@ function UserEditProduct() {
 
     function handleSubmit(e){
         e.preventDefault();
+        swal({
+            title: "Felicidades",
+            text: "Actualizaste tu producto",
+            icon: "success",
+          });  
         dispatch(updateProduct(idProduct, prod));
-        alert('Producto actualizado');
+        // alert('Producto actualizado');
         navigate('/user/userProducts');
     }
     function handleDot(e){

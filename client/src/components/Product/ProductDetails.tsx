@@ -9,6 +9,8 @@ import nolike from '../icons/nolike.png'
 import { addCartLH } from "src/services/functionsServices"
 import { userInfo } from "os"
 import { userData } from "src/services/userFirebase"
+import swal from 'sweetalert';
+
 // import { Products } from "types"
 
 // interface Info {
@@ -48,7 +50,12 @@ export default function ProductDetails(){
             status: product.status
          }))
       }else{
-          alert('Debes iniciar sesión para poder agregar productos a favoritos!')
+         swal({
+            title: "No estas Logueado",
+            text: "Debes iniciar sesión para agregar productos a favoritos",
+            icon: "warning",
+          });  
+         //  alert('Debes iniciar sesión para poder agregar productos a favoritos!')
       }
   }
 
@@ -66,8 +73,13 @@ export default function ProductDetails(){
    }
 
    function handleDelete(){
+      swal({
+         title: "Producto eliminado",
+         text: "eliminaste tu producto",
+         icon: "success",
+       });  
       dispatch(deleteProduct(idProduct))
-      alert('Product deleted')
+      // alert('Product deleted')
       navigate('/')
    }
 
