@@ -3,6 +3,7 @@ import { Link, useNavigate, useParams } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { useAppDispatch} from '../../config/config';
 import { updateProduct, getAllComponents } from '../../redux/actions/index';
+import s from '../Styles/UserEditProduct.module.css'
 
 function UserEditProduct() {
     const dispatch = useAppDispatch();
@@ -53,13 +54,17 @@ function UserEditProduct() {
     }
 
   return (
-    <div>
-        <Link to= '/user/userProducts'>
-            <button>
+    <div className={s.containerBtn}>
+        <div>
+
+          <Link to= '/user/userProducts'>
+             <button  className={s.btnBack}>
                 Go back
-            </button>
-        </Link>
-        <form onSubmit = {handleSubmit}>
+             </button>
+         </Link>
+        </div>
+        <div className={s.container}>
+        <form className={s.form} onSubmit = {handleSubmit}>
             <h1>Edit Product</h1>
 
             <label>Image: </label>
@@ -111,29 +116,31 @@ function UserEditProduct() {
 
             <label>Description: </label>
             <input
+            className={s.descriptionInput}
             type = 'text'
             name = 'description'
             value = {prod.description}
             onChange = {handleChange}
             />
-        <div>
+        <div className={s.button}>
             <button type = 'submit'>
-                Create Product
+                Edit Product
             </button>
         </div>
         </form>
-        <div>
+        <div className={s.view}>
             <h1>{prod.title}</h1>
-            <div>
+            <div className={s.viewImg}>
             <img src={prod.photo.length && prod.photo}></img>
             </div>
-            <div>
+            <div className={s.viewInfo}>
             <h3>{prod.price != 0 && prod.price}</h3>
             <h3>{prod.type}</h3>
             <h3>{prod.status}</h3>
             <h3>{prod.cant != 0 && prod.cant}</h3>
             <p>{prod.description}</p>
             </div>
+        </div>
         </div>
     </div>
   )

@@ -1,0 +1,169 @@
+
+
+
+.container{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    margin: 5% auto;
+    max-width: 90%;
+    height: 800px;
+}
+
+.form{
+    height: 100%;
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    background-color: rgb(234, 234, 234);
+    box-shadow: 2px 1px 1px rgba(0, 0, 0, 0.2);
+    border-radius: 15px;
+}
+.form input{
+    margin: 20px 0;
+    border-radius: 15px;
+    border: none;
+    cursor: pointer;
+    width: 20%;
+    height: 40px;
+    text-align: center;
+}
+
+.form select{
+    margin: 20px 0;
+    border-radius: 15px;
+    border: none;
+    cursor: pointer;
+    width: 20%;
+    height: 40px;
+    text-align: center;
+}
+
+.form h1{
+    border-bottom: 1px solid grey;
+    width: 80%;
+    text-align: center;
+}
+
+.form label{
+    font-family: "Helvetica";
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.form .descriptionInput{
+    width: 40%;
+    height: 150px;
+}
+
+.view {
+    height: 100%;
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    background-color: rgb(234, 234, 234);
+    box-shadow: 2px 1px 1px rgba(0, 0, 0, 0.2);
+    border-radius: 15px;
+}
+.viewImg{
+    width: 90%;
+    height: 35%;
+    margin: 0 auto;
+    background-color: white;
+    border-radius: 15px;
+    margin-bottom: 30px;    
+}
+.viewImg img{
+    width: 100%;
+    height: 100%;
+    border-radius: 15px;
+}
+
+.view h1{
+    background-color: white;
+    border-radius: 15px;
+    width: 90%;
+    height: 10%;
+    text-align: center;
+    font-family: "Helvetica";
+    font-weight: bold;
+    font-size: 45px;
+}
+.viewInfo{
+    background-color: white;
+    width: 90%;
+    height: 45%;
+    border-radius: 15px;
+    margin-bottom: 5%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.viewInfo h3{
+    width: 80%;
+    text-align: center;
+    border-radius: 15px;
+    height: 30px;
+    background-color: rgb(234, 234, 234);
+    font-weight: none;
+    font-family: "Helvetica";
+    font-size: 15px;
+}
+
+.viewInfo p{
+    width: 80%;
+    text-align: center;
+    background-color: rgb(234, 234, 234);
+    height: 60px;
+    border-radius: 15px;
+}
+
+.btnBack{
+    height: 45px;
+    width: 100px;
+    border: none;
+    box-shadow: 2px 1px 1px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    background-color: white;
+    cursor: pointer;
+    margin: 10px 20px; 
+      
+             
+}
+
+.btnBack:hover{
+    background-color: rgb(148, 145, 145);
+    color: white;
+}
+.button{
+    margin-bottom: 5%;
+    width: 50%;
+    height: 80px;
+    display: flex;
+    justify-content: center;
+}
+
+.button button{
+    width: 100%;
+    border: none;
+    border-radius: 15px;
+    background-color: rgb(52, 218, 52);
+    font-family: "Helvetica";
+    font-size: 20px;
+    font-weight: bold;
+    transition: 0.2s;
+    cursor: pointer;
+}
+
+.button button:hover{
+    color: rgb(234, 234, 234);
+    box-shadow: 0px 2px 5px rgb(141, 141, 141);
+    transform: scale(1.02)
+}
