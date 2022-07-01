@@ -81,7 +81,6 @@ export default function ProductComments({idProd,comments, boolean, idProduct}){
   }
 
   function handleSellerResponse(e){
-
     setSellerResponse({
       ...sellerResponse,
       [e.target.name]: e.target.value,
@@ -189,7 +188,6 @@ export default function ProductComments({idProd,comments, boolean, idProduct}){
               </div>
             </div>
               {
-                
                 obj.sellerResponse.response &&
                   <div className={`${s.comments} ${s.sellerResponse}`}>
                     <img src = {obj.sellerResponse.avatar && obj.sellerResponse.avatar}></img>
