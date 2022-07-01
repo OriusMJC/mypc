@@ -5,6 +5,7 @@ import { useAppDispatch } from '../../config/config'
 import { createUser } from '../../redux/actions/index'
 import s from '../Styles/Register.module.css';
 import validator from 'validator';
+import swal from 'sweetalert';
 
 interface User {
   name: string
@@ -80,7 +81,11 @@ export default function Register(){
         avatar: user.avatar.length ? user.avatar : AvatarImgDefault,
         id: userData.user.uid
       }));
-      alert("User created successfully");
+      swal({
+        title: "Felicidades",
+        text: "Tu perfil fue creado correctamente",
+        icon: "success",
+      }); 
       navigate("/login")      
     } catch (error) {
      if(error.code === "auth/email-already-in-use") setuserValidate("Email already in use.. pls try another")   
