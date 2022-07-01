@@ -35,6 +35,7 @@ export default function ProductComments({idProd,comments, boolean, idProduct}){
     if(newComment.length){
       if(userData.id && userData.name && userData.avatar){
         dispatch(addProductComment(idProd,{id: id, name:userData.name,avatar:userData.avatar,comment: newComment,sellerResponse: sellerResponse}))
+        swal({text: "comentario agregado", icon: "success", timer: 1000})
         setNewComment('');
       }else{
         e.preventDefault();
@@ -56,7 +57,18 @@ export default function ProductComments({idProd,comments, boolean, idProduct}){
   }
 
   function handleDeleteComment(e){
-    dispatch(deleteProductComment(idProduct, Number(e.target.value)))
+    e.preventDefault();   
+    swal({
+      title: "Cuidado",
+      text: "Estas seguro de eliminar tu comentario?",
+      icon: "warning",
+      buttons: ["No", "Si"]
+    }).then(response =>{
+        if(response){
+          swal({text: "comentario eliminado", icon: "success"})
+          dispatch(deleteProductComment(idProduct, Number(e.target.value)))
+        }
+    })
   }
 
   function handleActualPos(e){
@@ -69,6 +81,7 @@ export default function ProductComments({idProd,comments, boolean, idProduct}){
   }
 
   function handleSellerResponse(e){
+
     setSellerResponse({
       ...sellerResponse,
       [e.target.name]: e.target.value,
@@ -79,15 +92,25 @@ export default function ProductComments({idProd,comments, boolean, idProduct}){
     setActualPosition([null,null])
   }
 
-  function handleDeleteResp(id){
-    dispatch(deleteSellerResp(idProduct, {
-      ...sellerResponse,
-      id: Number(id),
-      comment: '',
+  function handleDeleteResp(id){     
+    swal({
+      title: "Cuidado",
+      text: "Estas seguro de eliminar tu respuesta?",
+      icon: "warning",
+      buttons: ["No", "Si"]
+    }).then(response =>{
+        if(response){
+          swal({text: "respuesta eliminado", icon: "success"})         
+          dispatch(deleteSellerResp(idProduct, {
+            ...sellerResponse,
+            id: Number(id),
+            comment: '',
       response: false,
     }))
     dispatch(getAllDetails(idProduct));
     dispatch(getAllDetails(idProduct));
+  }
+})
   }
 
   function handleResponseSubmit(e){
@@ -98,6 +121,7 @@ export default function ProductComments({idProd,comments, boolean, idProduct}){
       id: Number(actualPosition[1]),
       response: true,
     }))
+    swal({text: "respuesta enviada", icon:"success"})
     dispatch(getAllDetails(idProduct))
     dispatch(getAllDetails(idProduct))
     setActualPosition([null,null]);

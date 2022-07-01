@@ -46,7 +46,7 @@ function CreateProduct() {
     }
 
     function handleSubmit(e){
-        if(product.title && product.photo && product.type){
+        if(product.title && product.photo && product.type && product.comments.length > 50){
             e.preventDefault();
             swal({
                 title: "Felicidades",
@@ -56,12 +56,13 @@ function CreateProduct() {
             dispatch(createProduct(id, product));
             navigate("/")
         }else {
-            e.preventDefault();
-            swal({
-                title: "Error",
-                text: "Te faltan datos para completar el formulario",
-                icon: "error",
-              });
+            alert("no puedes creer")
+            // e.preventDefault();
+            // swal({
+            //     title: "Error",
+            //     text: "Te faltan datos para completar el formulario",
+            //     icon: "error",
+            //   });
             }
     }
     function handleDot(e){
