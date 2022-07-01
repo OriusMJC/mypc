@@ -23,7 +23,7 @@ import {
 	GET_PRODUCTS_USER,
 	UPDATE_EMAIL,
 	// ADD_FAV,
-	// DEL_FAV
+	DEL_FAV
 } from "../actions";
 // import { Products } from '../../../types';
 
@@ -218,13 +218,12 @@ export default function rootReducer(state = initialState, action: any) {
 		//         ...state,
 		//         fav: newFav
 		//     }
-		// case DEL_FAV:
-		//     const newFavArr = state.userDetails.fav.filter((prod:any)=> prod.id !== action.payload)
-		//     return {
-		//         ...state,
-		//         fav: newFavArr
-		//     }
-
+		case DEL_FAV:
+		    const newFavArr = state.userDetails.fav.filter((prod:any)=> prod.id !== action.payload)
+		    return {
+		        ...state,
+		        fav: newFavArr
+		    }
 		case FILTER_CATEGORY:
 			const status = action.payload;
 			if (status !== "All") {

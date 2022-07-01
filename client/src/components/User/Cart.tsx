@@ -27,19 +27,18 @@ export default function Cart() {
     listPrice.map((p:any)=>{
       if(p.id === e.target.id){
         if(p.cant < e.target.value){
-          console.log('entro')
-          list.push({id:p.id,total: p.total + Number(e.target.name), cant: p.cant + 1})
-          price = price + p.total + Number(e.target.name)
+          list.push({...p, cant: e.target.value})
+          price = price + (p.price * Number(e.target.value))
         }else if(p.cant > e.target.value){
-          list.push({id:p.id,total: p.total - Number(e.target.name), cant: p.cant - 1})
-          price = price + p.total - Number(e.target.name)
+          list.push({...p, cant: e.target.value})
+          price = price + (p.price * Number(e.target.value))
         }else{
           list.push(p)
-          price = price + p.total
+          price = price + p.price
         }
       }else{
         list.push(p)
-        price = price + p.total
+        price = price + p.price
       }
     })
     setListPrice(list)
@@ -51,7 +50,7 @@ export default function Cart() {
     listPrice.map((p:any)=>{
       if(p.id !== id){
         list.push(p)
-        price = price + p.total
+        price = price + (p.price * p.cant)
       }
     })
     setListPrice(list)
@@ -61,7 +60,7 @@ export default function Cart() {
     let list = []
     let price = 0
     productsCart.forEach((p:any)=>{
-          list.push({id:p.id,total: p.price, cant: 1})
+          list.push({id:p.id,price: p.price, cant: 1, title: p.title})
           price = price + p.price
       })
     setListPrice(list)
@@ -102,7 +101,7 @@ export default function Cart() {
               </div>
               <div className={s.extra}>
                 <h4>{prod.status}</h4>
-                <input placeholder="1" id={prod.id} name={prod.price} type='number' min={1} max={Number(prod.cant)} onChange={handlePrice}/>
+                <input placeholder="1" id={prod.id} name={prod.price} type='number' min="1" max={Number(prod.cant)} onChange={handlePrice}/>
                 <button
                   className={s.button}
                   onClick={() => {
