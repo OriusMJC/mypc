@@ -2,7 +2,7 @@ import { useEffect, useState } from "react"
 import { useSelector} from "react-redux"
 import { Link, useParams, useNavigate } from "react-router-dom"
 import { useAppDispatch } from "src/config/config"
-import { addFavUser, addProductCart, getAllDetails, resetProductDetail, deleteProduct } from "src/redux/actions"
+import { addFavUser, addProductCart, getAllDetails, resetProductDetail, deleteProduct, delFavUser } from "src/redux/actions"
 import ProductComments from "./ProductComments"
 import s from '../Styles/ProductDetails.module.css'
 import nolike from '../icons/nolike.png'
@@ -66,6 +66,7 @@ export default function ProductDetails(){
    }
 
    function handleDelete(){
+      dispatch(delFavUser(idUser, idProduct))
       dispatch(deleteProduct(idProduct))
       alert('Product deleted')
       navigate('/')
