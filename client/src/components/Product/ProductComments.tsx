@@ -153,6 +153,7 @@ export default function ProductComments({idProd,comments, boolean, idProduct}){
               </div>
             </div>
               {
+                
                 obj.sellerResponse.response &&
                   <div className={`${s.comments} ${s.sellerResponse}`}>
                     <img src = {obj.sellerResponse.avatar && obj.sellerResponse.avatar}></img>
@@ -161,7 +162,10 @@ export default function ProductComments({idProd,comments, boolean, idProduct}){
                       <h4>{obj.sellerResponse.name && obj.sellerResponse.name}</h4>
                       <p>{obj.sellerResponse.comment && obj.sellerResponse.comment}</p>
                       <div className={s.btnsComSeller}>
+                      {
+                        (boolean || admin) &&
                         <button value = {obj.id} onClick = {() => handleDeleteResp(obj.id)}>X</button>
+                      }
                       </div>
                     </div>
                   </div>
