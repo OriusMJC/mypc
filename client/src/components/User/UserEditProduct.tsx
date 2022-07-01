@@ -52,6 +52,11 @@ function UserEditProduct() {
         alert('Producto actualizado');
         navigate('/user/userProducts');
     }
+    function handleDot(e){
+        if(e.key === "."){
+            e.preventDefault()
+        }
+    }
 
   return (
     <div className={s.containerBtn}>
@@ -108,9 +113,11 @@ function UserEditProduct() {
 
             <label>Stock: </label>
             <input
+            onKeyDown={handleDot}
             type = 'number'
             name = 'cant'
-            value = {prod.cant}
+            value = {prod.cant || 1}
+            min="1"
             onChange = {handleChange}	
             />
 
