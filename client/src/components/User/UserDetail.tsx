@@ -6,8 +6,7 @@ import Loading from "../Loading/Loading";
 
 export default function UserDetail() {
   const user = useSelector((state: any) => state.userDetails);
-  const products = useSelector((state:any) => state.allComponents);
-  console.log(user)
+  // const products = useSelector((state:any) => state.allComponents);
   return (
     <div className={s.container}>
       {

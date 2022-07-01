@@ -20,7 +20,7 @@ export default function NavBar() {
 	function handleSubmit(e) {
 		e.preventDefault();
 		dispatch(getName(title));
-		setTitle("");
+		// setTitle("");
 	}
 
 	function handleRefresh(e) {
