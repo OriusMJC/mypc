@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom'
 import { useAppDispatch } from '../../config/config';
 import { createProduct} from '../../redux/actions/index';
 import s from '../Styles/CreateProduct.module.css'
-
+import swal from 'sweetalert';
 function CreateProduct() {
     const dispatch = useAppDispatch();
     const navigate = useNavigate();
@@ -48,10 +48,21 @@ function CreateProduct() {
     function handleSubmit(e){
         if(product.title && product.photo && product.type){
             e.preventDefault();
+            swal({
+                title: "Felicidades",
+                text: "Tu producto fue creado",
+                icon: "success",
+              });                
             dispatch(createProduct(id, product));
-            alert("Product created");
             navigate("/")
-        }else alert("Product not created, please complete the form") 
+        }else {
+            e.preventDefault();
+            swal({
+                title: "Error",
+                text: "Te faltan datos para completar el formulario",
+                icon: "error",
+              });
+            }
     }
     function handleDot(e){
         if(e.key === "."){
