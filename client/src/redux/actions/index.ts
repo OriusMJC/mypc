@@ -30,6 +30,7 @@ export const GET_ALL_USERS = "GET_ALL_USERS";
 export const DELETE_PRODUCT = "DELETE_PRODUCT";
 export const UPDATE_PRODUCT = "UPDATE_PRODUCT";
 export const UPDATE_EMAIL = "UPDATE_EMAIL";
+export const SEARCH_SUGGESTIONS = "SEARCH_SUGGESTIONS";
 // export const ADD_FAV = "ADD_FAV";
 // export const DEL_FAV = "DEL_FAV";
 
@@ -305,4 +306,4 @@ export function emailUpdateUser(id: string, newEmail: string) {
 			console.log(error);
 		}
 	};
-}
+};

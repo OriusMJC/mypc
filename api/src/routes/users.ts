@@ -1,5 +1,6 @@
 import express from 'express'
-import { body, validationResult } from 'express-validator'
+// import { body, validationResult } from 'express-validator'
+import { body, validationResult } from 'express-validator' 
 import { Router } from "express";
 import {
 	getAllUsers,
