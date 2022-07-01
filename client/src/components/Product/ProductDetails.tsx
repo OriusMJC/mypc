@@ -9,6 +9,8 @@ import nolike from '../icons/nolike.png'
 import { addCartLH } from "src/services/functionsServices"
 import { userInfo } from "os"
 import { userData } from "src/services/userFirebase"
+import swal from 'sweetalert';
+
 // import { Products } from "types"
 
 // interface Info {
@@ -48,7 +50,12 @@ export default function ProductDetails(){
             status: product.status
          }))
       }else{
-          alert('Debes iniciar sesión para poder agregar productos a favoritos!')
+         swal({
+            title: "No estas Logueado",
+            text: "Debes iniciar sesión para agregar productos a favoritos",
+            icon: "warning",
+          });  
+         //  alert('Debes iniciar sesión para poder agregar productos a favoritos!')
       }
   }
 
@@ -66,10 +73,18 @@ export default function ProductDetails(){
    }
 
    function handleDelete(){
-      dispatch(delFavUser(idUser, idProduct))
-      dispatch(deleteProduct(idProduct))
-      alert('Product deleted')
-      navigate('/')
+      swal({         
+         text: "Estas seguro de eliminar el producto?",
+         icon: "warning",
+         buttons: ["No", "Si"]
+       }).then(respuesta =>{
+         if(respuesta){
+            swal({text: "Producto eliminado correctamente" , icon: "success"})
+            dispatch(deleteProduct(idProduct))
+            navigate('/')
+         }
+       })  
+      // alert('Product deleted')
    }
 
    useEffect(():any=>{

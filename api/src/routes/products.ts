@@ -66,7 +66,7 @@ router.post('/:idUser', [
     body('description', 'Ingrese una descripcion del producto')
         .exists()
         .isLength({
-            min: 50,
+            min: 5,
             max: 500
         })
 ],async (req: express.Request, res: express.Response, next:any)=>{//en la documentacion de express-validator res y req estan asi
@@ -120,7 +120,7 @@ router.put('/:idProduct', [
     body('description', 'Ingrese una descripcion del producto')
         .exists()
         .isLength({
-                    min: 50,
+                    min: 5,
                     max: 500
         })
 ],async (req: express.Request, res: express.Response, next:any)=>{//en la documentacion de express-validator res y req estan asi
@@ -142,7 +142,6 @@ router.put('/comments/:idProduct', [
     body('comment', 'Ingrese un comentario')
         .exists()
         .isLength({
-            min: 10,
             max: 500
 })
     ],async (req: express.Request, res: express.Response, next:any)=>{//en la documentacion de express-validator res y req estan asi
@@ -179,7 +178,6 @@ router.put('/comments/update/:idProduct', [
     body('response', 'Ingrese un comentario')
         .exists()
         .isLength({
-            min: 10,
             max: 500
 })
     ],async (req: express.Request, res: express.Response, next:any)=>{//en la documentacion de express-validator res y req estan asi
