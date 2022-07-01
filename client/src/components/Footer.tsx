@@ -13,7 +13,7 @@ function Footer() {
             Contactanos!
         </Link>
         <p>
-         Need Any <Link to = "/help" className={s.help}>Help?</Link>  
+         Necesitas alguna <Link to = "/help" className={s.help}>Ayuda?</Link>  
         </p>        
         <p>Powered by ©My-Pc</p>
         <img src = {logo} width="60px" height="60px"></img>
