@@ -1,7 +1,7 @@
 import { useState, useEffect} from "react"
 import { useSelector } from "react-redux"
 import { useAppDispatch } from "src/config/config"
-import { addProductComment, deleteProductComment, addSellerResp, getAllDetails} from "src/redux/actions"
+import { addProductComment, deleteProductComment, addSellerResp, getAllDetails, deleteSellerResp} from "src/redux/actions"
 import s from '../Styles/ProductComments.module.css'
 
 export default function ProductComments({idProd,comments, boolean, idProduct}){
@@ -56,15 +56,26 @@ export default function ProductComments({idProd,comments, boolean, idProduct}){
     setRefresh([...refresh, 1])
   }
 
-  function handleCancelResp(){
-    setActualPosition([null,null])
-  }
-
   function handleSellerResponse(e){
     setSellerResponse({
       ...sellerResponse,
       [e.target.name]: e.target.value,
     })
+  }
+
+  function handleCancelResp(){
+    setActualPosition([null,null])
+  }
+
+  function handleDeleteResp(id){
+    dispatch(deleteSellerResp(idProduct, {
+      ...sellerResponse,
+      id: Number(id),
+      comment: '',
+      response: false,
+    }))
+    dispatch(getAllDetails(idProduct));
+    dispatch(getAllDetails(idProduct));
   }
 
   function handleResponseSubmit(e){
@@ -86,11 +97,12 @@ export default function ProductComments({idProd,comments, boolean, idProduct}){
     })
   }
 
+
   return (
     <section id={s.sectionComments}>
         <h3>Haz tu pregunta aquí</h3>
       <form onSubmit={handleSubmit}>
-        <input type='text' value={newComment} onChange={handleChange}/>
+        <input name="comment" type='text' value={newComment} onChange={handleChange}/>
         <button className={s.btnSend} type="submit">Enviar</button>
       </form>
       <div>
@@ -140,19 +152,20 @@ export default function ProductComments({idProd,comments, boolean, idProduct}){
               }
               </div>
             </div>
-            <div>
               {
                 obj.sellerResponse.response &&
-                <div className={`${s.sellerResponse} ${s.comments}`}>
-                  <img src = {obj.sellerResponse.avatar && obj.sellerResponse.avatar}></img>
-                  <div>
-                    <h5>Vendedor</h5>
-                    <h4>{obj.sellerResponse.name && obj.sellerResponse.name}</h4>
-                    <p>{obj.sellerResponse.comment && obj.sellerResponse.comment}</p>
+                  <div className={`${s.comments} ${s.sellerResponse}`}>
+                    <img src = {obj.sellerResponse.avatar && obj.sellerResponse.avatar}></img>
+                    <div>
+                      <h5>Vendedor</h5>
+                      <h4>{obj.sellerResponse.name && obj.sellerResponse.name}</h4>
+                      <p>{obj.sellerResponse.comment && obj.sellerResponse.comment}</p>
+                      <div className={s.btnsComSeller}>
+                        <button value = {obj.id} onClick = {() => handleDeleteResp(obj.id)}>X</button>
+                      </div>
+                    </div>
                   </div>
-                </div>
               }
-            </div>
             </> 
             )
           })

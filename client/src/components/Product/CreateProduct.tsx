@@ -4,7 +4,6 @@ import { useNavigate } from 'react-router-dom'
 import { useAppDispatch } from '../../config/config';
 import { createProduct} from '../../redux/actions/index';
 import s from '../Styles/CreateProduct.module.css'
-import swal from 'sweetalert';
 
 function CreateProduct() {
     const dispatch = useAppDispatch();
@@ -49,18 +48,14 @@ function CreateProduct() {
     function handleSubmit(e){
         if(product.title && product.photo && product.type){
             e.preventDefault();
-            swal("Good JOB", "tu producto fue creado con exito", "success")
             dispatch(createProduct(id, product));
+            alert("Product created");
             navigate("/")
-        }else {
-            e.preventDefault();
-            swal("te faltan datos vieja", "sos malisimo llenando formularios", "error")
-        }
-        
+        }else alert("Product not created, please complete the form") 
     }
     function handleDot(e){
         if(e.key === "."){
-            e.preventDefault()
+            e.preventDefault();
         }
     }
 
@@ -80,7 +75,7 @@ function CreateProduct() {
             <input type="text" name="title" value={product.title} onChange={handleChange}></input>
             
             <label>Price: </label>
-            <input type="number" name="price" value={product.price} min="1" onChange={handleChange}></input>
+            <input type="number" onKeyDown={handleDot} min="1" name="price" value={product.price} onChange={handleChange}></input>
 
             <label>Type: </label>
             <select onChange={handleType}>
@@ -100,7 +95,7 @@ function CreateProduct() {
             </select>
             
             <label>Stock: </label>
-            <input type="number" onKeyDown={handleDot} name="cant" value={product.cant || 1} min="1" onChange={handleChange}></input>
+            <input type="number"  onKeyDown={handleDot} min="1" name="cant" value={product.cant} onChange={handleChange}></input>
 
             <label>Description: </label>
             <input type="text" name="description" value={product.description} onChange={handleChange} className={s.descriptionInput}></input>
