@@ -70,7 +70,7 @@ export default function Cart() {
               <button className={s.button}>Comprar</button>
             </Link>
           ) : (
-            <Link to="/user/login">
+            <Link to="/login">
               <button className={s.button}>Logearse</button>
             </Link>
           ) : null}

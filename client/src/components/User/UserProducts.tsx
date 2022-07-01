@@ -55,7 +55,7 @@ function UserProducts() {
 
   return (
     <div className={s.userProducstContainer}>
-      <Link to ='/userdetail' className={s.buttonHome}>
+      <Link to ='/user/detail' className={s.buttonHome}>
         <button>
           Inicio
         </button>

@@ -3,7 +3,7 @@ import { DataTypes } from 'sequelize';
 // Exportamos una funcion que define el modelo
 // Luego le injectamos la conexion a sequelize.
 module.exports = (sequelize:any) => {
-  sequelize.define('order', {
+  sequelize.define('Order', {
     id: {
       type: DataTypes.STRING,
       allownull: false,

@@ -4,8 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev" : "ts-node-dev index.ts",
+    "dev": "ts-node-dev index.ts",
     "start": "node build/index.js",
+    "build": "tsc",
     "tsc": "tsc",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -28,6 +29,7 @@
     "jsonwebtoken": "^8.5.1",
     "nodemon": "^2.0.16",
     "pg": "^8.7.3",
-    "sequelize": "^6.20.1"
+    "sequelize": "^6.20.1",
+    "ts-node": "^10.8.1"
   }
 }

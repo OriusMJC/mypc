@@ -3,6 +3,7 @@ import { useSelector } from "react-redux"
 import { Link } from "react-router-dom"
 import { useAppDispatch } from "src/config/config"
 import { deleteProduct, filterUser, getAllComponents, getAllUsers, getName } from "src/redux/actions"
+import Loading from "../Loading/Loading"
 import NavFilter from "../NavFilter"
 import s from '../Styles/AdminManage.module.css'
 import SearchbarAdmin from "./SearchbarAdmin"
@@ -14,7 +15,7 @@ export default function AdminManage (){
     const allComponents = useSelector((store:any)=>store.components)
     const [btnView, setBtnView ] = useState('products')
     const [refresh,setRefresh] = useState(1)
-    console.log(allComponents[0])
+    // console.log(allComponents)
     useEffect(()=>{
         dispatch(getAllUsers())
         dispatch(getAllComponents())
@@ -63,7 +64,7 @@ export default function AdminManage (){
                                     </thead>
                                     <tbody>
                                     {
-                                        allComponents.length && allComponents?.map((prod)=>{
+                                        typeof allComponents[0] === 'object' && allComponents.length && allComponents?.map((prod)=>{
                                             return (
                                             <tr key={prod.id} className={s.listProd}>
                                                 <td>{prod.id}</td>
@@ -118,7 +119,7 @@ export default function AdminManage (){
                         </table>
                     </div>
                     :
-                    <h1>No sos admin, tomatela</h1>
+                    <Loading load='Verificando que seas Admin' msgError='No eres admin, no debes de estar aca' time={3000} />
             }
         </div>
     )

@@ -10,6 +10,7 @@ import { userSingOut } from "src/services/userFirebase";
 export const GET_ALL_COMPONENTS = "GET_ALL_COMPONENTS";
 export const GET_ALL_DETAILS = "GET_ALL_DETAILS";
 export const GET_NAME = "GET_NAME";
+export const GET_PRODUCTS_USER = "GET_PRODUCTS_USER";
 export const GET_PRODUCT_CART = "GET_PRODUCT_CART";
 export const ADD_PRODUCT_CART = "ADD_PRODUCT_CART";
 export const DEL_PRODUCT_CART = "DEL_PRODUCT_CART";
@@ -69,10 +70,15 @@ export function getName(name: string) {
 		}
 	};
 }
-export function filterUser(name: string) {
-	return (dispatch: Dispatch<Action>) => {
-		dispatch({ type: FILTER_USER, payload: name });
-	};
+export function getProductsUser(id: string){
+    return (dispatch: Dispatch<Action>) => {
+        dispatch({type: GET_PRODUCTS_USER, payload: id})
+    }
+}
+export function filterUser(name: string){
+    return (dispatch: Dispatch<Action>) => {
+        dispatch({type: FILTER_USER, payload: name})
+    }
 }
 
 export function createUser(user) {
