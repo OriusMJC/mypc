@@ -65,7 +65,7 @@ function Pages({ productsPerPage, allComponents, refresh }) {
                           type = {prod.type}
                           likes = {prod.likes}
                           status = {prod.status}
-
+                          cant={prod.cant}
                           />)
                   })
                   :
