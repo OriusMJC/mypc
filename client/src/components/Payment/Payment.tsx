@@ -140,7 +140,7 @@ export default function Payment() {
                       <div className="product-details">
                         <div className="row justify-content-md-center">
                           <div className="col-md-3">
-                            <img className="img-fluid mx-auto d-block image" src="img/product.png" />
+                            <img className="img-fluid mx-auto d-block image" src="img/product.png"/>
                           </div>
                           <div className="col-md-4 product-detail">
                             <h5>Product</h5>
@@ -171,7 +171,8 @@ export default function Payment() {
             </div>
           </div>
         </div>
-        {/* Payment */}
+      </div>
+      <section className="payment-form dark">
         <div className="container_payment" id="container_payment">
           <div className="block-heading">
             <h2>Checkout Payment</h2>
@@ -188,10 +189,10 @@ export default function Payment() {
             </div>
             <div className="payment-details">
               <div className="form-group col-sm-12">
-                <br/>      
+                <br></br>      
                 <div id="button-checkout">
                 </div>                 
-                <br/>
+                <br></br> 
                 <a id="go-back">
                   <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 10 10" className="chevron-left">
                     <path fill="#009EE3" fill-rule="nonzero"id="chevron_left" d="M7.05 1.4L6.2.552 1.756 4.997l4.449 4.448.849-.848-3.6-3.6z"></path>

@@ -92,9 +92,13 @@
     color: rgba(255, 255, 255, 0.762);
    
 }
-.button {
+
+.btnDelete{
+    background-color: rgb(238, 10, 10) !important;
+}
+
+/* .button {
     border: none;
-    background-color: rgb(52, 218, 52);
     cursor: pointer;
     border-radius: 10px;
     padding: 10px;
@@ -108,7 +112,7 @@
 .button:hover {
     transform: scale(1.02);
     color: rgba(255, 255, 255, 0.762)
-}
+} */
 
 .btnSend{
     border: none;   

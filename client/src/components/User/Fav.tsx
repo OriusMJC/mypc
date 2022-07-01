@@ -15,7 +15,7 @@ export default function Fav() {
   // const productsFav = useSelector((store:any)=> store.userDetails?.fav)
   // function HandleNavi(){
   //     const navigate = useNavigate()
-  //     navigate('/user/login')
+  //     navigate('/login')
   // }
 
   function handleKickFav(isUser, idProd) {
@@ -93,7 +93,7 @@ export default function Fav() {
             ))
           ) : (
             <div className={s.textInfo}>
-              <h1>You haven't added anything to favorites yet!</h1>
+              <h1>Aún no has añadido nada al Favoritos!</h1>
               <Link to="/">
                 <button className={s.button}>Volver al Inicio</button>
               </Link>
@@ -101,8 +101,8 @@ export default function Fav() {
           )
         ) : (
           <div className={s.textInfo}>
-            <h1>You haven't logged in yet!</h1>
-            <Link to="/user/login">
+            <h1>Aún no has inciado sesión. Inicia sesión para ver tu lista de favoritos!</h1>
+            <Link to="/login">
               <button className={s.button}>Login</button>
             </Link>
           </div>

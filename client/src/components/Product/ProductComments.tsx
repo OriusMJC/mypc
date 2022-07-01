@@ -102,7 +102,7 @@ export default function ProductComments({idProd,comments, boolean, idProduct}){
     <section id={s.sectionComments}>
         <h3>Haz tu pregunta aquí</h3>
       <form onSubmit={handleSubmit}>
-        <input type='text' value={newComment} onChange={handleChange}/>
+        <input name="comment" type='text' value={newComment} onChange={handleChange}/>
         <button className={s.btnSend} type="submit">Enviar</button>
       </form>
       <div>
@@ -142,11 +142,12 @@ export default function ProductComments({idProd,comments, boolean, idProduct}){
               {
                 (boolean || admin)
                 &&
-                <div>
-                <button value={obj.id} onClick = {handleDeleteComment}>X</button>
-                <button value={arr} 
-                onClick = {handleActualPos}
-                >Responder</button>
+                <div className={s.btnsComSeller}>
+                  <button value={obj.id} onClick = {handleDeleteComment}>X</button>
+                  <button value={arr} 
+                  onClick = {handleActualPos}>
+                    Responder
+                  </button>
                 </div>
               }
               </div>
@@ -155,14 +156,15 @@ export default function ProductComments({idProd,comments, boolean, idProduct}){
                 obj.sellerResponse.response &&
                 <div>
                   <button value = {obj.id} onClick = {() => handleDeleteResp(obj.id)}>X</button>
-                <div>
-                <img src = {obj.sellerResponse.avatar && obj.sellerResponse.avatar}></img>
-                <div>
-                  <h4>{obj.sellerResponse.name && obj.sellerResponse.name}</h4>
-                  <p>{obj.sellerResponse.comment && obj.sellerResponse.comment}</p>
+                  <div>
+                    <img src = {obj.sellerResponse.avatar && obj.sellerResponse.avatar}></img>
+                    <div>
+                      <h5>Vendedor</h5>
+                      <h4>{obj.sellerResponse.name && obj.sellerResponse.name}</h4>
+                      <p>{obj.sellerResponse.comment && obj.sellerResponse.comment}</p>
+                    </div>
+                  </div>
                 </div>
-              </div>
-              </div>
               }
             </> 
             )

@@ -81,7 +81,7 @@ export default function Register(){
         id: userData.user.uid
       }));
       alert("User created successfully");
-      navigate("/user/login")      
+      navigate("/login")      
     } catch (error) {
      if(error.code === "auth/email-already-in-use") setuserValidate("Email already in use.. pls try another")   
   //  setuserValidate(error.code)
@@ -116,7 +116,7 @@ export default function Register(){
        
       </form>
 
-      <Link to = "/user/login">
+      <Link to = "/login">
         <h4 className = {s.haveAccount}>
         Already have an account?
         </h4>

@@ -44,7 +44,7 @@ const modelDefiners:any[] = [];
 //hola
 // Leemos todos los archivos de la carpeta Models, los requerimos y agregamos al arreglo modelDefiners
 fs.readdirSync(path.join(__dirname, '/models'))
-  .filter((file:any) => (file.indexOf('.') !== 0) && (file !== basename) && (file.slice(-3) === '.ts'))
+  .filter((file:any) => (file.indexOf('.') !== 0) && (file !== basename) && (file.slice(-3) === '.ts' || file.slice(-3) === '.js'))
   .forEach((file:any) => {
     modelDefiners.push(require(path.join(__dirname, '/models', file)));
   });
@@ -68,7 +68,10 @@ const { User, Product, Order } = sequelize.models;
 
 
 /* Un usuario tiene muchos procutos // Un producto pertenece a muchos usuarios */
-User.hasMany(Product, {foreignKey:'user_id', targetKey:'id', as:'sell'});
+User.hasMany(Product, {sourceKey:'id',foreignKey:'user_id', as:'sell'});
+// console.log(sequelize.models)
+
+// User.hasMany(Product);
 Product.belongsTo(User);
 
 /* Un usuario tiene muchos pedidos // Un pedido pertenece a un usuario */
