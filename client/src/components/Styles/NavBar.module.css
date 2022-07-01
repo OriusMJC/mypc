@@ -1,75 +1,92 @@
-:root{
-    --color-primary: #fff;
-    --gray-light: #f2f2f2;
-    --gray-medium: #eaeaea;
-    --gray-dark: #d6d6d6;
-    --color-secundary: #000
+:root {
+	--color-primary: #fff;
+	--color-secundary: #000;
+	--gray-dark: #d6d6d6;
+	--gray-light: #f2f2f2;
+	--gray-medium: #eaeaea;
 }
-
-.searchBarContainer{
-    padding: 20px 0px;
-    width: 100vw;
-    background-color: var(--color-primary);
-    /* display: block; */
+.searchBarContainer {
+	background-color: var(--color-primary);
+	padding: 20px 0px;
+	width: 100vw;
 }
 .contain {
-    display: flex;
-    align-items: center;
-    margin: auto;
-    max-width: 1150px;
-    width: 100%;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
+	align-items: center;
+	align-items: center;
+	display: flex;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	margin: auto;
+	max-width: 1150px;
+	width: 100%;
 }
 .searchBar {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: row;
-    flex: 1;
-    margin: 0px 30px;
+	align-items: center;
+	display: flex;
+	flex-direction: row;
+	flex: 1;
+	justify-content: center;
+	margin: 0px 30px;
 }
-.searchBar input{
-    /* height: 25px; */
-    padding: 5px 10px;
-    /* width: 300px; */
-    width: 60%;
-    border: 1px solid var(--gray-light);
-    border-radius: 5px 0px 0px 5px;
-    outline: none;
-    font-size: 17px;
+.input {
+	margin-right: 19px;
+	position: relative;
+	width: 60%;
 }
-.searchBar button{
-    /* height: 30px; */
-    width: 60px;
-    font-size: 17px;
-    padding: 6px;
-    border: none;
-    border-radius: 0px 5px 5px 0px;
-    cursor: pointer;
+.input input {
+	border-radius: 5px 0px 0px 5px;
+	border: 1px solid var(--gray-light);
+	font-size: 17px;
+	outline: none;
+	padding: 5px 10px;
+	width: 100%;
 }
-
-.contLogo{
-    /* width: 20%; */
-    font-size:20px;
-    /* margin-right: 30px; */
+.searchBar button {
+	border-radius: 0px 5px 5px 0px;
+	border: none;
+	cursor: pointer;
+	font-size: 17px;
+	padding: 6px;
+	width: 60px;
 }
-.contLogo a{
-    color: #000;
-    text-decoration: none;
+.contLogo {
+	font-size: 20px;
+}
+.contLogo a {
+	color: #000;
+	text-decoration: none;
 }
 .contLogo h1 {
-    margin: 0;
+	margin: 0;
 }
-
-.logo{
-    border: none;
-    height: 40px;
-    width: 100px;
-    font-size: 30px;
-    background-color: white;
-    cursor: pointer;
-    font-weight: bold;
+.logo {
+	background-color: white;
+	border: none;
+	cursor: pointer;
+	font-size: 30px;
+	font-weight: bold;
+	height: 40px;
+	width: 100px;
+}
+.dropdown {
+	background-color: white;
+	border: 1px solid gray;
+	display: flex;
+	flex-direction: column;
+	max-width: 1150px;
+	position: absolute;
+	width: calc(100% + 20px);
+}
+.dropdown:empty {
+	border: none;
+}
+.dropdownRow {
+	cursor: pointer;
+	margin: 2px 0;
+	padding: 5px 10px;
+	text-align: start;
+}
+.dropdownRow:hover {
+	background-color: var(--gray-dark);
 }
