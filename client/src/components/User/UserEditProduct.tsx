@@ -4,6 +4,7 @@ import { useSelector } from 'react-redux';
 import { useAppDispatch} from '../../config/config';
 import { updateProduct, getAllComponents } from '../../redux/actions/index';
 import s from '../Styles/UserEditProduct.module.css'
+import swal from 'sweetalert';
 
 function UserEditProduct() {
     const dispatch = useAppDispatch();
@@ -48,9 +49,18 @@ function UserEditProduct() {
 
     function handleSubmit(e){
         e.preventDefault();
-        dispatch(updateProduct(idProduct, prod));
-        alert('Producto actualizado');
-        navigate('/user/userProducts');
+        swal({            
+            text: "Estas seguro de actualizar tu producto?",
+            icon: "warning",
+            buttons: ["No", "Si"]
+          }).then(response=>{
+            if(response){
+                swal({text: "producto actualizado", icon: "success"})
+                dispatch(updateProduct(idProduct, prod));
+                navigate('/user/userProducts');
+            }
+          })
+        // alert('Producto actualizado');
     }
     function handleDot(e){
         if(e.key === "."){
@@ -59,6 +69,7 @@ function UserEditProduct() {
     }
 
   return (
+<<<<<<< HEAD
     <div>
         <Link to= '/user/userProducts'>
             <button>
@@ -67,6 +78,20 @@ function UserEditProduct() {
         </Link>
         <form onSubmit = {handleSubmit}>
             <h1>Editar Producto</h1>
+=======
+    <div className={s.containerBtn}>
+        <div>
+
+          <Link to= '/user/userProducts'>
+             <button  className={s.btnBack}>
+                Rgresar
+             </button>
+         </Link>
+        </div>
+        <div className={s.container}>
+        <form className={s.form} onSubmit = {handleSubmit}>
+            <h1>Editar producto</h1>
+>>>>>>> development
 
             <label>Imagen: </label>
             <input
@@ -89,11 +114,16 @@ function UserEditProduct() {
             type = 'number'
             name = 'price'
             value = {prod.price}
+            min="1"
             onChange = {handleChange}	
             />
 
             <label>Tipo: </label>
+<<<<<<< HEAD
             <select onChange={handleType}>
+=======
+            <select name="type" onChange={handleType}>
+>>>>>>> development
                 {types?.map(t => (
                     <option key={t} value={t}>
                         {t}
@@ -102,7 +132,11 @@ function UserEditProduct() {
             </select>
 
             <label>Estado: </label>
+<<<<<<< HEAD
             <select onChange = {handleStatus}>
+=======
+            <select name="status" onChange = {handleStatus}>
+>>>>>>> development
                 <option value="nuevo">nuevo</option>
                 <option value="usado">usado</option>
             </select>

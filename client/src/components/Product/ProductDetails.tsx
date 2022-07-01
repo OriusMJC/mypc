@@ -2,13 +2,15 @@ import { useEffect, useState } from "react"
 import { useSelector} from "react-redux"
 import { Link, useParams, useNavigate } from "react-router-dom"
 import { useAppDispatch } from "src/config/config"
-import { addFavUser, addProductCart, getAllDetails, resetProductDetail, deleteProduct } from "src/redux/actions"
+import { addFavUser, addProductCart, getAllDetails, resetProductDetail, deleteProduct, delFavUser, delProductCart } from "src/redux/actions"
 import ProductComments from "./ProductComments"
 import s from '../Styles/ProductDetails.module.css'
 import nolike from '../icons/nolike.png'
 import { addCartLH } from "src/services/functionsServices"
 import { userInfo } from "os"
 import { userData } from "src/services/userFirebase"
+import swal from 'sweetalert';
+
 // import { Products } from "types"
 
 // interface Info {
@@ -48,7 +50,12 @@ export default function ProductDetails(){
             status: product.status
          }))
       }else{
-          alert('Debes iniciar sesión para poder agregar productos a favoritos!')
+         swal({
+            title: "No estas Logueado",
+            text: "Debes iniciar sesión para agregar productos a favoritos",
+            icon: "warning",
+          });  
+         //  alert('Debes iniciar sesión para poder agregar productos a favoritos!')
       }
   }
 
@@ -66,9 +73,22 @@ export default function ProductDetails(){
    }
 
    function handleDelete(){
-      dispatch(deleteProduct(idProduct))
-      alert('Product deleted')
-      navigate('/')
+      swal({         
+         text: "Estas seguro de eliminar el producto?",
+         icon: "warning",
+         buttons: ["No", "Si"]
+       }).then(respuesta =>{
+         if(respuesta){
+            swal({text: "Producto eliminado correctamente" , icon: "success"})
+            dispatch(delFavUser(idUser, idProduct))
+            dispatch(delFavUser(idUser, idProduct))
+            dispatch(delFavUser(idUser, idProduct))
+            dispatch(delProductCart(idProduct))
+            dispatch(deleteProduct(idProduct))
+            navigate('/')
+         }
+       })  
+      // alert('Product deleted')
    }
 
    useEffect(():any=>{

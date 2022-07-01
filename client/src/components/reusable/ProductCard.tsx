@@ -4,21 +4,27 @@ import { useAppDispatch } from "src/config/config";
 import { addFavUser, addProductCart } from "src/redux/actions";
 import { addCartLH } from "src/services/functionsServices";
 import s from "../Styles/ProductsCards.module.css";
+import swal from 'sweetalert';
 
 
-export default function ProductCard({id,title, photo, price, type, likes, status}){
+export default function ProductCard({id,title, photo, price, type, likes, status, cant}){
   const dispatch = useAppDispatch()
     const idUser = useSelector((store:any)=> store.userDetails?.id)
     function handleFav(){
         if(idUser){
             dispatch(addFavUser(idUser,{id,title, photo, price, type, likes, status}))
         }else{
-            alert('Debes iniciar sesión para poder agregar productos a favoritos!')
+          swal({
+            title: "No estas Logueado",
+            text: "Debes iniciar sesión para poder agregar productos a favoritos!",
+            icon: "warning",
+          })
+            // alert('Debes iniciar sesión para poder agregar productos a favoritos!')
         }
     }
 
     function handleCart(){
-        dispatch(addProductCart({id,title, photo, price, type, likes, status}))
+        dispatch(addProductCart({id,title, photo, price, type, likes, status, cant}))
     }
 
   return (

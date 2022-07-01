@@ -3,6 +3,7 @@ import { useSelector } from "react-redux"
 import { useAppDispatch } from "src/config/config"
 import { addProductComment, deleteProductComment, addSellerResp, getAllDetails, deleteSellerResp} from "src/redux/actions"
 import s from '../Styles/ProductComments.module.css'
+import swal from 'sweetalert';
 
 export default function ProductComments({idProd,comments, boolean, idProduct}){
   const arrId = comments.map((c:any) => Number(c.id));
@@ -34,17 +35,40 @@ export default function ProductComments({idProd,comments, boolean, idProduct}){
     if(newComment.length){
       if(userData.id && userData.name && userData.avatar){
         dispatch(addProductComment(idProd,{id: id, name:userData.name,avatar:userData.avatar,comment: newComment,sellerResponse: sellerResponse}))
+        swal({text: "comentario agregado", icon: "success", timer: 1000})
         setNewComment('');
       }else{
-        alert('Debes inciar sesión para poder comentar')
+        e.preventDefault();
+        // alert('Debes inciar sesión para poder comentar')
+        swal({
+          title: "No estas Logueado",
+          text: "Debes inciar sesión para poder comentar",
+          icon: "warning",
+        });  
       }
     }else{
-      alert('No puedes enviar un comentario vacio')
+      swal({
+        title: "Error",
+        text: "No puedes enviar un comentario vacio",
+        icon: "error",
+      })     
+      // alert('No puedes enviar un comentario vacio')  
     }
   }
 
   function handleDeleteComment(e){
-    dispatch(deleteProductComment(idProduct, Number(e.target.value)))
+    e.preventDefault();   
+    swal({
+      title: "Cuidado",
+      text: "Estas seguro de eliminar tu comentario?",
+      icon: "warning",
+      buttons: ["No", "Si"]
+    }).then(response =>{
+        if(response){
+          swal({text: "comentario eliminado", icon: "success", timer: 1000})
+          dispatch(deleteProductComment(idProduct, Number(e.target.value)))
+        }
+    })
   }
 
   function handleActualPos(e){
@@ -67,15 +91,25 @@ export default function ProductComments({idProd,comments, boolean, idProduct}){
     setActualPosition([null,null])
   }
 
-  function handleDeleteResp(id){
-    dispatch(deleteSellerResp(idProduct, {
-      ...sellerResponse,
-      id: Number(id),
-      comment: '',
+  function handleDeleteResp(id){     
+    swal({
+      title: "Cuidado",
+      text: "Estas seguro de eliminar tu respuesta?",
+      icon: "warning",
+      buttons: ["No", "Si"]
+    }).then(response =>{
+        if(response){
+          swal({text: "respuesta eliminado", icon: "success", timer: 1000})         
+          dispatch(deleteSellerResp(idProduct, {
+            ...sellerResponse,
+            id: Number(id),
+            comment: '',
       response: false,
     }))
     dispatch(getAllDetails(idProduct));
     dispatch(getAllDetails(idProduct));
+  }
+})
   }
 
   function handleResponseSubmit(e){
@@ -86,6 +120,7 @@ export default function ProductComments({idProd,comments, boolean, idProduct}){
       id: Number(actualPosition[1]),
       response: true,
     }))
+    swal({text: "respuesta enviada", icon:"success", timer: 1000})
     dispatch(getAllDetails(idProduct))
     dispatch(getAllDetails(idProduct))
     setActualPosition([null,null]);
@@ -161,7 +196,10 @@ export default function ProductComments({idProd,comments, boolean, idProduct}){
                       <h4>{obj.sellerResponse.name && obj.sellerResponse.name}</h4>
                       <p>{obj.sellerResponse.comment && obj.sellerResponse.comment}</p>
                       <div className={s.btnsComSeller}>
+                      {
+                        (boolean || admin) &&
                         <button value = {obj.id} onClick = {() => handleDeleteResp(obj.id)}>X</button>
+                      }
                       </div>
                     </div>
                   </div>

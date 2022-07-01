@@ -3,6 +3,7 @@ import { useSelector } from "react-redux"
 import { Link } from "react-router-dom"
 import { useAppDispatch } from "src/config/config"
 import { deleteProduct, filterUser, getAllComponents, getAllUsers, getName } from "src/redux/actions"
+import swal from "sweetalert"
 import Loading from "../Loading/Loading"
 import NavFilter from "../NavFilter"
 import s from '../Styles/AdminManage.module.css'
@@ -22,7 +23,16 @@ export default function AdminManage (){
     },[])
     
     function handleDelete(id){
-        dispatch(deleteProduct(id))
+        swal({         
+            text: "Estas seguro de eliminar el producto?",
+            icon: "warning",
+            buttons: ["No", "Si"]
+          }).then(respuesta =>{
+            if(respuesta){
+               swal({text: "Producto eliminado correctamente" , icon: "success"})
+               dispatch(deleteProduct(id))
+            }
+          })
     }
     function handleRefresh(){
         dispatch(getName(''))
