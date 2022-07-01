@@ -59,7 +59,6 @@ function UserEditProduct() {
     }
 
   return (
-<<<<<<< HEAD
     <div>
         <Link to= '/user/userProducts'>
             <button>
@@ -68,20 +67,6 @@ function UserEditProduct() {
         </Link>
         <form onSubmit = {handleSubmit}>
             <h1>Editar Producto</h1>
-=======
-    <div className={s.containerBtn}>
-        <div>
-
-          <Link to= '/user/userProducts'>
-             <button  className={s.btnBack}>
-                Go back
-             </button>
-         </Link>
-        </div>
-        <div className={s.container}>
-        <form className={s.form} onSubmit = {handleSubmit}>
-            <h1>Edit Product</h1>
->>>>>>> development
 
             <label>Imagen: </label>
             <input
@@ -107,13 +92,8 @@ function UserEditProduct() {
             onChange = {handleChange}	
             />
 
-<<<<<<< HEAD
             <label>Tipo: </label>
             <select onChange={handleType}>
-=======
-            <label>Type: </label>
-            <select name="type" onChange={handleType}>
->>>>>>> development
                 {types?.map(t => (
                     <option key={t} value={t}>
                         {t}
@@ -121,13 +101,8 @@ function UserEditProduct() {
                 ))}
             </select>
 
-<<<<<<< HEAD
             <label>Estado: </label>
             <select onChange = {handleStatus}>
-=======
-            <label>Status: </label>
-            <select name="status" onChange = {handleStatus}>
->>>>>>> development
                 <option value="nuevo">nuevo</option>
                 <option value="usado">usado</option>
             </select>
@@ -168,7 +143,6 @@ function UserEditProduct() {
             <h3>{prod.cant != 0 && prod.cant}</h3>
             <p>{prod.description}</p>
             </div>
-        </div>
         </div>
     </div>
   )
