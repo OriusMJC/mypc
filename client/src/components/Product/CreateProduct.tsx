@@ -54,7 +54,7 @@ function CreateProduct() {
         description: "",            
       })
 
-    function handleChange(e){
+    function handleChange(e){           
         setProduct({
             ...product,
             [e.target.name]: e.target.value
