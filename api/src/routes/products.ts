@@ -196,6 +196,17 @@ router.put('/comments/update/:idProduct', [
     }
 }})
 
+router.put('/comments/delete/:idProduct', async(req, res, next) => {
+    const id = req.params.idProduct
+    const resp = req.body
+    try {
+        const response = await deleteSellerResp(id, resp)
+        res.json(response)
+    }catch (error) {
+        next(error)
+    }
+})
+
 router.put('/selled/:idProduct',async(req,res,next)=>{
     const {idProduct} = req.params
     try {

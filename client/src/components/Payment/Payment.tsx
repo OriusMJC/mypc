@@ -1,12 +1,132 @@
-export default function Payment(){
+import { useMercadopago } from 'react-sdk-mercadopago';
+
+export default function Payment() {
+    const mercadopago = useMercadopago.v2('APP_USR-89b19be6-647b-4b93-93be-edca33b21aea', {locale: 'es-AR'});
+    console.log(mercadopago)
+
+    let b:any= document.getElementById('checkout-btn');
+    let sKart= document.getElementById('shopping-cart');
+    let contPay = document.getElementById('container_payment');
+
+    function fadeOut(el, v){
+        el.style.opacity = 1;
+      
+        (function fade() {
+          if ((el.style.opacity -= .1) < 0) {
+            el.style.display = "none";
+          } else {
+            requestAnimationFrame(fade);
+          }
+        })();
+      }
+
+      function fadeIn(el, display){
+        el.style.opacity = 0;
+        el.style.display = display || "block";
+      
+        (function fade() {
+          var val = parseFloat(el.style.opacity);
+          if (!((val += .1) > 1)) {
+            el.style.opacity = val;
+            requestAnimationFrame(fade);
+          }
+        })();
+      }
+
+      const show = (e) => {
+        const getHeight = () => {
+          e.style.display = 'block';
+          const height = e.scrollHeight + 'px';
+          e.style.display = '';
+          return height;
+        };
+        const height = getHeight(); 
+        e.classList.add('is-visible'); 
+        e.style.height = height; 
+        
+        window.setTimeout(() => {
+          e.style.height = '';
+        }, 350);
+      };
     
+      document.getElementById("checkout-btn").addEventListener("click", function() {
+
+        const input:any = document.getElementById("quantity");
+
+          b.setAttribute('disabled', true);
+          const orderData: Object = {
+            quantity: input.value,
+            description: document.getElementById("product-description").innerHTML,
+            price: document.getElementById("unit-price").innerHTML
+          };
+            
+          fetch("/create_preference", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(orderData),
+          })
+            .then(function(response) {
+                return response.json();
+            })
+            .then(function(preference) {
+            // createCheckoutButton(preference.id);
+            fadeOut(sKart, 500)
+              setTimeout(() => {
+               show(contPay)   
+               fadeIn(contPay, 0);
+                   
+                }, 500);
+            })
+            .catch(function() {
+                alert("Unexpected error");
+               b.setAttribute('disabled', false);
+                //$('#checkout-btn').attr("disabled", false);
+            });
+        });
+        
+        // function createCheckoutButton(preferenceId) {
+        //   mercadopago.checkout({
+        //     preference: {
+        //       id: preferenceId
+        //     },
+        //     render: {
+        //       container: '#button-checkout',
+        //       label: 'Pay', 
+        //     }
+        //   });
+        // }
+        
+        function updatePrice() {
+        const input:any = document.getElementById("quantity");
+          let quantity = input.value;
+          let unitPrice = document.getElementById("unit-price").innerHTML;
+          let amount = parseInt(unitPrice) * parseInt(quantity);
+        
+          document.getElementById("cart-total").innerHTML = "$ " + amount;
+          document.getElementById("summary-price").innerHTML = "$ " + unitPrice;
+          document.getElementById("summary-quantity").innerHTML = quantity;
+          document.getElementById("summary-total").innerHTML = "$ " + amount;
+        }
+        
+        document.getElementById("quantity").addEventListener("change", updatePrice);
+        updatePrice();  
+        
+        document.getElementById("go-back").addEventListener("click", function() {
+          fadeOut(contPay, 0);
+         setTimeout(() => {
+              show(sKart)   
+              fadeIn(sKart, 0); 
+          }, 500);
+          b.setAttribute('disabled', false);
+        });
 
 
     return (
-        <div>
-    {/* <div>
-      <section className="shopping-cart dark" id="shopping-cart">
-        <div className="container" id="container">
+    <>
+    {/* Shopping Cart */}
+    <div className="container" id="container">
           <div className="block-heading">
             <h2>Shopping Cart</h2>
             <p>This is an example of Checkout Pro integration of Mercado Pago</p> 
@@ -25,15 +145,15 @@ export default function Payment(){
                           <div className="col-md-4 product-detail">
                             <h5>Product</h5>
                             <div className="product-info">
-                              <p><b>Description: </b><span id="product-description">Some book</span><br>
-                              <b>Author: </b>Dale Carnegie<br></br>
-                              <b>Number of pages: </b>336<br>
+                              <p><b>Description: </b><span id="product-description">Some book</span><br />
+                              <b>Author: </b>Dale Carnegie<br/>
+                              <b>Number of pages: </b>336<br/>
                               <b>Price:</b> $ <span id="unit-price">10</span></p>
                             </div>
                           </div>
                           <div className="col-md-3 product-detail">
-                            <label for="quantity"><h5>Quantity</h5></label>
-                            <input type="number" id="quantity" value="1" min="1" className="form-control">
+                            <label htmlFor="quantity"><h5>Quantity</h5></label>
+                            <input type="number" id="quantity" value="1" min="1" className="form-control" />
                           </div>
                         </div>
                       </div>
@@ -83,15 +203,16 @@ export default function Payment(){
             </div>
           </div>
         </div>
-      </section>
-    </div>
+        {/* Footer */}
         <footer>
-            <div className="footer_logo"><img id="horizontal_logo" src="img/horizontal_logo.png"/></div>
-            <div className="footer_text">
-                <p>Developers Site:</p>
-                <p><a href="https://developers.mercadopago.com" target="_blank">https://developers.mercadopago.com</a></p>
-            </div>
-		</footer> */}
-  </div>
-    )
+        <div className="footer_logo">
+            <img id="horizontal_logo" src="img/horizontal_logo.png" />
+        </div>
+        <div className="footer_text">
+        <p>Developers Site:</p>
+        <p><a href="https://developers.mercadopago.com" target="_blank"/>https://developers.mercadopago1.com</p>
+        </div>
+		</footer>
+    </>
+)
 }

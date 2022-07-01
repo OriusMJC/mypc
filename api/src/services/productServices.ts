@@ -11,6 +11,7 @@ export const getProductById = async(idProduct:string):Promise<types.Products | s
     if(!product.dataValues) return 'No se ha encontrado ningun producto'
     return {...product.dataValues}
 }
+
 export const getProductByName = async(productTitle:string):Promise<types.Products[] | string> => {
     let allProduct = await getAllProducts() 
     let productsFinds = allProduct.filter(product => 
@@ -19,7 +20,6 @@ export const getProductByName = async(productTitle:string):Promise<types.Product
     if(!productsFinds.length) return 'No se ha encontrado ningun producto'
     return productsFinds
 }
-
 
 export const addNewProduct = async(userData:types.NonSensitiveUserInfo,newProduct:types.Products):Promise<string> => {
     let productToCreate = {...newProduct, sellerInfo: userData}
@@ -79,6 +79,18 @@ export const addSellerResp = async(idProduct: string, sellerResp:any):Promise<st
     })
     await Product.update({comments: newArr}, {where: {id: idProduct}})
     return 'Comentario actualizado';
+}
+
+export const deleteSellerResp = async(idProduct: string, sellerResp:any):Promise<string>=>{
+    const product = await Product.findByPk(idProduct);
+    let newArr = product.comments.map((c:any) => {
+        if(c.id === sellerResp.id){
+            c.sellerResponse = sellerResp
+        }
+        return c
+    })
+    await Product.update({comments: newArr}, {where: {id: idProduct}})
+    return 'Respuesta eliminada'
 }
 
 export const productSelled = async(idProduct:string):Promise<string>=>{
