@@ -42,6 +42,7 @@ export default function UserEditData() {
 				<form onSubmit={handleSubmit}>
 					<div className={styles.containerInputs}>
 						<input
+							name="newMail"
 							type="text"
 							placeholder="Write your new email"
 							defaultValue={newEmail}

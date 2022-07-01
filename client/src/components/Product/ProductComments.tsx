@@ -90,7 +90,7 @@ export default function ProductComments({idProd,comments, boolean, idProduct}){
     <section id={s.sectionComments}>
         <h3>Haz tu pregunta aquí</h3>
       <form onSubmit={handleSubmit}>
-        <input type='text' value={newComment} onChange={handleChange}/>
+        <input name="comment" type='text' value={newComment} onChange={handleChange}/>
         <button className={s.btnSend} type="submit">Enviar</button>
       </form>
       <div>
@@ -107,7 +107,7 @@ export default function ProductComments({idProd,comments, boolean, idProduct}){
               <h4>{comments[actualPosition[0]].sellerResponse.name && comments[actualPosition[0]].sellerResponse.name}</h4>
               <p>{sellerResponse.comment}</p>
               <form onSubmit = {handleResponseSubmit}>
-              <input name = "comment" value = {sellerResponse.comment} onChange = {handleSellerResponse} />
+              <input name = "response" value = {sellerResponse.comment} onChange = {handleSellerResponse} />
               <button type = 'submit'>Enviar</button>
               </form>
               </div>
