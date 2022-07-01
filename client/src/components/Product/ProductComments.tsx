@@ -107,7 +107,7 @@ export default function ProductComments({idProd,comments, boolean, idProduct}){
               <h4>{comments[actualPosition[0]].sellerResponse.name && comments[actualPosition[0]].sellerResponse.name}</h4>
               <p>{sellerResponse.comment}</p>
               <form onSubmit = {handleResponseSubmit}>
-              <input name = "response" value = {sellerResponse.comment} onChange = {handleSellerResponse} />
+              <input name = "comment" value = {sellerResponse.comment} onChange = {handleSellerResponse} />
               <button type = 'submit'>Enviar</button>
               </form>
               </div>
