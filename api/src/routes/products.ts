@@ -13,6 +13,7 @@ import {
 	deleteProduct,
 	deleteComment,
 	addSellerResp,
+    deleteSellerResp,
 } from "../services/productServices";
 import * as types from "../types";
 const router = Router();
@@ -183,7 +184,7 @@ router.put('/comments/update/:idProduct', [
 })
     ],async (req: express.Request, res: express.Response, next:any)=>{//en la documentacion de express-validator res y req estan asi
         const errors = validationResult(req)
-        if (!errors.isEmpty()) {
+        if (errors.isEmpty()) {
             return res.status(404).json({ errors: errors.array() })
         } else {
     const id = req.params.idProduct
