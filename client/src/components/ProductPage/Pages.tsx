@@ -48,7 +48,7 @@ function Pages({ productsPerPage, allComponents, refresh }) {
                 <Link to='/user/createProduct'>
                     <button className = {s.buttonHomeCreate}>Crear producto</button>
                 </Link> :
-                <h2>Logeate para crear uno!</h2>
+                <h2>Logueate para crear uno!</h2>
               }
               
               </div> :
