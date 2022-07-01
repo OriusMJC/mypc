@@ -56,19 +56,19 @@ export default function UserDetail() {
                 <div className={s.userDetails}>
                   <h1>{user && user.name}</h1>
                   <p>Email: {user && user.email}</p>
-                  <p>Password: {user && "***" + user.password?.slice(-3)}</p>
-                  <p>Phone: {user && user.phone}</p>
+                  <p>Contraseña: {user && "***" + user.password?.slice(-3)}</p>
+                  <p>Teléfono: {user && user.phone}</p>
                 </div>
                 <img src={user && user.avatar} alt={user.name} />
               </div>
               <div className={s.userProducts}>
                 <div className={s.productBuyed}>
-                  <h2>BUYED</h2>
+                  <h2>COMPRADO</h2>
                   {user.buy.length &&
                     user.buy.map((c) => {
                       return (
                         <ul>
-                          <li className={s.li}>BUYED: {c.buy}</li>
+                          <li className={s.li}>COMPRADO: {c.buy}</li>
                         </ul>
                       );
                     })}
@@ -95,7 +95,7 @@ export default function UserDetail() {
             </div>
         </>
         :
-          <Loading load='Cargando' msgError='No estas logeado! Logeate para ver los detalles de tu cuenta.' time={3000}/>
+          <Loading load='Cargando' msgError='No estas logueado! Logueate para ver los detalles de tu cuenta.' time={3000}/>
         }
       </div>
   );

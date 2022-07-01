@@ -65,7 +65,7 @@ export default function UserEditDetails() {
 							id="avatar"
 							onChange={(event) => handleDataChange(event)}
 						/>
-						<button type="submit">Change data</button>
+						<button type="submit">Cambiar datos</button>
 					</div>
 					<div className={styles.previewAvatar}>
 							<img src={editDataUser.avatar} alt="profile" />
