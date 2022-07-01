@@ -86,7 +86,7 @@ function CreateProduct() {
             <input type="text" name="title" value={product.title} onChange={handleChange}></input>
             
             <label>Price: </label>
-            <input type="number" onKeyDown={handleDot} min="1" name="price" value={product.price} onChange={handleChange}></input>
+            <input type="number" onKeyDown={handleDot} min="1" name="price" value={product.price || 1} onChange={handleChange}></input>
 
             <label>Type: </label>
             <select onChange={handleType}>
@@ -106,7 +106,7 @@ function CreateProduct() {
             </select>
             
             <label>Stock: </label>
-            <input type="number"  onKeyDown={handleDot} min="1" name="cant" value={product.cant} onChange={handleChange}></input>
+            <input type="number"  onKeyDown={handleDot} min="1" name="cant" value={product.cant || 1} onChange={handleChange}></input>
 
             <label>Description: </label>
             <input type="text" name="description" value={product.description} onChange={handleChange} className={s.descriptionInput}></input>

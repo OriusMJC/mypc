@@ -73,14 +73,18 @@ export default function ProductDetails(){
    }
 
    function handleDelete(){
-      swal({
-         title: "Producto eliminado",
-         text: "eliminaste tu producto",
-         icon: "success",
-       });  
-      dispatch(deleteProduct(idProduct))
+      swal({         
+         text: "Estas seguro de eliminar el producto?",
+         icon: "warning",
+         buttons: ["No", "Si"]
+       }).then(respuesta =>{
+         if(respuesta){
+            swal({text: "Producto eliminado correctamente" , icon: "success"})
+            dispatch(deleteProduct(idProduct))
+            navigate('/')
+         }
+       })  
       // alert('Product deleted')
-      navigate('/')
    }
 
    useEffect(():any=>{

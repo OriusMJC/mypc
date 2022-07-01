@@ -49,14 +49,18 @@ function UserEditProduct() {
 
     function handleSubmit(e){
         e.preventDefault();
-        swal({
-            title: "Felicidades",
-            text: "Actualizaste tu producto",
-            icon: "success",
-          });  
-        dispatch(updateProduct(idProduct, prod));
+        swal({            
+            text: "Estas seguro de actualizar tu producto?",
+            icon: "warning",
+            buttons: ["No", "Si"]
+          }).then(response=>{
+            if(response){
+                swal({text: "producto actualizado", icon: "success"})
+                dispatch(updateProduct(idProduct, prod));
+                navigate('/user/userProducts');
+            }
+          })
         // alert('Producto actualizado');
-        navigate('/user/userProducts');
     }
     function handleDot(e){
         if(e.key === "."){
