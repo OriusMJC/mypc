@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom'
 import { useAppDispatch } from '../../config/config';
 import { createProduct} from '../../redux/actions/index';
 import s from '../Styles/CreateProduct.module.css'
-
+import swal from 'sweetalert';
 function CreateProduct() {
     const dispatch = useAppDispatch();
     const navigate = useNavigate();
@@ -46,15 +46,28 @@ function CreateProduct() {
     }
 
     function handleSubmit(e){
-        if(product.title && product.photo && product.type && product.description.length > 50 && product.description.length < 500){
+        if(product.title && product.photo && product.type){
             e.preventDefault();
+            swal({
+                title: "Felicidades",
+                text: "Tu producto fue creado",
+                icon: "success",
+              });                
             dispatch(createProduct(id, product));
-            alert("Product created");
             navigate("/")
         }else {
             e.preventDefault();
-            alert("Product not created, please complete the form")
-        } 
+            swal({
+                title: "Error",
+                text: "Te faltan datos para completar el formulario",
+                icon: "error",
+              });
+            }
+    }
+    function handleDot(e){
+        if(e.key === "."){
+            e.preventDefault();
+        }
     }
 
   return (
@@ -73,10 +86,10 @@ function CreateProduct() {
             <input type="text" name="title" value={product.title} onChange={handleChange}></input>
             
             <label>Price: </label>
-            <input type="number" name="price" value={product.price} onChange={handleChange}></input>
+            <input type="number" onKeyDown={handleDot} min="1" name="price" value={product.price} onChange={handleChange}></input>
 
             <label>Type: </label>
-            <select name="type" onChange={handleType}>
+            <select onChange={handleType}>
                 <option hidden>Select Type</option>
                 {types?.map((t) => (
                     <option key={t} value={t}>
@@ -86,16 +99,16 @@ function CreateProduct() {
             </select>
 
             <label>Status: </label>
-            <select name="status" onChange={handleStatus}>
+            <select onChange={handleStatus}>
                 <option hidden>Select Status</option>
                 <option value="nuevo">nuevo</option>
                 <option value="usado">usado</option>
             </select>
             
             <label>Stock: </label>
-            <input type="number" name="cant" value={product.cant} onChange={handleChange}></input>
+            <input type="number"  onKeyDown={handleDot} min="1" name="cant" value={product.cant} onChange={handleChange}></input>
 
-            <label>Description: (min: 50 - max: 500)</label>
+            <label>Description: </label>
             <input type="text" name="description" value={product.description} onChange={handleChange} className={s.descriptionInput}></input>
 
         <div className = {s.button}>
