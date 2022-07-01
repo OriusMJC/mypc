@@ -67,15 +67,16 @@ const initialState = {
 	productDetails: { comments: [] },
 	// productsCreated: [],
 	cart: [],
-	suggestions: [],
+	suggestions: {},
 };
 
 export default function rootReducer(state = initialState, action: any) {
 	switch (action.type) {
 		case GET_ALL_COMPONENTS:
 			if (action.payload.length) {
+				// let img = action.payload.map(e => e.)
 				let titles = action.payload.map((e) => e.title.toLowerCase().trim());
-				let suggestions = titles.filter((item, index) => {
+				let suggestionsTitle = titles.filter((item, index) => {
 					return titles.indexOf(item) === index;
 				});
 
@@ -83,7 +84,12 @@ export default function rootReducer(state = initialState, action: any) {
 					...state,
 					components: [...action.payload],
 					allComponents: [...action.payload],
-					suggestions,
+					suggestions: {
+						titles: suggestionsTitle,
+						img: {
+
+						}
+					},
 				};
 			} else {
 				return {

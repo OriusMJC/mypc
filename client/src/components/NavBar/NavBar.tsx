@@ -58,7 +58,6 @@ export default function NavBar() {
 									})
 									.slice(0, 10)
 									.map((item) => {
-										console.log(item);
 										return (
 											<div
 												onClick={() => setTitle(item)}
