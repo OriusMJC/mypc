@@ -65,7 +65,7 @@ export default function ProductComments({idProd,comments, boolean, idProduct}){
       buttons: ["No", "Si"]
     }).then(response =>{
         if(response){
-          swal({text: "comentario eliminado", icon: "success"})
+          swal({text: "comentario eliminado", icon: "success", timer: 1000})
           dispatch(deleteProductComment(idProduct, Number(e.target.value)))
         }
     })
@@ -100,7 +100,7 @@ export default function ProductComments({idProd,comments, boolean, idProduct}){
       buttons: ["No", "Si"]
     }).then(response =>{
         if(response){
-          swal({text: "respuesta eliminado", icon: "success"})         
+          swal({text: "respuesta eliminado", icon: "success", timer: 1000})         
           dispatch(deleteSellerResp(idProduct, {
             ...sellerResponse,
             id: Number(id),
@@ -121,7 +121,7 @@ export default function ProductComments({idProd,comments, boolean, idProduct}){
       id: Number(actualPosition[1]),
       response: true,
     }))
-    swal({text: "respuesta enviada", icon:"success"})
+    swal({text: "respuesta enviada", icon:"success", timer: 1000})
     dispatch(getAllDetails(idProduct))
     dispatch(getAllDetails(idProduct))
     setActualPosition([null,null]);
