@@ -7,7 +7,7 @@ import s from "../Styles/ProductsCards.module.css";
 import swal from 'sweetalert';
 
 
-export default function ProductCard({id,title, photo, price, type, likes, status}){
+export default function ProductCard({id,title, photo, price, type, likes, status, cant}){
   const dispatch = useAppDispatch()
     const idUser = useSelector((store:any)=> store.userDetails?.id)
     function handleFav(){
@@ -24,7 +24,7 @@ export default function ProductCard({id,title, photo, price, type, likes, status
     }
 
     function handleCart(){
-        dispatch(addProductCart({id,title, photo, price, type, likes, status}))
+        dispatch(addProductCart({id,title, photo, price, type, likes, status, cant}))
     }
 
   return (

@@ -54,7 +54,7 @@ export default function Fav() {
                       <h2>{prod.title}</h2>
                     </Link>
                     <div className={s.infoDetailsProduct}>
-                      <h3>Price: ${prod.price}</h3>
+                      <h3>Precio: ${prod.price}</h3>
                       <h4>Likes: {prod.likes}</h4>
                     </div>
                   </div>
@@ -93,7 +93,7 @@ export default function Fav() {
             ))
           ) : (
             <div className={s.textInfo}>
-              <h1>Aún no has añadido nada al Favoritos!</h1>
+              <h1>Aún no has añadido nada a Favoritos!</h1>
               <Link to="/">
                 <button className={s.button}>Volver al Inicio</button>
               </Link>

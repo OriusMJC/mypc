@@ -115,46 +115,43 @@ function CreateProduct() {
      <div className = {s.container}>
            
         <form onSubmit={handleSubmit} className = {s.form}>
-            <h1>Create Product</h1>
+            <h1>Crear Producto</h1>
+            <label>Imagen: </label>
+            <input 
+            type="url" 
+            name="photo"
+            value={product.photo}
+            onChange={handleChange}/>
 
-            <label>Image: </label>
-                <input 
-                type="url" 
-                name="photo"
-                value={product.photo}
-                onChange={handleChange}/>
-
-            <label>Title: </label>
-             <input type="text" name="title" value={product.title} onChange={handleChange}></input>
-
-            <label>Price: </label>
-             <input type="number" onKeyDown={handleDot} min="1" name="price" value={product.price || 1} onChange={handleChange}></input>
-
-            <label>Type: </label>          
-             <select onChange={handleType}>
-                 <option hidden>Select Type</option>
-                 {types?.map((t) => (
-                     <option key={t} value={t}>
-                         {t}
-                     </option>
-                 ))}
-             </select>
-
-            <label>Status: </label>
-                <select onChange={handleStatus}>
-                    <option hidden>Select Status</option>
-                    <option value="nuevo">nuevo</option>
-                    <option value="usado">usado</option>
-                </select>
+            <label>Título: </label>
+            <input type="text" name="title" value={product.title} onChange={handleChange}></input>
             
+            <label>Precio: </label>
+            <input type="number" onKeyDown={handleDot} name="price" value={product.price} onChange={handleChange}></input>
+
+            <label>Tipo: </label>
+            <select onChange={handleType}>
+                <option hidden>Seleccionar Tipo</option>
+                {types?.map((t) => (
+                    <option key={t} value={t}>
+                        {t}
+                    </option>
+                ))}
+            </select>
+
+            <label>Estado: </label>
+            <select onChange={handleStatus}>
+                <option hidden>Seleccionar Estado</option>
+                <option value="nuevo">nuevo</option>
+                <option value="usado">usado</option>
+            </select>        
             <label>Stock: </label>
                 <input type="number"  onKeyDown={handleDot} min="1" name="cant" value={product.cant || 1} onChange={handleChange}></input>
-
-            <label>Description: </label>
-                <input type="text" name="description" value={product.description} onChange={handleChange} className={s.descriptionInput}></input>
+            <label>Descripción: </label>
+            <input type="text" name="description" value={product.description} onChange={handleChange} className={s.descriptionInput}></input>
 
         <div className = {s.button}>
-            <button type="submit">Create Product</button>
+            <button type="submit">Crear Producto</button>
         </div>
         </form>
         <div className = {s.products}>
