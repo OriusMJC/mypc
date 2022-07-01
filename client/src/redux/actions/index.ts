@@ -33,7 +33,7 @@ export const UPDATE_PRODUCT = "UPDATE_PRODUCT";
 export const UPDATE_EMAIL = "UPDATE_EMAIL";
 export const SEARCH_SUGGESTIONS = "SEARCH_SUGGESTIONS";
 // export const ADD_FAV = "ADD_FAV";
-// export const DEL_FAV = "DEL_FAV";
+ export const DEL_FAV = "DEL_FAV";
 
 type Action = {
 	type: string;
@@ -150,7 +150,7 @@ export function delFavUser(idUser: string, idProduct: string) {
 	return async (dispatch: Dispatch<Action>) => {
 		try {
 			await axios.delete(`/users/fav/${idUser}/${idProduct}`);
-			// dispatch({type: DEL_FAV, payload: idProduct})
+			dispatch({type: DEL_FAV, payload: idProduct})
 		} catch (error) {
 			console.log(error);
 		}

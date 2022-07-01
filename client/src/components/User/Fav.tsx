@@ -11,8 +11,8 @@ export default function Fav() {
   const dispatch = useAppDispatch();
   const user = useSelector((store: any) => store.userDetails);
 
-  function handleKickFav(isUser, idProd) {
-    dispatch(delFavUser(isUser, idProd));
+  function handleKickFav(idUser, idProd) {
+    dispatch(delFavUser(idUser, idProd));
     user && dispatch(loginUser(user.id));
     user && dispatch(loginUser(user.id));
     user && dispatch(loginUser(user.id));
