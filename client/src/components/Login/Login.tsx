@@ -6,6 +6,8 @@ import { useAppDispatch } from '../../config/config'
 import s from "../Styles/Login.module.css";
 import validator from 'validator';
 import { useSelector } from 'react-redux';
+import swal from 'sweetalert';
+
 
 
 
@@ -61,7 +63,12 @@ export default function Login(){
     e.preventDefault()
     try {
       await userLogin(user.email, user.password)
-      const id = await userData();   
+      const id = await userData(); 
+      swal({
+        title: "Estas logueado",      
+        icon: "success",
+        timer: 1000,
+      });   
         dispatch(loginUser(id));
         navigate("/");              
     } catch (error) {
@@ -75,7 +82,7 @@ export default function Login(){
     let data = await signInWithGoogle()
     let res = await dispatch(getUserData(data.uid))
     await dispatch(loginUser(data.uid))
-    if(!res){
+    if(!res){ 
       await dispatch(createUser({
           id:data.uid,
           name:data.displayName,
@@ -85,9 +92,10 @@ export default function Login(){
           avatar: data.photoURL,
           buy: [],
           fav: []
-        }))
+        }))       
         dispatch(loginUser(data.uid))
       }
+     
     navigate("/");
   }
 
