@@ -127,7 +127,7 @@ function CreateProduct() {
             <input type="text" name="title" value={product.title} onChange={handleChange}></input>
             
             <label>Precio: </label>
-            <input type="number" onKeyDown={handleDot} name="price" value={product.price} onChange={handleChange}></input>
+            <input type="number" onKeyDown={handleDot} name="price" value={product.price} min="1" onChange={handleChange}></input>
 
             <label>Tipo: </label>
             <select onChange={handleType}>

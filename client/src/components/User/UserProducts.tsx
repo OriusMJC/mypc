@@ -7,6 +7,7 @@ import Graphic from '../Graphics/Graphic';
 import s from '../Styles/UserProducts.module.css'
 import fav from '../Styles/Fav.module.css'
 import Loading from '../Loading/Loading';
+import swal from 'sweetalert';
 
 function UserProducts() {
   const dispatch = useAppDispatch();
@@ -26,8 +27,17 @@ function UserProducts() {
   }, []);
 
   function handleDelete(e){
-    dispatch(deleteProduct(e.target.value));
-    dispatch(getAllComponents());
+    swal({         
+      text: "Estas seguro de eliminar el producto?",
+      icon: "warning",
+      buttons: ["No", "Si"]
+    }).then(respuesta =>{
+      if(respuesta){
+         swal({text: "Producto eliminado correctamente" , icon: "success"})
+         dispatch(deleteProduct(e.target.value))
+         dispatch(getAllComponents());
+      }
+    })
   }
 
   // let ventas= [2,4,3,17,13,24,9,11,8,7,22,18]

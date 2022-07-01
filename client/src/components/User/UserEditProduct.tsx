@@ -103,6 +103,7 @@ function UserEditProduct() {
             type = 'number'
             name = 'price'
             value = {prod.price}
+            min="1"
             onChange = {handleChange}	
             />
 
