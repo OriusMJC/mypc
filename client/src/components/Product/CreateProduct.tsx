@@ -80,7 +80,7 @@ function CreateProduct() {
     }
 
     function handleSubmit(e){
-        if(product.title && product.photo && product.type ){
+        if(product.title && product.photo && product.type && product.description.length >=5 && product.description.length <= 500){
             e.preventDefault();
             swal({
                 title: "Felicidades",
