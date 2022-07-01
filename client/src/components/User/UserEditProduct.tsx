@@ -56,13 +56,13 @@ function UserEditProduct() {
     <div>
         <Link to= '/user/userProducts'>
             <button>
-                Go back
+                Regresar
             </button>
         </Link>
         <form onSubmit = {handleSubmit}>
-            <h1>Edit Product</h1>
+            <h1>Editar Producto</h1>
 
-            <label>Image: </label>
+            <label>Imagen: </label>
             <input
             type = 'url'
             name = 'photo'
@@ -70,7 +70,7 @@ function UserEditProduct() {
             onChange = {handleChange}
             />
 
-            <label>Title: </label>
+            <label>Título: </label>
             <input
             type = 'text'
             name = 'title'
@@ -78,7 +78,7 @@ function UserEditProduct() {
             onChange = {handleChange}
             />
 
-            <label>Price: </label>
+            <label>Precio: </label>
             <input 
             type = 'number'
             name = 'price'
@@ -86,7 +86,7 @@ function UserEditProduct() {
             onChange = {handleChange}	
             />
 
-            <label>Type: </label>
+            <label>Tipo: </label>
             <select onChange={handleType}>
                 {types?.map(t => (
                     <option key={t} value={t}>
@@ -95,7 +95,7 @@ function UserEditProduct() {
                 ))}
             </select>
 
-            <label>Status: </label>
+            <label>Estado: </label>
             <select onChange = {handleStatus}>
                 <option value="nuevo">nuevo</option>
                 <option value="usado">usado</option>
@@ -109,7 +109,7 @@ function UserEditProduct() {
             onChange = {handleChange}	
             />
 
-            <label>Description: </label>
+            <label>Descripción: </label>
             <input
             type = 'text'
             name = 'description'

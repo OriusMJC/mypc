@@ -57,24 +57,24 @@ function CreateProduct() {
   return (
     <div className = {s.container}>
         <form onSubmit={handleSubmit} className = {s.form}>
-            <h1>Create Product</h1>
+            <h1>Crear Producto</h1>
 
-            <label>Image: </label>
+            <label>Imagen: </label>
             <input 
             type="url" 
             name="photo"
             value={product.photo}
             onChange={handleChange}/>
 
-            <label>Title: </label>
+            <label>Título: </label>
             <input type="text" name="title" value={product.title} onChange={handleChange}></input>
             
-            <label>Price: </label>
+            <label>Precio: </label>
             <input type="number" name="price" value={product.price} onChange={handleChange}></input>
 
-            <label>Type: </label>
+            <label>Tipo: </label>
             <select onChange={handleType}>
-                <option hidden>Select Type</option>
+                <option hidden>Seleccionar Tipo</option>
                 {types?.map((t) => (
                     <option key={t} value={t}>
                         {t}
@@ -82,9 +82,9 @@ function CreateProduct() {
                 ))}
             </select>
 
-            <label>Status: </label>
+            <label>Estado: </label>
             <select onChange={handleStatus}>
-                <option hidden>Select Status</option>
+                <option hidden>Seleccionar Estado</option>
                 <option value="nuevo">nuevo</option>
                 <option value="usado">usado</option>
             </select>
@@ -92,11 +92,11 @@ function CreateProduct() {
             <label>Stock: </label>
             <input type="number" name="cant" value={product.cant} onChange={handleChange}></input>
 
-            <label>Description: </label>
+            <label>Descripción: </label>
             <input type="text" name="description" value={product.description} onChange={handleChange} className={s.descriptionInput}></input>
 
         <div className = {s.button}>
-            <button type="submit">Create Product</button>
+            <button type="submit">Crear Producto</button>
         </div>
         </form>
         <div className = {s.products}>

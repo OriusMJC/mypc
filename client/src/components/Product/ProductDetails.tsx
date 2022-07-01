@@ -116,7 +116,7 @@ export default function ProductDetails(){
                </div>
             </section>
             <section>
-               <h3>Description:</h3>
+               <h3>Descripción:</h3>
                <p>
                   {product?.description}
                </p>

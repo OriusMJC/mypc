@@ -67,7 +67,7 @@ function UserProducts() {
             <Loading load='Cargando' msgError='No hay productos creados!' time={1500} />
             :
             <div className={s.prodAndGrapCont}>
-              <h2>Mis Estadisticas</h2>
+              <h2>Mis Estadísticas</h2>
               <div className={s.graphicContainer}>
                 <Graphic 
                   labels={months} 
@@ -98,7 +98,7 @@ function UserProducts() {
                                 <h2>{prod.title}</h2>
                               </Link>
                               <div className={fav.infoDetailsProduct}>
-                                <h3>Price: ${prod.price}</h3>
+                                <h3>Precio: ${prod.price}</h3>
                                 <h4>Likes: {prod.likes}</h4>
                               </div>
                             </div>
@@ -111,7 +111,7 @@ function UserProducts() {
                                 }</h4>
                               <button onClick = {handleDelete} value={prod.id} className={s.button}>X</button>
                               <Link to ={`/user/userEditProduct/${prod.id}`}>
-                                <button className={s.button}>EDIT</button>
+                                <button className={s.button}>EDITAR</button>
                               </Link>
                             </div>
                           </div>
@@ -121,7 +121,7 @@ function UserProducts() {
               </div>
             </div>
           :
-          <Loading load='Cargando' msgError='Debes logearte para ver tus estadisticas!' time={3000} />
+          <Loading load='Cargando' msgError='Debes loguearte para ver tus estadísticas!' time={3000} />
       }
     </div>
   )

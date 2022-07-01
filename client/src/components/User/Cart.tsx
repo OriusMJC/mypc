@@ -34,7 +34,7 @@ export default function Cart() {
                     <h2>{prod.title}</h2>
                   </Link>
                   <div className={s.infoDetailsProduct}>
-                    <h3>Price: ${prod.price}</h3>
+                    <h3>Precio: ${prod.price}</h3>
                     <h4>Likes: {prod.likes}</h4>
                   </div>
                 </div>
@@ -71,7 +71,7 @@ export default function Cart() {
             </Link>
           ) : (
             <Link to="/login">
-              <button className={s.button}>Logearse</button>
+              <button className={s.button}>Loguearse</button>
             </Link>
           ) : null}
       </section>
