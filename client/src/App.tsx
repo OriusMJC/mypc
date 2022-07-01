@@ -36,6 +36,7 @@ import CreditMarket from './components/Help/HelpBuying/CreditMarket';
 import Subscriptions from './components/Help/HelpBuying/Subscriptions';
 import HelpBuying from './components/Help/HelpBuying/HelpBuying';
 import AdminManage from './components/Admin/AdminManage';
+import Payment from './components/Payment/Payment'
 
 // import NavButtons from './components/NavButtons'
 
@@ -52,7 +53,7 @@ function App()  {
         <Route path='/userdetail' element={<UserDetail/>}/>
         <Route path='/fav' element={<Fav/>}/>        
         <Route path='/cart' element={<Cart/>}/>        
-        <Route path='/buy' element={<Cart/>}/>        
+        <Route path='/buy' element={<Payment/>}/> 
         <Route path='/user/register' element={<Register/>}/>
         <Route path='/user/login' element={<Login/>}/>
         <Route path='/contact' element={<Contact/>}/>

@@ -17,6 +17,7 @@ export default function Fav() {
   //     const navigate = useNavigate()
   //     navigate('/user/login')
   // }
+
   function handleKickFav(isUser, idProd) {
     dispatch(delFavUser(isUser, idProd));
   }
@@ -32,7 +33,7 @@ export default function Fav() {
     if (user && user.id) {
       dispatch(loginUser(user.id));
     }
-  }, [dispatch, handleKickFav]);
+  }, []);
 
   return (
     <div className={s.favContainer}>
