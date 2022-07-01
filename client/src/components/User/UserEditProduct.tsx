@@ -87,7 +87,7 @@ function UserEditProduct() {
             />
 
             <label>Type: </label>
-            <select onChange={handleType}>
+            <select name="type" onChange={handleType}>
                 {types?.map(t => (
                     <option key={t} value={t}>
                         {t}
@@ -96,7 +96,7 @@ function UserEditProduct() {
             </select>
 
             <label>Status: </label>
-            <select onChange = {handleStatus}>
+            <select name="status" onChange = {handleStatus}>
                 <option value="nuevo">nuevo</option>
                 <option value="usado">usado</option>
             </select>

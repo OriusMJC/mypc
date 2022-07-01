@@ -1,5 +1,6 @@
 import express from 'express'
-import { body, validationResult } from 'express-validator'
+// import { body, validationResult } from 'express-validator'
+import { body, validationResult } from 'express-validator' 
 import { Router } from "express";
 import {
 	getAllUsers,
@@ -71,15 +72,36 @@ router.post('/', [
 }})
 
 //modificar info (body) de usuario (params)
-router.put("/:idUser", async (req, res, next) => {
+router.put("/:idUser", [
+    body('name', 'Ingrese un nombre de usuario')
+        .exists()
+        .isLength({max:20}),
+    body('phone', 'Ingrese un numero de telefono')
+        .exists()
+        .isNumeric()
+        .isLength({max:13}),
+    body('email', 'Ingrese un email')
+        .exists()
+        .isEmail()
+        .isLength({min:7}),
+    body('password', 'Ingrese una contraseña valida')
+        .exists()
+        .isAlphanumeric()
+        .isLength({min:6,
+                   max:12}),
+], async(req: express.Request, res: express.Response, next:any)=>{//en la documentacion de express-validator res y req estan asi
+    const errors = validationResult(req)
+    if (!errors.isEmpty()) {
+    return res.status(404).json({ errors: errors.array() })
+    } else {
 	const newDataUser = req.body;
 	try {
 		let response = await updateDataUser(newDataUser);
 		res.json(response);
 	} catch (err) {
-		next(err);
+		return next(err);
 	}
-});
+}});
 
 router.put("/fav/:idUser", async (req, res, next) => {
 	try {
@@ -110,16 +132,25 @@ router.put("/buy/:idUser", async (req, res, next) => {
 		next(error);
 	}
 });
-router.put("/:id/email", async (req, res, next) => {
+router.put("/:id/email", [
+    body('newMail', 'Ingrese un nuevo email')
+    .exists()
+    .isEmail()
+    .isLength({min:7}),
+], async(req: express.Request, res: express.Response, next:any)=>{//en la documentacion de express-validator res y req estan asi
+    const errors = validationResult(req)
+    if (!errors.isEmpty()) {
+    return res.status(404).json({ errors: errors.array() })
+    } else {
 	let { id } = req.params;
 	let { email } = req.body;
 	try {
 		const user = await updateEmailUser(id, email);
 		res.send(user);
 	} catch (error) {
-		next(error);
+		return next(error);
 	}
-});
+}});
 
 /* 
 router.get('/:idUser/orders', getUserOrders)
