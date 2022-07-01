@@ -11,6 +11,13 @@ export default function Cart() {
   let products = true;
   const user = useSelector((store: any) => store.userDetails);
   let productsCart = useSelector((store: any) => store.cart);
+  let idsArr = []
+  productsCart = productsCart.filter((prod:any)=>{
+    if(!idsArr.includes(prod.id)){
+      idsArr.push(prod.id)
+      return prod
+    }
+  })
   function handleKickCart(id) {
     dispatch(delProductCart(id));
   }
@@ -42,9 +49,11 @@ export default function Cart() {
               <div className={s.extra}>
                 <h4>{prod.status}</h4>
                 {/* <div className={s.buttons}> */}
+                <input type='number' min={1} max={Number(prod.cant)} />
                 <button
                   className={s.button}
                   onClick={() => {
+                    console.log(prod)
                     handleKickCart(prod.id);
                   }}
                 >

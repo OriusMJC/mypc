@@ -1,8 +1,8 @@
 .favContainer{
     display: flex;
-    flex-direction: column;
-    align-items: center;
+    align-items: flex-start;
     min-height: 82vh;
+    padding: 0px 300px;
 }
 
 .section {
@@ -10,7 +10,7 @@
     flex-direction: column;
     justify-content:center;
     align-items:center;
-     background-color: #d6d6d6;
+    background-color: #d6d6d6;
     width: 100vw;
     padding: 20px 0px;
 }
