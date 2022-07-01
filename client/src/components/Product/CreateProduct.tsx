@@ -53,6 +53,11 @@ function CreateProduct() {
             navigate("/")
         }else alert("Product not created, please complete the form") 
     }
+    function handleDot(e){
+        if(e.key === "."){
+            e.preventDefault()
+        }
+    }
 
   return (
     <div className = {s.container}>
@@ -90,7 +95,7 @@ function CreateProduct() {
             </select>
             
             <label>Stock: </label>
-            <input type="number" name="cant" value={product.cant} onChange={handleChange}></input>
+            <input type="number" onKeyDown={handleDot} name="cant" value={product.cant || 1} min="1" onChange={handleChange}></input>
 
             <label>Description: </label>
             <input type="text" name="description" value={product.description} onChange={handleChange} className={s.descriptionInput}></input>

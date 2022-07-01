@@ -124,11 +124,7 @@ function UserEditProduct() {
             />
         <div className={s.button}>
             <button type = 'submit'>
-<<<<<<< HEAD
-                Edit Product
-=======
                 Editar producto
->>>>>>> 0240d73be07b6664d79c81a9fa33b81765f3de80
             </button>
         </div>
         </form>
