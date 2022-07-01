@@ -15,6 +15,10 @@ import { emailUpdateUser, loginUser } from "src/redux/actions";
 import { auth } from "../firebase/client";
 // import { getAuth } from 'firebase/auth';
 
+export const verifyEmail = () => {
+	return auth.currentUser.emailVerified;
+}
+
 export const userRegister = async (email: string, password: string) => {
 	const user = await createUserWithEmailAndPassword(auth, email, password);
 	await sendEmailVerification(user.user);
@@ -23,6 +27,7 @@ export const userRegister = async (email: string, password: string) => {
 
 export const userLogin = async (email: string, password: string) => {
 	await signInWithEmailAndPassword(auth, email, password);
+	
 	let user = window.localStorage.getItem("userData");
 	if (!user) {
 		window.localStorage.setItem(

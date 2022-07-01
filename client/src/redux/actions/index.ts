@@ -17,6 +17,7 @@ export const DEL_PRODUCT_CART = "DEL_PRODUCT_CART";
 export const ADD_COMMENT = "ADD_COMMENT";
 export const DELETE_COMMENT = "DELETE_COMMENT";
 export const ADD_RESPONSE = "ADD_RESPONSE";
+export const DELETE_RESPONSE = "DELETE_RESPONSE";
 export const FILTER_CATEGORY = "FILTER_CATEGORY";
 export const ORDER_POPULATION = "ORDER_POPULATION";
 export const ORDER_PRICE = "ORDER_PRICE";
@@ -30,6 +31,7 @@ export const GET_ALL_USERS = "GET_ALL_USERS";
 export const DELETE_PRODUCT = "DELETE_PRODUCT";
 export const UPDATE_PRODUCT = "UPDATE_PRODUCT";
 export const UPDATE_EMAIL = "UPDATE_EMAIL";
+export const SEARCH_SUGGESTIONS = "SEARCH_SUGGESTIONS";
 // export const ADD_FAV = "ADD_FAV";
 // export const DEL_FAV = "DEL_FAV";
 
@@ -250,11 +252,23 @@ export function deleteProductComment(id: string, idComment: any) {
 	};
 }
 
-export function filterComponentsByCategory(payload: string) {
-	return {
-		type: FILTER_CATEGORY,
-		payload,
-	};
+export function deleteSellerResp(idProduct:string, resp:any){
+    console.log(idProduct, resp)
+    return async(dispatch: Dispatch<Action>) => {
+        try {
+            await axios.put(`/products/comments/delete/${idProduct}`, resp)
+            dispatch({type: DELETE_RESPONSE, payload: {idProduct, resp}})
+        } catch (error) {
+            console.log(error)
+        }
+    }
+}
+
+export function filterComponentsByCategory(payload: string){
+    return {
+        type: FILTER_CATEGORY,
+        payload,
+    }
 }
 
 export function orderComponentsByPopulation(payload: any) {
@@ -305,4 +319,4 @@ export function emailUpdateUser(id: string, newEmail: string) {
 			console.log(error);
 		}
 	};
-}
+};

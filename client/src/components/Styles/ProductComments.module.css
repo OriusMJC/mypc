@@ -70,9 +70,18 @@
 .btnSend:hover {
     transform: scale(1.02);
     color: rgb(52, 218, 52);
-    font-weight: bold;
-    
-   
+    font-weight: bold;  
+}
+.tumama{
+    display: flex;
+    justify-content: row;
+}
+.tumama img{
+    width: 50px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .btnsComSeller{
@@ -104,4 +113,7 @@
 }
 .sellerResponse p{
     margin: 5px 0px;
+}
+.sellerResponse div div button{
+    margin-right: 55px;
 }
