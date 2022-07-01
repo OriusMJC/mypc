@@ -4,6 +4,7 @@ import { useSelector } from 'react-redux';
 import { useAppDispatch} from '../../config/config';
 import { updateProduct, getAllComponents } from '../../redux/actions/index';
 import s from '../Styles/UserEditProduct.module.css'
+import swal from 'sweetalert';
 
 function UserEditProduct() {
     const dispatch = useAppDispatch();
@@ -48,9 +49,18 @@ function UserEditProduct() {
 
     function handleSubmit(e){
         e.preventDefault();
-        dispatch(updateProduct(idProduct, prod));
-        alert('Producto actualizado');
-        navigate('/user/userProducts');
+        swal({            
+            text: "Estas seguro de actualizar tu producto?",
+            icon: "warning",
+            buttons: ["No", "Si"]
+          }).then(response=>{
+            if(response){
+                swal({text: "producto actualizado", icon: "success"})
+                dispatch(updateProduct(idProduct, prod));
+                navigate('/user/userProducts');
+            }
+          })
+        // alert('Producto actualizado');
     }
     function handleDot(e){
         if(e.key === "."){
