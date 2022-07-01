@@ -154,17 +154,17 @@ export default function ProductComments({idProd,comments, boolean, idProduct}){
             </div>
               {
                 obj.sellerResponse.response &&
-                <div>
-                  <button value = {obj.id} onClick = {() => handleDeleteResp(obj.id)}>X</button>
-                  <div>
+                  <div className={`${s.comments} ${s.sellerResponse}`}>
                     <img src = {obj.sellerResponse.avatar && obj.sellerResponse.avatar}></img>
                     <div>
                       <h5>Vendedor</h5>
                       <h4>{obj.sellerResponse.name && obj.sellerResponse.name}</h4>
                       <p>{obj.sellerResponse.comment && obj.sellerResponse.comment}</p>
+                      <div className={s.btnsComSeller}>
+                        <button value = {obj.id} onClick = {() => handleDeleteResp(obj.id)}>X</button>
+                      </div>
                     </div>
                   </div>
-                </div>
               }
             </> 
             )

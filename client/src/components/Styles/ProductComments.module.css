@@ -114,3 +114,6 @@
 .sellerResponse p{
     margin: 5px 0px;
 }
+.sellerResponse div div button{
+    margin-right: 55px;
+}
