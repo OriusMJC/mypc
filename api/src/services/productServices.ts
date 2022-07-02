@@ -95,6 +95,9 @@ export const deleteSellerResp = async(idProduct: string, sellerResp:any):Promise
 
 export const productSelled = async(idProduct:string):Promise<string>=>{
     await Product.update({sell: true},{where: {id: idProduct}})
+    const product = await Product.findByPk(idProduct);
+    let newCant = product?.cant - 1
+    await Product.update({cant: newCant}, {where: {id: idProduct}})
     return 'Producto vendido con éxito'
 }
 

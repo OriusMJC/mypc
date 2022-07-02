@@ -71,6 +71,19 @@ export default function ProductDetails(){
          status: product.status
       }))
    }
+   async function handleBuy(){
+      await dispatch(addProductCart({
+         key: product.key, 
+         id: product.id,
+         title: product.title, 
+         photo: product.photo, 
+         price: product.price, 
+         type: product.type, 
+         likes: product.likes, 
+         status: product.status
+      }))
+      navigate('/cart')
+   }
 
    // function handleDelete(){
    //    swal({         
@@ -130,12 +143,18 @@ export default function ProductDetails(){
                   <h4>Estado: {product?.status}</h4>
                   <h4>Likes: {product?.likes}</h4>
                   <p>Stock: {product?.cant}</p>
-                  <button id={s.buttonBuy}>
-                     Comprar
-                  </button>
-                  <button className={s.btnSend} onClick={handleCart}>
-                     Añadir al carrito
-                  </button>
+                  {
+                     productSellerId === idUser || admin?
+                     <>
+                        <input value='Comprar' type='button' id={s.buttonBuy}  onClick={handleBuy} disabled/>
+                        <input value='Añadir al carrito'type='button' className={s.btnSend} onClick={handleCart} disabled/>
+                     </>
+                     :
+                     <>
+                        <input value='Comprar' type='button' id={s.buttonBuy}  onClick={handleBuy}/>
+                        <input value='Añadir al carrito'type='button' className={s.btnSend} onClick={handleCart}/>
+                     </>
+                  }
                   {
                   (boolean || admin)
                   &&  
