@@ -46,7 +46,7 @@ module.exports = (sequelize:any) => {
       allownull: false,
     },
     user: {
-      type: DataTypes.JSON,
+      type: DataTypes.STRING,
       allowNull: false
     }
     },{

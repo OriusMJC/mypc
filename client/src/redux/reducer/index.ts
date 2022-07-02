@@ -23,7 +23,8 @@ import {
 	GET_PRODUCTS_USER,
 	UPDATE_EMAIL,
 	// ADD_FAV,
-	DEL_FAV
+	DEL_FAV,
+	GET_ORDERS,
 } from "../actions";
 // import { Products } from '../../../types';
 
@@ -69,6 +70,7 @@ const initialState = {
 	// productsCreated: [],
 	cart: [],
 	suggestions: {},
+	orders: [],
 };
 
 export default function rootReducer(state = initialState, action: any) {
@@ -300,6 +302,11 @@ export default function rootReducer(state = initialState, action: any) {
 				...state,
 				userDetails: action.payload,
 			};
+		case GET_ORDERS:
+			return {
+				...state,
+				orders: action.payload,
+			}
 		default:
 			return state;
 	}
