@@ -8,7 +8,6 @@ export const getAllOrders = async () => {
 };
 export const getUserOrders = async (id: string) => {
 	let orders = await Order.findAll({ where: { "user": id } });
-	console.log(orders);
 	return orders;
 };
 export const addOrder = async (amount: any, token: any, purchaseData: any) => {

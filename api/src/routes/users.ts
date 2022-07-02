@@ -172,12 +172,11 @@ router.post("/payments", async (req, res) => {
 	}
 });
 router.post("/orders/:id", async (req, res) => {
-	let { id } = req.params;	
+	let { id } = req.params;
 	const orders = await getUserOrders(id);
 	res.send(orders);	
 });
-router.post("/test", async (req, res) => {
-	console.log(req.params)
+router.post("/test", async (_req, res) => {
 	let test = await getAllOrders();
 	res.send(test)
 })
