@@ -39,6 +39,7 @@ import AdminManage from "./components/Admin/AdminManage";
 import UserEditDetails from "./components/User/UserEditDetails";
 import UserEditPasswordOrMail from "./components/User/UserEditPasswordOrMail";
 import Payments from "./components/Payments/Payments";
+import OrderDetails from "./components/User/OrderDetails";
 
 // import NavButtons from './components/NavButtons'
 
@@ -73,6 +74,7 @@ function App() {
 					element={<UserEditProduct />}
 				/>
 				<Route path="/user/detail" element={<UserDetail />} />
+				<Route path="/user/detail/order/:idProduct" element={<OrderDetails />} />
 				{/* CHANGE DATA USER */}
 				<Route path="/user/detail/edit" element={<UserEditDetails />} />
 				<Route
