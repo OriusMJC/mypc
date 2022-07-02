@@ -148,7 +148,7 @@ function CreateProduct() {
             <label>Stock: </label>
                 <input type="number"  onKeyDown={handleDot} min="1" name="cant" value={product.cant || 1} onChange={handleChange}></input>
             <label>Descripción: </label>
-            <input type="text" name="description" value={product.description} onChange={handleChange} className={s.descriptionInput}></input>
+            <textarea name="description" value={product.description} onChange={handleChange} className={s.descriptionInput} required/>
 
         <div className = {s.button}>
             <button type="submit">Crear Producto</button>

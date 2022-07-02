@@ -67,7 +67,7 @@ function UserProducts() {
     <div className={s.userProducstContainer}>
       <Link to ='/user/detail' className={s.buttonHome}>
         <button>
-          Inicio
+          Regresar
         </button>
       </Link>
       {
