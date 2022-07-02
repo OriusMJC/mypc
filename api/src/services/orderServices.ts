@@ -3,13 +3,10 @@
 const { Order } = require("../db");
 
 export const getAllOrders = async () => {
-	console.log("id");
 	let orders = await Order.findAll();
-	// console.log(orders);
 	return orders;
 };
 export const getUserOrders = async (id: string) => {
-	console.log(id);
 	let orders = await Order.findAll({ where: { "user": id } });
 	console.log(orders);
 	return orders;

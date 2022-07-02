@@ -173,12 +173,11 @@ router.post("/payments", async (req, res) => {
 });
 router.post("/orders/:id", async (req, res) => {
 	let { id } = req.params;	
-	console.log(id)
 	const orders = await getUserOrders(id);
 	res.send(orders);	
 });
 router.post("/test", async (req, res) => {
-	console.log(req.body, "HOLA")
+	console.log(req.params)
 	let test = await getAllOrders();
 	res.send(test)
 })
