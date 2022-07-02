@@ -3,10 +3,21 @@ import { useSelector } from "react-redux";
 import UserProducts from './UserProducts';
 import s from "../Styles/userDetails.module.css";
 import Loading from "../Loading/Loading";
+import { useEffect } from "react";
+import { useAppDispatch } from "src/config/config";
+import { getOrders } from 'src/redux/actions'
 
 export default function UserDetail() {
   const user = useSelector((state: any) => state.userDetails);
-  // const products = useSelector((state:any) => state.allComponents);
+  const orders = useSelector((state: any) => state.orders);
+  let dispatch = useAppDispatch();
+
+  useEffect(() => {
+    if(user) {
+      dispatch(getOrders(user.id))
+    }
+  }, [user])
+
   return (
     <div className={s.container}>
       {
@@ -64,14 +75,19 @@ export default function UserDetail() {
               <div className={s.userProducts}>
                 <div className={s.productBuyed}>
                   <h2>COMPRADO</h2>
-                  {user.buy.length &&
-                    user.buy.map((c) => {
+                  {orders.length ?
+                    orders.map((c) => {
                       return (
-                        <ul>
-                          <li className={s.li}>COMPRADO: {c.buy}</li>
+                        <ul key={c.id}>
+                          <li className={s.li}>
+                            <div>
+                              <h1>Nro de compra {c.id}</h1>
+                              <h3>$ {c.fullPayment}</h3>
+                            </div>
+                          </li>
                         </ul>
                       );
-                    })}
+                    }) : <p>Aún no compraste nada</p>}
                 </div>
                 {/* <div>
                   <h2>FAVED</h2>
