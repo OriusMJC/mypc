@@ -29,7 +29,7 @@ module.exports = (sequelize:any) => {
       allownull: false,
     },
     typeOfPayment: {
-      type: DataTypes.ENUM('efectivo', 'tarjetaCred', 'tarjetaDeb', 'pagoFacil', 'rapiPago', 'mercadoPago', 'cuotas', 'transferencia', 'deposito'),
+      type: DataTypes.ENUM('efectivo', 'credit', 'debit', 'pagoFacil', 'rapiPago', 'mercadoPago', 'cuotas', 'transferencia', 'deposito'),
       allownull: false,
     },
     statusOfPayment: {
@@ -45,6 +45,10 @@ module.exports = (sequelize:any) => {
       */
       allownull: false,
     },
+    user: {
+      type: DataTypes.JSON,
+      allowNull: false
+    }
     },{
     timestamps: false
   });
