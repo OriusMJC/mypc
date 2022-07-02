@@ -27,7 +27,6 @@ export default function NavBar() {
 		dispatch(getAllComponents());
 		navigate("/");
 	}
-
 	return (
 		<nav className={s.searchBarContainer}>
 			<div className={s.contain}>
@@ -45,8 +44,8 @@ export default function NavBar() {
 							onChange={(e) => handleInputChange(e)}
 						/>
 						<div className={s.dropdown}>
-							{suggestions.length &&
-								suggestions
+							{suggestions.titles ?
+								suggestions.titles
 									.filter((item) => {
 										const searchSug = title.toLowerCase();
 										const titleProduc = item.toLowerCase();
@@ -64,10 +63,12 @@ export default function NavBar() {
 												className={s.dropdownRow}
 												key={item}
 											>
-												{item}
+												<p>{item}</p>
+												<img className={s.imgSearch} src={suggestions.img[item]} alt="" />
 											</div>
 										);
-									})}
+									}) : null
+							}
 						</div>
 					</div>
 					<button type="submit">

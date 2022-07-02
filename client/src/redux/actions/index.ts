@@ -33,7 +33,8 @@ export const UPDATE_PRODUCT = "UPDATE_PRODUCT";
 export const UPDATE_EMAIL = "UPDATE_EMAIL";
 export const SEARCH_SUGGESTIONS = "SEARCH_SUGGESTIONS";
 // export const ADD_FAV = "ADD_FAV";
- export const DEL_FAV = "DEL_FAV";
+export const DEL_FAV = "DEL_FAV";
+export const GET_ORDERS = "GET_ORDERS"
 
 type Action = {
 	type: string;
@@ -119,6 +120,7 @@ export function loginUser(id) {
 	return async (dispatch: Dispatch<Action>) => {
 		try {
 			let resp = await axios(`/users/${id}`);
+			console.log(resp.data)
 			dispatch({ type: LOGIN_USER, payload: resp.data });
 		} catch (error) {
 			console.log(error);
@@ -320,3 +322,13 @@ export function emailUpdateUser(id: string, newEmail: string) {
 		}
 	};
 };
+export function getOrders(id: string) {
+	return async (dispatch: Dispatch<Action>) => {
+		try {
+			let orders = await axios.post(`/users/orders/${id}`)
+			dispatch({type: GET_ORDERS, payload: orders.data})
+		} catch (error) {
+			console.log(error)
+		}
+	}
+}

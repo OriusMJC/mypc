@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react"
+import { useEffect, useState, useCallback } from "react"
 import { useSelector} from "react-redux"
 import { Link, useParams, useNavigate } from "react-router-dom"
 import { useAppDispatch } from "src/config/config"
@@ -71,8 +71,41 @@ export default function ProductDetails(){
          status: product.status
       }))
    }
+   async function handleBuy(){
+      await dispatch(addProductCart({
+         key: product.key, 
+         id: product.id,
+         title: product.title, 
+         photo: product.photo, 
+         price: product.price, 
+         type: product.type, 
+         likes: product.likes, 
+         status: product.status
+      }))
+      navigate('/cart')
+   }
 
-   function handleDelete(){
+   // function handleDelete(){
+   //    swal({         
+   //       text: "Estas seguro de eliminar el producto?",
+   //       icon: "warning",
+   //       buttons: ["No", "Si"]
+   //     }).then(respuesta =>{
+   //       if(respuesta){
+   //          swal({text: "Producto eliminado correctamente" , icon: "success"})
+   //          dispatch(delFavUser(idUser, idProduct))
+   //          dispatch(delFavUser(idUser, idProduct))
+   //          dispatch(delFavUser(idUser, idProduct))
+   //          dispatch(delFavUser(idUser, idProduct))
+   //          dispatch(delProductCart(idProduct))
+   //          dispatch(deleteProduct(idProduct))
+   //          navigate('/')
+   //       }
+   //     })  
+   //    // alert('Product deleted')
+   // }
+
+   const prueba = useCallback(() => {
       swal({         
          text: "Estas seguro de eliminar el producto?",
          icon: "warning",
@@ -81,20 +114,17 @@ export default function ProductDetails(){
          if(respuesta){
             swal({text: "Producto eliminado correctamente" , icon: "success"})
             dispatch(delFavUser(idUser, idProduct))
-            dispatch(delFavUser(idUser, idProduct))
-            dispatch(delFavUser(idUser, idProduct))
             dispatch(delProductCart(idProduct))
             dispatch(deleteProduct(idProduct))
             navigate('/')
          }
        })  
-      // alert('Product deleted')
-   }
+   }, [])
 
    useEffect(():any=>{
       dispatch(getAllDetails(idProduct))
        return () => dispatch(resetProductDetail())
-   },[dispatch,idProduct])
+   },[dispatch, idProduct])
 
    
    return(
@@ -113,12 +143,18 @@ export default function ProductDetails(){
                   <h4>Estado: {product?.status}</h4>
                   <h4>Likes: {product?.likes}</h4>
                   <p>Stock: {product?.cant}</p>
-                  <button id={s.buttonBuy}>
-                     Comprar
-                  </button>
-                  <button className={s.btnSend} onClick={handleCart}>
-                     Añadir al carrito
-                  </button>
+                  {
+                     productSellerId === idUser || admin?
+                     <>
+                        <input value='Comprar' type='button' id={s.buttonBuy}  onClick={handleBuy} disabled/>
+                        <input value='Añadir al carrito'type='button' className={s.btnSend} onClick={handleCart} disabled/>
+                     </>
+                     :
+                     <>
+                        <input value='Comprar' type='button' id={s.buttonBuy}  onClick={handleBuy}/>
+                        <input value='Añadir al carrito'type='button' className={s.btnSend} onClick={handleCart}/>
+                     </>
+                  }
                   {
                   (boolean || admin)
                   &&  
@@ -128,7 +164,7 @@ export default function ProductDetails(){
                            Editar
                         </button>
                      </Link>
-                     <button onClick = {handleDelete} className={`${s.btnDelete} ${s.btnSend}`}>
+                     <button onClick = {prueba} className={`${s.btnDelete} ${s.btnSend}`}>
                         Eliminar
                      </button>
                   </> 

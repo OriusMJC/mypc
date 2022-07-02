@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState, useCallback } from "react";
 import { useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import { useAppDispatch } from "src/config/config";
@@ -11,12 +11,9 @@ export default function Fav() {
   const dispatch = useAppDispatch();
   const user = useSelector((store: any) => store.userDetails);
 
-  function handleKickFav(idUser, idProd) {
+  const prueba = useCallback((idUser, idProd) => {
     dispatch(delFavUser(idUser, idProd));
-    user && dispatch(loginUser(user.id));
-    user && dispatch(loginUser(user.id));
-    user && dispatch(loginUser(user.id));
-  }
+  }, [])
 
   function handleCart(key, id, title, photo, price, type, likes, status) {
     dispatch(
@@ -61,7 +58,7 @@ export default function Fav() {
                         <button
                           className={s.button}
                           onClick={() => {
-                            handleKickFav(user.id, prod.id);
+                            prueba(user.id, prod.id);
                           }}
                         >
                           <i className="fa-solid fa-x"></i>
