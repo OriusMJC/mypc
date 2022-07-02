@@ -119,6 +119,7 @@ export function loginUser(id) {
 	return async (dispatch: Dispatch<Action>) => {
 		try {
 			let resp = await axios(`/users/${id}`);
+			console.log(resp.data)
 			dispatch({ type: LOGIN_USER, payload: resp.data });
 		} catch (error) {
 			console.log(error);
