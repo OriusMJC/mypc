@@ -6,6 +6,7 @@ import { delProductCart, getProductsLHtoCart } from "src/redux/actions";
 import StripeCheckout from "react-stripe-checkout";
 import s from "../Styles/Cart.module.css";
 import axios from "axios";
+import logo from '../../media/logo1.png'
 // import ProductsCards from "./ProductsCards"
 
 export default function Cart() {
@@ -60,7 +61,6 @@ export default function Cart() {
 	};
 	// ==============================================
 	// ==============================================
-	// ==============================================
 
 	function handlePrice(e: any) {
 		let list = [];
@@ -107,7 +107,9 @@ export default function Cart() {
 		setListPrice(list);
 		setPrecioTotal(price);
 	}
-
+let demo = () => {
+	console.log("Hola")
+}
 	function handleKickCart(id) {
 		dispatch(delProductCart(id));
 		handleDeletePrice(id);
@@ -190,6 +192,8 @@ export default function Cart() {
 								description={`Tu total es de ${precioTotal}`}
 								// token={tokenKey}
 								token={payNow}
+								image={logo}
+								
 							/>
 						// </Link>
 					) : (
