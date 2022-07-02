@@ -73,40 +73,32 @@ export default function UserDetail() {
                 <img src={user && user.avatar} alt={user.name} />
               </div>
               <div className={s.userProducts}>
-                <div className={s.productBuyed}>
                   <h2>COMPRADO</h2>
                   {orders.length ?
                     orders.map((c) => {
                       return (
-                        <ul key={c.id}>
-                          <li className={s.li}>
+                        <>
+                          <hr></hr>
+                          <div className={s.orderCard}>
                             <div>
-                              <h1>Nro de compra {c.id}</h1>
-                              <h3>$ {c.fullPayment}</h3>
+                              <b>Nro de compra</b>
+                              <p>{c.id}</p>
+                              <h5>Fecha: {c.date? c.date: null}</h5>
                             </div>
-                          </li>
-                        </ul>
+                            <div>
+                              <h3>Monto: $ {c.fullPayment}</h3>
+                                <Link to={`order/${c.id}`}>
+                                  <button>
+                                    VER DETALLES
+                                  </button>
+                                </Link>
+                            </div>
+                          </div>
+                        </>
                       );
-                    }) : <p>Aún no compraste nada</p>}
-                </div>
-                {/* <div>
-                  <h2>FAVED</h2>
-                  {user.fav.length &&
-                    user.fav.map((c) => {
-                      return (
-                        <ul>
-                        <li className={s.productFaved}>
-                        <img src={c.photo} alt="" />
-                        <div>
-                        <h1>{c.title && c.title}</h1>
-                        <h3>{c.type}</h3>
-                        <h3>{c.price}</h3>
-                        </div>
-                        </li>
-                        </ul>
-                      );
-                    })}
-                </div> */}
+                    }) 
+                    : 
+                    <p>Aún no compraste nada</p>}
               </div>
             </div>
         </>

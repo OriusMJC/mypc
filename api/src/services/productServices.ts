@@ -48,7 +48,7 @@ export const addLikes = async(idProduct:string):Promise<string>=>{
 }
 export const deleteLike = async(idProduct:string):Promise<string>=>{
     const product = await Product.findByPk(idProduct)
-    let likes = product.likes > 0? product.likes - 1 : 0
+    let likes = product?.likes > 0? product.likes - 1 : 0
     await Product.update({likes},{where: {id: idProduct}})
     return 'Like agregado con éxito'
 }
