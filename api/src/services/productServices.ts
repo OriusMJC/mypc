@@ -48,7 +48,7 @@ export const addLikes = async(idProduct:string):Promise<string>=>{
 }
 export const deleteLike = async(idProduct:string):Promise<string>=>{
     const product = await Product.findByPk(idProduct)
-    let likes = product.likes > 0? product.likes - 1 : 0
+    let likes = product?.likes > 0? product.likes - 1 : 0
     await Product.update({likes},{where: {id: idProduct}})
     return 'Like agregado con éxito'
 }
@@ -95,6 +95,9 @@ export const deleteSellerResp = async(idProduct: string, sellerResp:any):Promise
 
 export const productSelled = async(idProduct:string):Promise<string>=>{
     await Product.update({sell: true},{where: {id: idProduct}})
+    const product = await Product.findByPk(idProduct);
+    let newCant = product?.cant - 1
+    await Product.update({cant: newCant}, {where: {id: idProduct}})
     return 'Producto vendido con éxito'
 }
 

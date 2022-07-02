@@ -23,7 +23,8 @@ import {
 	GET_PRODUCTS_USER,
 	UPDATE_EMAIL,
 	// ADD_FAV,
-	// DEL_FAV
+	DEL_FAV,
+	GET_ORDERS,
 } from "../actions";
 // import { Products } from '../../../types';
 
@@ -68,23 +69,31 @@ const initialState = {
 	productDetails: { comments: [] },
 	// productsCreated: [],
 	cart: [],
-	suggestions: [],
+	suggestions: {},
+	orders: [],
 };
 
 export default function rootReducer(state = initialState, action: any) {
 	switch (action.type) {
 		case GET_ALL_COMPONENTS:
 			if (action.payload.length) {
+				let img = {}
+				for(let i = 0; i < action.payload.length; i++){
+					let title = action.payload[i].title.toLowerCase().trim() 
+					img[title] = action.payload[i].photo
+			}
 				let titles = action.payload.map((e) => e.title.toLowerCase().trim());
-				let suggestions = titles.filter((item, index) => {
+				let suggestionsTitle = titles.filter((item, index) => {
 					return titles.indexOf(item) === index;
 				});
-
 				return {
 					...state,
 					components: [...action.payload],
 					allComponents: [...action.payload],
-					suggestions,
+					suggestions: {
+						titles: suggestionsTitle,
+						img,
+					},
 				};
 			} else {
 				return {
@@ -168,7 +177,7 @@ export default function rootReducer(state = initialState, action: any) {
 				productDetails: product,
 			};
 		case DELETE_COMMENT:
-			console.log('entro')
+			console.log("entro");
 			let commentFilter = state.productDetails.comments.filter(
 				(c: any) => c.id !== action.payload.idComment
 			);
@@ -193,31 +202,34 @@ export default function rootReducer(state = initialState, action: any) {
 				...state,
 				productDetails: productsFinal,
 			};
-      case DELETE_RESPONSE:
-            let commentsArray = state.productDetails.comments.map((c:any) => {
-                if(c.id === action.payload.id){
-                    c.sellerResponse = action.payload.resp
-                }
-                return c
-            })
-            let productsFinalObj = {...state.productDetails, comments: commentsArray}
-            return {
-                ...state,
-                productDetails: productsFinalObj
-            }
+		case DELETE_RESPONSE:
+			let commentsArray = state.productDetails.comments.map((c: any) => {
+				if (c.id === action.payload.id) {
+					c.sellerResponse = action.payload.resp;
+				}
+				return c;
+			});
+			let productsFinalObj = {
+				...state.productDetails,
+				comments: commentsArray,
+			};
+			return {
+				...state,
+				productDetails: productsFinalObj,
+			};
 		// case ADD_FAV:
 		//     const newFav = [...state.userDetails.fav, action.payload]
 		//     return {
 		//         ...state,
 		//         fav: newFav
 		//     }
-		// case DEL_FAV:
-		//     const newFavArr = state.userDetails.fav.filter((prod:any)=> prod.id !== action.payload)
-		//     return {
-		//         ...state,
-		//         fav: newFavArr
-		//     }
-
+		case DEL_FAV:
+		    const newFavArr = state.userDetails.fav.filter((prod:any)=> prod.id !== action.payload)
+			const newArr = {...state.userDetails, fav: newFavArr}
+		    return {
+		        ...state,
+		        userDetails: newArr
+		    }
 		case FILTER_CATEGORY:
 			const status = action.payload;
 			if (status !== "All") {
@@ -290,6 +302,11 @@ export default function rootReducer(state = initialState, action: any) {
 				...state,
 				userDetails: action.payload,
 			};
+		case GET_ORDERS:
+			return {
+				...state,
+				orders: action.payload,
+			}
 		default:
 			return state;
 	}

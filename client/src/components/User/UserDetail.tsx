@@ -3,10 +3,21 @@ import { useSelector } from "react-redux";
 import UserProducts from './UserProducts';
 import s from "../Styles/userDetails.module.css";
 import Loading from "../Loading/Loading";
+import { useEffect } from "react";
+import { useAppDispatch } from "src/config/config";
+import { getOrders } from 'src/redux/actions'
 
 export default function UserDetail() {
   const user = useSelector((state: any) => state.userDetails);
-  // const products = useSelector((state:any) => state.allComponents);
+  const orders = useSelector((state: any) => state.orders);
+  let dispatch = useAppDispatch();
+
+  useEffect(() => {
+    if(user) {
+      dispatch(getOrders(user.id))
+    }
+  }, [user])
+
   return (
     <div className={s.container}>
       {
@@ -56,46 +67,43 @@ export default function UserDetail() {
                 <div className={s.userDetails}>
                   <h1>{user && user.name}</h1>
                   <p>Email: {user && user.email}</p>
-                  <p>Password: {user && "***" + user.password?.slice(-3)}</p>
-                  <p>Phone: {user && user.phone}</p>
+                  <p>Contraseña: {user && "***" + user.password?.slice(-3)}</p>
+                  <p>Teléfono: {user && user.phone}</p>
                 </div>
                 <img src={user && user.avatar} alt={user.name} />
               </div>
               <div className={s.userProducts}>
-                <div className={s.productBuyed}>
-                  <h2>BUYED</h2>
-                  {user.buy.length &&
-                    user.buy.map((c) => {
+                  <h2>COMPRADO</h2>
+                  {orders.length ?
+                    orders.map((c) => {
                       return (
-                        <ul>
-                          <li className={s.li}>BUYED: {c.buy}</li>
-                        </ul>
+                        <>
+                          <hr></hr>
+                          <div className={s.orderCard}>
+                            <div>
+                              <b>Nro de compra</b>
+                              <p>{c.id}</p>
+                              <h5>Fecha: {c.date? c.date: null}</h5>
+                            </div>
+                            <div>
+                              <h3>Monto: $ {c.fullPayment}</h3>
+                                <Link to={`order/${c.id}`}>
+                                  <button>
+                                    VER DETALLES
+                                  </button>
+                                </Link>
+                            </div>
+                          </div>
+                        </>
                       );
-                    })}
-                </div>
-                {/* <div>
-                  <h2>FAVED</h2>
-                  {user.fav.length &&
-                    user.fav.map((c) => {
-                      return (
-                        <ul>
-                        <li className={s.productFaved}>
-                        <img src={c.photo} alt="" />
-                        <div>
-                        <h1>{c.title && c.title}</h1>
-                        <h3>{c.type}</h3>
-                        <h3>{c.price}</h3>
-                        </div>
-                        </li>
-                        </ul>
-                      );
-                    })}
-                </div> */}
+                    }) 
+                    : 
+                    <p>Aún no compraste nada</p>}
               </div>
             </div>
         </>
         :
-          <Loading load='Cargando' msgError='No estas logeado! Logeate para ver los detalles de tu cuenta.' time={3000}/>
+          <Loading load='Cargando' msgError='No estas logueado! Logueate para ver los detalles de tu cuenta.' time={3000}/>
         }
       </div>
   );

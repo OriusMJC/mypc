@@ -30,8 +30,8 @@ export default function UserEditData() {
 			<div className={styles.containerEdit}>
 				<form onSubmit={handleSubmit}>
 					<div className={styles.containerInputs}>
-						<p>A link will be sent to your email to change your password</p>
-						<button type="submit">Change Password</button>
+						<p>Se enviará un enlace a su correo electrónico para cambiar su contraseña</p>
+						<button type="submit">Cambiar Contraseña</button>
 					</div>
 				</form>
 			</div>
@@ -44,11 +44,11 @@ export default function UserEditData() {
 						<input
 							name="newMail"
 							type="text"
-							placeholder="Write your new email"
+							placeholder="Escriba su nuevo email"
 							defaultValue={newEmail}
 							onChange={(event) => handleChanges(event)}
 						/>
-						<button type="submit">Change Email</button>
+						<button type="submit">Cambiar Email</button>
 					</div>
 				</form>
 			</div>
