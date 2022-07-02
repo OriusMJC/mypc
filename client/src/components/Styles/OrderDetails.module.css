@@ -67,7 +67,19 @@
     box-shadow: 0px 4px 3px rgba(0, 0, 0, 0.2);
     border-radius: 15px;
 }
-
+.orderDetailCard img{
+    max-width: 120px;
+    max-height: 100px;
+    border-radius: 10px;
+}
+.contTitleCant{
+    width: 400px;
+    height: 100px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
 .orderDetailCard div button{
     background-color: var(--gray-dark);
     height: 30px;
