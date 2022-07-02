@@ -220,9 +220,10 @@ export default function rootReducer(state = initialState, action: any) {
 		//     }
 		case DEL_FAV:
 		    const newFavArr = state.userDetails.fav.filter((prod:any)=> prod.id !== action.payload)
+			const newArr = {...state.userDetails, fav: newFavArr}
 		    return {
 		        ...state,
-		        fav: newFavArr
+		        userDetails: newArr
 		    }
 		case FILTER_CATEGORY:
 			const status = action.payload;

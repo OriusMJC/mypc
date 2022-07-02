@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react"
+import { useEffect, useState, useCallback } from "react"
 import { useSelector} from "react-redux"
 import { Link, useParams, useNavigate } from "react-router-dom"
 import { useAppDispatch } from "src/config/config"
@@ -72,7 +72,27 @@ export default function ProductDetails(){
       }))
    }
 
-   function handleDelete(){
+   // function handleDelete(){
+   //    swal({         
+   //       text: "Estas seguro de eliminar el producto?",
+   //       icon: "warning",
+   //       buttons: ["No", "Si"]
+   //     }).then(respuesta =>{
+   //       if(respuesta){
+   //          swal({text: "Producto eliminado correctamente" , icon: "success"})
+   //          dispatch(delFavUser(idUser, idProduct))
+   //          dispatch(delFavUser(idUser, idProduct))
+   //          dispatch(delFavUser(idUser, idProduct))
+   //          dispatch(delFavUser(idUser, idProduct))
+   //          dispatch(delProductCart(idProduct))
+   //          dispatch(deleteProduct(idProduct))
+   //          navigate('/')
+   //       }
+   //     })  
+   //    // alert('Product deleted')
+   // }
+
+   const prueba = useCallback(() => {
       swal({         
          text: "Estas seguro de eliminar el producto?",
          icon: "warning",
@@ -81,20 +101,17 @@ export default function ProductDetails(){
          if(respuesta){
             swal({text: "Producto eliminado correctamente" , icon: "success"})
             dispatch(delFavUser(idUser, idProduct))
-            dispatch(delFavUser(idUser, idProduct))
-            dispatch(delFavUser(idUser, idProduct))
             dispatch(delProductCart(idProduct))
             dispatch(deleteProduct(idProduct))
             navigate('/')
          }
        })  
-      // alert('Product deleted')
-   }
+   }, [])
 
    useEffect(():any=>{
       dispatch(getAllDetails(idProduct))
        return () => dispatch(resetProductDetail())
-   },[dispatch,idProduct])
+   },[dispatch, idProduct])
 
    
    return(
@@ -128,7 +145,7 @@ export default function ProductDetails(){
                            Editar
                         </button>
                      </Link>
-                     <button onClick = {handleDelete} className={`${s.btnDelete} ${s.btnSend}`}>
+                     <button onClick = {prueba} className={`${s.btnDelete} ${s.btnSend}`}>
                         Eliminar
                      </button>
                   </> 

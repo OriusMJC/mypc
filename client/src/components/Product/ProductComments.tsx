@@ -81,6 +81,7 @@ export default function ProductComments({idProd,comments, boolean, idProduct}){
   }
 
   function handleSellerResponse(e){
+
     setSellerResponse({
       ...sellerResponse,
       [e.target.name]: e.target.value,
@@ -131,7 +132,6 @@ export default function ProductComments({idProd,comments, boolean, idProduct}){
       response: false,
     })
   }
-
 
   return (
     <section id={s.sectionComments}>
