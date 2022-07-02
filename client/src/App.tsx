@@ -38,6 +38,7 @@ import HelpBuying from "./components/Help/HelpBuying/HelpBuying";
 import AdminManage from "./components/Admin/AdminManage";
 import UserEditDetails from "./components/User/UserEditDetails";
 import UserEditPasswordOrMail from "./components/User/UserEditPasswordOrMail";
+import Payments from "./components/Payments/Payments";
 
 // import NavButtons from './components/NavButtons'
 
@@ -59,10 +60,12 @@ function App() {
 				{/* PRODUCT */}
 				<Route path="/detail/:idProduct" element={<ProductDetails />} />
 
+				{/* PAYMENTS */}
+				{/* <Route path="/buy" element={<Payments/>}/> */}
+				
 				{/* USER */}
 				<Route path="/fav" element={<Fav />} />
 				<Route path="/cart" element={<Cart />} />
-				<Route path="/buy" element={<Cart />} />
 				<Route path="/user/createProduct" element={<CreateProduct />} />
 				<Route path="/user/userProducts" element={<UserProducts />} />
 				<Route
@@ -113,6 +116,7 @@ function App() {
 
 				{/* CONTACT */}
 				<Route path="/contact" element={<Contact />} />
+
 			</Routes>
 			<Footer />
 		</div>
