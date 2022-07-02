@@ -13,7 +13,7 @@ import {
 	updateEmailUser,
 } from "../services/usersServices";
 import * as types from "../types";
-import { addOrder } from "../services/orderServices";
+import { addOrder, getAllOrders } from "../services/orderServices";
 const Stripe = require("stripe")(process.env.SECRET_KEY);
 const router = Router();
 
@@ -171,29 +171,29 @@ router.post("/payments", async (req, res) => {
 		res.send(false);
 	}
 });
-// router.post("/test", async (req, res) => {
-// 	console.log(req.body, "BODY")
-// 	// let {purchaseData, amount} = req.body;
-// 	// let dataTest = {
-// 	// 	id:"123321123321123",
-// 	// 	address: "capital",
-// 	// 	product: purchaseData.productsCart,
-// 	// 	fullPayment: amount,
-// 	// 	typeOfPayment: "efectivo",
-// 	// 	statusOfPayment: "pagado",
-// 	// 	status: "correo",
-// 	// 	user: purchaseData.user,
-// 	// }
-// 	// await addOrder(dataTest)
-// 	// res.send("siii")
-// 	const test = await getAllOrders();
-// 	res.send(test);
-// 	// try {
+router.post("/test", async (req, res) => {
+	console.log(req.body, "BODY")
+	// let {purchaseData, amount} = req.body;
+	// let dataTest = {
+	// 	id:"123321123321123",
+	// 	address: "capital",
+	// 	product: purchaseData.productsCart,
+	// 	fullPayment: amount,
+	// 	typeOfPayment: "efectivo",
+	// 	statusOfPayment: "pagado",
+	// 	status: "correo",
+	// 	user: purchaseData.user,
+	// }
+	// await addOrder(dataTest)
+	// res.send("siii")
+	const test = await getAllOrders();
+	res.send(test);
+	// try {
 
-// 	// } catch (error) {
-// 	// 	res.send("error")
-// 	// }
-// });
+	// } catch (error) {
+	// 	res.send("error")
+	// }
+});
 /* 
 router.get('/:idUser/orders', getUserOrders)
 

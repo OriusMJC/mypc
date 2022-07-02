@@ -75,19 +75,22 @@ export default function rootReducer(state = initialState, action: any) {
 	switch (action.type) {
 		case GET_ALL_COMPONENTS:
 			if (action.payload.length) {
-				// let img = action.payload.map(e => e.)
+				let img = {}
+				for(let i = 0; i < action.payload.length; i++){
+					let title = action.payload[i].title.toLowerCase().trim() 
+					img[title] = action.payload[i].photo
+			}
 				let titles = action.payload.map((e) => e.title.toLowerCase().trim());
 				let suggestionsTitle = titles.filter((item, index) => {
 					return titles.indexOf(item) === index;
 				});
-
 				return {
 					...state,
 					components: [...action.payload],
 					allComponents: [...action.payload],
 					suggestions: {
 						titles: suggestionsTitle,
-						img: {},
+						img,
 					},
 				};
 			} else {

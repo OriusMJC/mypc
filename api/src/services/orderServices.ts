@@ -17,7 +17,7 @@ export const addOrder = async (amount:any, token:any, purchaseData:any) => {
 		typeOfPayment: token.card.funding,
 		statusOfPayment: "pagado",
 		status: "correo",
-		user: purchaseData.user,
+		user: purchaseData.user.id,
 	};
   await Order.create(dataOrder)
   return "orden creada"
