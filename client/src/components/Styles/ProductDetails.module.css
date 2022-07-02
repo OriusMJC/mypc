@@ -50,7 +50,7 @@
     min-width: 300px;
     margin-left: 40px;
 }
-#detailsData button{
+#detailsData button, input[type=button]{
     background-color: var(--gray-dark);
     height: 30px;
     width: 250px;

@@ -1,4 +1,7 @@
 // import * as types from "../types";
+
+import { productSelled } from "./productServices";
+
 // import { Order } from '../db'
 const { Order } = require("../db");
 
@@ -22,5 +25,8 @@ export const addOrder = async (amount: any, token: any, purchaseData: any) => {
 		user: purchaseData.user.id,
 	};
 	await Order.create(dataOrder);
+	purchaseData.listPrice.map(async (p:any)=>{
+		await productSelled(p.id)
+	})
 	return "orden creada";
 };
