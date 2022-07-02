@@ -3,13 +3,19 @@
 const { Order } = require("../db");
 
 export const getAllOrders = async () => {
-	// console.log(id);
+	console.log("id");
 	let orders = await Order.findAll();
-  console.log(orders)
+	// console.log(orders);
 	return orders;
 };
-export const addOrder = async (amount:any, token:any, purchaseData:any) => {
-  let dataOrder = {
+export const getUserOrders = async (id: string) => {
+	console.log(id);
+	let orders = await Order.findAll({ where: { "user": id } });
+	console.log(orders);
+	return orders;
+};
+export const addOrder = async (amount: any, token: any, purchaseData: any) => {
+	let dataOrder = {
 		id: token.id,
 		address: token.card.address_line1,
 		product: purchaseData.listPrice,
@@ -19,6 +25,6 @@ export const addOrder = async (amount:any, token:any, purchaseData:any) => {
 		status: "correo",
 		user: purchaseData.user.id,
 	};
-  await Order.create(dataOrder)
-  return "orden creada"
+	await Order.create(dataOrder);
+	return "orden creada";
 };

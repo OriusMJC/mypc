@@ -15,7 +15,6 @@ export default function Cart() {
 	const [precioTotal, setPrecioTotal] = useState(0);
 	let products = true;
 	let productsCart = useSelector((store: any) => store.cart);
-	console.log(productsCart)
 	let idsArr = [];
 	productsCart = productsCart.filter((prod: any) => {
 		if (!idsArr.includes(prod.id)) {
@@ -51,7 +50,6 @@ export default function Cart() {
       //   purchaseData,
 			// });
 			if (response.status === 200) {
-				// console.log("pago realizado");
         productsCart.map(e => handleKickCart(e.id)) 
         setPrecioTotal(0);
         setListPrice([]);
