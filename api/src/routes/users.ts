@@ -13,9 +13,19 @@ import {
 	updateEmailUser,
 } from "../services/usersServices";
 import * as types from "../types";
-import { addOrder, getUserOrders, getAllOrders } from "../services/orderServices";
+import { addOrder, getUserOrders, /*getAllOrders*/ } from "../services/orderServices";
+import { v2 as cloudinary } from "cloudinary";
 const Stripe = require("stripe")(process.env.SECRET_KEY);
 const router = Router();
+
+
+cloudinary.config({ 
+  cloud_name: 'mypc', 
+  api_key: '435545773368263', 
+  api_secret: 'puOgFZYaGx1J59d-v4Wu1p0mYdw',
+  secure: true
+});
+
 
 //obtener a todos los usuarios
 router.get("/", async (_req, res, next) => {
@@ -62,6 +72,15 @@ router.post(
 			return res.status(404).json({ errors: errors.array() });
 		} else {
 			try {
+				if(req.body.avatar) {
+					let newImg = await cloudinary.uploader.upload(req.body.avatar, (error:any, result:any) => {
+						// console.log(result, error)
+						if(!error) {
+							return result.url;
+						}
+					});
+					req.body.avatar = newImg
+				}
 				const response = await addNewUser(req.body);
 				res.send(response);
 			} catch (err) {
@@ -176,9 +195,26 @@ router.post("/orders/:id", async (req, res) => {
 	const orders = await getUserOrders(id);
 	res.send(orders);	
 });
-router.post("/test", async (_req, res) => {
-	let test = await getAllOrders();
-	res.send(test)
+router.post("/test", async (_req, _res) => {
+	// =========================
+	// PRUEBA PARA GUARDAR IMG
+	// =========================
+	// let {img} = _req.body
+	// let resp = await cloudinary.uploader.upload(img, (error:any, result:any) => {
+	// 	console.log(result, error)
+	// 	return result
+	// });
+	// res.send(resp)
+	// =========================
+
+
+	// =========================
+	// PRUEBA PARA TRAER TODAS LAS ORDENES 
+	// =========================
+	// let test = await getAllOrders();
+	// res.send(test)
+	// =========================
+
 })
 /* 
 router.get('/:idUser/orders', getUserOrders)
