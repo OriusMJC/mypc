@@ -50,6 +50,9 @@
     min-width: 300px;
     margin-left: 40px;
 }
+#detailsData h4{
+    margin: 10px 0px;
+}
 #detailsData button, input[type=button]{
     background-color: var(--gray-dark);
     height: 30px;
@@ -127,4 +130,9 @@
 .btnSend:hover {
     transform: scale(1.02);
     color: rgba(255, 255, 255, 0.762)
+}
+
+.contDescription{
+    width: 70%;
+    margin: 0% 15%;
 }
