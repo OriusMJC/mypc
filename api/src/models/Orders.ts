@@ -14,7 +14,8 @@ module.exports = (sequelize:any) => {
       allownull: false,
       validate:{
         isDate: true,/* "2022-06-23" */
-      }
+      },
+      defaultValues: DataTypes.DATEONLY
     },
     address: {
       type: DataTypes.STRING,
