@@ -120,7 +120,6 @@ export function loginUser(id) {
 	return async (dispatch: Dispatch<Action>) => {
 		try {
 			let resp = await axios(`/users/${id}`);
-			console.log(resp.data)
 			dispatch({ type: LOGIN_USER, payload: resp.data });
 		} catch (error) {
 			console.log(error);
@@ -255,7 +254,6 @@ export function deleteProductComment(id: string, idComment: any) {
 }
 
 export function deleteSellerResp(idProduct:string, resp:any){
-    console.log(idProduct, resp)
     return async(dispatch: Dispatch<Action>) => {
         try {
             await axios.put(`/products/comments/delete/${idProduct}`, resp)
