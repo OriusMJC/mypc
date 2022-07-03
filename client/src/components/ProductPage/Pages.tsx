@@ -21,7 +21,7 @@ function Pages({ productsPerPage, allComponents, refresh }) {
     if(typeof allComponents[0] !== 'string'){
         for (let i = 1; i <= cantPages; i++){
             pageNumbers.push(
-                <button key={i} value={i} onClick={()=>{setCurrentPage(i)}}>
+                <button key={i} value={i} onClick={()=>{setCurrentPage(i)}} className={i===currentPage? s.buttonActive : null}>
                     {i}
                 </button>)
         }

@@ -7,7 +7,7 @@ import { useAppDispatch  } from '../config/config';
 import s from './Styles/NavFilter.module.css'
 // import * as types from '../../types'
 
-export default function NavFilter({refresh,setRefresh,setProductsPerPage,products}){
+export default function NavFilter({refresh,setRefresh,setProductsPerPage,products,lengthAll}){
     const dispatch = useAppDispatch();
     const types = useSelector((state:any)=> state.types)
 
@@ -56,6 +56,7 @@ export default function NavFilter({refresh,setRefresh,setProductsPerPage,product
                             <option value="12" key="12">12</option>
                             <option value="24" key="24">24</option>
                             <option value="48" key="48">48</option>
+                            <option value={lengthAll} key="All">Todos</option>
                         </select>
                     </div>
                     :

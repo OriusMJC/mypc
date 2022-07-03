@@ -27,7 +27,6 @@ export default function Home() {
   const allComponents = useSelector((state: any) => state.components);
   const [productsPerPage, setProductsPerPage] = useState(12);
   const [refresh, setRefresh] = useState(1);
-
   // const isUserLogin= async()=>{
   //   let resId = await userData()
   //   if(resId){
@@ -44,7 +43,7 @@ export default function Home() {
   return (
     <div className={s.homeContainer}>
       <div>       
-        <NavFilter refresh={refresh} setRefresh={setRefresh} setProductsPerPage={setProductsPerPage} products={true}/>
+        <NavFilter refresh={refresh} setRefresh={setRefresh} setProductsPerPage={setProductsPerPage} products={true} lengthAll={allComponents?.length}/>
         <Slider/>
         <Pages
           productsPerPage={productsPerPage}
