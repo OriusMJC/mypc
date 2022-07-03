@@ -41,17 +41,19 @@ function Pages({ productsPerPage, allComponents, refresh }) {
           <div className={s.containerProdCards}>
           {
               !products.length ? 
-              <div className = {s.containerHome}>
-              <h2>Aun no hay productos cargados!</h2>
-              {
-                user && user.id? 
-                <Link to='/user/createProduct'>
-                    <button className = {s.buttonHomeCreate}>Crear producto</button>
-                </Link> :
-                <h2>Logueate para crear uno!</h2>
-              }
+            //   <div className = {s.containerHome}>
+            //   <h2>Aun no hay productos cargados!</h2>
+            //   {
+            //     user && user.id? 
+            //     <Link to='/user/createProduct'>
+            //         <button className = {s.buttonHomeCreate}>Crear producto</button>
+            //     </Link> :
+            //     <h2>Logueate para crear uno!</h2>
+            //   }
               
-              </div> :
+            //   </div> 
+            <Loading load='Cargando productos' msgError='No hay ningún producto cargado... Pero puedes vender el primero!' time={3000}/>
+              :
               refresh && currentProduct.length?
               typeof allComponents[0] !== 'string'?
                   currentProduct.map(prod=>{
