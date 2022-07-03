@@ -177,7 +177,6 @@ export default function rootReducer(state = initialState, action: any) {
 				productDetails: product,
 			};
 		case DELETE_COMMENT:
-			console.log("entro");
 			let commentFilter = state.productDetails.comments.filter(
 				(c: any) => c.id !== action.payload.idComment
 			);

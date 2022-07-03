@@ -11,10 +11,9 @@ export default function ProductComments({idProd,comments, boolean, idProduct}){
   const dispatch = useAppDispatch()
   let userData = useSelector((state:any) => state.userDetails)
   const admin = useSelector((state:any)=> state.userDetails?.admin)
-
-  // const d = new Date();
-  // const [date, setDate] = useState(`${d.getDate()}/${d.getMonth()+1}/${d.getFullYear()} ${d.getHours()}:${d.getMinutes()}`)
-  // console.log(date);
+  
+  const d = new Date();
+  const [date, setDate] = useState(`${d.getDate()}/${d.getMonth()+1}/${d.getFullYear()} ${d.getHours()}:${d.getMinutes()}`)
 
   const dataUser = {
     avatar: userData.avatar,
@@ -29,6 +28,7 @@ export default function ProductComments({idProd,comments, boolean, idProduct}){
     id: null,
     name: dataUser.name,
     response: false,
+    date: date,
   })
 
   function handleChange(e:any){
@@ -38,7 +38,7 @@ export default function ProductComments({idProd,comments, boolean, idProduct}){
     e.preventDefault()
     if(newComment.length){
       if(userData.id && userData.name && userData.avatar){
-        dispatch(addProductComment(idProd,{id: id, name:userData.name,avatar:userData.avatar,comment: newComment,sellerResponse: sellerResponse}))
+        dispatch(addProductComment(idProd,{id: id, name:userData.name,avatar:userData.avatar,comment: newComment,sellerResponse: sellerResponse, date: date}))
         swal({text: "comentario agregado", icon: "success", timer: 1000})
         setNewComment('');
       }else{
@@ -85,7 +85,6 @@ export default function ProductComments({idProd,comments, boolean, idProduct}){
   }
 
   function handleSellerResponse(e){
-
     setSellerResponse({
       ...sellerResponse,
       [e.target.name]: e.target.value,
@@ -113,6 +112,7 @@ export default function ProductComments({idProd,comments, boolean, idProduct}){
     }))
     dispatch(getAllDetails(idProduct));
     dispatch(getAllDetails(idProduct));
+    dispatch(getAllDetails(idProduct));
   }
 })
   }
@@ -136,6 +136,11 @@ export default function ProductComments({idProd,comments, boolean, idProduct}){
       response: false,
     })
   }
+
+  useEffect(() => {
+    setDate(`${d.getDate()}/${d.getMonth()+1}/${d.getFullYear()} ${d.getHours()}:${d.getMinutes()}`)
+  }, [])
+
 
   return (
     <section id={s.sectionComments}>
@@ -183,6 +188,7 @@ export default function ProductComments({idProd,comments, boolean, idProduct}){
             <div className={s.comments}>
               <img src={obj.avatar} alt={obj.name}/>
               <div>
+                <p className = {s.date}>{obj.date}</p>
                 <h4>{obj.name}</h4>
                 <p>{obj.comment}</p>
               {
@@ -203,6 +209,7 @@ export default function ProductComments({idProd,comments, boolean, idProduct}){
                   <div className={`${s.comments} ${s.sellerResponse}`}>
                     <img src = {obj.sellerResponse.avatar && obj.sellerResponse.avatar}></img>
                     <div>
+                      <p className = {s.dateSeller}>{obj.sellerResponse.date && obj.sellerResponse.date}</p>
                       <h5>Vendedor</h5>
                       <h4>{obj.sellerResponse.name && obj.sellerResponse.name}</h4>
                       <p>{obj.sellerResponse.comment && obj.sellerResponse.comment}</p>
