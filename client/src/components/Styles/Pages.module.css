@@ -1,11 +1,19 @@
+:root{
+  --color-primary: #fff;
+  --gray-light: #f2f2f2;
+  --gray-medium: #eaeaea;
+  --gray-dark: #d6d6d6;
+  --color-secundary: #000
+}
+
 .pageContainer {
   align-items: center;
   display: flex;
   flex-direction: column;
-  margin: 0;
+  margin: 20px 0px;
   min-height: 75vh;
   padding-top: 20px;
-  width: 98vw;
+  width: 1500px;
 }
 .pageContainer a {
   text-decoration: none;
@@ -15,10 +23,24 @@
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: space-evenly;
-  width: 85vw;
+  width: 1500px;
 }
 .buttonsPage button {
+  background-color: var(--color-primary);
+  height: 25px;
+  width: 25px;
+  border: none;
+  border-radius: 2px;
   margin: 0px 5px;
+  transition: .2s;
+}
+.buttonsPage button:hover {
+  transform: scale(1.1);
+}
+.buttonActive{
+  border: 1px solid #000 !important;
+  height: 30px !important;
+  width: 30px !important;
 }
 
 .containerHome{

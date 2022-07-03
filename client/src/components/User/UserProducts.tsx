@@ -92,6 +92,7 @@ function UserProducts() {
               </div> */}
               <div className={s.prodContainer}>
                 <h2>Mis productos</h2>
+                <b>Cant: {productsCreated.length}</b>
                 { 
                   productsCreated.map(prod => {
                     return (

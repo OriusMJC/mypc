@@ -142,6 +142,7 @@ export default function ProductDetails(){
                   <h3>Precio: ${product?.price}</h3>
                   <h4>Estado: {product?.status}</h4>
                   <h4>Likes: {product?.likes}</h4>
+                  <h4>Categoria: {product?.type}</h4>
                   <p>Stock: {product?.cant}</p>
                   {
                      productSellerId === idUser || admin?
@@ -172,10 +173,12 @@ export default function ProductDetails(){
                </div>
             </section>
             <section>
-               <h3>Descripción:</h3>
-               <p>
-                  {product?.description}
-               </p>
+               <div className={s.contDescription}>
+                  <h3>Descripción:</h3>
+                  <p>
+                     {product?.description}
+                  </p>
+               </div>
                <ProductComments idProd={product.id} comments={product.comments} boolean = {boolean} idProduct={idProduct}/>    
             </section>
          </div>
