@@ -62,7 +62,7 @@
   border: 1px solid gray;
   border-radius: 10px;
   list-style: none;
-  padding: 15px 30px;
+  padding: 15px 25px;
   position: absolute;
   right: -45px; 
   background-color: var(--gray-dark);
@@ -70,21 +70,24 @@
 .showMenu ul li {
   border-top: 1px solid var(--gray-dark);
   font-size: 20px;
-  margin-top: 7px;
-  padding: 7px 10px;
+  margin-top: 10px;
+  padding: 0px;
   transition: 0.1s;
 }
 
 .showMenu ul li:hover{
   background-color: rgb(187, 185, 185);
+  border-radius: 5px;
 }
 
 .showMenu ul li a {
   display: flex;
   flex-direction: row;
   justify-content: center;
-  width: 120px;
-  margin-left: -5px;
+  align-items: center;
+  width: 125px;
+  height: 35px;
+  margin: 0px;
 }
 .showMenu ul li span {
   margin-left: 10px;

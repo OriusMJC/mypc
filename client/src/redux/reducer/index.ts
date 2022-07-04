@@ -135,7 +135,6 @@ export default function rootReducer(state = initialState, action: any) {
 					u.name.toLowerCase().includes(action.payload.toLowerCase()) ||
 					u.email.includes(action.payload.toLowerCase())
 			);
-			console.log(newArrUser);
 			return {
 				...state,
 				users: newArrUser,
@@ -244,7 +243,7 @@ export default function rootReducer(state = initialState, action: any) {
 			};
 
 		case FILTER_STATE:
-			const allState = state.allComponents;
+			const allState = state.components;
 			if (action.payload) {
 				var filteredStates = allState.filter(
 					(state) => state.status === action.payload
@@ -253,7 +252,9 @@ export default function rootReducer(state = initialState, action: any) {
 			return {
 				...state,
 				components:
-					action.payload === "All" ? [...state.allComponents] : filteredStates,
+					action.payload === "All" 
+						? [...state.allComponents] 
+						: filteredStates,
 			};
 
 		case ORDER_POPULATION:

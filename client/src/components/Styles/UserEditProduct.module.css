@@ -68,6 +68,7 @@
     min-width: 50%;
     min-height: 100px;
     resize: none;
+    font-family: 'Nunito', sans-serif;
 }
 
 .view {
@@ -132,7 +133,7 @@
     width: 80%;
     text-align: center;
     background-color: rgb(234, 234, 234);
-    height: 60px;
+    min-height: 60px;
     border-radius: 15px;
 }
 

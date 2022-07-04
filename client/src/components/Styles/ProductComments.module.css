@@ -123,8 +123,8 @@
     justify-content: center;
     align-items: center;
     border-radius: 15px;
-    width: 50%;
-    height: 400px;
+    width: 650px;
+    height: 440px;
 }
 .sellerCont {
     height: 90%;
@@ -136,6 +136,7 @@
 .xButton {
     width: 30px;
     margin-left: 90%;
+    border: none;
 }
 .resp{
     display: flex;
@@ -185,7 +186,7 @@
     background-color: white;
     border-radius: 5px;
     width: 70%;
-    height: 50px;
+    min-height: 50px;
     text-align:  center;
     vertical-align: middle;
     overflow-wrap: inherit;

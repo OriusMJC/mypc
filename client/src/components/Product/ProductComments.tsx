@@ -153,30 +153,30 @@ export default function ProductComments({idProd,comments, boolean, idProduct}){
           //visualizacion respuesta
           actualPosition[0] !== null &&
           <div className = {s.sellerContainer}>
-          <div className = {s.sellerCont}>
-            <button onClick = {handleCancelResp} className = {s.xButton}>X</button>
-          <div className = {s.resp3}>
-            <label>Respondiendo al comentario de: {comments[actualPosition[0]].name}</label>
-            <p>{comments[actualPosition[0]].comment}</p>
-          </div>
-          {
-          <div>
-            <div className = {s.resp}>
-              <div className = {s.resp1}>
-              <img src = {comments[actualPosition[0]].sellerResponse.avatar && comments[actualPosition[0]].sellerResponse.avatar}></img>
-              </div>
-              <div className = {s.resp2}>
-              <h4>{comments[actualPosition[0]].sellerResponse.name && comments[actualPosition[0]].sellerResponse.name}</h4>
-              <p>{sellerResponse.comment}</p>
-              </div>
+            <div className = {s.sellerCont}>
+              <button onClick = {handleCancelResp} className = {s.xButton}>X</button>
+            <div className = {s.resp3}>
+              <label>Respondiendo al comentario de: {comments[actualPosition[0]].name}</label>
+              <p>{comments[actualPosition[0]].comment}</p>
             </div>
-            <form onSubmit = {handleResponseSubmit}>
-              <input name = "comment" value = {sellerResponse.comment} onChange = {handleSellerResponse} placeholder = " Tu respuesta.."/>
-              <button type = 'submit'>Enviar</button>
-            </form>
-          </div>
-          }
-          </div>
+            {
+            <div>
+              <div className = {s.resp}>
+                <div className = {s.resp1}>
+                <img src = {comments[actualPosition[0]].sellerResponse.avatar && comments[actualPosition[0]].sellerResponse.avatar}></img>
+                </div>
+                  <div className = {s.resp2}>
+                    <h4>{comments[actualPosition[0]].sellerResponse.name && comments[actualPosition[0]].sellerResponse.name}</h4>
+                    <p>{sellerResponse.comment}</p>
+                  </div>
+                </div>
+                <form onSubmit = {handleResponseSubmit}>
+                  <input name = "comment" value = {sellerResponse.comment} onChange = {handleSellerResponse} placeholder = " Tu respuesta.."/>
+                  <button type = 'submit'>Enviar</button>
+                </form>
+              </div>
+            }
+            </div>
           </div>
        }
       <div id={s.commentsContainer}>
