@@ -14,17 +14,10 @@ import {
 } from "../services/usersServices";
 import * as types from "../types";
 import { addOrder, getUserOrders, /*getAllOrders*/ } from "../services/orderServices";
-import { v2 as cloudinary } from "cloudinary";
+import cloudinary from "../services/cloudinarySettings"
 const Stripe = require("stripe")(process.env.SECRET_KEY);
 const router = Router();
 
-
-cloudinary.config({ 
-  cloud_name: 'mypc', 
-  api_key: '435545773368263', 
-  api_secret: 'puOgFZYaGx1J59d-v4Wu1p0mYdw',
-  secure: true
-});
 
 
 //obtener a todos los usuarios
@@ -73,10 +66,10 @@ router.post(
 		} else {
 			try {
 				if(req.body.avatar) {
-					let newImg = await cloudinary.uploader.upload(req.body.avatar, (error:any, result:any) => {
-						// console.log(result, error)
+					let newImg = ""; 
+					await cloudinary.uploader.upload(req.body.avatar, (error:any, result:any) => {
 						if(!error) {
-							return result.url;
+							newImg = result.url;
 						}
 					});
 					req.body.avatar = newImg
