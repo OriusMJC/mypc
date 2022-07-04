@@ -25,6 +25,7 @@ import {
 	// ADD_FAV,
 	DEL_FAV,
 	GET_ORDERS,
+	SELLER_PROD,
 } from "../actions";
 // import { Products } from '../../../types';
 
