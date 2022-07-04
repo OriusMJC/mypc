@@ -77,7 +77,7 @@ router.post('/:idUser', [
     const {idUser} = req.params
     const newProduct = req.body 
     try{ 
-        const userData = await getBasicUserInfo(idUser)    
+        const userData = await getBasicUserInfo(idUser) 
         let response = await addNewProduct(userData, newProduct);
         res.json(response)    
     }

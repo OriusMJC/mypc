@@ -41,7 +41,7 @@
     min-height: 120px;
     text-align: left;
     border: 3px solid #d6d6d6;
-    border-radius: 2em 1em 4em / 0.5em 3em;
+    border-radius: 15px;
     margin: 5px 0px;
     padding: 5px;
 }
@@ -193,4 +193,16 @@
 }
 .resp3 label{
     font-weight: bold
+}
+.date {
+    font-size: 11px;
+    font-style: italic;
+    color: grey;
+    margin-top: 0;
+}
+.dateSeller {
+    font-size: 11px;
+    font-style: italic;
+    color: grey;
+    margin-top: 0;
 }

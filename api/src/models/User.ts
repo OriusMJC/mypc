@@ -92,7 +92,7 @@ module.exports = (sequelize:any) => {
     allownull: false
     },
     fav: {
-    type: DataTypes.ARRAY(DataTypes.JSON),
+      type: DataTypes.ARRAY(DataTypes.JSON),
     },
     buy: {
       type: DataTypes.ARRAY(DataTypes.JSON),
