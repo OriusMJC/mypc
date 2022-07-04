@@ -12,6 +12,7 @@ export default function OrderDetails(){
     const order = useSelector((store:any)=> store.orders?.filter((o:any)=> o.id === idProduct))
     const dispatch = useAppDispatch();
     useEffect(() => {
+        console.log(user)
         if(user) {
           dispatch(getOrders(user.id))
         }

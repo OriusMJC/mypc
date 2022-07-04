@@ -43,7 +43,7 @@ export default function AdminManage (){
             {
                 userAdmin && userAdmin.admin && userAdmin.email === 'mypcecommerce@gmail.com'?
                     <div id={s.adminContainer}>
-                        <NavFilter refresh={refresh} setRefresh={setRefresh} setProductsPerPage={setRefresh} products={false}/>
+                        <NavFilter refresh={refresh} setRefresh={setRefresh} setProductsPerPage={setRefresh} products={false} lengthAll={allComponents?.length}/>
                         {/* {
                             btnView === 'products'?
                             <NavFilter refresh={refresh} setRefresh={setRefresh} setProductsPerPage={setRefresh} products={false}/>
@@ -56,6 +56,7 @@ export default function AdminManage (){
                             <button onClick={()=>setBtnView('user')}>Usuarios</button>
                         </div>
                         <SearchbarAdmin btnView={btnView}/>
+                        <b>Cant: {btnView === 'products'? allComponents.length : allUsers.length}</b>
                         <table>
                         {
                             btnView === 'products'?

@@ -86,7 +86,7 @@ router.post('/:idUser', [
 	// newProduct.photo = newImg
     console.log("====================DATA BODY====================", req.body, newProduct, "====================DATA BODY====================")
     try{ 
-        const userData = await getBasicUserInfo(idUser)    
+        const userData = await getBasicUserInfo(idUser) 
         let response = await addNewProduct(userData, newProduct);
         res.json(response)    
     }
