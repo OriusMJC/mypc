@@ -21,7 +21,7 @@ function Pages({ productsPerPage, allComponents, refresh }) {
     if(typeof allComponents[0] !== 'string'){
         for (let i = 1; i <= cantPages; i++){
             pageNumbers.push(
-                <button key={i} value={i} onClick={()=>{setCurrentPage(i)}}>
+                <button key={i} value={i} onClick={()=>{setCurrentPage(i)}} className={i===currentPage? s.buttonActive : null}>
                     {i}
                 </button>)
         }
@@ -41,17 +41,19 @@ function Pages({ productsPerPage, allComponents, refresh }) {
           <div className={s.containerProdCards}>
           {
               !products.length ? 
-              <div className = {s.containerHome}>
-              <h2>Aun no hay productos cargados!</h2>
-              {
-                user && user.id? 
-                <Link to='/user/createProduct'>
-                    <button className = {s.buttonHomeCreate}>Crear producto</button>
-                </Link> :
-                <h2>Logueate para crear uno!</h2>
-              }
+            //   <div className = {s.containerHome}>
+            //   <h2>Aun no hay productos cargados!</h2>
+            //   {
+            //     user && user.id? 
+            //     <Link to='/user/createProduct'>
+            //         <button className = {s.buttonHomeCreate}>Crear producto</button>
+            //     </Link> :
+            //     <h2>Logueate para crear uno!</h2>
+            //   }
               
-              </div> :
+            //   </div> 
+            <Loading load='Cargando productos' msgError='No hay ningún producto cargado... Pero puedes vender el primero!' time={3000}/>
+              :
               refresh && currentProduct.length?
               typeof allComponents[0] !== 'string'?
                   currentProduct.map(prod=>{
