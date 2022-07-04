@@ -17,13 +17,14 @@ function SellerProducts(){
     const components = useSelector((store:any) => store.allComponents)
     const sellerId = seller && seller.id
     const sProducts = components.filter((p) => p.sellerInfo.id === sellerId)
+    const finalP = sProducts.filter((p) => p.id !== product.id)
 
-    let random1 = Math.floor(Math.random()*(sProducts.length ? (sProducts.length/2) : 1))
+    let random1 = Math.floor(Math.random()*(finalP.length ? (finalP.length/2) : 1))
     let random2 = Math.floor(Math.random()*50)
     let actualComponents = [];
-    if(random1 > random2) actualComponents = components.slice(random2, random1);
-    else if(random2 > random1) actualComponents = components.slice(random1, random2);
-    else actualComponents = components.slice(random1, random2 + 3)
+    if(random1 > random2) actualComponents = finalP.slice(random2, random1);
+    else if(random2 > random1) actualComponents = finalP.slice(random1, random2);
+    else actualComponents = finalP.slice(random1, random2 + 3)
     let sellerProducts = actualComponents.filter((p:any) => p.sellerInfo.id === sellerId).slice(0, 3)
 
   return (
@@ -34,9 +35,7 @@ function SellerProducts(){
                <div className = {s.h2Prod}>
                <h2>Mas productos del vendedor</h2>
                </div>
-               {sellerProducts.length && sellerProducts.map((prod:any) => {
-                if(prod.id !== product.id){
-                    return(
+               {sellerProducts.length && sellerProducts.map((prod:any) => (
                     <div className = {s.prodDetails}>
                      <Link to = {`/detail/${prod.id}`}>
                         <img src={prod.photo} className = {s.prodImg}></img>
@@ -47,9 +46,8 @@ function SellerProducts(){
                      <h5>{prod.status}</h5>
                      </div>
                   </div>
-                    )
-                }
-               })}
+                    ))
+               }
     </div>
     }
     </>
