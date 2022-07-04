@@ -41,7 +41,7 @@
     min-height: 120px;
     text-align: left;
     border: 3px solid #d6d6d6;
-    border-radius: 2em 1em 4em / 0.5em 3em;
+    border-radius: 15px;
     margin: 5px 0px;
     padding: 5px;
 }
@@ -116,4 +116,93 @@
 }
 .sellerResponse div div button{
     margin-right: 55px;
+}
+.sellerContainer{
+    border: 1px solid grey;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 15px;
+    width: 650px;
+    height: 440px;
+}
+.sellerCont {
+    height: 90%;
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.xButton {
+    width: 30px;
+    margin-left: 90%;
+    border: none;
+}
+.resp{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+    height: 160px;
+}
+.resp1{
+    width: 30%;
+}
+.resp1 img{
+    border-radius: 15px;
+}
+.resp2{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 70%;
+    height: 90%;
+}
+.resp2 h4{
+    font-size: 20px;
+    font-family: "Helvetica";
+    height: 30px;
+    margin-top: 0;
+}
+.resp2 p{
+    background-color: white;
+    border-radius: 5px;
+    width: 80%;
+    height: 200px;
+    text-align: center;
+    vertical-align: middle;
+    overflow-wrap: inherit;
+}
+.resp3 {
+    border-bottom: 1px solid grey;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.resp3 p{
+    background-color: white;
+    border-radius: 5px;
+    width: 70%;
+    min-height: 50px;
+    text-align:  center;
+    vertical-align: middle;
+    overflow-wrap: inherit;
+}
+.resp3 label{
+    font-weight: bold
+}
+.date {
+    font-size: 11px;
+    font-style: italic;
+    color: grey;
+    margin-top: 0;
+}
+.dateSeller {
+    font-size: 11px;
+    font-style: italic;
+    color: grey;
+    margin-top: 0;
 }

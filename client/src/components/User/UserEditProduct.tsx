@@ -136,9 +136,8 @@ function UserEditProduct() {
                     />
 
                     <label>Descripción: </label>
-                    <input
+                    <textarea
                     className={s.descriptionInput}
-                    type = 'text'
                     name = 'description'
                     value = {prod.description}
                     onChange = {handleChange}

@@ -1,7 +1,7 @@
 // import { useState } from 'react';
 import { useState } from "react";
 import { useSelector } from "react-redux";
-import { useLocation } from "react-router-dom";
+import { useLocation, Link } from "react-router-dom";
 import { useAppDispatch } from "src/config/config";
 import { updateEmailUser, updatePasswordUser } from "src/services/userFirebase";
 import styles from "../Styles/UserEditPasswordOrMail.module.css";
@@ -29,6 +29,9 @@ export default function UserEditData() {
 		return (
 			<div className={styles.containerEdit}>
 				<form onSubmit={handleSubmit}>
+					<Link to = '/user/detail'>
+						<button>Atras</button>
+					</Link>
 					<div className={styles.containerInputs}>
 						<p>Se enviará un enlace a su correo electrónico para cambiar su contraseña</p>
 						<button type="submit">Cambiar Contraseña</button>
@@ -40,6 +43,9 @@ export default function UserEditData() {
 		return (
 			<div className={styles.containerEdit}>
 				<form onSubmit={handleSubmit}>
+					<Link to = '/user/detail'>
+						<button>Atras</button>
+					</Link>
 					<div className={styles.containerInputs}>
 						<input
 							name="newMail"

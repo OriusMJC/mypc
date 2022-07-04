@@ -33,9 +33,19 @@ export default function ProductDetails(){
    let product = useSelector((state:any) => state.productDetails)
    const idUser = useSelector((store:any)=> store.userDetails?.id)
    const admin = useSelector((store:any)=> store.userDetails?.admin)
+   const components = useSelector((store:any) => store.allComponents)
    const productSellerId = product.sellerInfo && product.sellerInfo.id
-   const boolean = productSellerId && productSellerId === idUser && true 
+   const boolean = productSellerId && productSellerId === idUser && true
+   const sProducts = components.filter((p) => p.sellerInfo.id === idUser)
 
+   let random1 = Math.floor(Math.random()*(sProducts.length ? sProducts.length : 1))
+   let random2 = Math.floor(Math.random()*10)
+   let actualComponents = [];
+   if(random1 > random2) actualComponents = components.slice(random2, random1);
+   else if(random2 > random1) actualComponents = components.slice(random1, random2);
+   else actualComponents = components.slice(random1, random2 + 1)
+   
+   const sellerProducts = actualComponents.filter((p:any) => p.sellerInfo.id === idUser).slice(0, 3)
    
    function handleFav(){
       if(idUser){
@@ -60,29 +70,47 @@ export default function ProductDetails(){
   }
 
    function handleCart(){
-      dispatch(addProductCart({
-         key: product.key, 
-         id: product.id,
-         title: product.title, 
-         photo: product.photo, 
-         price: product.price, 
-         type: product.type, 
-         likes: product.likes, 
-         status: product.status
-      }))
+      if(boolean){
+         swal({
+            title: "Cuidado",
+            text: "No puedes agregar tus productos al carrito!",
+            icon: "warning",
+         })
+      }else{
+         dispatch(addProductCart({
+            key: product.key, 
+            id: product.id,
+            title: product.title, 
+            photo: product.photo, 
+            price: product.price, 
+            type: product.type, 
+            likes: product.likes, 
+            status: product.status
+         }))
+      } 
    }
    async function handleBuy(){
-      await dispatch(addProductCart({
-         key: product.key, 
-         id: product.id,
-         title: product.title, 
-         photo: product.photo, 
-         price: product.price, 
-         type: product.type, 
-         likes: product.likes, 
-         status: product.status
-      }))
-      navigate('/cart')
+      if(boolean){
+         swal({
+            title: "Cuidado",
+            text: "No puedes comprar tus productos!",
+            icon: "warning",
+         })
+      }else{
+         await dispatch(addProductCart({
+            key: product.key, 
+            id: product.id,
+            title: product.title, 
+            photo: product.photo, 
+            price: product.price, 
+            type: product.type, 
+            likes: product.likes, 
+            status: product.status
+         }))
+         navigate('/cart')
+      }
+      
+      
    }
 
    // function handleDelete(){
@@ -129,6 +157,44 @@ export default function ProductDetails(){
    
    return(
       <div id={s.prodContainer}>
+         <div>
+         {
+         product.sellerInfo &&
+         <div className = {s.sellerDiv}>
+            <div className = {s.imgSellerDiv}>
+               <img src={product.sellerInfo.avatar} className = {s.sellerImg}></img>
+            </div>
+            <div className = {s.sellerData}>
+               <label>Vendedor</label>
+               <div>
+               <h2>{product.sellerInfo.name}</h2>
+               <label>Contacto: </label>
+               <p>{product.sellerInfo.email} / {product.sellerInfo.phone}</p>
+               </div>
+            </div>
+         </div>
+         }
+         {
+            sellerProducts.length != 0 && 
+            <div className = {s.prodContainer}>
+               <div className = {s.h2Prod}>
+               <h2>Mas productos del vendedor</h2>
+               </div>
+               {sellerProducts.map((prod:any) => (
+                  <div className = {s.prodDetails}>
+                     <Link to = {`/detail/${prod.id}`}>
+                        <img src={prod.photo} className = {s.prodImg}></img>
+                     </Link>
+                     <div className = {s.prodD}>
+                     <h3>{prod.title}</h3>
+                     <h4>${prod.price}</h4>
+                     <h5>{prod.status}</h5>
+                     </div>
+                  </div>
+               ))}
+            </div>
+         }
+         </div>
          <div key={product?.key} id={s.contProdDetails}>
             <h1>{product?.title}</h1>
             <section id={s.sectionDetail}>
@@ -142,9 +208,10 @@ export default function ProductDetails(){
                   <h3>Precio: ${product?.price}</h3>
                   <h4>Estado: {product?.status}</h4>
                   <h4>Likes: {product?.likes}</h4>
+                  <h4>Categoria: {product?.type}</h4>
                   <p>Stock: {product?.cant}</p>
                   {
-                     productSellerId === idUser || admin?
+                     admin?
                      <>
                         <input value='Comprar' type='button' id={s.buttonBuy}  onClick={handleBuy} disabled/>
                         <input value='Añadir al carrito'type='button' className={s.btnSend} onClick={handleCart} disabled/>
@@ -172,10 +239,12 @@ export default function ProductDetails(){
                </div>
             </section>
             <section>
-               <h3>Descripción:</h3>
-               <p>
-                  {product?.description}
-               </p>
+               <div className={s.contDescription}>
+                  <h3>Descripción:</h3>
+                  <p>
+                     {product?.description}
+                  </p>
+               </div>
                <ProductComments idProd={product.id} comments={product.comments} boolean = {boolean} idProduct={idProduct}/>    
             </section>
          </div>
