@@ -1,6 +1,7 @@
 import { Router } from 'express';
 const users = require('./users')
 const products = require('./products')
+const traking = require('./traking')
 // Importar todos los routers;
 // Ejemplo: const authRouter = require('./auth.js');
 
@@ -18,6 +19,7 @@ const router = Router();
 
 router.use('/users',users)
 router.use('/products',products)
+router.use('/traking',traking)
 
 
 

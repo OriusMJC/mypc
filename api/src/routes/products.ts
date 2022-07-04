@@ -16,6 +16,7 @@ import {
     deleteSellerResp,
 } from "../services/productServices";
 import * as types from "../types";
+import cloudinary from '../services/cloudinarySettings';
 const router = Router();
 
 //obtener todos los productos con los detalles minimos
@@ -75,7 +76,15 @@ router.post('/:idUser', [
       return res.status(404).json({ errors: errors.array() })
     } else {
     const {idUser} = req.params
-    const newProduct = req.body 
+    const newProduct = req.body
+    // let newImg = ""; 
+	await cloudinary.uploader.upload(req.body.photo, (error:any, result:any) => {
+		if(!error) {
+			newProduct.photo = result.url;
+		}
+	});
+	// newProduct.photo = newImg
+    console.log("====================DATA BODY====================", req.body, newProduct, "====================DATA BODY====================")
     try{ 
         const userData = await getBasicUserInfo(idUser) 
         let response = await addNewProduct(userData, newProduct);
