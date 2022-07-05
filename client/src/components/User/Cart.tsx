@@ -115,7 +115,7 @@ export default function Cart() {
 		let list = [];
 		let price = 0;
 		productsCart.forEach((p: any) => {
-			list.push({ id: p.id, price: p.price, cant: 1, title: p.title, photo: p.photo, type: p.type, status: p.status });
+			list.push({ id: p.id, price: p.price, cant: 1, stock: p.cant, title: p.title, photo: p.photo, type: p.type, status: p.status });
 			price = price + p.price;
 		});
 		setListPrice(list);
@@ -164,7 +164,7 @@ let demo = () => {
 									name={prod.price}
 									type="number"
 									min="1"
-									max={Number(prod.cant)}
+									max={String(prod.cant)}
 									onChange={handlePrice}
 								/>
 								<button
