@@ -5,6 +5,8 @@ import { deleteProduct, getAllComponents } from '../../redux/actions/index'
 import { useAppDispatch } from '../../config/config'
 import Graphic from '../Graphics/Graphic';
 import s from '../Styles/UserProducts.module.css'
+import sBtn from "../Styles/userDetails.module.css";
+
 import fav from '../Styles/Fav.module.css'
 import Loading from '../Loading/Loading';
 import swal from 'sweetalert';
@@ -73,8 +75,16 @@ function UserProducts() {
       {
         user && user.id ?
           !productsCreated.length 
-          ?
-            <Loading load='Cargando' msgError='No hay productos creados!' time={1500} />
+          ?   swal({
+            title: "No tienes ningun producto para vender",            
+            icon: "warning",
+            timer: 1500,
+          }) &&
+            <Loading load='Cargando' msgError={<Link to = "/user/createProduct">
+            <button className={sBtn.buttonButton}>
+              Vender
+            </button>
+          </Link>}  time={1500} />
             :
             <div className={s.prodAndGrapCont}>
               <h2>Mis Estadísticas</h2>
