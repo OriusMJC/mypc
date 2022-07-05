@@ -39,12 +39,12 @@ function CreateProduct() {
     const [product, setProduct] = useState({
         title: "",
         photo: "",
-        price: 0,
+        price: 1,
         type: "",
         description: "",
         likes: 0,
         comments: [],
-        cant: 0,
+        cant: 1,
         status: "",
         sell: false,
     });
