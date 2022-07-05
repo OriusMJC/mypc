@@ -12,6 +12,7 @@
     align-items: center;
     background-color: var(--gray-medium);
     padding: 20px;
+    
 }
 #sectionComments form input{
     height: 25px;
@@ -19,12 +20,14 @@
     border: 2px solid #d6d6d6;
     border-radius: 5px 0px 0px 5px;
     margin: 15px 0px;
+    
 }
 #sectionComments form button{
     height: 31px;
     width: 100px;
     border: none;
     border-radius: 0px 5px 5px 0px;
+    
 }
 
 #commentsContainer{
@@ -36,14 +39,13 @@
     background-color: var(--gray-light);
     display: flex;
     flex-direction: row;
-    align-items: center;
     width: 600px;
     min-height: 120px;
     text-align: left;
     border: 3px solid #d6d6d6;
     border-radius: 15px;
     margin: 5px 0px;
-    padding: 5px;
+    padding: 5px;   
 }
 .comments img{
     width: 60px;
@@ -53,6 +55,21 @@
 }
 .comments div{
     padding: 0px 15px;
+    width: 500px;
+}
+.deleteCUser {
+    border: none;
+    background-color: white;
+    width: 30px;
+    height: 20px;
+    margin-left: 200px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: .2s;
+}
+.deleteCUser:hover {
+    color:rgb(52, 218, 52);
+    transform: scale(1.05)
 }
 .comments div h4{
     margin: 0;

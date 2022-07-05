@@ -1,14 +1,19 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import {useSelector} from 'react-redux';
 import { Link } from 'react-router-dom';
 import Loading from "../Loading/Loading";
 import ProductCard from "../reusable/ProductCard";
+import { getAllComponents} from '../../redux/actions'
+import { useAppDispatch} from '../../config/config'
 import s from "../Styles/Pages.module.css";
 import './style.css'
 
 function Pages({ productsPerPage, allComponents, refresh }) {
+    const dispatch = useAppDispatch();
 
-    
+    useEffect(() => {
+        dispatch(getAllComponents())
+    }, [])
 
     const cantPages = Math.ceil(allComponents.length /productsPerPage) 
     const [currentPage, setCurrentPage] = useState(1);

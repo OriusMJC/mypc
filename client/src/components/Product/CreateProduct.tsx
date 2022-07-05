@@ -35,6 +35,8 @@ function CreateProduct() {
     const navigate = useNavigate();
     const user = useSelector((state:any) => state.userDetails);
     const types = useSelector((state:any) => state.types);
+    const [loading, setLoading] = useState(false);
+    const [image, setImage] = useState("hola")
     const id = user.id;
     const [product, setProduct] = useState({
         title: "",
@@ -48,6 +50,10 @@ function CreateProduct() {
         status: "",
         sell: false,
     });
+
+    console.log(image);
+    
+
     const [error, setError] = useState<Product>({
         title: "",
         photo: "",      
@@ -105,6 +111,26 @@ function CreateProduct() {
         }
     }
 
+
+    //Drag n drop
+    const uploadImage = async (e) => {
+        const files = e.target.files;
+        const data = new FormData();
+  
+        data.append('file', files[0]);
+        data.append('upload_preset', 'chropyis');
+      
+        setLoading(true);
+        const res = await fetch("https://api.cloudinary.com/v1_1/mypc/image/upload", { method: "POST", body: data })
+        const file = await res.json();
+      
+        setProduct({
+            ...product,
+            photo: file.secure_url
+        });
+        setLoading(false) 
+    }
+
   return (
     <div>
          <div className={s.errorCode}>
@@ -117,11 +143,7 @@ function CreateProduct() {
         <form onSubmit={handleSubmit} className = {s.form}>
             <h1>Crear Producto</h1>
             <label>Imagen: </label>
-            <input 
-            type="url" 
-            name="photo"
-            value={product.photo}
-            onChange={handleChange}/>
+            <input type="file" name="photo" onChange={uploadImage}></input>
 
             <label>Título: </label>
             <input type="text" name="title" value={product.title} onChange={handleChange}></input>
@@ -157,7 +179,7 @@ function CreateProduct() {
         <div className = {s.products}>
             <h1>{product.title}</h1>
             <div className = {s.img}>
-            <img src={product.photo.length && product.photo} alt=""></img>
+            <img src={product.photo && product.photo} alt=""></img>
             </div>
             <div className = {s.productInfo}>
             <h3>{product.price != 0 && product.price}</h3>
