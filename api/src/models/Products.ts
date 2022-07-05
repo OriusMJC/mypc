@@ -23,6 +23,10 @@ module.exports = (sequelize:any) => {
       type: DataTypes.FLOAT,
       allownull: false
     },
+    stockInitial: {
+      type: DataTypes.INTEGER,
+      allownull: false
+    },
     cant: {
       type: DataTypes.INTEGER,
       allownull: false

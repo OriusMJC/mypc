@@ -57,6 +57,7 @@ export interface Products{
     photo:string,
     price:number,
     type: PcTypes,
+    stockInitial?:number,
     description?:string,
     likes:number,
     comments?: Array<{

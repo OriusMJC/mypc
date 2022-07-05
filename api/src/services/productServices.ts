@@ -22,7 +22,8 @@ export const getProductByName = async(productTitle:string):Promise<types.Product
 }
 
 export const addNewProduct = async(userData:types.NonSensitiveUserInfo,newProduct:types.Products):Promise<string> => {
-    let productToCreate = {...newProduct, sellerInfo: userData}
+    console.log(newProduct.stockInitial)
+    let productToCreate = {...newProduct, sellerInfo: userData, cant: newProduct.stockInitial}
     await Product.create(productToCreate)
     // await addSellProduct(userData.id, newProduct.id)
     return 'Producto creado con éxito'
@@ -93,10 +94,10 @@ export const deleteSellerResp = async(idProduct: string, sellerResp:any):Promise
     return 'Respuesta eliminada'
 }
 
-export const productSelled = async(idProduct:string):Promise<string>=>{
+export const productSelled = async(idProduct:string,cant:number):Promise<string>=>{
     await Product.update({sell: true},{where: {id: idProduct}})
     const product = await Product.findByPk(idProduct);
-    let newCant = product?.cant - 1
+    let newCant = product?.cant - cant
     await Product.update({cant: newCant}, {where: {id: idProduct}})
     return 'Producto vendido con éxito'
 }
