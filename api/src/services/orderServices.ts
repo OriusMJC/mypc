@@ -27,7 +27,7 @@ export const addOrder = async (amount: any, token: any, purchaseData: any) => {
 	};
 	await Order.create(dataOrder);
 	purchaseData.listPrice.map(async (p:any)=>{
-		await productSelled(p.id)
+		await productSelled(p.id,Number(p.cant))
 	})
 	return "orden creada";
 };
