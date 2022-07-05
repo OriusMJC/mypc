@@ -35,6 +35,7 @@ export const SEARCH_SUGGESTIONS = "SEARCH_SUGGESTIONS";
 // export const ADD_FAV = "ADD_FAV";
 export const DEL_FAV = "DEL_FAV";
 export const GET_ORDERS = "GET_ORDERS"
+export const SELLER_PROD = "SELLER_PROD";
 export const CHANGE_ACTUAL_PAGE = "CHANGE_ACTUAL_PAGE"
 
 type Action = {
