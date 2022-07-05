@@ -16,8 +16,8 @@ export default function ProductComments({idProd,comments, boolean, idProduct}){
   const [date, setDate] = useState(`${d.getDate()}/${d.getMonth()+1}/${d.getFullYear()} ${d.getHours()}:${d.getMinutes()}`)
 
   const dataUser = {
-    avatar: userData.avatar,
-    name: userData.name
+    avatar: userData?.avatar,
+    name: userData?.name
   }
   const [refresh, setRefresh] = useState([1]);
   const [newComment,setNewComment] = useState('')
