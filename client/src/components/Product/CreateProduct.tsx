@@ -54,7 +54,7 @@ function CreateProduct() {
         description: "",            
       })
 
-    function handleChange(e){
+    function handleChange(e){         
         setProduct({
             ...product,
             [e.target.name]: e.target.value
@@ -100,6 +100,7 @@ function CreateProduct() {
             }
     }
     function handleDot(e){
+
         if(e.key === "."){
             e.preventDefault();
         }
@@ -127,7 +128,7 @@ function CreateProduct() {
             <input type="text" name="title" value={product.title} onChange={handleChange}></input>
             
             <label>Precio: </label>
-            <input type="number" onKeyDown={handleDot} name="price" value={product.price} min="1" onChange={handleChange}></input>
+                <input type="number" onKeyDown={handleDot} min="1"  name="price" value={product.price || 1}  onChange={handleChange}></input>
 
             <label>Tipo: </label>
             <select onChange={handleType}>

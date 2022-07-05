@@ -5,6 +5,8 @@ import Loading from "../Loading/Loading";
 import ProductCard from "../reusable/ProductCard";
 import s from "../Styles/Pages.module.css";
 import './style.css'
+import swal from 'sweetalert';
+
 
 function Pages({ productsPerPage, allComponents, refresh }) {
 
@@ -41,6 +43,7 @@ function Pages({ productsPerPage, allComponents, refresh }) {
           <div className={s.containerProdCards}>
           {
               !products.length ? 
+              
             //   <div className = {s.containerHome}>
             //   <h2>Aun no hay productos cargados!</h2>
             //   {
@@ -52,8 +55,10 @@ function Pages({ productsPerPage, allComponents, refresh }) {
             //   }
               
             //   </div> 
-            <Loading load='Cargando productos' msgError='No hay ningún producto cargado... Pero puedes vender el primero!' time={3000}/>
-              :
+             
+           
+            <Loading load='Cargando productos' msgError='No hay ningún producto cargado... Logueate para crear uno!' time={3000}/>                        
+              :            
               refresh && currentProduct.length?
               typeof allComponents[0] !== 'string'?
                   currentProduct.map(prod=>{
