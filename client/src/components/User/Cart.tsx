@@ -102,7 +102,7 @@ export default function Cart() {
               </div>
               <div className={s.extra}>
                 <h4>{prod.status}</h4>
-                <input placeholder="1" id={prod.id} name={prod.price} type='number' min={1} max={Number(prod.cant)} onChange={handlePrice}/>
+                <input placeholder="1" id={prod.id} name={prod.price} type='number' min="1" max={Number(prod.cant)} onChange={handlePrice}/>
                 <button
                   className={s.button}
                   onClick={() => {
