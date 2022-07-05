@@ -22,7 +22,6 @@ export const getProductByName = async(productTitle:string):Promise<types.Product
 }
 
 export const addNewProduct = async(userData:types.NonSensitiveUserInfo,newProduct:types.Products):Promise<string> => {
-    console.log(newProduct.stockInitial)
     let productToCreate = {...newProduct, sellerInfo: userData, cant: newProduct.stockInitial}
     await Product.create(productToCreate)
     // await addSellProduct(userData.id, newProduct.id)
