@@ -67,7 +67,7 @@ function UserProducts() {
     <div className={s.userProducstContainer}>
       <Link to ='/user/detail' className={s.buttonHome}>
         <button>
-          Inicio
+          Regresar
         </button>
       </Link>
       {
@@ -92,6 +92,7 @@ function UserProducts() {
               </div> */}
               <div className={s.prodContainer}>
                 <h2>Mis productos</h2>
+                <b>Cant: {productsCreated.length}</b>
                 { 
                   productsCreated.map(prod => {
                     return (

@@ -33,7 +33,8 @@ export const UPDATE_PRODUCT = "UPDATE_PRODUCT";
 export const UPDATE_EMAIL = "UPDATE_EMAIL";
 export const SEARCH_SUGGESTIONS = "SEARCH_SUGGESTIONS";
 // export const ADD_FAV = "ADD_FAV";
-// export const DEL_FAV = "DEL_FAV";
+export const DEL_FAV = "DEL_FAV";
+export const GET_ORDERS = "GET_ORDERS"
 
 type Action = {
 	type: string;
@@ -150,7 +151,7 @@ export function delFavUser(idUser: string, idProduct: string) {
 	return async (dispatch: Dispatch<Action>) => {
 		try {
 			await axios.delete(`/users/fav/${idUser}/${idProduct}`);
-			// dispatch({type: DEL_FAV, payload: idProduct})
+			dispatch({type: DEL_FAV, payload: idProduct})
 		} catch (error) {
 			console.log(error);
 		}
@@ -253,7 +254,6 @@ export function deleteProductComment(id: string, idComment: any) {
 }
 
 export function deleteSellerResp(idProduct:string, resp:any){
-    console.log(idProduct, resp)
     return async(dispatch: Dispatch<Action>) => {
         try {
             await axios.put(`/products/comments/delete/${idProduct}`, resp)
@@ -320,3 +320,13 @@ export function emailUpdateUser(id: string, newEmail: string) {
 		}
 	};
 };
+export function getOrders(id: string) {
+	return async (dispatch: Dispatch<Action>) => {
+		try {
+			let orders = await axios.post(`/users/orders/${id}`)
+			dispatch({type: GET_ORDERS, payload: orders.data})
+		} catch (error) {
+			console.log(error)
+		}
+	}
+}

@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
+import { Link } from 'react-router-dom';
 import { useAppDispatch } from "src/config/config";
 import { editUserData } from "src/redux/actions";
 import styles from "./../Styles/UserEditDetail.module.css";
@@ -14,7 +15,6 @@ export default function UserEditDetails() {
 	});
 	let [existImg, setExistImg] = useState(true);
 	let dispatch = useAppDispatch();
-	console.log(dataUser);
 	let handleDataChange = (event) => {
 		setEditDataUser((prevState) => {
 			let objAux = { ...prevState };
@@ -35,11 +35,13 @@ export default function UserEditDetails() {
 
 	// }, [editDataUser.avatar]);
 
-	console.log(editDataUser, "STATE");
 	if (dataUser) {
 		return (
 			<div className={styles.containerEdit}>
 				<form action="" onSubmit={handleSubmit}>
+					<Link to = '/user/detail'>
+						<button>Atras</button>
+					</Link>
 					<div className={styles.containerInputs}>
 						<input
 							type="text"

@@ -14,7 +14,8 @@ module.exports = (sequelize:any) => {
       allownull: false,
       validate:{
         isDate: true,/* "2022-06-23" */
-      }
+      },
+      defaultValues: DataTypes.DATEONLY
     },
     address: {
       type: DataTypes.STRING,
@@ -29,7 +30,7 @@ module.exports = (sequelize:any) => {
       allownull: false,
     },
     typeOfPayment: {
-      type: DataTypes.ENUM('efectivo', 'tarjetaCred', 'tarjetaDeb', 'pagoFacil', 'rapiPago', 'mercadoPago', 'cuotas', 'transferencia', 'deposito'),
+      type: DataTypes.ENUM('efectivo', 'credit', 'debit', 'pagoFacil', 'rapiPago', 'mercadoPago', 'cuotas', 'transferencia', 'deposito'),
       allownull: false,
     },
     statusOfPayment: {
@@ -45,6 +46,10 @@ module.exports = (sequelize:any) => {
       */
       allownull: false,
     },
+    user: {
+      type: DataTypes.STRING,
+      allowNull: false
+    }
     },{
     timestamps: false
   });

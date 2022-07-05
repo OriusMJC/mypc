@@ -3,6 +3,7 @@ import { useSelector } from "react-redux"
 import { Link } from "react-router-dom"
 import { useAppDispatch } from "src/config/config"
 import { deleteProduct, filterUser, getAllComponents, getAllUsers, getName } from "src/redux/actions"
+import swal from "sweetalert"
 import Loading from "../Loading/Loading"
 import NavFilter from "../NavFilter"
 import s from '../Styles/AdminManage.module.css'
@@ -22,7 +23,16 @@ export default function AdminManage (){
     },[])
     
     function handleDelete(id){
-        dispatch(deleteProduct(id))
+        swal({         
+            text: "Estas seguro de eliminar el producto?",
+            icon: "warning",
+            buttons: ["No", "Si"]
+          }).then(respuesta =>{
+            if(respuesta){
+               swal({text: "Producto eliminado correctamente" , icon: "success"})
+               dispatch(deleteProduct(id))
+            }
+          })
     }
     function handleRefresh(){
         dispatch(getName(''))
@@ -33,7 +43,7 @@ export default function AdminManage (){
             {
                 userAdmin && userAdmin.admin && userAdmin.email === 'mypcecommerce@gmail.com'?
                     <div id={s.adminContainer}>
-                        <NavFilter refresh={refresh} setRefresh={setRefresh} setProductsPerPage={setRefresh} products={false}/>
+                        <NavFilter refresh={refresh} setRefresh={setRefresh} setProductsPerPage={setRefresh} products={false} lengthAll={allComponents?.length}/>
                         {/* {
                             btnView === 'products'?
                             <NavFilter refresh={refresh} setRefresh={setRefresh} setProductsPerPage={setRefresh} products={false}/>
@@ -46,6 +56,7 @@ export default function AdminManage (){
                             <button onClick={()=>setBtnView('user')}>Usuarios</button>
                         </div>
                         <SearchbarAdmin btnView={btnView}/>
+                        <b>Cant: {btnView === 'products'? allComponents.length : allUsers.length}</b>
                         <table>
                         {
                             btnView === 'products'?

@@ -3,10 +3,21 @@ import { useSelector } from "react-redux";
 import UserProducts from './UserProducts';
 import s from "../Styles/userDetails.module.css";
 import Loading from "../Loading/Loading";
+import { useEffect } from "react";
+import { useAppDispatch } from "src/config/config";
+import { getOrders } from 'src/redux/actions'
 
 export default function UserDetail() {
   const user = useSelector((state: any) => state.userDetails);
-  // const products = useSelector((state:any) => state.allComponents);
+  const orders = useSelector((state: any) => state.orders);
+  let dispatch = useAppDispatch();
+
+  useEffect(() => {
+    if(user) {
+      dispatch(getOrders(user.id))
+    }
+  }, [user])
+
   return (
     <div className={s.container}>
       {
@@ -62,35 +73,32 @@ export default function UserDetail() {
                 <img src={user && user.avatar} alt={user.name} />
               </div>
               <div className={s.userProducts}>
-                <div className={s.productBuyed}>
                   <h2>COMPRADO</h2>
-                  {user.buy.length &&
-                    user.buy.map((c) => {
+                  {orders.length ?
+                    orders.map((c) => {
                       return (
-                        <ul>
-                          <li className={s.li}>COMPRADO: {c.buy}</li>
-                        </ul>
+                        <>
+                          <hr></hr>
+                          <div className={s.orderCard}>
+                            <div>
+                              <b>Nro de compra</b>
+                              <p>{c.id}</p>
+                              <h5>Fecha: {c.date? c.date: null}</h5>
+                            </div>
+                            <div>
+                              <h3>Monto: $ {c.fullPayment}</h3>
+                                <Link to={`order/${c.id}`}>
+                                  <button>
+                                    VER DETALLES
+                                  </button>
+                                </Link>
+                            </div>
+                          </div>
+                        </>
                       );
-                    })}
-                </div>
-                {/* <div>
-                  <h2>FAVED</h2>
-                  {user.fav.length &&
-                    user.fav.map((c) => {
-                      return (
-                        <ul>
-                        <li className={s.productFaved}>
-                        <img src={c.photo} alt="" />
-                        <div>
-                        <h1>{c.title && c.title}</h1>
-                        <h3>{c.type}</h3>
-                        <h3>{c.price}</h3>
-                        </div>
-                        </li>
-                        </ul>
-                      );
-                    })}
-                </div> */}
+                    }) 
+                    : 
+                    <p>Aún no compraste nada</p>}
               </div>
             </div>
         </>
