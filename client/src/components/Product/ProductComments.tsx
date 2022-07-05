@@ -21,6 +21,7 @@ export default function ProductComments({idProd,comments, boolean, idProduct}){
   }
   const [refresh, setRefresh] = useState([1]);
   const [newComment,setNewComment] = useState('')
+  const [notification, setnotification] = useState(0)
   const [actualPosition, setActualPosition] = useState([null,null]);
   const [sellerResponse, setSellerResponse] = useState({
     avatar: dataUser.avatar,
@@ -30,7 +31,6 @@ export default function ProductComments({idProd,comments, boolean, idProduct}){
     response: false,
     date: date,
   })
-
   function handleChange(e:any){
     setNewComment(e.target.value)
   }
@@ -38,7 +38,8 @@ export default function ProductComments({idProd,comments, boolean, idProduct}){
     e.preventDefault()
     if(newComment.length){
       if(userData.id && userData.name && userData.avatar){
-        dispatch(addProductComment(idProd,{id: id, name:userData.name,avatar:userData.avatar,comment: newComment,sellerResponse: sellerResponse, date: date}))
+        dispatch(addProductComment(idProd,{id: id, name:userData.name,avatar:userData.avatar,comment: newComment,sellerResponse: sellerResponse, date: date}))  
+        setnotification(notification + 1)     
         swal({text: "comentario agregado", icon: "success", timer: 1000})
         setNewComment('');
       }else{
@@ -60,6 +61,7 @@ export default function ProductComments({idProd,comments, boolean, idProduct}){
     }
   }
 
+
   function handleDeleteComment(e){
     e.preventDefault();   
     swal({
@@ -70,6 +72,7 @@ export default function ProductComments({idProd,comments, boolean, idProduct}){
     }).then(response =>{
         if(response){
           swal({text: "comentario eliminado", icon: "success", timer: 1000})
+          setnotification(notification - 1)
           dispatch(deleteProductComment(idProduct, Number(e.target.value)))
         }
     })
@@ -108,7 +111,7 @@ export default function ProductComments({idProd,comments, boolean, idProduct}){
             ...sellerResponse,
             id: Number(id),
             comment: '',
-      response: false,
+            response: false,
     }))
     dispatch(getAllDetails(idProduct));
     dispatch(getAllDetails(idProduct));
@@ -119,7 +122,7 @@ export default function ProductComments({idProd,comments, boolean, idProduct}){
 
   function handleResponseSubmit(e){
     e.preventDefault();
-    setRefresh([...refresh, 1])
+    setRefresh([...refresh, 1])   
     dispatch(addSellerResp(idProduct, {
       ...sellerResponse,
       id: Number(actualPosition[1]),
@@ -141,6 +144,7 @@ export default function ProductComments({idProd,comments, boolean, idProduct}){
     setDate(`${d.getDate()}/${d.getMonth()+1}/${d.getFullYear()} ${d.getHours()}:${d.getMinutes()}`)
   }, [])
 
+  console.log(notification)
 
   return (
     <section id={s.sectionComments}>
