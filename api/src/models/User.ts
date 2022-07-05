@@ -98,10 +98,10 @@ module.exports = (sequelize:any) => {
       type: DataTypes.ARRAY(DataTypes.JSON),
     },
     latitude: {
-      type: DataTypes.NUMBER,
+      type: DataTypes.STRING(500),
     },
     altitude: {
-      type: DataTypes.NUMBER,
+      type: DataTypes.STRING(500),
     }
     },{
     timestamps: false
