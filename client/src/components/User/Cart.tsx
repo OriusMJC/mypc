@@ -23,7 +23,7 @@ export default function Cart() {
 			return prod;
 		}
 	});
-
+	console.log(user)
 	// ==============================================
 	// ============== LOGICA DE STRIPE ==============
 	// ==============================================
@@ -31,9 +31,8 @@ export default function Cart() {
 	// 	price: 200,
 	// });
 	let priceForStripe = precioTotal * 100;
-	let tokenKey =
-		"pk_test_51LGmEQFUyCKJpzqxqIy615cuo6fzw9piBYzGS7ek5KQkW55LDarHinS2GrBB7gIstqMSkMgVDfc57lpol4q7BYvB00RWv3BVxJ";
-
+	let tokenKey = "pk_test_51LGmEQFUyCKJpzqxqIy615cuo6fzw9piBYzGS7ek5KQkW55LDarHinS2GrBB7gIstqMSkMgVDfc57lpol4q7BYvB00RWv3BVxJ";
+		
 	let payNow = async (token) => {
 		try {
 			let purchaseData = {
@@ -45,12 +44,27 @@ export default function Cart() {
 				token,
         purchaseData,
 			});
+			console.log(token)
 			// await axios.post("users/test", {
 			// 	amount: priceForStripe,
 			// 	// token,
       //   purchaseData,
 			// });
 			if (response.status === 200) {
+				let traking = {
+					tracking_number: `${token.id}`,
+					courier_code: "correo-argentino",
+					order_number: `#${token.created}`,
+					destination_code: "AR",
+					logistics_channel: "4px channel",
+					customer_name:  user.name,
+					customer_email: user.email,
+					customer_phone: `+${user.phone}`,
+					note: "check",
+					title: "title test",
+					lang: "es"
+				}
+				axios.post(`traking/${user.id}`, traking)
         productsCart.map(e => handleKickCart(e.id)) 
         setPrecioTotal(0);
         setListPrice([]);
@@ -101,7 +115,7 @@ export default function Cart() {
 		let list = [];
 		let price = 0;
 		productsCart.forEach((p: any) => {
-			list.push({ id: p.id, price: p.price, cant: 1, title: p.title, photo: p.photo, type: p.type, status: p.status });
+			list.push({ id: p.id, price: p.price, cant: 1, stock: p.cant, title: p.title, photo: p.photo, type: p.type, status: p.status });
 			price = price + p.price;
 		});
 		setListPrice(list);
@@ -150,7 +164,7 @@ let demo = () => {
 									name={prod.price}
 									type="number"
 									min="1"
-									max={Number(prod.cant)}
+									max={String(prod.cant)}
 									onChange={handlePrice}
 								/>
 								<button
@@ -182,19 +196,22 @@ let demo = () => {
 					user.id ? (
 						// <Link to="/buy">
 							/* <button className={s.button}>Comprar</button> */
-							<StripeCheckout
-								stripeKey={tokenKey}
-								label="Pagar ahora"
-								name="Pagar con tarjeta de crédito"
-								billingAddress
-								shippingAddress
-								amount={priceForStripe}
-								description={`Tu total es de ${precioTotal}`}
-								// token={tokenKey}
-								token={payNow}
-								image={logo}
-								
-							/>
+							<>
+							{/* <select id="">
+								<option value=""></option>
+							</select> */}
+								<StripeCheckout
+									stripeKey={tokenKey}
+									label="Pagar ahora"
+									name="Pagar con tarjeta de crédito"
+									billingAddress
+									shippingAddress
+									amount={priceForStripe}
+									description={`Tu total es de ${precioTotal}`}
+									token={payNow}
+									image={logo}
+								/>
+							</>
 						// </Link>
 					) : (
 						<Link to="/login">

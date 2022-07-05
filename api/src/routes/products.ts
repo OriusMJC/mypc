@@ -84,7 +84,6 @@ router.post('/:idUser', [
 		}
 	});
 	// newProduct.photo = newImg
-    console.log("====================DATA BODY====================", req.body, newProduct, "====================DATA BODY====================")
     try{ 
         const userData = await getBasicUserInfo(idUser) 
         let response = await addNewProduct(userData, newProduct);
@@ -219,23 +218,14 @@ router.put('/comments/delete/:idProduct', async(req, res, next) => {
 
 router.put('/selled/:idProduct',async(req,res,next)=>{
     const {idProduct} = req.params
+    const {cant} = req.query
     try {
-        const response = await productSelled(idProduct)
+        const response = await productSelled(idProduct,Number(cant))
         res.json(response)
     } catch (error) {
         next(error)
     }
 })
 
-
-router.put("/selled/:idProduct", async (req, res, next) => {
-	const { idProduct } = req.params;
-	try {
-		const response = await productSelled(idProduct);
-		res.json(response);
-	} catch (error) {
-		next(error);
-	}
-});
 
 module.exports = router;

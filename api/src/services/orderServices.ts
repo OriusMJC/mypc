@@ -16,6 +16,7 @@ export const getUserOrders = async (id: string) => {
 export const addOrder = async (amount: any, token: any, purchaseData: any) => {
 	let dataOrder = {
 		id: token.id,
+		date: Date().slice(4,21),
 		address: token.card.address_line1,
 		product: purchaseData.listPrice,
 		fullPayment: amount,
@@ -26,7 +27,7 @@ export const addOrder = async (amount: any, token: any, purchaseData: any) => {
 	};
 	await Order.create(dataOrder);
 	purchaseData.listPrice.map(async (p:any)=>{
-		await productSelled(p.id)
+		await productSelled(p.id,Number(p.cant))
 	})
 	return "orden creada";
 };
