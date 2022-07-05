@@ -7,6 +7,9 @@ import { getAllComponents} from '../../redux/actions'
 import { useAppDispatch} from '../../config/config'
 import s from "../Styles/Pages.module.css";
 import './style.css'
+import swal from 'sweetalert';
+import { changeActualPage } from "src/redux/actions";
+
 
 function Pages({ productsPerPage, allComponents, refresh }) {
     const dispatch = useAppDispatch();
@@ -16,7 +19,8 @@ function Pages({ productsPerPage, allComponents, refresh }) {
     }, [])
 
     const cantPages = Math.ceil(allComponents.length /productsPerPage) 
-    const [currentPage, setCurrentPage] = useState(1);
+    const actualPage = useSelector((state:any)=> state.actualPage)
+    const [currentPage, setCurrentPage] = useState(actualPage);
     const indexOfLastProduct = currentPage * productsPerPage;
     const indexOfFirstProduct = indexOfLastProduct - productsPerPage;
     const currentProduct = allComponents?.slice(indexOfFirstProduct, indexOfLastProduct);
@@ -26,13 +30,14 @@ function Pages({ productsPerPage, allComponents, refresh }) {
     if(typeof allComponents[0] !== 'string'){
         for (let i = 1; i <= cantPages; i++){
             pageNumbers.push(
-                <button key={i} value={i} onClick={()=>{setCurrentPage(i)}} className={i===currentPage? s.buttonActive : null}>
+                <button key={i} value={i} onClick={()=>{setCurrentPage(i); dispatch(changeActualPage(i))}} className={i===currentPage? s.buttonActive : null}>
                     {i}
                 </button>)
         }
     }
     if(currentPage !== 1 && currentPage > cantPages) {
         setCurrentPage(1)
+        dispatch(changeActualPage(1))
     }
 
     const products = useSelector((state:any) => state.allComponents)
@@ -46,6 +51,7 @@ function Pages({ productsPerPage, allComponents, refresh }) {
           <div className={s.containerProdCards}>
           {
               !products.length ? 
+              
             //   <div className = {s.containerHome}>
             //   <h2>Aun no hay productos cargados!</h2>
             //   {
@@ -57,8 +63,10 @@ function Pages({ productsPerPage, allComponents, refresh }) {
             //   }
               
             //   </div> 
-            <Loading load='Cargando productos' msgError='No hay ningún producto cargado... Pero puedes vender el primero!' time={3000}/>
-              :
+             
+           
+            <Loading load='Cargando productos' msgError='No hay ningún producto cargado... Logueate para crear uno!' time={3000}/>                        
+              :            
               refresh && currentProduct.length?
               typeof allComponents[0] !== 'string'?
                   currentProduct.map(prod=>{

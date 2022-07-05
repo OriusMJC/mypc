@@ -26,6 +26,7 @@ import {
 	DEL_FAV,
 	GET_ORDERS,
 	SELLER_PROD,
+	CHANGE_ACTUAL_PAGE,
 } from "../actions";
 // import { Products } from '../../../types';
 
@@ -72,6 +73,7 @@ const initialState = {
 	cart: [],
 	suggestions: {},
 	orders: [],
+	actualPage: 1,
 };
 
 export default function rootReducer(state = initialState, action: any) {
@@ -307,6 +309,11 @@ export default function rootReducer(state = initialState, action: any) {
 			return {
 				...state,
 				orders: action.payload,
+			}
+		case CHANGE_ACTUAL_PAGE:
+			return {
+				...state,
+				actualPage: action.payload,
 			}
 		default:
 			return state;

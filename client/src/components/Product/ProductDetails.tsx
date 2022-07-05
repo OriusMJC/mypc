@@ -182,7 +182,7 @@ export default function ProductDetails(){
                   <h4>Categoria: {product?.type}</h4>
                   <p>Stock: {product?.cant}</p>
                   {
-                     admin?
+                     admin || product.cant === 0?
                      <>
                         <input value='Comprar' type='button' id={s.buttonBuy}  onClick={handleBuy} disabled/>
                         <input value='Añadir al carrito'type='button' className={s.btnSend} onClick={handleCart} disabled/>

@@ -23,7 +23,6 @@ export default function Cart() {
 			return prod;
 		}
 	});
-
 	// ==============================================
 	// ============== LOGICA DE STRIPE ==============
 	// ==============================================
@@ -31,9 +30,8 @@ export default function Cart() {
 	// 	price: 200,
 	// });
 	let priceForStripe = precioTotal * 100;
-	let tokenKey =
-		"pk_test_51LGmEQFUyCKJpzqxqIy615cuo6fzw9piBYzGS7ek5KQkW55LDarHinS2GrBB7gIstqMSkMgVDfc57lpol4q7BYvB00RWv3BVxJ";
-
+	let tokenKey = "pk_test_51LGmEQFUyCKJpzqxqIy615cuo6fzw9piBYzGS7ek5KQkW55LDarHinS2GrBB7gIstqMSkMgVDfc57lpol4q7BYvB00RWv3BVxJ";
+		
 	let payNow = async (token) => {
 		try {
 			let purchaseData = {
@@ -45,13 +43,8 @@ export default function Cart() {
 				token,
         purchaseData,
 			});
-			// await axios.post("users/test", {
-			// 	amount: priceForStripe,
-			// 	// token,
-      //   purchaseData,
-			// });
 			if (response.status === 200) {
-        productsCart.map(e => handleKickCart(e.id)) 
+				productsCart.map(e => handleKickCart(e.id)) 
         setPrecioTotal(0);
         setListPrice([]);
 			}
@@ -101,21 +94,18 @@ export default function Cart() {
 		let list = [];
 		let price = 0;
 		productsCart.forEach((p: any) => {
-			list.push({ id: p.id, price: p.price, cant: 1, title: p.title, photo: p.photo, type: p.type, status: p.status });
+			list.push({ id: p.id, price: p.price, cant: 1, stock: p.cant, title: p.title, photo: p.photo, type: p.type, status: p.status });
 			price = price + p.price;
 		});
 		setListPrice(list);
 		setPrecioTotal(price);
 	}
-let demo = () => {
-	console.log("Hola")
-}
 	function handleKickCart(id) {
 		dispatch(delProductCart(id));
 		handleDeletePrice(id);
 	}
 	useEffect(() => {
-		dispatch(getProductsLHtoCart());
+		dispatch(getProductsLHtoCart())
 	}, []);
 	useEffect(() => {
 		getPrice();
@@ -150,7 +140,7 @@ let demo = () => {
 									name={prod.price}
 									type="number"
 									min="1"
-									max={Number(prod.cant)}
+									max={String(prod.cant)}
 									onChange={handlePrice}
 								/>
 								<button
@@ -181,7 +171,7 @@ let demo = () => {
 				{user && products === true ? (
 					user.id ? (
 						// <Link to="/buy">
-							/* <button className={s.button}>Comprar</button> */
+							/* <button className={s.button}>Comprar</button> */							
 							<StripeCheckout
 								stripeKey={tokenKey}
 								label="Pagar ahora"
@@ -190,11 +180,10 @@ let demo = () => {
 								shippingAddress
 								amount={priceForStripe}
 								description={`Tu total es de ${precioTotal}`}
-								// token={tokenKey}
 								token={payNow}
 								image={logo}
-								
 							/>
+							
 						// </Link>
 					) : (
 						<Link to="/login">

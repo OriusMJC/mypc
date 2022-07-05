@@ -138,7 +138,7 @@ export default function ProductComments({idProd,comments, boolean, idProduct}){
       response: true,
       date: actualDate(),
     }))
-    swal({text: "respuesta enviada", icon:"success", timer: 1000})
+    // swal({text: "respuesta enviada", icon:"success", timer: 1000})
     dispatch(getAllDetails(idProduct))
     dispatch(getAllDetails(idProduct))
     setActualPosition([null,null]);

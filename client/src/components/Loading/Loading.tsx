@@ -20,7 +20,7 @@ export default function Loading({load,msgError,time}){
                 </>
                 :
                 <>
-                    <h1>Ups</h1>
+                    {/* <h1>Ups</h1> */}
                     <h2>{msgError}</h2>
                 </>
             }

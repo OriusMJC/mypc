@@ -41,12 +41,12 @@ function CreateProduct() {
     const [product, setProduct] = useState({
         title: "",
         photo: "",
-        price: 0,
+        price: 1,
         type: "",
         description: "",
         likes: 0,
         comments: [],
-        cant: 0,
+        stockInitial: 1,
         status: "",
         sell: false,
     });
@@ -60,7 +60,7 @@ function CreateProduct() {
         description: "",            
       })
 
-    function handleChange(e){
+    function handleChange(e){         
         setProduct({
             ...product,
             [e.target.name]: e.target.value
@@ -106,6 +106,7 @@ function CreateProduct() {
             }
     }
     function handleDot(e){
+
         if(e.key === "."){
             e.preventDefault();
         }
@@ -149,7 +150,7 @@ function CreateProduct() {
             <input type="text" name="title" value={product.title} onChange={handleChange}></input>
             
             <label>Precio: </label>
-            <input type="number" onKeyDown={handleDot} name="price" value={product.price} min="1" onChange={handleChange}></input>
+                <input type="number" onKeyDown={handleDot} min="1"  name="price" value={product.price || 1}  onChange={handleChange}></input>
 
             <label>Tipo: </label>
             <select onChange={handleType}>
@@ -168,7 +169,7 @@ function CreateProduct() {
                 <option value="usado">usado</option>
             </select>        
             <label>Stock: </label>
-                <input type="number"  onKeyDown={handleDot} min="1" name="cant" value={product.cant || 1} onChange={handleChange}></input>
+                <input type="number"  onKeyDown={handleDot} min="1" name="stockInitial" value={product.stockInitial || 1} onChange={handleChange}></input>
             <label>Descripción: </label>
             <textarea name="description" value={product.description} onChange={handleChange} className={s.descriptionInput} required/>
 
@@ -185,7 +186,7 @@ function CreateProduct() {
             <h3>{product.price != 0 && product.price}</h3>
             <h3>{product.type}</h3>
             <h3>{product.status}</h3>
-            <h3>{product.cant != 0 && product.cant}</h3>
+            <h3>{product.stockInitial != 0 && product.stockInitial}</h3>
             <p>{product.description}</p>
             </div>
         </div>      
