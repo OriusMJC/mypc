@@ -48,7 +48,8 @@ export interface User {
     avatar?:string,
     fav?: Array<basicProductInfo>,
     buy?: Array<basicProductInfo>,
-    sell?: Products[]
+    sell?: Products[],
+    tracking: Array,
 }
 
 export interface Products{
