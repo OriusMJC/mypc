@@ -9,7 +9,7 @@ import { getOrders } from 'src/redux/actions'
 
 export default function UserDetail() {
   const user = useSelector((state: any) => state.userDetails);
-  const orders = useSelector((state: any) => state.orders);
+  const orders = useSelector((state: any) => state.orders?.reverse());
   let dispatch = useAppDispatch();
   let [location, setLocation] = useState({});
 
