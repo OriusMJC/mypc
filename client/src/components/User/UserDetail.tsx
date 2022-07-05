@@ -42,6 +42,14 @@ export default function UserDetail() {
                   Inicio
                 </button>
               </Link>
+              {/* <Link to={{
+                // pathname: "/user/direction",
+                // state: {h: "hola"},
+              }}>
+                <button className={s.buttonButton}>
+                  Dirección
+                </button>
+              </Link> */}
               <Link to = "/user/createProduct">
                 <button className={s.buttonButton}>
                   Vender
