@@ -13,7 +13,7 @@ import {
 	updateEmailUser,
 } from "../services/usersServices";
 import * as types from "../types";
-import { addOrder, getUserOrders, /*getAllOrders*/ } from "../services/orderServices";
+import { addOrder, getUserOrders, getAllOrders } from "../services/orderServices";
 import cloudinary from "../services/cloudinarySettings"
 const Stripe = require("stripe")(process.env.SECRET_KEY);
 const router = Router();
@@ -172,13 +172,13 @@ router.put(
 router.post("/payments", async (req, res) => {
 	let { amount, token, purchaseData } = req.body;
 	try {
-		await Stripe.charges.create({
+		let data = await Stripe.charges.create({
 			source: token.id,
 			amount,
 			currency: "usd",
 		});
-		await addOrder(amount, token, purchaseData);
-		res.send(true);
+		await addOrder(amount / 100, token, purchaseData);
+		res.send(data);
 	} catch (error) {
 		res.send(false);
 	}
@@ -188,7 +188,7 @@ router.post("/orders/:id", async (req, res) => {
 	const orders = await getUserOrders(id);
 	res.send(orders);	
 });
-router.post("/test", async (_req, _res) => {
+router.post("/test", async (_req, res) => {
 	// =========================
 	// PRUEBA PARA GUARDAR IMG
 	// =========================
@@ -204,8 +204,8 @@ router.post("/test", async (_req, _res) => {
 	// =========================
 	// PRUEBA PARA TRAER TODAS LAS ORDENES 
 	// =========================
-	// let test = await getAllOrders();
-	// res.send(test)
+	let test = await getAllOrders();
+	res.send(test)
 	// =========================
 
 })
