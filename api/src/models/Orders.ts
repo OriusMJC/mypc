@@ -12,10 +12,10 @@ module.exports = (sequelize:any) => {
     date: {
       type: DataTypes.STRING,
       allownull: false,
-      validate:{
-        isDate: true,/* "2022-06-23" */
-      },
-      defaultValue: DataTypes.DATEONLY
+      // validate:{
+      //   isDate: true,/* "2022-06-23" */
+      // },
+      defaultValue: DataTypes.DATE
     },
     address: {
       type: DataTypes.STRING,

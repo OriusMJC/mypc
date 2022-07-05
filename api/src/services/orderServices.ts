@@ -7,7 +7,6 @@ const { Order } = require("../db");
 
 export const getAllOrders = async () => {
 	let orders = await Order.findAll();
-	console.log(orders)
 	return orders;
 };
 export const getUserOrders = async (id: string) => {
@@ -17,6 +16,7 @@ export const getUserOrders = async (id: string) => {
 export const addOrder = async (amount: any, token: any, purchaseData: any) => {
 	let dataOrder = {
 		id: token.id,
+		date: Date().slice(4,21),
 		address: token.card.address_line1,
 		product: purchaseData.listPrice,
 		fullPayment: amount,
