@@ -44,28 +44,8 @@ export default function Cart() {
 				token,
         purchaseData,
 			});
-			console.log(token)
-			// await axios.post("users/test", {
-			// 	amount: priceForStripe,
-			// 	// token,
-      //   purchaseData,
-			// });
 			if (response.status === 200) {
-				let traking = {
-					tracking_number: `${token.id}`,
-					courier_code: "correo-argentino",
-					order_number: `#${token.created}`,
-					destination_code: "AR",
-					logistics_channel: "4px channel",
-					customer_name:  user.name,
-					customer_email: user.email,
-					customer_phone: `+${user.phone}`,
-					note: "check",
-					title: "title test",
-					lang: "es"
-				}
-				axios.post(`traking/${user.id}`, traking)
-        productsCart.map(e => handleKickCart(e.id)) 
+				productsCart.map(e => handleKickCart(e.id)) 
         setPrecioTotal(0);
         setListPrice([]);
 			}
@@ -121,15 +101,12 @@ export default function Cart() {
 		setListPrice(list);
 		setPrecioTotal(price);
 	}
-let demo = () => {
-	console.log("Hola")
-}
 	function handleKickCart(id) {
 		dispatch(delProductCart(id));
 		handleDeletePrice(id);
 	}
 	useEffect(() => {
-		dispatch(getProductsLHtoCart());
+		dispatch(getProductsLHtoCart())
 	}, []);
 	useEffect(() => {
 		getPrice();
@@ -195,23 +172,19 @@ let demo = () => {
 				{user && products === true ? (
 					user.id ? (
 						// <Link to="/buy">
-							/* <button className={s.button}>Comprar</button> */
-							<>
-							{/* <select id="">
-								<option value=""></option>
-							</select> */}
-								<StripeCheckout
-									stripeKey={tokenKey}
-									label="Pagar ahora"
-									name="Pagar con tarjeta de crédito"
-									billingAddress
-									shippingAddress
-									amount={priceForStripe}
-									description={`Tu total es de ${precioTotal}`}
-									token={payNow}
-									image={logo}
-								/>
-							</>
+							/* <button className={s.button}>Comprar</button> */							
+							<StripeCheckout
+								stripeKey={tokenKey}
+								label="Pagar ahora"
+								name="Pagar con tarjeta de crédito"
+								billingAddress
+								shippingAddress
+								amount={priceForStripe}
+								description={`Tu total es de ${precioTotal}`}
+								token={payNow}
+								image={logo}
+							/>
+							
 						// </Link>
 					) : (
 						<Link to="/login">
