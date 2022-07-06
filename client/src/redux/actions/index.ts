@@ -35,6 +35,8 @@ export const SEARCH_SUGGESTIONS = "SEARCH_SUGGESTIONS";
 // export const ADD_FAV = "ADD_FAV";
 export const DEL_FAV = "DEL_FAV";
 export const GET_ORDERS = "GET_ORDERS"
+export const SELLER_PROD = "SELLER_PROD";
+export const CHANGE_ACTUAL_PAGE = "CHANGE_ACTUAL_PAGE"
 
 type Action = {
 	type: string;
@@ -297,6 +299,12 @@ export function resetProductDetail() {
 		payload: { comments: [] },
 	};
 }
+export function changeActualPage(num:number) {
+	return {
+		type: CHANGE_ACTUAL_PAGE,
+		payload: num,
+	};
+}
 
 export function getAllUsers() {
 	return async (dispatch: Dispatch<Action>) => {
@@ -324,6 +332,16 @@ export function getOrders(id: string) {
 	return async (dispatch: Dispatch<Action>) => {
 		try {
 			let orders = await axios.post(`/users/orders/${id}`)
+			dispatch({type: GET_ORDERS, payload: orders.data})
+		} catch (error) {
+			console.log(error)
+		}
+	}
+}
+export function getAllOrders() {
+	return async (dispatch: Dispatch<Action>) => {
+		try {
+			let orders = await axios.post(`/users/orders`)
 			dispatch({type: GET_ORDERS, payload: orders.data})
 		} catch (error) {
 			console.log(error)

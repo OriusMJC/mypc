@@ -4,6 +4,7 @@ import { Link, useParams, useNavigate } from "react-router-dom"
 import { useAppDispatch } from "src/config/config"
 import { addFavUser, addProductCart, getAllDetails, resetProductDetail, deleteProduct, delFavUser, delProductCart } from "src/redux/actions"
 import ProductComments from "./ProductComments"
+import SellerProducts from './SellerProducts'
 import s from '../Styles/ProductDetails.module.css'
 import nolike from '../icons/nolike.png'
 import { addCartLH } from "src/services/functionsServices"
@@ -33,19 +34,11 @@ export default function ProductDetails(){
    let product = useSelector((state:any) => state.productDetails)
    const idUser = useSelector((store:any)=> store.userDetails?.id)
    const admin = useSelector((store:any)=> store.userDetails?.admin)
-   const components = useSelector((store:any) => store.allComponents)
    const productSellerId = product.sellerInfo && product.sellerInfo.id
    const boolean = productSellerId && productSellerId === idUser && true
-   const sProducts = components.filter((p) => p.sellerInfo.id === idUser)
+   const [pos, setPos] = useState(0);
 
-   let random1 = Math.floor(Math.random()*(sProducts.length ? sProducts.length : 1))
-   let random2 = Math.floor(Math.random()*10)
-   let actualComponents = [];
-   if(random1 > random2) actualComponents = components.slice(random2, random1);
-   else if(random2 > random1) actualComponents = components.slice(random1, random2);
-   else actualComponents = components.slice(random1, random2 + 1)
-   
-   const sellerProducts = actualComponents.filter((p:any) => p.sellerInfo.id === idUser).slice(0, 3)
+   console.log(product.photo)
    
    function handleFav(){
       if(idUser){
@@ -154,6 +147,11 @@ export default function ProductDetails(){
        return () => dispatch(resetProductDetail())
    },[dispatch, idProduct])
 
+   function handlePos(e){
+      setPos(e.target.value)
+   }
+  
+
    
    return(
       <div id={s.prodContainer}>
@@ -174,32 +172,31 @@ export default function ProductDetails(){
             </div>
          </div>
          }
-         {
-            sellerProducts.length != 0 && 
-            <div className = {s.prodContainer}>
-               <div className = {s.h2Prod}>
-               <h2>Mas productos del vendedor</h2>
-               </div>
-               {sellerProducts.map((prod:any) => (
-                  <div className = {s.prodDetails}>
-                     <Link to = {`/detail/${prod.id}`}>
-                        <img src={prod.photo} className = {s.prodImg}></img>
-                     </Link>
-                     <div className = {s.prodD}>
-                     <h3>{prod.title}</h3>
-                     <h4>${prod.price}</h4>
-                     <h5>{prod.status}</h5>
-                     </div>
-                  </div>
-               ))}
-            </div>
-         }
+         <SellerProducts/>
          </div>
          <div key={product?.key} id={s.contProdDetails}>
             <h1>{product?.title}</h1>
             <section id={s.sectionDetail}>
+            <div className ={s.photoDiv}>
+                  {product && product.photo &&
+                     product.photo.map((p:any, i) => {
+                        const styleImg = {
+                           backgroundImage: `url(${p})`,
+                           backgroundRepeat: 'no-repeat',
+                           backgroundPosition: 'center',
+                           backgroundSize: p? 'cover' : 'contain',
+                           outlineOffset: p? '-8px' : '0px', 
+                       }   
+                        return (
+                        <div>
+                        <button value={i} onClick={handlePos} style={styleImg} className ={s.imgButton}>
+                        </button>
+                        </div> )
+                     })
+                  }
+               </div>
                <div id={s.detailsImage}>
-                  <img src={product?.photo} alt={product?.title}></img>   
+                  <img src={product && product.photo && product.photo[pos]} alt={product?.title}></img>
                </div>
                <div id={s.detailsData}>
                   <button onClick={handleFav} id={s.buttonFav}>
