@@ -60,6 +60,7 @@ export default function ProductComments({idProd,comments, boolean, idProduct}){
       // alert('No puedes enviar un comentario vacio')  
     }
   }
+  console.log(comments)
 
 
   function handleDeleteComment(e){
@@ -144,7 +145,7 @@ export default function ProductComments({idProd,comments, boolean, idProduct}){
     setDate(`${d.getDate()}/${d.getMonth()+1}/${d.getFullYear()} ${d.getHours()}:${d.getMinutes()}`)
   }, [])
 
-  console.log(notification)
+  
 
   return (
     <section id={s.sectionComments}>
