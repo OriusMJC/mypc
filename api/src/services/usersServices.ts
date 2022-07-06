@@ -28,6 +28,8 @@ export const getBasicUserInfo = async (
 		email: userData?.dataValues.email,
 		avatar: userData?.dataValues.avatar,
 		phone: userData?.dataValues.phone,
+		latitude: userData?.dataValues.latitude,
+		longitude: userData?.dataValues.longitude,
 	};
 	return user;
 };
@@ -45,8 +47,6 @@ export const addNewUser = async(user: types.User): Promise<string> => {
 export const updateDataUser = async (
 	newUserData: types.User
 ): Promise<string> => {
-	// let userOldData = await User.findByPk(newUserData.id)
-	// await userOldData.update(newUserData, {where: {id: newUserData.id}})
 	await User.update(newUserData, { where: { id: newUserData.id } });
 	return "Cambios hechos correctamente";
 };

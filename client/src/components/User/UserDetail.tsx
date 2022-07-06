@@ -11,12 +11,10 @@ export default function UserDetail() {
   const user = useSelector((state: any) => state.userDetails);
   const orders = useSelector((state: any) => state.orders);
   let dispatch = useAppDispatch();
-  let [location, setLocation] = useState({});
 
   useEffect(() => {
     if(user) {
       dispatch(getOrders(user.id))
-      setLocation({alt: user.altitude, lat: user.latitude})
     }
   }, [user])
 

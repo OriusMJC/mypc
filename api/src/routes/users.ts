@@ -77,8 +77,8 @@ router.post(
 				let altitudeAndLatitude = {}
 				if(!req.body.altitude || !req.body.altitude) {
 					altitudeAndLatitude = {
-						latitude: 0,
-						altitude: 0,
+						latitude: "",
+						altitude: "",
 					}
 				}
 				const response = await addNewUser({...req.body, ...altitudeAndLatitude});
@@ -114,6 +114,7 @@ router.put(
 			const newDataUser = req.body;
 			try {
 				let response = await updateDataUser(newDataUser);
+				// console.log(response)
 				res.json(response);
 			} catch (err) {
 				return next(err);
@@ -184,6 +185,7 @@ router.post("/payments", async (req, res) => {
 			amount,
 			currency: "usd",
 		});
+		console.log(purchaseData)
 		await addOrder(amount / 100, token, purchaseData);
 		res.send(data);
 	} catch (error) {

@@ -12,12 +12,12 @@ export default function OrderDetails(){
     const order = useSelector((store:any)=> store.orders?.filter((o:any)=> o.id === idProduct))
     const dispatch = useAppDispatch();
     useEffect(() => {
-        console.log(user)
         if(user) {
           dispatch(getOrders(user.id))
         }
       }, [user])
-    return(
+
+      return(
         <div id={s.orderDetailsContainer}>
             {
                 order.length?
@@ -58,6 +58,11 @@ export default function OrderDetails(){
                                                     <p>Cant: {p.cant}</p>
                                                 </div>
                                                 <div>
+                                                    <Link to={`/direction/${p.id}`}>
+                                                        <button>
+                                                            VER DIRECCION DE ENTREGA
+                                                        </button>
+                                                    </Link>
                                                     <h3>precio: $ {p.price}</h3>
                                                     <Link to={`/detail/${p.id}`}>
                                                         <button>
