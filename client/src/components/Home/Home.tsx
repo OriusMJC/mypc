@@ -38,10 +38,10 @@ export default function Home() {
     let res = userData();
     // isUserLogin()
     dispatch(getAllComponents());
-  }, [dispatch, allComponents ]);
+  }, [dispatch]);
 
   return (
-    <div className={s.homeContainer}>      
+    <div className={s.homeContainer}>
       <div>       
         <NavFilter refresh={refresh} setRefresh={setRefresh} setProductsPerPage={setProductsPerPage} products={true} lengthAll={allComponents?.length}/>
         <Slider/>
