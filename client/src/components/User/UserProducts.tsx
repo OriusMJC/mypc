@@ -90,11 +90,11 @@ function UserProducts() {
         user && user.id ?
           !productsCreated.length && !user.admin
             ?   
-            swal({
-              title: "No tienes ningun producto para vender",            
-              icon: "warning",
-              timer: 1500,
-            }) &&
+            // swal({
+            //   title: "No tienes ningun producto para vender",            
+            //   icon: "warning",
+            //   timer: 1500,
+            // }) &&
             <Loading load='Cargando' msgError={<Link to = "/user/createProduct">
               <button className={sBtn.buttonButton}>
                 Vender

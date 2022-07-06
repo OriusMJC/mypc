@@ -97,9 +97,11 @@ module.exports = (sequelize:any) => {
     buy: {
       type: DataTypes.ARRAY(DataTypes.JSON),
     },
-    tracking: {
-      type: DataTypes.ARRAY(DataTypes.STRING),
-      defaultValue: []
+    latitude: {
+      type: DataTypes.STRING(500),
+    },
+    altitude: {
+      type: DataTypes.STRING(500),
     }
     },{
     timestamps: false

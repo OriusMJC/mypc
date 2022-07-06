@@ -1,4 +1,4 @@
-import { Route, Routes } from "react-router-dom";
+import { Route, Router, Routes } from "react-router-dom";
 import Home from "./components/Home/Home";
 import "./App.css";
 import ProductDetails from "./components/Product/ProductDetails";
@@ -40,6 +40,7 @@ import UserEditDetails from "./components/User/UserEditDetails";
 import UserEditPasswordOrMail from "./components/User/UserEditPasswordOrMail";
 import Payments from "./components/Payments/Payments";
 import OrderDetails from "./components/User/OrderDetails";
+import Direction from "./components/User/Direction";
 
 // import NavButtons from './components/NavButtons'
 
@@ -82,6 +83,7 @@ function App() {
 					element={<UserEditPasswordOrMail />}
 				/>
 				<Route path="/user/detail/mail" element={<UserEditPasswordOrMail />} />
+				<Route path="/user/direction" element={<Direction/>} />
 
 				{/* ADMIN */}
 				<Route path="/user/admin" element={<AdminManage />} />

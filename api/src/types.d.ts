@@ -49,7 +49,6 @@ export interface User {
     fav?: Array<basicProductInfo>,
     buy?: Array<basicProductInfo>,
     sell?: Products[],
-    tracking: Array,
 }
 
 export interface Products{
