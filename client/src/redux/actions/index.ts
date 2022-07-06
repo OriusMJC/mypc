@@ -338,3 +338,13 @@ export function getOrders(id: string) {
 		}
 	}
 }
+export function getAllOrders() {
+	return async (dispatch: Dispatch<Action>) => {
+		try {
+			let orders = await axios.post(`/users/orders`)
+			dispatch({type: GET_ORDERS, payload: orders.data})
+		} catch (error) {
+			console.log(error)
+		}
+	}
+}
