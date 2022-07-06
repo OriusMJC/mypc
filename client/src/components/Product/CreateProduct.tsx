@@ -50,8 +50,6 @@ function CreateProduct() {
         status: "",
         sell: false,
     });
-
-    console.log(image);
     
 
     const [error, setError] = useState<Product>({
