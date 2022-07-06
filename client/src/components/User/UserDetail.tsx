@@ -5,12 +5,17 @@ import s from "../Styles/userDetails.module.css";
 import Loading from "../Loading/Loading";
 import { useEffect } from "react";
 import { useAppDispatch } from "src/config/config";
-import { getOrders } from 'src/redux/actions'
+import { getOrders, paymentSort } from 'src/redux/actions'
 
 export default function UserDetail() {
   const user = useSelector((state: any) => state.userDetails);
   const orders = useSelector((state: any) => state.orders);
   let dispatch = useAppDispatch();
+
+  function handleSortPayment(e){
+    e.preventDefault()
+    dispatch(paymentSort(e.target.value))
+  }
 
   useEffect(() => {
     if(user) {
@@ -74,6 +79,14 @@ export default function UserDetail() {
               </div>
               <div className={s.userProducts}>
                   <h2>COMPRADO</h2>
+                  <div>
+                  <label>Ordenar por monto pagado</label>
+                  <select onChange={e=>handleSortPayment(e)}>
+                    <option value="defect">Seleccionar</option>
+                    <option value="more">Mayor pago</option>
+                    <option value="less">Menor pago</option>
+                  </select>
+                  </div>
                   {orders.length ?
                     orders.map((c) => {
                       return (

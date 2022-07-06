@@ -330,3 +330,10 @@ export function getOrders(id: string) {
 		}
 	}
 }
+
+export function paymentSort(payload:string){
+return {
+	type: 'PAYMENT_SORT',
+	payload
+}
+}
