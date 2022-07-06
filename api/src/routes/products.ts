@@ -60,7 +60,7 @@ router.post('/:idUser', [
         .exists(),
     body('status', 'Ingrese un estado')
         .exists(),       
-    body('cant', 'Ingrese una cantidad')
+    body('stockInitial', 'Ingrese una cantidad')
         .exists()
         .isNumeric()
         .isInt(),

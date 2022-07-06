@@ -39,6 +39,8 @@ function CreateProduct() {
     const navigate = useNavigate();
     const user = useSelector((state:any) => state.userDetails);
     const types = useSelector((state:any) => state.types);
+    const [loading, setLoading] = useState(false);
+    const [image, setImage] = useState("hola")
     const id = user.id;
     const [product, setProduct] = useState({
         title: "",
@@ -48,10 +50,14 @@ function CreateProduct() {
         description: "",
         likes: 0,
         comments: [],
-        cant: 0,
+        stockInitial: 1,
         status: "",
         sell: false,
     });
+
+    
+    
+
     const [error, setError] = useState<Product>({
         title: "",
         photo: "",      
@@ -110,7 +116,27 @@ function CreateProduct() {
             e.preventDefault();
         }
     }
-    console.log(product.status === "nuevo");
+   
+
+
+    //Drag n drop
+    const uploadImage = async (e) => {
+        const files = e.target.files;
+        const data = new FormData();
+  
+        data.append('file', files[0]);
+        data.append('upload_preset', 'chropyis');
+      
+        setLoading(true);
+        const res = await fetch("https://api.cloudinary.com/v1_1/mypc/image/upload", { method: "POST", body: data })
+        const file = await res.json();
+      
+        setProduct({
+            ...product,
+            photo: file.secure_url
+        });
+        setLoading(false) 
+    }
 
   return (
     <div>
@@ -125,11 +151,7 @@ function CreateProduct() {
         <form onSubmit={handleSubmit} className = {s.form}>
             <h1>Crear Producto</h1>
             <label>Imagen: </label>
-            <input 
-            type="url" 
-            name="photo"
-            value={product.photo}
-            onChange={handleChange}/>
+            <input type="file" name="photo" onChange={uploadImage}></input>
 
             <label>Título: </label>
             <input type="text" name="title" value={product.title} onChange={handleChange}></input>
@@ -154,7 +176,7 @@ function CreateProduct() {
                 <option value="usado">usado</option>
             </select>        
             <label>Stock: </label>
-                <input type="number"  onKeyDown={handleDot} min="1" name="cant" value={product.cant || 1} onChange={handleChange}></input>
+                <input type="number"  onKeyDown={handleDot} min="1" name="stockInitial" value={product.stockInitial || 1} onChange={handleChange}></input>
             <label>Descripción: </label>
             <input type="text" name="description" value={product.description} onChange={handleChange} className={s.descriptionInput}></input>
 
@@ -165,13 +187,13 @@ function CreateProduct() {
         <div className = {s.products}>            
             <h1>{product.title}</h1>
             <div className = {s.img}>
-            <img src={product.photo.length && product.photo} alt=""></img>
+            <img src={product.photo && product.photo} alt=""></img>
             </div>
             <div className = {s.productInfo}>
             <h3>{product.price != 0 && product.price}</h3>
             <h3>{product.type}</h3>
             <h3>{product.status}</h3>
-            <h3>{product.cant != 0 && product.cant}</h3>
+            <h3>{product.stockInitial != 0 && product.stockInitial}</h3>
             <p>{product.description}</p>
             </div>
         </div>      

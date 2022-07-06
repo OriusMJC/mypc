@@ -74,7 +74,14 @@ router.post(
 					});
 					req.body.avatar = newImg
 				}
-				const response = await addNewUser(req.body);
+				let altitudeAndLatitude = {}
+				if(!req.body.altitude || !req.body.altitude) {
+					altitudeAndLatitude = {
+						latitude: 0,
+						altitude: 0,
+					}
+				}
+				const response = await addNewUser({...req.body, ...altitudeAndLatitude});
 				res.send(response);
 			} catch (err) {
 				return next(err);

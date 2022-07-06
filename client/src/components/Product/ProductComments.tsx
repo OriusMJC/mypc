@@ -2,19 +2,34 @@ import { useState, useEffect} from "react"
 import { useSelector } from "react-redux"
 import { useAppDispatch } from "src/config/config"
 import { addProductComment, deleteProductComment, addSellerResp, getAllDetails, deleteSellerResp} from "src/redux/actions"
+import { userData as userData1 } from "src/services/userFirebase";
 import s from '../Styles/ProductComments.module.css'
 import swal from 'sweetalert';
 
 export default function ProductComments({idProd,comments, boolean, idProduct}){
+  const dispatch = useAppDispatch()
+
+  useEffect(() => {
+    let res = userData1();
+  }, [])
+
   const arrId = comments.map((c:any) => Number(c.id));
   const id = arrId.length ? Math.max(...arrId) + 1 : 0;
-  const dispatch = useAppDispatch()
   let userData = useSelector((state:any) => state.userDetails)
+  let userId = userData && userData.id
   const admin = useSelector((state:any)=> state.userDetails?.admin)
 
+  
+  
+  function actualDate(){
+    const d = new Date();
+    let date = `${d.getDate()}/${d.getMonth()+1}/${d.getFullYear()} ${d.getHours()}:${d.getMinutes()}`
+    return date;
+  }
+  
   const dataUser = {
-    avatar: userData.avatar,
-    name: userData.name
+    avatar: userData && userData.avatar,
+    name: userData && userData.name
   }
   const [refresh, setRefresh] = useState([1]);
   const [newComment,setNewComment] = useState('')
@@ -25,6 +40,7 @@ export default function ProductComments({idProd,comments, boolean, idProduct}){
     id: null,
     name: dataUser.name,
     response: false,
+    date: null,
   })
 
   function handleChange(e:any){
@@ -34,7 +50,7 @@ export default function ProductComments({idProd,comments, boolean, idProduct}){
     e.preventDefault()
     if(newComment.length){
       if(userData.id && userData.name && userData.avatar){
-        dispatch(addProductComment(idProd,{id: id, name:userData.name,avatar:userData.avatar,comment: newComment,sellerResponse: sellerResponse}))
+        dispatch(addProductComment(idProd,{id: id, userId: userId, name:userData.name,avatar:userData.avatar,comment: newComment,sellerResponse: sellerResponse, date: actualDate()}))
         swal({text: "comentario agregado", icon: "success", timer: 1000})
         setNewComment('');
       }else{
@@ -120,6 +136,7 @@ export default function ProductComments({idProd,comments, boolean, idProduct}){
       ...sellerResponse,
       id: Number(actualPosition[1]),
       response: true,
+      date: actualDate(),
     }))
     // swal({text: "respuesta enviada", icon:"success", timer: 1000})
     dispatch(getAllDetails(idProduct))
@@ -170,8 +187,9 @@ export default function ProductComments({idProd,comments, boolean, idProduct}){
           let arr = [i, obj.id]
           return(
             <>
+            <div>
             <div className={s.comments}>
-              <img src={obj.avatar} alt={obj.name}/>
+              <img src={obj.avatar && obj.avatar} alt={obj.name}/>
               <div>
                 <h4>{obj.name}</h4>
                 <p>{obj.comment}</p>
@@ -187,6 +205,12 @@ export default function ProductComments({idProd,comments, boolean, idProduct}){
                 </div>
               }
               </div>
+              {
+                userId === obj.userId && !boolean &&
+                <div className = {s.deleteCom}>
+                  <button value={obj.id} onClick = {handleDeleteComment} className = {s.deleteCUser}>X</button>
+                </div>
+              }
             </div>
               {
                 
@@ -206,6 +230,7 @@ export default function ProductComments({idProd,comments, boolean, idProduct}){
                     </div>
                   </div>
               }
+            </div>
             </> 
             )
           })

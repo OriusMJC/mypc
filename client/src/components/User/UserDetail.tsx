@@ -3,20 +3,24 @@ import { useSelector } from "react-redux";
 import UserProducts from './UserProducts';
 import s from "../Styles/userDetails.module.css";
 import Loading from "../Loading/Loading";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useAppDispatch } from "src/config/config";
 import { getOrders } from 'src/redux/actions'
 
 export default function UserDetail() {
   const user = useSelector((state: any) => state.userDetails);
-  const orders = useSelector((state: any) => state.orders);
+  const orders = useSelector((state: any) => state.orders?.reverse());
   let dispatch = useAppDispatch();
+  let [location, setLocation] = useState({});
 
   useEffect(() => {
     if(user) {
       dispatch(getOrders(user.id))
+      setLocation({alt: user.altitude, lat: user.latitude})
     }
   }, [user])
+
+  
 
   return (
     <div className={s.container}>
@@ -40,6 +44,11 @@ export default function UserDetail() {
               <Link to="/">
                 <button className={s.buttonButton}>
                   Inicio
+                </button>
+              </Link>
+              <Link to="/user/direction">
+                <button className={s.buttonButton}>
+                  Dirección
                 </button>
               </Link>
               <Link to = "/user/createProduct">
