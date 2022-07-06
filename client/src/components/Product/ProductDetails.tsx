@@ -35,7 +35,10 @@ export default function ProductDetails(){
    const idUser = useSelector((store:any)=> store.userDetails?.id)
    const admin = useSelector((store:any)=> store.userDetails?.admin)
    const productSellerId = product.sellerInfo && product.sellerInfo.id
-   const boolean = productSellerId && productSellerId === idUser && true   
+   const boolean = productSellerId && productSellerId === idUser && true
+   const [pos, setPos] = useState(0);
+
+   console.log(product.photo)
    
    function handleFav(){
       if(idUser){
@@ -144,6 +147,11 @@ export default function ProductDetails(){
        return () => dispatch(resetProductDetail())
    },[dispatch, idProduct])
 
+   function handlePos(e){
+      setPos(e.target.value)
+   }
+  
+
    
    return(
       <div id={s.prodContainer}>
@@ -169,8 +177,26 @@ export default function ProductDetails(){
          <div key={product?.key} id={s.contProdDetails}>
             <h1>{product?.title}</h1>
             <section id={s.sectionDetail}>
+            <div className ={s.photoDiv}>
+                  {product && product.photo &&
+                     product.photo.map((p:any, i) => {
+                        const styleImg = {
+                           backgroundImage: `url(${p})`,
+                           backgroundRepeat: 'no-repeat',
+                           backgroundPosition: 'center',
+                           backgroundSize: p? 'cover' : 'contain',
+                           outlineOffset: p? '-8px' : '0px', 
+                       }   
+                        return (
+                        <div>
+                        <button value={i} onClick={handlePos} style={styleImg} className ={s.imgButton}>
+                        </button>
+                        </div> )
+                     })
+                  }
+               </div>
                <div id={s.detailsImage}>
-                  <img src={product?.photo} alt={product?.title}></img>   
+                  <img src={product && product.photo && product.photo[pos]} alt={product?.title}></img>
                </div>
                <div id={s.detailsData}>
                   <button onClick={handleFav} id={s.buttonFav}>

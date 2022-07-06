@@ -72,21 +72,37 @@ router.post('/:idUser', [
         })
 ],async (req: express.Request, res: express.Response, next:any)=>{//en la documentacion de express-validator res y req estan asi
     const errors = validationResult(req)
+    let arr:any= [];
+    const photos = req.body.photo
+    const newProduct = req.body
+    photos.map(async(p:any) => {
+        await cloudinary.uploader.upload(p, (error:any, result:any) => {
+            if(!error) {
+            	arr.push(result.url)
+            }
+            });
+    })
+    
     if (!errors.isEmpty()) {
       return res.status(404).json({ errors: errors.array() })
     } else {
     const {idUser} = req.params
-    const newProduct = req.body
+    const products = {
+        ...newProduct,
+        photos: arr,
+    }
+    
     // let newImg = ""; 
-	await cloudinary.uploader.upload(req.body.photo, (error:any, result:any) => {
-		if(!error) {
-			newProduct.photo = result.url;
-		}
-	});
+	// await cloudinary.uploader.upload(req.body.photo[0], (error:any, result:any) => {
+        
+	// 	if(!error) {
+	// 		newProduct.photo[0] = [result.url];
+	// 	}
+	// });
 	// newProduct.photo = newImg
     try{ 
         const userData = await getBasicUserInfo(idUser) 
-        let response = await addNewProduct(userData, newProduct);
+        let response = await addNewProduct(userData, products);
         res.json(response)    
     }
     catch(error){ 

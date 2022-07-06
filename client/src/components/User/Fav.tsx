@@ -39,7 +39,7 @@ export default function Fav() {
                     <div className={s.containerProduct}>
                       <Link to={`/detail/${prod.id}`}>
                         <div className={s.imgProdFav}>
-                          <img src={prod.photo} alt="" />
+                          <img src={prod.photo[0]} alt="" />
                         </div>
                       </Link>
                       <div className={s.infoProduct}>
