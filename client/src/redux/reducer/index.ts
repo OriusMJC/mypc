@@ -312,20 +312,20 @@ export default function rootReducer(state = initialState, action: any) {
 
       if(action.payload === 'less' ){
         paymentSort = state.orders.sort(function(a,b){
-            if(a.name > b.name){
+            if(a.fullPayment > b.fullPayment){
               return 1
             }
-            if(a.name < b.name){
+            if(a.fullPayment < b.fullPayment){
               return -1
             }
             return 0
           })
       } else if(action.payload === 'more'){
         paymentSort = state.orders.sort(function(a,b){
-            if(a.name > b.name){
+            if(a.fullPayment > b.fullPayment){
               return -1
             }
-            if(a.name < b.name){
+            if(a.fullPayment < b.fullPayment){
               return 1
             }
             return 0
