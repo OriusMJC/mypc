@@ -32,7 +32,7 @@ export default function ProductCard({id,title, photo, price, type, likes, status
       <h3 className={s.status}>{status}</h3>
       <h2>{title}</h2>
       <Link to={`detail/${id}`}>
-        <img src={photo} alt="Image Product" />
+        <img src={photo[0]} alt="Image Product" />
       </Link>
       <div className={s.cardInfo}>
         <h3>${price}</h3>

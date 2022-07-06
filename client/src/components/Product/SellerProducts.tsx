@@ -38,7 +38,7 @@ function SellerProducts(){
                {sellerProducts.length && sellerProducts.map((prod:any) => (
                     <div className = {s.prodDetails}>
                      <Link to = {`/detail/${prod.id}`}>
-                        <img src={prod.photo} className = {s.prodImg}></img>
+                        <img src={prod.photo[0]} className = {s.prodImg}></img>
                      </Link>
                      <div className = {s.prodD}>
                      <h3>{prod.title}</h3>

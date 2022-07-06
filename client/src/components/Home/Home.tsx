@@ -38,7 +38,7 @@ export default function Home() {
     let res = userData();
     // isUserLogin()
     dispatch(getAllComponents());
-  }, [dispatch,allComponents ]);
+  }, []);
 
   return (
     <div className={s.homeContainer}>
