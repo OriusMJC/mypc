@@ -104,7 +104,7 @@ module.exports = (sequelize:any) => {
       type: DataTypes.STRING(500),
     }
     },{
-    timestamps: false
+    timestamps: true
   });
 };
 

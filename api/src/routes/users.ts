@@ -195,6 +195,11 @@ router.post("/orders/:id", async (req, res) => {
 	const orders = await getUserOrders(id);
 	res.send(orders);	
 });
+router.post("/orders", async (_req, res) => {
+	// let { id } = req.params;
+	const orders = await getAllOrders();
+	res.send(orders);	
+});
 router.post("/test", async (_req, res) => {
 	// =========================
 	// PRUEBA PARA GUARDAR IMG
