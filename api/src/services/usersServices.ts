@@ -103,7 +103,12 @@ export const addNewNoti = async (
 	notification:any
 ): Promise<string> => {
 	let user = await User.findByPk(idUser);
-	let newNotiArr = user.noti?.length ? [user.noti, notification] : [notification];
+	let allIdsNoti = user.noti?.length? user.noti.map((n:any)=> n.id? n.id : 0) : 1
+	let maxId = Math.max(allIdsNoti) + 1
+	console.log(allIdsNoti)
+	console.log(maxId)
+	let newNotiArr = user.noti?.length ? [{id:maxId,...notification},...user.noti] : [{id:maxId,...notification}];
+	console.log('arr',newNotiArr)
 	await User.update({ noti: newNotiArr }, { where: { id: idUser } });
 	return "Notificacion agregada con exito";
 };
@@ -118,6 +123,15 @@ export const notiViewTrue = async (
 			return n
 		}
 	})
+	await User.update({ noti: newNotiArr }, { where: { id: idUser } });
+	return "Notificacion agregada con exito";
+};
+export const deleteNoti = async (
+	idUser: string,
+	idNoti: string
+): Promise<string> => {
+	let user = await User.findByPk(idUser);
+	let newNotiArr = user.noti.filter((n:any)=> n.id !== +idNoti)
 	await User.update({ noti: newNotiArr }, { where: { id: idUser } });
 	return "Notificacion agregada con exito";
 };

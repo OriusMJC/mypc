@@ -13,6 +13,7 @@ import {
 	updateEmailUser,
 	addNewNoti,
 	notiViewTrue,
+	deleteNoti,
 } from "../services/usersServices";
 import * as types from "../types";
 import { addOrder, getUserOrders, getAllOrders } from "../services/orderServices";
@@ -168,6 +169,15 @@ router.put("/updateNoti/:idUser", async (req, res, next) => {
 	try {
 		const { idUser } = req.params;
 		const response = await notiViewTrue(idUser);
+		res.json(response);
+	} catch (error) {
+		next(error);
+	}
+});
+router.delete("/deleteNoti/:idUser/:idNoti", async (req, res, next) => {
+	try {
+		const { idUser, idNoti } = req.params;
+		const response = await deleteNoti(idUser,idNoti);
 		res.json(response);
 	} catch (error) {
 		next(error);

@@ -16,7 +16,6 @@ export default function Cart() {
 	const [precioTotal, setPrecioTotal] = useState(0);
 	let products = true;
 	let productsCart = useSelector((store: any) => store.cart);
-	console.log(productsCart)
 	let idsArr = [];
 	productsCart = productsCart.filter((prod: any) => {
 		if (!idsArr.includes(prod.id)) {
@@ -46,7 +45,7 @@ export default function Cart() {
 			});
 			if (response.status === 200) {
 				productsCart.map(e => handleKickCart(e.id)) 
-				handleNotiSeller()
+				await handleNotiSeller()
 				setPrecioTotal(0);
 				setListPrice([]);
 			}
@@ -56,22 +55,22 @@ export default function Cart() {
 	};
 	// ==============================================
 	// ==============================================
-	function handleNotiSeller(){
-		productsCart.map((p:any)=>{
+	async function handleNotiSeller(){
+		await productsCart.forEach(async (p:any)=>{
 			let msg = {
 				prodId: p.id,
-				url: `/detail/${p.id}`,
+				url: `/user/userProducts`,
 				photo: p.photo[0],
 				title: 'Vendido!',
 				msg: 'Has vendido este producto!',
-				date: Date(),
+				date: Date().slice(4,24),
 				sellerId: p.sellerInfo.id,
-				buyer: user.id,
+				buyer: user?.id,
+				viewed: false,
 			}
-			dispatch(postNoti(p.sellerInfo.id,msg))
+			await dispatch(postNoti(p.sellerInfo.id,msg))
 		})
 	}
-	handleNotiSeller()
 	function handlePrice(e: any) {
 		let list = [];
 		let price = 0;
