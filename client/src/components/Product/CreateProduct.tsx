@@ -10,22 +10,26 @@ import swal from 'sweetalert';
  interface Product {
     title: string
     photo: string
-    description: string  
+    description: string 
+    status: string 
    }
   
   function validate(product){
     let errors: Product = {
         title: "",
         photo: "",       
-        description: "",        
+        description: "",
+        status: "",
     }     
     if(!product.title){
         errors.title ="*Title"
     }else if(!product.photo){
         errors.photo ="*Image"
     }else if(!product.description){
-        errors.description ="*Description "
-    }  
+        errors.description ="*Description " 
+    }else if(!product.status){
+        errors.status ="*status"
+        }  
     return errors;
 }
   
@@ -54,7 +58,8 @@ function CreateProduct() {
     const [error, setError] = useState<Product>({
         title: "",
         photo: "",      
-        description: "",            
+        description: "", 
+        status: "",           
       })
 
     function handleChange(e){         
@@ -83,7 +88,7 @@ function CreateProduct() {
     }
 
     function handleSubmit(e){
-        if(product.title && product.photo && product.type && product.description.length >=5 && product.description.length <= 500){
+        if(product.title && product.photo && product.type && product.description.length >=5 && product.description.length <= 500 &&(product.status === "nuevo" || product.status === "usado")){
             e.preventDefault();
             swal({
                 title: "Felicidades",
@@ -108,6 +113,10 @@ function CreateProduct() {
             e.preventDefault();
         }
     }
+   
+
+
+ 
 
     function handleDeleteImage(e){
         let deletedPhotos = product.photo.filter((photo:any) => photo !== e.target.value)
@@ -150,6 +159,7 @@ function CreateProduct() {
              {error.description  && (<p className={s.error}> {error.description}</p>)}                 
              {error.title && (<p className={s.error}> {error.title}</p>)} 
              {error.photo && (<p className={s.error}> {error.photo}</p>)}
+             {error.status && (<p className={s.error}> {error.status}</p>)}
            </div>
      <div className = {s.container}> 
         <form onSubmit={handleSubmit} className = {s.form}>
@@ -173,17 +183,16 @@ function CreateProduct() {
                 ))}
             </select>
 
-            <label>Estado </label>
-            <select onChange={handleStatus}>
+            <label>Estado: </label>
+            <select onChange={handleStatus} required>
                 <option hidden>Seleccionar Estado</option>
                 <option value="nuevo">nuevo</option>
                 <option value="usado">usado</option>
-            </select>        
+            </select>   
             <label>Stock </label>
                 <input type="number"  onKeyDown={handleDot} min="1" name="stockInitial" value={product.stockInitial || 1} onChange={handleChange} className = {s.inputNumber}></input>
             <label>Descripción </label>
             <textarea name="description" value={product.description} onChange={handleChange} className={s.descriptionInput} required/>
-
         <div className = {s.button}>
             <button type="submit">Crear Producto</button>
         </div>

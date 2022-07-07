@@ -80,7 +80,7 @@
 
 .form .descriptionInput{
     margin: 5px 0px 25px;
-    width: 20px;
+    width: 60%;
     min-height: 100px;
     resize: none;
 }
