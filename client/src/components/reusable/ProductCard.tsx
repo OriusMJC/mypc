@@ -11,15 +11,12 @@ import { useCallback, useEffect, useState } from "react";
 export default function ProductCard({id,title, photo, price, type, likes, status, cant,sellerInfo}){
   const dispatch = useAppDispatch()
     const user = useSelector((store:any)=> store.userDetails)
-    const [likesinRed, setlikesinRed] = useState(false)
-
-  let handleFavsClick = []
-  user.fav.map((c:any) => handleFavsClick.push(c.id))
-
-    function handleFav(){
+    let [favClicks,setFavCliks] = useState(0)
+  
+  function handleFav(){
         if(user){
-            dispatch(addFavUser(user?.id,{id,title, photo, price, type, likes, status}))
-            setlikesinRed(true)        
+          dispatch(addFavUser(user?.id,{id,title, photo, price, type, likes, status}))
+          setFavCliks(favClicks + 1)        
         }else{
           swal({
             title: "No estas Logueado",
@@ -28,19 +25,24 @@ export default function ProductCard({id,title, photo, price, type, likes, status
           })
             // alert('Debes iniciar sesión para poder agregar productos a favoritos!')
         }
-    }    
+      }    
     function handleCart(){
         dispatch(addProductCart({id,title, photo, price, type, likes, status, cant,sellerInfo}))
     }
     function handleDelet(){
       dispatch(delFavUser(user?.id, id));
+      setFavCliks(0)
     }   
     
-    // useEffect(() => {
+    useEffect(() => {
+      user.fav.map((c:any) =>{
+        if(c.id === id){
+          setFavCliks(favClicks + 1)
+        }
+      })
       
-    // }, [handleDelet,handleFavsClick])
+    }, [user])
 
-console.log(handleFavsClick);
   return (
     <div key={id} className={s.productCards}>
       <h3 className={s.status}>{status}</h3>
@@ -53,7 +55,7 @@ console.log(handleFavsClick);
         <h4>Likes: {likes}</h4>
       </div>
       {
-        user?.id && handleFavsClick.includes(id)        
+        user?.id && favClicks
         ?
         <button onClick={handleDelet}>
         <i className="fa-solid fa-heart"></i>
@@ -63,10 +65,6 @@ console.log(handleFavsClick);
        <i className="fa fa-heart-o"></i>
      </button>
       }
-      {/* <button   onClick={handleFav}>
-        <i  className="fa-solid fa-heart"></i>        
-      </button>  */}
-      
       <button onClick={handleCart}>
         <i className="fa-solid fa-cart-shopping"></i>
       </button>

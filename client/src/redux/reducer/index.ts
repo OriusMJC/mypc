@@ -331,7 +331,6 @@ export default function rootReducer(state = initialState, action: any) {
 				}
 			}
 			case DELETE_NOTI:{
-				console.log(action.payload.idNoti)
 				let newArrNoti = state.userDetails.noti.filter((n:any)=> n.id !== action.payload.idNoti)
 				return {
 					...state,
