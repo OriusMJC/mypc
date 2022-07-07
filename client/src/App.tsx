@@ -42,6 +42,7 @@ import OrderDetails from "./components/User/OrderDetails";
 import Direction from "./components/User/Direction";
 import DirectionOrder from "./components/User/DirectionOrder";
 import MapView from "./components/Map/MapView";
+import Chat from "./components/Chat/Chat";
 
 
 // import NavButtons from './components/NavButtons'
@@ -83,6 +84,9 @@ function App() {
 					element={<UserEditPasswordOrMail />}
 				/>
 				<Route path="/user/detail/mail" element={<UserEditPasswordOrMail />} />
+
+				{/* CHAT */}
+				<Route path="/chat" element={<Chat/>} />
 
 				{/* MAPAS */}
 				<Route path="/user/direction" element={<Direction/>} />
