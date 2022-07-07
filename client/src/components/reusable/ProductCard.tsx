@@ -46,7 +46,7 @@ console.log(handleFavsClick);
       <h3 className={s.status}>{status}</h3>
       <h2 >{title}</h2>
       <Link to={`detail/${id}`}>
-        <img src={photo} alt="img Product" />
+        <img src={photo[0]} alt="Image Product" />
       </Link>
       <div className={s.cardInfo}>
         <h3>${price}</h3>
