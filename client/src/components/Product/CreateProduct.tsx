@@ -54,8 +54,6 @@ function CreateProduct() {
         status: "",
         sell: false,
     });
-
-    
     
 
     const [error, setError] = useState<Product>({
@@ -117,6 +115,9 @@ function CreateProduct() {
         }
     }
    
+
+
+ 
 
 
     //Drag n drop

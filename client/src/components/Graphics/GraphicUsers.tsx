@@ -36,23 +36,16 @@ const options = {
 	},
 };
 
-export default function Graphic({ labels, score, text, score2, text2}) {
+export default function Graphic({ labels, score, text }) {
 	const data = {
 		datasets: [
 			{
 				label: text,
 				data: score,
 				tension: 0.3,
-				borderColor: "rgb(45, 179, 11)",
-				backgroundColor: "rgb(45, 179, 11, 0.3)",
-			},
-			{
-				label: text2,
-				data: score2,
-				tension: 0.3,
-				borderColor: "rgb(228, 191, 26)",
-				backgroundColor: "rgb(228, 191, 26, 0.3)",
-			},
+				borderColor: "rgb(37, 137, 232)",
+				backgroundColor: "rgb(37, 137, 232, 0.3)",
+			}
 		],
 		labels,
 	};

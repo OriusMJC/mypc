@@ -19,7 +19,7 @@ export default function ProductComments({idProd,comments, boolean, idProduct}){
   let userId = userData && userData.id
   const admin = useSelector((state:any)=> state.userDetails?.admin)
 
-  
+  // console.log(userData);
   
   function actualDate(){
     const d = new Date();
