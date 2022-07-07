@@ -103,7 +103,7 @@ export const addNewNoti = async (
 	notification:any
 ): Promise<string> => {
 	let user = await User.findByPk(idUser);
-	let newNotiArr = user.noti.length ? [user.noti, notification] : [notification];
+	let newNotiArr = user.noti?.length ? [user.noti, notification] : [notification];
 	await User.update({ noti: newNotiArr }, { where: { id: idUser } });
 	return "Notificacion agregada con exito";
 };

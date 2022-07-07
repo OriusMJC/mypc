@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { useAppDispatch } from "src/config/config";
-import { delProductCart, getProductsLHtoCart } from "src/redux/actions";
+import { delProductCart, getProductsLHtoCart, postNoti } from "src/redux/actions";
 import StripeCheckout from "react-stripe-checkout";
 import s from "../Styles/Cart.module.css";
 import axios from "axios";
@@ -46,6 +46,7 @@ export default function Cart() {
 			});
 			if (response.status === 200) {
 				productsCart.map(e => handleKickCart(e.id)) 
+				handleNotiSeller()
 				setPrecioTotal(0);
 				setListPrice([]);
 			}
@@ -55,9 +56,22 @@ export default function Cart() {
 	};
 	// ==============================================
 	// ==============================================
-	function handleNoti(){
-
+	function handleNotiSeller(){
+		productsCart.map((p:any)=>{
+			let msg = {
+				prodId: p.id,
+				url: `/detail/${p.id}`,
+				photo: p.photo[0],
+				title: 'Vendido!',
+				msg: 'Has vendido este producto!',
+				date: Date(),
+				sellerId: p.sellerInfo.id,
+				buyer: user.id,
+			}
+			dispatch(postNoti(p.sellerInfo.id,msg))
+		})
 	}
+	handleNotiSeller()
 	function handlePrice(e: any) {
 		let list = [];
 		let price = 0;

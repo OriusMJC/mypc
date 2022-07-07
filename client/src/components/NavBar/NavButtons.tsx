@@ -59,10 +59,11 @@ export default function NavButtons() {
                 {
                   user.noti?.length?
                     user.noti.map((n:any)=>{
+                      console.log(n.url)
                       return(
                         <li>
-                          <Link to={n.url}>
-                            <img src={n.photo}/>
+                          <Link to={n.url? n.url : '/'}>
+                            <img src={n.photo?.[0]}/>
                             <div>
                               <h1>{n.title}</h1>
                               <p>{n.msg}</p>
