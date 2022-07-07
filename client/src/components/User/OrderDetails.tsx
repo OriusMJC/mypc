@@ -52,10 +52,11 @@ export default function OrderDetails(){
                                         <>
                                             <hr></hr>
                                             <div className={s.orderDetailCard}>
-                                                <img src={p.photo} alt={p.title}/>
+                                                <img src={p.photo[0]} alt={p.title}/>
                                                 <div className={s.contTitleCant}>
                                                     <b>{p.title}</b>
                                                     <p>Cant: {p.cant}</p>
+                                                    <h3>precio: $ {p.price}</h3>
                                                 </div>
                                                 <div>
                                                     <Link to={`/direction/${p.id}`}>
@@ -63,7 +64,6 @@ export default function OrderDetails(){
                                                             VER DIRECCION DE ENTREGA
                                                         </button>
                                                     </Link>
-                                                    <h3>precio: $ {p.price}</h3>
                                                     <Link to={`/detail/${p.id}`}>
                                                         <button>
                                                         VER DETALLES
