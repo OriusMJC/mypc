@@ -98,3 +98,26 @@ export const userBuyProduct = async (
 	await User.update({ buy: newBuyArr }, { where: { id: idUser } });
 	return "Producto comprado con éxito";
 };
+export const addNewNoti = async (
+	idUser: string,
+	notification:any
+): Promise<string> => {
+	let user = await User.findByPk(idUser);
+	let newNotiArr = user.noti.length ? [user.noti, notification] : [notification];
+	await User.update({ noti: newNotiArr }, { where: { id: idUser } });
+	return "Notificacion agregada con exito";
+};
+export const notiViewTrue = async (
+	idUser: string
+): Promise<string> => {
+	let user = await User.findByPk(idUser);
+	let newNotiArr = user.noti.map((n:any)=>{
+		if(n.viewed === false){
+			return {...n, viewed: true}
+		}else{
+			return n
+		}
+	})
+	await User.update({ noti: newNotiArr }, { where: { id: idUser } });
+	return "Notificacion agregada con exito";
+};

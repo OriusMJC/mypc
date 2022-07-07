@@ -16,6 +16,7 @@ export default function Cart() {
 	const [precioTotal, setPrecioTotal] = useState(0);
 	let products = true;
 	let productsCart = useSelector((store: any) => store.cart);
+	console.log(productsCart)
 	let idsArr = [];
 	productsCart = productsCart.filter((prod: any) => {
 		if (!idsArr.includes(prod.id)) {
@@ -45,8 +46,8 @@ export default function Cart() {
 			});
 			if (response.status === 200) {
 				productsCart.map(e => handleKickCart(e.id)) 
-        setPrecioTotal(0);
-        setListPrice([]);
+				setPrecioTotal(0);
+				setListPrice([]);
 			}
 		} catch (error) {
 			console.log(error);
@@ -54,7 +55,9 @@ export default function Cart() {
 	};
 	// ==============================================
 	// ==============================================
+	function handleNoti(){
 
+	}
 	function handlePrice(e: any) {
 		let list = [];
 		let price = 0;

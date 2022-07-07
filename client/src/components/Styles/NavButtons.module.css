@@ -97,3 +97,33 @@
   border: none;
   margin-top: 0;
 }
+
+.menuNoti {
+  display: inline-block;
+  /* display: flex;
+  flex-direction: column; */
+  margin: 5px 10px;
+}
+.menuNoti button:focus .showNoti{
+  display: block !important;
+}
+.showNoti {
+  background-color: var(--gray-light);
+  display: none;
+  position: absolute;
+  user-select: none;
+  z-index: 100;
+}
+.showNoti ul{
+  width: 355px;
+  min-height: 105px;
+  max-height: 205px;
+  border: 1px solid gray;
+  border-radius: 10px;
+  list-style: none;
+  padding: 5px 5px;
+  position: absolute;
+  right: -95px; 
+  background-color: var(--gray-dark);
+  overflow-x: auto;
+}

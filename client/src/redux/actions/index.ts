@@ -348,3 +348,23 @@ export function getAllOrders() {
 		}
 	}
 }
+export function postNoti(idUser,noti) {
+	return async (dispatch: Dispatch<Action>) => {
+		try {
+			let orders = await axios.post(`/users/newNoti/${idUser}`,noti)
+			// dispatch({type: GET_ORDERS, payload: orders.data})
+		} catch (error) {
+			console.log(error)
+		}
+	}
+}
+export function viewedNoti(idUser) {
+	return async (dispatch: Dispatch<Action>) => {
+		try {
+			let orders = await axios.put(`/users/updateNoti/${idUser}`)
+			// dispatch({type: GET_ORDERS, payload: orders.data})
+		} catch (error) {
+			console.log(error)
+		}
+	}
+}

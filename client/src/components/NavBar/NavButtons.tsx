@@ -9,6 +9,7 @@ export default function NavButtons() {
   const dispatch = useAppDispatch();
   const user = useSelector((store: any) => store.userDetails);
   let menuShow = useRef(null);
+  let menuNoti = useRef(null);
 
   function handleSingOut(e) {
     dispatch(singOutUser());
@@ -17,23 +18,66 @@ export default function NavButtons() {
   function handleOutMenu(e){
     handleShowMenu(e);
   }
-
+  
   let handleShowMenu = (event) => {
     if (menuShow) {
       menuShow.current.style.display === "block"
-        ? (menuShow.current.style.display = "none")
-        : (menuShow.current.style.display = "block");
+      ? (menuShow.current.style.display = "none")
+      : (menuShow.current.style.display = "block");
+    }
+  };
+
+  function handleOutNoti(e){
+    handleShowMenu(e);
+  }
+
+  let handleShowNoti = (event) => {
+    if (menuNoti) {
+      menuNoti.current.style.display === "block"
+        ? (menuNoti.current.style.display = "none")
+        : (menuNoti.current.style.display = "block");
     }
   };
 
   useEffect(() => {
     menuShow.current = document.getElementById("showMenu");
+    menuNoti.current = document.getElementById("showNoti");
   }, [user]);
 
   if (user && user.name) {
     return (
       <section className={s.navButtons}>
         <div className={s.userButtons}>
+          <div className={s.menuNoti}>
+            <button onClick={(event) => handleShowNoti(event)}>
+            {/* <button id='btnNoti'> */}
+              <i className="fa-solid fa-bell"></i>
+              {/* <i className="fa-solid fa-bell-on"></i> */}
+            </button>
+            <div id="showNoti" className={s.showNoti}>
+              <ul>
+                {
+                  user.noti?.length?
+                    user.noti.map((n:any)=>{
+                      return(
+                        <li>
+                          <Link to={n.url}>
+                            <img src={n.photo}/>
+                            <div>
+                              <h1>{n.title}</h1>
+                              <p>{n.msg}</p>
+                              <b>{n.date}</b>
+                            </div>
+                          </Link>
+                        </li>
+                      )
+                    })
+                    :
+                    <h1>Aún no hay notificaciones</h1>
+                }
+              </ul>
+            </div>
+          </div>
           <Link to="/fav">
             <button>
               <i className="fa-solid fa-heart"></i>
