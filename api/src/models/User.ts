@@ -97,10 +97,13 @@ module.exports = (sequelize:any) => {
     buy: {
       type: DataTypes.ARRAY(DataTypes.JSON),
     },
-    latitude: {
+    noti:{
+      type: DataTypes.ARRAY(DataTypes.JSON),
+    },
+    longitude: {
       type: DataTypes.STRING(500),
     },
-    altitude: {
+    latitude: {
       type: DataTypes.STRING(500),
     }
     },{

@@ -28,6 +28,8 @@ export const getBasicUserInfo = async (
 		email: userData?.dataValues.email,
 		avatar: userData?.dataValues.avatar,
 		phone: userData?.dataValues.phone,
+		latitude: userData?.dataValues.latitude,
+		longitude: userData?.dataValues.longitude,
 	};
 	return user;
 };
@@ -45,8 +47,6 @@ export const addNewUser = async(user: types.User): Promise<string> => {
 export const updateDataUser = async (
 	newUserData: types.User
 ): Promise<string> => {
-	// let userOldData = await User.findByPk(newUserData.id)
-	// await userOldData.update(newUserData, {where: {id: newUserData.id}})
 	await User.update(newUserData, { where: { id: newUserData.id } });
 	return "Cambios hechos correctamente";
 };
@@ -97,4 +97,41 @@ export const userBuyProduct = async (
 	let newBuyArr = user.buy.length ? [user.buy, productSelled] : [productSelled];
 	await User.update({ buy: newBuyArr }, { where: { id: idUser } });
 	return "Producto comprado con éxito";
+};
+export const addNewNoti = async (
+	idUser: string,
+	notification:any
+): Promise<string> => {
+	let user = await User.findByPk(idUser);
+	let allIdsNoti = user.noti?.length? user.noti.map((n:any)=> n.id? n.id : 0) : 1
+	let maxId = Math.max(allIdsNoti) + 1
+	console.log(allIdsNoti)
+	console.log(maxId)
+	let newNotiArr = user.noti?.length ? [{id:maxId,...notification},...user.noti] : [{id:maxId,...notification}];
+	console.log('arr',newNotiArr)
+	await User.update({ noti: newNotiArr }, { where: { id: idUser } });
+	return "Notificacion agregada con exito";
+};
+export const notiViewTrue = async (
+	idUser: string
+): Promise<string> => {
+	let user = await User.findByPk(idUser);
+	let newNotiArr = user.noti.map((n:any)=>{
+		if(n.viewed === false){
+			return {...n, viewed: true}
+		}else{
+			return n
+		}
+	})
+	await User.update({ noti: newNotiArr }, { where: { id: idUser } });
+	return "Notificacion agregada con exito";
+};
+export const deleteNoti = async (
+	idUser: string,
+	idNoti: string
+): Promise<string> => {
+	let user = await User.findByPk(idUser);
+	let newNotiArr = user.noti.filter((n:any)=> n.id !== +idNoti)
+	await User.update({ noti: newNotiArr }, { where: { id: idUser } });
+	return "Notificacion agregada con exito";
 };

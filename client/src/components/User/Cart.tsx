@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { useAppDispatch } from "src/config/config";
-import { delProductCart, getProductsLHtoCart } from "src/redux/actions";
+import { delProductCart, getProductsLHtoCart, postNoti } from "src/redux/actions";
 import StripeCheckout from "react-stripe-checkout";
 import s from "../Styles/Cart.module.css";
 import axios from "axios";
@@ -45,8 +45,9 @@ export default function Cart() {
 			});
 			if (response.status === 200) {
 				productsCart.map(e => handleKickCart(e.id)) 
-        setPrecioTotal(0);
-        setListPrice([]);
+				await handleNotiSeller()
+				setPrecioTotal(0);
+				setListPrice([]);
 			}
 		} catch (error) {
 			console.log(error);
@@ -54,7 +55,22 @@ export default function Cart() {
 	};
 	// ==============================================
 	// ==============================================
-
+	async function handleNotiSeller(){
+		await productsCart.forEach(async (p:any)=>{
+			let msg = {
+				prodId: p.id,
+				url: `/user/userProducts`,
+				photo: p.photo[0],
+				title: 'Vendido!',
+				msg: 'Has vendido este producto!',
+				date: Date().slice(4,24),
+				sellerId: p.sellerInfo.id,
+				buyer: user?.id,
+				viewed: false,
+			}
+			await dispatch(postNoti(p.sellerInfo.id,msg))
+		})
+	}
 	function handlePrice(e: any) {
 		let list = [];
 		let price = 0;
@@ -119,7 +135,7 @@ export default function Cart() {
 							<div className={s.containerProduct}>
 								<Link to={`/detail/${prod.id}`}>
 									<div className={s.imgProdFav}>
-										<img src={prod.photo} alt="" />
+										<img src={prod.photo[0]} alt="" />
 									</div>
 								</Link>
 								<div className={s.infoProduct}>

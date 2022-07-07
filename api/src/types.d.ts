@@ -67,5 +67,7 @@ export interface Products{
     }>,
     status: PcStatus,
     sell:boolean,
-    sellerInfo: NonSensitiveUserInfo
+    sellerInfo: NonSensitiveUserInfo,
+    longitude: string,
+    latitude: string,
 }

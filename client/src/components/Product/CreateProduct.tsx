@@ -41,11 +41,11 @@ function CreateProduct() {
     const types = useSelector((state:any) => state.types);
     const [loading, setLoading] = useState(false);
     const [image, setImage] = useState("hola")
-    const id = user.id;
+    const id = user && user.id;
     const [product, setProduct] = useState({
         title: "",
-        photo: "",
-        price: 0,
+        photo: [],
+        price: 1,
         type: "",
         description: "",
         likes: 0,
@@ -53,8 +53,7 @@ function CreateProduct() {
         stockInitial: 1,
         status: "",
         sell: false,
-    });
-    
+    });    
 
     const [error, setError] = useState<Product>({
         title: "",
@@ -119,6 +118,13 @@ function CreateProduct() {
 
  
 
+    function handleDeleteImage(e){
+        let deletedPhotos = product.photo.filter((photo:any) => photo !== e.target.value)
+        setProduct({
+            ...product,
+            photo: deletedPhotos
+        })
+    }
 
     //Drag n drop
     const uploadImage = async (e) => {
@@ -128,15 +134,23 @@ function CreateProduct() {
         data.append('file', files[0]);
         data.append('upload_preset', 'chropyis');
       
-        setLoading(true);
         const res = await fetch("https://api.cloudinary.com/v1_1/mypc/image/upload", { method: "POST", body: data })
         const file = await res.json();
       
-        setProduct({
-            ...product,
-            photo: file.secure_url
-        });
-        setLoading(false) 
+        if(product.photo.length <= 3){
+           if(!file.error){
+            setProduct({
+                ...product,
+                photo: [...product.photo, file.secure_url]
+            });
+           }else console.log(file.error)
+        }else{
+            swal({
+                title: "Error",
+                text: "No puedes subir mas de cuatro fotos!",
+                icon: "error",
+              }); 
+        }
     }
 
   return (
@@ -147,21 +161,20 @@ function CreateProduct() {
              {error.photo && (<p className={s.error}> {error.photo}</p>)}
              {error.status && (<p className={s.error}> {error.status}</p>)}
            </div>
-     <div className = {s.container}>
-           
+     <div className = {s.container}> 
         <form onSubmit={handleSubmit} className = {s.form}>
             <h1>Crear Producto</h1>
-            <label>Imagen: </label>
-            <input type="file" name="photo" onChange={uploadImage}></input>
+            <label>Imagen </label>
+            <input type="file" name="photo" onChange={uploadImage} className ={s.inputImg}></input>
 
-            <label>Título: </label>
+            <label>Título </label>
             <input type="text" name="title" value={product.title} onChange={handleChange}></input>
             
-            <label>Precio: </label>
-                <input type="number" onKeyDown={handleDot} min="1"  name="price" value={product.price || 1}  onChange={handleChange}></input>
+            <label>Precio </label>
+                <input type="number" onKeyDown={handleDot} min="1"  name="price" value={product.price || 1}  onChange={handleChange} className = {s.inputNumber}></input>
 
-            <label>Tipo: </label>
-            <select onChange={handleType}>
+            <label>Tipo </label>
+            <select onChange={handleType} className={s.selectType}>
                 <option hidden>Seleccionar Tipo</option>
                 {types?.map((t) => (
                     <option key={t} value={t}>
@@ -175,27 +188,44 @@ function CreateProduct() {
                 <option hidden>Seleccionar Estado</option>
                 <option value="nuevo">nuevo</option>
                 <option value="usado">usado</option>
-            </select>        
-            <label>Stock: </label>
-                <input type="number"  onKeyDown={handleDot} min="1" name="stockInitial" value={product.stockInitial || 1} onChange={handleChange}></input>
-            <label>Descripción: </label>
-            <input type="text" name="description" value={product.description} onChange={handleChange} className={s.descriptionInput}></input>
-
+            </select>   
+            <label>Stock </label>
+                <input type="number"  onKeyDown={handleDot} min="1" name="stockInitial" value={product.stockInitial || 1} onChange={handleChange} className = {s.inputNumber}></input>
+            <label>Descripción </label>
+            <textarea name="description" value={product.description} onChange={handleChange} className={s.descriptionInput} required/>
         <div className = {s.button}>
             <button type="submit">Crear Producto</button>
         </div>
         </form>
-        <div className = {s.products}>            
-            <h1>{product.title}</h1>
-            <div className = {s.img}>
-            <img src={product.photo && product.photo} alt=""></img>
+        <div className = {s.products}>
+            <div className = {s.imgPContainer}>
+            <img src={typeof product.photo[0] === 'string' && product.photo[0]} className={s.pImage}></img>
+            <div className = {s.ultraContainer}>
+            {product.photo.length > 1 && 
+                product.photo.map((photo, i) => {
+                    if(i > 0) {
+                        return(
+                        <div className = {s.photoDiv}>
+                            <img src={typeof photo[i] === 'string' && photo}></img>
+                            <button value={photo} onClick = {handleDeleteImage}>X</button>
+                        </div>
+                            )
+                        }
+                })
+            }
             </div>
-            <div className = {s.productInfo}>
-            <h3>{product.price != 0 && product.price}</h3>
-            <h3>{product.type}</h3>
-            <h3>{product.status}</h3>
-            <h3>{product.stockInitial != 0 && product.stockInitial}</h3>
-            <p>{product.description}</p>
+            </div>
+            <div className = {s.ultramegaContainer}>
+                <div className = {s.productInfo}>
+                    <h1>{product.title}</h1>
+                    <h3>{product.price != 0 && product.price}</h3>
+                    <h3>{product.type}</h3>
+                    <h3>{product.status}</h3>
+                    <h3>{product.stockInitial != 0 && product.stockInitial}</h3>
+                </div>
+                <div className = {s.description}>
+                    <p>{product.description}</p>
+                </div>
             </div>
         </div>      
      </div>

@@ -8,7 +8,7 @@ import swal from 'sweetalert';
 import { useCallback, useEffect, useState } from "react";
 
 
-export default function ProductCard({id,title, photo, price, type, likes, status, cant}){
+export default function ProductCard({id,title, photo, price, type, likes, status, cant,sellerInfo}){
   const dispatch = useAppDispatch()
     const user = useSelector((store:any)=> store.userDetails)
     const [likesinRed, setlikesinRed] = useState(false)
@@ -30,7 +30,7 @@ export default function ProductCard({id,title, photo, price, type, likes, status
         }
     }    
     function handleCart(){
-        dispatch(addProductCart({id,title, photo, price, type, likes, status, cant}))
+        dispatch(addProductCart({id,title, photo, price, type, likes, status, cant,sellerInfo}))
     }
     function handleDelet(){
       dispatch(delFavUser(user?.id, id));
@@ -46,7 +46,7 @@ console.log(handleFavsClick);
       <h3 className={s.status}>{status}</h3>
       <h2 >{title}</h2>
       <Link to={`detail/${id}`}>
-        <img src={photo} alt="img Product" />
+        <img src={photo[0]} alt="Image Product" />
       </Link>
       <div className={s.cardInfo}>
         <h3>${price}</h3>

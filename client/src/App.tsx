@@ -38,9 +38,12 @@ import HelpBuying from "./components/Help/HelpBuying/HelpBuying";
 import AdminManage from "./components/Admin/AdminManage";
 import UserEditDetails from "./components/User/UserEditDetails";
 import UserEditPasswordOrMail from "./components/User/UserEditPasswordOrMail";
-import Payments from "./components/Payments/Payments";
 import OrderDetails from "./components/User/OrderDetails";
 import Direction from "./components/User/Direction";
+import DirectionOrder from "./components/User/DirectionOrder";
+import MapView from "./components/Map/MapView";
+import Chat from "./components/Chat/Chat";
+
 
 // import NavButtons from './components/NavButtons'
 
@@ -62,8 +65,6 @@ function App() {
 				{/* PRODUCT */}
 				<Route path="/detail/:idProduct" element={<ProductDetails />} />
 
-				{/* PAYMENTS */}
-				{/* <Route path="/buy" element={<Payments/>}/> */}
 				
 				{/* USER */}
 				<Route path="/fav" element={<Fav />} />
@@ -83,7 +84,14 @@ function App() {
 					element={<UserEditPasswordOrMail />}
 				/>
 				<Route path="/user/detail/mail" element={<UserEditPasswordOrMail />} />
+
+				{/* CHAT */}
+				<Route path="/chat" element={<Chat/>} />
+
+				{/* MAPAS */}
 				<Route path="/user/direction" element={<Direction/>} />
+				<Route path="/direction/:id" element={<DirectionOrder/>}/>
+				<Route path="/user/admin/map" element={<MapView user={null}/>} />
 
 				{/* ADMIN */}
 				<Route path="/user/admin" element={<AdminManage />} />

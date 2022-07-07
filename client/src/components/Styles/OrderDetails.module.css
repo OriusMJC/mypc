@@ -73,12 +73,21 @@
     border-radius: 10px;
 }
 .contTitleCant{
-    width: 400px;
+    width: 400px !important;
     height: 100px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
+}
+.contTitleCant h3,p,b{
+    margin: 0px;
+    padding: 0px;
+}
+.orderDetailCard div{
+    display: flex;
+    flex-direction: column;
+    width: 130px;
 }
 .orderDetailCard div button{
     background-color: var(--gray-dark);
@@ -89,6 +98,7 @@
     box-shadow: 2px 1px 1px rgba(0, 0, 0, 0.2);
     transition: .2s;
     padding: 0px;
+    margin: 10px;
 }
 .orderDetailCard div button:hover{
     transform: scale(1.03);
