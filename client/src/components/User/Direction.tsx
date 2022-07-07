@@ -3,7 +3,9 @@ import { useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { useAppDispatch } from "src/config/config";
 import { editUserData, getUserData } from "src/redux/actions";
+import Loading from "../Loading/Loading";
 import MapView from "../Map/MapView";
+import s from '../Styles/Direction.module.css'
 
 function Direction() {
 	let dispatch = useAppDispatch();
@@ -35,9 +37,17 @@ function Direction() {
 	}, [user]);
 
 	return (
-		<div>
-			<MapView user={[user]} />
-		</div>
+		<>
+		{
+			user.id?
+			<div className={s.directionContainer}>
+				<h1>Tu localización</h1>
+				<MapView user={[user]} />
+			</div>
+			:
+			<Loading load='Buscando tu localización...' msgError='No hemos podido encontrar tu localización' time={3000}/>
+		}
+		</>
 	);
 }
 
