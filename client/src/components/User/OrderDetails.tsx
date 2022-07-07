@@ -16,7 +16,8 @@ export default function OrderDetails(){
           dispatch(getOrders(user.id))
         }
       }, [user])
-    return(
+
+      return(
         <div id={s.orderDetailsContainer}>
             {
                 order.length?
@@ -57,6 +58,11 @@ export default function OrderDetails(){
                                                     <p>Cant: {p.cant}</p>
                                                 </div>
                                                 <div>
+                                                    <Link to={`/direction/${p.id}`}>
+                                                        <button>
+                                                            VER DIRECCION DE ENTREGA
+                                                        </button>
+                                                    </Link>
                                                     <h3>precio: $ {p.price}</h3>
                                                     <Link to={`/detail/${p.id}`}>
                                                         <button>
