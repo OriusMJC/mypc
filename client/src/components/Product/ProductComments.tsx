@@ -6,7 +6,7 @@ import { userData as userData1 } from "src/services/userFirebase";
 import s from '../Styles/ProductComments.module.css'
 import swal from 'sweetalert';
 
-export default function ProductComments({idProd,comments, boolean, idProduct}){
+export default function ProductComments({idProd,comments, boolean, idProduct, funcCommUser, funcCommSeller}){
   const dispatch = useAppDispatch()
 
   useEffect(() => {
@@ -53,6 +53,7 @@ export default function ProductComments({idProd,comments, boolean, idProduct}){
         dispatch(addProductComment(idProd,{id: id, userId: userId, name:userData.name,avatar:userData.avatar,comment: newComment,sellerResponse: sellerResponse, date: actualDate()}))
         swal({text: "comentario agregado", icon: "success", timer: 1000})
         setNewComment('');
+        funcCommUser()
       }else{
         e.preventDefault();
         // alert('Debes inciar sesión para poder comentar')
@@ -138,6 +139,8 @@ export default function ProductComments({idProd,comments, boolean, idProduct}){
       response: true,
       date: actualDate(),
     }))
+    let comment = comments.find((c:any)=> c.id === Number(actualPosition[1]))
+    funcCommSeller(comment.userId)
     // swal({text: "respuesta enviada", icon:"success", timer: 1000})
     dispatch(getAllDetails(idProduct))
     dispatch(getAllDetails(idProduct))

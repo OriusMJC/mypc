@@ -2,7 +2,7 @@ import { useEffect, useState, useCallback } from "react"
 import { useSelector} from "react-redux"
 import { Link, useParams, useNavigate } from "react-router-dom"
 import { useAppDispatch } from "src/config/config"
-import { addFavUser, addProductCart, getAllDetails, resetProductDetail, deleteProduct, delFavUser, delProductCart } from "src/redux/actions"
+import { addFavUser, addProductCart, getAllDetails, resetProductDetail, deleteProduct, delFavUser, delProductCart, postNoti } from "src/redux/actions"
 import ProductComments from "./ProductComments"
 import SellerProducts from './SellerProducts'
 import s from '../Styles/ProductDetails.module.css'
@@ -37,9 +37,36 @@ export default function ProductDetails(){
    const productSellerId = product.sellerInfo && product.sellerInfo.id
    const boolean = productSellerId && productSellerId === idUser && true
    const [pos, setPos] = useState(0);
-
-   console.log(product.photo)
    
+   function handleNotiSellerComment(){
+      let msg = {
+         prodId: product.id,
+         url: `/detail/${product.id}`,
+         photo: product.photo[0],
+         title: 'Nuevo Comentario!',
+         msg: 'Han comentado en este producto!',
+         date: Date().slice(4,24),
+         sellerId: productSellerId,
+         userId: idUser,
+         viewed: false,
+      }
+      dispatch(postNoti(productSellerId,msg))
+   }
+   function handleNotiUserComment(id){
+      let msg = {
+         prodId: product.id,
+         url: `/detail/${product.id}`,
+         photo: product.photo[0],
+         title: 'Respuesta!',
+         msg: 'Han respondido tu comentario!',
+         date: Date().slice(4,24),
+         sellerId: productSellerId,
+         userId: id,
+         viewed: false,
+      }
+      dispatch(postNoti(id,msg))
+   }
+
    function handleFav(){
       if(idUser){
           dispatch(addFavUser(idUser,{
@@ -242,7 +269,7 @@ export default function ProductDetails(){
                      {product?.description}
                   </p>
                </div>
-               <ProductComments idProd={product.id} comments={product.comments} boolean = {boolean} idProduct={idProduct}/>    
+               <ProductComments idProd={product.id} comments={product.comments} boolean = {boolean} idProduct={idProduct} funcCommUser={handleNotiSellerComment} funcCommSeller={handleNotiUserComment}/>    
             </section>
          </div>
       </div>
