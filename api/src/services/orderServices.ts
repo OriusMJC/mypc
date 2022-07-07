@@ -25,6 +25,7 @@ export const addOrder = async (amount: any, token: any, purchaseData: any) => {
 		statusOfPayment: "pagado",
 		status: "correo",
 		user: purchaseData.user.id,
+		// seller: purchaseData.seller,
 	};
 	await Order.create(dataOrder);
 	purchaseData.listPrice.map(async (p:any)=>{

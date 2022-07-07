@@ -59,6 +59,11 @@ export default function UserDetail() {
                   Estadisticas
                 </button>
               </Link>
+              <Link to={`/list/chats/${user.id}`}>
+                <button className={s.buttonButton}>
+                  Chats
+                </button>
+              </Link>
               {
                 user.admin && user.email === 'mypcecommerce@gmail.com'?
                   <Link to = '/user/admin'>

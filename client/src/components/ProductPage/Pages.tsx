@@ -39,7 +39,6 @@ function Pages({ productsPerPage, allComponents, refresh }) {
         setCurrentPage(1)
         dispatch(changeActualPage(1))
     }
-
     const products = useSelector((state:any) => state.allComponents)
     const user = useSelector((state:any) => state.userDetails)
 

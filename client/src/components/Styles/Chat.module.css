@@ -1,0 +1,15 @@
+.containerChat {
+  width: 500px;
+  background-color: red;
+  margin: auto;
+}
+.containerChat ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+}
+.containerChat ul li {
+  padding: 0;
+  margin: 0;
+}

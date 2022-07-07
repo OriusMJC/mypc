@@ -37,6 +37,7 @@ export const DEL_FAV = "DEL_FAV";
 export const GET_ORDERS = "GET_ORDERS"
 export const SELLER_PROD = "SELLER_PROD";
 export const CHANGE_ACTUAL_PAGE = "CHANGE_ACTUAL_PAGE"
+export const GET_USERS_BY_ID = "GET_USERS_BY_ID";
 
 type Action = {
 	type: string;
@@ -343,6 +344,17 @@ export function getAllOrders() {
 		try {
 			let orders = await axios.post(`/users/orders`)
 			dispatch({type: GET_ORDERS, payload: orders.data})
+		} catch (error) {
+			console.log(error)
+		}
+	}
+}
+export function getUsersById(arrayUsers) {
+	return async (dispatch: Dispatch<Action>) => {
+		try {
+			let users = await axios.post("/users/users-list", arrayUsers);
+			console.log(users, "===================")
+			dispatch({type: GET_USERS_BY_ID, payload: users.data})
 		} catch (error) {
 			console.log(error)
 		}

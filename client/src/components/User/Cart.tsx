@@ -32,6 +32,7 @@ export default function Cart() {
 	let priceForStripe = precioTotal * 100;
 	let tokenKey = "pk_test_51LGmEQFUyCKJpzqxqIy615cuo6fzw9piBYzGS7ek5KQkW55LDarHinS2GrBB7gIstqMSkMgVDfc57lpol4q7BYvB00RWv3BVxJ";
 		
+	console.log(productsCart)
 	let payNow = async (token) => {
 		try {
 			let purchaseData = {
@@ -94,7 +95,7 @@ export default function Cart() {
 		let list = [];
 		let price = 0;
 		productsCart.forEach((p: any) => {
-			list.push({ id: p.id, price: p.price, cant: 1, stock: p.cant, title: p.title, photo: p.photo, type: p.type, status: p.status });
+			list.push({ seller: p.seller ,id: p.id, price: p.price, cant: 1, stock: p.cant, title: p.title, photo: p.photo, type: p.type, status: p.status });
 			price = price + p.price;
 		});
 		setListPrice(list);

@@ -16,7 +16,7 @@ export default function OrderDetails(){
           dispatch(getOrders(user.id))
         }
       }, [user])
-
+    console.log(order)
       return(
         <div id={s.orderDetailsContainer}>
             {
@@ -62,6 +62,11 @@ export default function OrderDetails(){
                                                     <Link to={`/direction/${p.id}`}>
                                                         <button>
                                                             VER DIRECCION DE ENTREGA
+                                                        </button>
+                                                    </Link>
+                                                    <Link to={`/chat/${order[0].user}/${p.seller.id}`} >
+                                                        <button>
+                                                            Iniciar chat
                                                         </button>
                                                     </Link>
                                                     <Link to={`/detail/${p.id}`}>

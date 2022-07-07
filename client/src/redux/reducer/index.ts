@@ -27,6 +27,7 @@ import {
 	GET_ORDERS,
 	SELLER_PROD,
 	CHANGE_ACTUAL_PAGE,
+	GET_USERS_BY_ID,
 } from "../actions";
 // import { Products } from '../../../types';
 
@@ -74,6 +75,7 @@ const initialState = {
 	suggestions: {},
 	orders: [],
 	actualPage: 1,
+	listUsers: [],
 };
 
 export default function rootReducer(state = initialState, action: any) {
@@ -150,6 +152,7 @@ export default function rootReducer(state = initialState, action: any) {
 			return {
 				...state,
 				userDetails: {},
+				listUsers: [],
 			};
 		case GET_PRODUCT_CART:
 			return {
@@ -314,6 +317,11 @@ export default function rootReducer(state = initialState, action: any) {
 			return {
 				...state,
 				actualPage: action.payload,
+			}
+		case GET_USERS_BY_ID:
+			return {
+				...state,
+				listUsers: action.payload
 			}
 		default:
 			return state;
