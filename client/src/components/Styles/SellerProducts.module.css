@@ -30,7 +30,8 @@
     width: 150px;
     height: 100px;
     margin-left: 5%;
-    transition: .2s
+    transition: .2s;
+    border-radius: 10px;
 }
 .prodImg:hover{
     transform: scale(1.05)

@@ -16,7 +16,8 @@ export default function OrderDetails(){
           dispatch(getOrders(user.id))
         }
       }, [user])
-    return(
+
+      return(
         <div id={s.orderDetailsContainer}>
             {
                 order.length?
@@ -51,13 +52,18 @@ export default function OrderDetails(){
                                         <>
                                             <hr></hr>
                                             <div className={s.orderDetailCard}>
-                                                <img src={p.photo} alt={p.title}/>
+                                                <img src={p.photo[0]} alt={p.title}/>
                                                 <div className={s.contTitleCant}>
                                                     <b>{p.title}</b>
                                                     <p>Cant: {p.cant}</p>
+                                                    <h3>precio: $ {p.price}</h3>
                                                 </div>
                                                 <div>
-                                                    <h3>precio: $ {p.price}</h3>
+                                                    <Link to={`/direction/${p.id}`}>
+                                                        <button>
+                                                            VER DIRECCION DE ENTREGA
+                                                        </button>
+                                                    </Link>
                                                     <Link to={`/detail/${p.id}`}>
                                                         <button>
                                                         VER DETALLES

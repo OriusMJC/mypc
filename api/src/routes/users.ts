@@ -11,6 +11,9 @@ import {
 	userFavProduct,
 	userDelFavProduct,
 	updateEmailUser,
+	addNewNoti,
+	notiViewTrue,
+	deleteNoti,
 } from "../services/usersServices";
 import * as types from "../types";
 import { addOrder, getUserOrders, getAllOrders } from "../services/orderServices";
@@ -77,8 +80,8 @@ router.post(
 				let altitudeAndLatitude = {}
 				if(!req.body.altitude || !req.body.altitude) {
 					altitudeAndLatitude = {
-						latitude: 0,
-						altitude: 0,
+						latitude: "",
+						altitude: "",
 					}
 				}
 				const response = await addNewUser({...req.body, ...altitudeAndLatitude});
@@ -114,6 +117,7 @@ router.put(
 			const newDataUser = req.body;
 			try {
 				let response = await updateDataUser(newDataUser);
+				// console.log(response)
 				res.json(response);
 			} catch (err) {
 				return next(err);
@@ -146,6 +150,34 @@ router.put("/buy/:idUser", async (req, res, next) => {
 		const { idUser } = req.params;
 		const productData = req.body;
 		const response = await userBuyProduct(idUser, productData);
+		res.json(response);
+	} catch (error) {
+		next(error);
+	}
+});
+router.post("/newNoti/:idUser", async (req, res, next) => {
+	try {
+		const { idUser } = req.params;
+		const notiData = req.body;
+		const response = await addNewNoti(idUser, notiData);
+		res.json(response);
+	} catch (error) {
+		next(error);
+	}
+});
+router.put("/updateNoti/:idUser", async (req, res, next) => {
+	try {
+		const { idUser } = req.params;
+		const response = await notiViewTrue(idUser);
+		res.json(response);
+	} catch (error) {
+		next(error);
+	}
+});
+router.delete("/deleteNoti/:idUser/:idNoti", async (req, res, next) => {
+	try {
+		const { idUser, idNoti } = req.params;
+		const response = await deleteNoti(idUser,idNoti);
 		res.json(response);
 	} catch (error) {
 		next(error);
@@ -184,6 +216,7 @@ router.post("/payments", async (req, res) => {
 			amount,
 			currency: "usd",
 		});
+		console.log(purchaseData)
 		await addOrder(amount / 100, token, purchaseData);
 		res.send(data);
 	} catch (error) {

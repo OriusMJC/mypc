@@ -64,7 +64,7 @@ export default function NavBar() {
 												key={item}
 											>
 												<p>{item}</p>
-												<img className={s.imgSearch} src={suggestions.img[item]} alt="" />
+												<img className={s.imgSearch} src={suggestions.img[item][0]} alt="" />
 											</div>
 										);
 									}) : null
