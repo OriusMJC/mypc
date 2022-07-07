@@ -4,6 +4,8 @@ import { useParams } from 'react-router-dom'
 import { useAppDispatch } from 'src/config/config';
 import { getAllDetails } from 'src/redux/actions';
 import MapView from '../Map/MapView';
+import s from '../Styles/Direction.module.css'
+
 
 function DirectionOrder() {
   
@@ -16,7 +18,10 @@ function DirectionOrder() {
   }, [])
   if(product.id) {
     return (
-      <MapView user={[product.sellerInfo]} />  
+      <div className={s.directionContainer}>
+        <h1>Localizaciones de los vendedores</h1>
+        <MapView user={[product.sellerInfo]}/>  
+      </div>
     )
   }
 }
