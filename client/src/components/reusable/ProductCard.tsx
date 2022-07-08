@@ -14,12 +14,12 @@ export default function ProductCard({id,title, photo, price, type, likes, status
     const [likesinRed, setlikesinRed] = useState(false)
 
   let handleFavsClick = []
-  user.fav.map((c:any) => handleFavsClick.push(c.id))
+  user.fav?.map((c:any) => handleFavsClick.push(c.id))
 
     function handleFav(){
         if(user){
             dispatch(addFavUser(user?.id,{id,title, photo, price, type, likes, status}))
-            setlikesinRed(true)        
+                  
         }else{
           swal({
             title: "No estas Logueado",
@@ -40,7 +40,7 @@ export default function ProductCard({id,title, photo, price, type, likes, status
       
     // }, [handleDelet,handleFavsClick])
 
-console.log(handleFavsClick);
+
   return (
     <div key={id} className={s.productCards}>
       <h3 className={s.status}>{status}</h3>
@@ -53,7 +53,7 @@ console.log(handleFavsClick);
         <h4>Likes: {likes}</h4>
       </div>
       {
-        user?.id && handleFavsClick.includes(id)        
+        user?.id && handleFavsClick?.includes(id)        
         ?
         <button onClick={handleDelet}>
         <i className="fa-solid fa-heart"></i>

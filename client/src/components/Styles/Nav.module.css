@@ -37,3 +37,10 @@
     gap: 5px;
 }
 
+@media screen and (max-width: 420px) {	
+	body {	
+    color: red;
+	}
+	
+  }
+
