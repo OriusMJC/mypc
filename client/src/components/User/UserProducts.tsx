@@ -100,11 +100,13 @@ function UserProducts() {
 
   return (
     <div className={s.userProducstContainer}>
+      <div className={s.btnhome}>
       <Link to ='/user/detail' className={s.buttonHome}>
         <button>
           Regresar
         </button>
       </Link>
+      </div>
       {
         user && user.id ?
           !productsCreated.length && !user.admin
