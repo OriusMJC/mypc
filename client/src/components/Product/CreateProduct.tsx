@@ -183,29 +183,16 @@ function CreateProduct() {
                 ))}
             </select>
 
-<<<<<<< HEAD
-            <label>Estado </label>
-            <select onChange={handleStatus}>
-                <option hidden>Seleccionar Estado</option>
-                <option value="nuevo">nuevo</option>
-                <option value="usado">usado</option>
-            </select>        
-=======
             <label>Estado: </label>
             <select onChange={handleStatus} required>
                 <option hidden>Seleccionar Estado</option>
                 <option value="nuevo">nuevo</option>
                 <option value="usado">usado</option>
             </select>   
->>>>>>> development
             <label>Stock </label>
                 <input type="number"  onKeyDown={handleDot} min="1" name="stockInitial" value={product.stockInitial || 1} onChange={handleChange} className = {s.inputNumber}></input>
             <label>Descripción </label>
             <textarea name="description" value={product.description} onChange={handleChange} className={s.descriptionInput} required/>
-<<<<<<< HEAD
-
-=======
->>>>>>> development
         <div className = {s.button}>
             <button type="submit">Crear Producto</button>
         </div>

@@ -11,24 +11,12 @@ import { useCallback, useEffect, useState } from "react";
 export default function ProductCard({id,title, photo, price, type, likes, status, cant,sellerInfo}){
   const dispatch = useAppDispatch()
     const user = useSelector((store:any)=> store.userDetails)
-<<<<<<< HEAD
-    const [likesinRed, setlikesinRed] = useState(false)
-
-  let handleFavsClick = []
-  user.fav?.map((c:any) => handleFavsClick.push(c.id))
-
-    function handleFav(){
-        if(user){
-            dispatch(addFavUser(user?.id,{id,title, photo, price, type, likes, status}))
-                  
-=======
     let [favClicks,setFavCliks] = useState(0)
   
   function handleFav(){
         if(user){
           dispatch(addFavUser(user?.id,{id,title, photo, price, type, likes, status}))
           setFavCliks(favClicks + 1)        
->>>>>>> development
         }else{
           swal({
             title: "No estas Logueado",
@@ -55,10 +43,6 @@ export default function ProductCard({id,title, photo, price, type, likes, status
       
     }, [user])
 
-<<<<<<< HEAD
-
-=======
->>>>>>> development
   return (
     <div key={id} className={s.productCards}>
       <h3 className={s.status}>{status}</h3>
@@ -71,11 +55,7 @@ export default function ProductCard({id,title, photo, price, type, likes, status
         <h4>Likes: {likes}</h4>
       </div>
       {
-<<<<<<< HEAD
-        user?.id && handleFavsClick?.includes(id)        
-=======
         user?.id && favClicks
->>>>>>> development
         ?
         <button onClick={handleDelet}>
         <i className="fa-solid fa-heart"></i>
