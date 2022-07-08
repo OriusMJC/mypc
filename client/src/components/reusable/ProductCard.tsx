@@ -8,9 +8,10 @@ import swal from 'sweetalert';
 import { useCallback, useEffect, useState } from "react";
 
 
-export default function ProductCard({id,title, photo, price, type, likes, status, cant}){
+export default function ProductCard({id,title, photo, price, type, likes, status, cant,sellerInfo}){
   const dispatch = useAppDispatch()
     const user = useSelector((store:any)=> store.userDetails)
+<<<<<<< HEAD
     const [likesinRed, setlikesinRed] = useState(false)
 
   let handleFavsClick = []
@@ -20,6 +21,14 @@ export default function ProductCard({id,title, photo, price, type, likes, status
         if(user){
             dispatch(addFavUser(user?.id,{id,title, photo, price, type, likes, status}))
                   
+=======
+    let [favClicks,setFavCliks] = useState(0)
+  
+  function handleFav(){
+        if(user){
+          dispatch(addFavUser(user?.id,{id,title, photo, price, type, likes, status}))
+          setFavCliks(favClicks + 1)        
+>>>>>>> development
         }else{
           swal({
             title: "No estas Logueado",
@@ -28,19 +37,28 @@ export default function ProductCard({id,title, photo, price, type, likes, status
           })
             // alert('Debes iniciar sesión para poder agregar productos a favoritos!')
         }
-    }    
+      }    
     function handleCart(){
-        dispatch(addProductCart({id,title, photo, price, type, likes, status, cant}))
+        dispatch(addProductCart({id,title, photo, price, type, likes, status, cant,sellerInfo}))
     }
     function handleDelet(){
       dispatch(delFavUser(user?.id, id));
+      setFavCliks(0)
     }   
     
-    // useEffect(() => {
+    useEffect(() => {
+      user.fav.map((c:any) =>{
+        if(c.id === id){
+          setFavCliks(favClicks + 1)
+        }
+      })
       
-    // }, [handleDelet,handleFavsClick])
+    }, [user])
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> development
   return (
     <div key={id} className={s.productCards}>
       <h3 className={s.status}>{status}</h3>
@@ -53,7 +71,11 @@ export default function ProductCard({id,title, photo, price, type, likes, status
         <h4>Likes: {likes}</h4>
       </div>
       {
+<<<<<<< HEAD
         user?.id && handleFavsClick?.includes(id)        
+=======
+        user?.id && favClicks
+>>>>>>> development
         ?
         <button onClick={handleDelet}>
         <i className="fa-solid fa-heart"></i>
@@ -63,10 +85,6 @@ export default function ProductCard({id,title, photo, price, type, likes, status
        <i className="fa fa-heart-o"></i>
      </button>
       }
-      {/* <button   onClick={handleFav}>
-        <i  className="fa-solid fa-heart"></i>        
-      </button>  */}
-      
       <button onClick={handleCart}>
         <i className="fa-solid fa-cart-shopping"></i>
       </button>

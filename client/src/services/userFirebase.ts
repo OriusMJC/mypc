@@ -12,12 +12,13 @@ import {
 } from "firebase/auth";
 import { emailUpdateUser, loginUser } from "src/redux/actions";
 // import { createContext, useContext } from 'react';
-import { auth } from "../firebase/client";
+import { auth, db } from "../firebase/client";
 // import { getAuth } from 'firebase/auth';
+// import { getDatabase, ref, set, child, get, onValue } from "firebase/database";
 
 export const verifyEmail = () => {
 	return auth.currentUser.emailVerified;
-}
+};
 
 export const userRegister = async (email: string, password: string) => {
 	const user = await createUserWithEmailAndPassword(auth, email, password);
@@ -27,7 +28,7 @@ export const userRegister = async (email: string, password: string) => {
 
 export const userLogin = async (email: string, password: string) => {
 	await signInWithEmailAndPassword(auth, email, password);
-	
+
 	let user = window.localStorage.getItem("userData");
 	if (!user) {
 		window.localStorage.setItem(
@@ -92,17 +93,49 @@ export const updatePasswordUser = async (email: string) => {
 		})
 		.catch((err) => console.log(err.code, err.message));
 };
-export const updateEmailUser = async (id: string, newEmail: string, dispatch: any) => {
+export const updateEmailUser = async (
+	id: string,
+	newEmail: string,
+	dispatch: any
+) => {
 	let user = auth.currentUser;
 	await updateEmail(user, newEmail)
 		.then(async (response) => {
 			alert("email change");
-			dispatch(emailUpdateUser(id, newEmail))
-			dispatch(loginUser(id))
+			dispatch(emailUpdateUser(id, newEmail));
+			dispatch(loginUser(id));
 			window.localStorage.setItem(
 				"userData",
-				JSON.stringify({ id, email:newEmail })
+				JSON.stringify({ id, email: newEmail })
 			);
 		})
 		.catch((err) => console.log(err));
 };
+
+// const dbRef = ref(getDatabase());
+// get(child(dbRef, `chat/1`)).then((snapshot) => {
+//   if (snapshot.exists()) {
+//     console.log(snapshot.val(), "SNAPSHOT");
+//   } else {
+//     console.log("No data available");
+//   }
+// }).catch((error) => {
+//   console.error(error);
+// });
+
+// export let writeUserData = (id) => {
+// 	const db = getDatabase();
+// 	set(ref(db, `chat/${id}`), {
+// 		user: "yo",
+// 		otro: "otro",
+// 	});
+// };
+
+// export const updateDatabaseData = () => {
+// 	const starCountRef = ref(db, `chat/`);
+// 	onValue(starCountRef, (snapshot) => {
+// 		const data = snapshot.val();
+// 		return data
+// 		console.log(data, "DATAAAAAAAAAAAAAAAA");
+// 	});
+// };

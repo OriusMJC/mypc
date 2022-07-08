@@ -11,6 +11,9 @@ import {
 	userFavProduct,
 	userDelFavProduct,
 	updateEmailUser,
+	addNewNoti,
+	notiViewTrue,
+	deleteNoti,
 } from "../services/usersServices";
 import * as types from "../types";
 import { addOrder, getUserOrders, getAllOrders } from "../services/orderServices";
@@ -147,6 +150,34 @@ router.put("/buy/:idUser", async (req, res, next) => {
 		const { idUser } = req.params;
 		const productData = req.body;
 		const response = await userBuyProduct(idUser, productData);
+		res.json(response);
+	} catch (error) {
+		next(error);
+	}
+});
+router.post("/newNoti/:idUser", async (req, res, next) => {
+	try {
+		const { idUser } = req.params;
+		const notiData = req.body;
+		const response = await addNewNoti(idUser, notiData);
+		res.json(response);
+	} catch (error) {
+		next(error);
+	}
+});
+router.put("/updateNoti/:idUser", async (req, res, next) => {
+	try {
+		const { idUser } = req.params;
+		const response = await notiViewTrue(idUser);
+		res.json(response);
+	} catch (error) {
+		next(error);
+	}
+});
+router.delete("/deleteNoti/:idUser/:idNoti", async (req, res, next) => {
+	try {
+		const { idUser, idNoti } = req.params;
+		const response = await deleteNoti(idUser,idNoti);
 		res.json(response);
 	} catch (error) {
 		next(error);
