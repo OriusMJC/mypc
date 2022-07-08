@@ -259,3 +259,30 @@
     width: 100%;
     height: 100%;
 }
+/* terminar  */
+@media screen and (max-width: 420px) {
+    #prodContainer{      
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+    }
+    #contProdDetails{        
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+    }
+    #sectionDetail{
+        display: flex;
+        flex-direction: column;
+        justify-content: start;
+        align-items: flex-start;
+    }
+    .contDescription{
+        width: 50%;
+    }
+    .ProdComents{
+        width: 63%;    
+    }
+   
+  
+  }
