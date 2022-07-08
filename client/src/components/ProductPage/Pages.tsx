@@ -81,6 +81,7 @@ function Pages({ productsPerPage, allComponents, refresh }) {
                           likes = {prod.likes}
                           status = {prod.status}
                           cant={prod.cant}
+                          sellerInfo={{id: prod.sellerInfo.id,email: prod.sellerInfo.email}}
                           />)
                   })
                   

@@ -27,6 +27,8 @@ import {
 	GET_ORDERS,
 	SELLER_PROD,
 	CHANGE_ACTUAL_PAGE,
+	NOTI_VIEW,
+	DELETE_NOTI,
 } from "../actions";
 // import { Products } from '../../../types';
 
@@ -67,7 +69,7 @@ const initialState = {
 	],
 	allUsers: [],
 	users: [],
-	userDetails: { fav: [] },
+	userDetails: { fav: [] , noti: []},
 	productDetails: { comments: [] },
 	// productsCreated: [],
 	cart: [],
@@ -314,6 +316,26 @@ export default function rootReducer(state = initialState, action: any) {
 			return {
 				...state,
 				actualPage: action.payload,
+			}
+			case NOTI_VIEW:{
+				let newArrNoti = state.userDetails.noti.map((n:any)=>{
+					if(n.viewed === false){
+						return {...n, viewed: true}
+					}else{
+						return n
+					}
+				})
+				return {
+					...state,
+					userDetails : {...state.userDetails, noti: newArrNoti}
+				}
+			}
+			case DELETE_NOTI:{
+				let newArrNoti = state.userDetails.noti.filter((n:any)=> n.id !== action.payload.idNoti)
+				return {
+					...state,
+					userDetails : {...state.userDetails, noti: newArrNoti}
+				}
 			}
 		default:
 			return state;

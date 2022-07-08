@@ -7,7 +7,6 @@ const { Order } = require("../db");
 
 export const getAllOrders = async () => {
 	let orders = await Order.findAll();
-	console.log('a',orders)
 	return orders;
 };
 export const getUserOrders = async (id: string) => {
