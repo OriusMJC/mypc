@@ -7,6 +7,7 @@ import s from "../Styles/Home.module.css";
 import { userData } from "src/services/userFirebase";
 import NavFilter from '../NavFilter'
 import Slider from "./Slider";
+import FavedProducts from './FavedProducts'
 
 // import { Link } from 'react-router-dom';
 // import { Products } from '../../types'
@@ -45,6 +46,7 @@ export default function Home() {
       <div>       
         <NavFilter refresh={refresh} setRefresh={setRefresh} setProductsPerPage={setProductsPerPage} products={true} lengthAll={allComponents?.length}/>
         <Slider/>
+        <FavedProducts/>
         <Pages
           productsPerPage={productsPerPage}
           allComponents={allComponents}

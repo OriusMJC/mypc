@@ -64,8 +64,8 @@ function Pages({ productsPerPage, allComponents, refresh }) {
               
             //   </div> 
              
-           
-            <Loading load='Cargando productos' msgError='No hay ningún producto cargado... Logueate para crear uno!' time={3000}/>                        
+            
+            <Loading load='Cargando productos' msgError='No hay ningún producto cargado... Logueate para crear uno!' time={2000}/>                        
               :            
               refresh && currentProduct.length?
               typeof allComponents[0] !== 'string'?
@@ -83,13 +83,14 @@ function Pages({ productsPerPage, allComponents, refresh }) {
                           cant={prod.cant}
                           />)
                   })
+                  
                   :
                   <h2>{allComponents}</h2>
 
               :
                           
               // <Loading/>
-              <Loading load='Buscando producto' msgError='No se a encontrado ningun producto' time={3000}/>
+              <Loading load='Buscando producto' msgError='No se a encontrado ningun producto' time={2000}/>
           }      
           </div>
       </section>
