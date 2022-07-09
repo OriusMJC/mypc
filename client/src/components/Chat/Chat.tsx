@@ -73,7 +73,7 @@ console.log(user.id ,chat)
 		<div className={styles.containerChat}>
 			<div className={"styles.containerMessages"}>
 				<ul>
-					{chat.messages[0].message ? (
+					{chat?.messages[0].message ? (
 						chat.messages.map((e, i) => {
 							if (e) {
 								return (
