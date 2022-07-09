@@ -7,15 +7,14 @@ import s from "../Styles/ProductsCards.module.css";
 import swal from 'sweetalert';
 import { useCallback, useEffect, useState } from "react";
 
-
-export default function ProductCard({id,title, photo, price, type, likes, status, cant,sellerInfo}){
+export default function ProductCard({id,title, photo, price, type, likes, status, cant, seller}){
   const dispatch = useAppDispatch()
     const user = useSelector((store:any)=> store.userDetails)
     let [favClicks,setFavCliks] = useState(0)
   
   function handleFav(){
         if(user){
-          dispatch(addFavUser(user?.id,{id,title, photo, price, type, likes, status}))
+          dispatch(addFavUser(user?.id,{id,title, photo, price, type, likes, status, seller}))
           setFavCliks(favClicks + 1)        
         }else{
           swal({
@@ -27,7 +26,7 @@ export default function ProductCard({id,title, photo, price, type, likes, status
         }
       }    
     function handleCart(){
-        dispatch(addProductCart({id,title, photo, price, type, likes, status, cant,sellerInfo}))
+        dispatch(addProductCart({id,title, photo, price, type, likes, status, cant, seller}))
     }
     function handleDelet(){
       dispatch(delFavUser(user?.id, id));
@@ -35,6 +34,7 @@ export default function ProductCard({id,title, photo, price, type, likes, status
     }   
     
     useEffect(() => {
+      // console.log(user)
       user.fav.map((c:any) =>{
         if(c.id === id){
           setFavCliks(favClicks + 1)
