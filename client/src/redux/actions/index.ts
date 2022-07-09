@@ -333,6 +333,7 @@ export function getOrders(id: string) {
 	return async (dispatch: Dispatch<Action>) => {
 		try {
 			let orders = await axios.post(`/users/orders/${id}`)
+			console.log(orders, "=============")
 			dispatch({type: GET_ORDERS, payload: orders.data})
 		} catch (error) {
 			console.log(error)
@@ -353,7 +354,6 @@ export function getUsersById(arrayUsers) {
 	return async (dispatch: Dispatch<Action>) => {
 		try {
 			let users = await axios.post("/users/users-list", arrayUsers);
-			console.log(users, "===================")
 			dispatch({type: GET_USERS_BY_ID, payload: users.data})
 		} catch (error) {
 			console.log(error)

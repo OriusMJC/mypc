@@ -32,7 +32,6 @@ export default function Cart() {
 	let priceForStripe = precioTotal * 100;
 	let tokenKey = "pk_test_51LGmEQFUyCKJpzqxqIy615cuo6fzw9piBYzGS7ek5KQkW55LDarHinS2GrBB7gIstqMSkMgVDfc57lpol4q7BYvB00RWv3BVxJ";
 		
-	console.log(productsCart)
 	let payNow = async (token) => {
 		try {
 			let purchaseData = {
@@ -171,8 +170,6 @@ export default function Cart() {
 				</Link>
 				{user && products === true ? (
 					user.id ? (
-						// <Link to="/buy">
-							/* <button className={s.button}>Comprar</button> */							
 							<StripeCheckout
 								stripeKey={tokenKey}
 								label="Pagar ahora"
@@ -184,8 +181,6 @@ export default function Cart() {
 								token={payNow}
 								image={logo}
 							/>
-							
-						// </Link>
 					) : (
 						<Link to="/login">
 							<button className={s.button}>Loguearse</button>

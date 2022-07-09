@@ -77,7 +77,6 @@ const initialState = {
 	actualPage: 1,
 	listUsers: [],
 };
-
 export default function rootReducer(state = initialState, action: any) {
 	switch (action.type) {
 		case GET_ALL_COMPONENTS:

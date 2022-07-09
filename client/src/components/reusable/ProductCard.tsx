@@ -7,12 +7,12 @@ import s from "../Styles/ProductsCards.module.css";
 import swal from 'sweetalert';
 
 
-export default function ProductCard({id,title, photo, price, type, likes, status, cant}){
+export default function ProductCard({id,title, photo, price, type, likes, status, cant, seller}){
   const dispatch = useAppDispatch()
     const idUser = useSelector((store:any)=> store.userDetails?.id)
     function handleFav(){
         if(idUser){
-            dispatch(addFavUser(idUser,{id,title, photo, price, type, likes, status}))
+            dispatch(addFavUser(idUser,{id,title, photo, price, type, likes, status, seller}))
         }else{
           swal({
             title: "No estas Logueado",
@@ -24,7 +24,7 @@ export default function ProductCard({id,title, photo, price, type, likes, status
     }
 
     function handleCart(){
-        dispatch(addProductCart({id,title, photo, price, type, likes, status, cant}))
+        dispatch(addProductCart({id,title, photo, price, type, likes, status, cant, seller}))
     }
 
   return (

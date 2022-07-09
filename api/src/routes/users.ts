@@ -43,7 +43,6 @@ router.get("/:idUser", async (req, res) => {
 });
 router.post("/users-list", async (req, res) => {
 	const arrayUsers = req.body;
-	console.log(arrayUsers)
 	try {
 		let users = [];
 		for (const userId of arrayUsers) {
@@ -200,7 +199,6 @@ router.post("/payments", async (req, res) => {
 			amount,
 			currency: "usd",
 		});
-		console.log(purchaseData)
 		await addOrder(amount / 100, token, purchaseData);
 		res.send(data);
 	} catch (error) {

@@ -26,7 +26,6 @@ function Pages({ productsPerPage, allComponents, refresh }) {
     const currentProduct = allComponents?.slice(indexOfFirstProduct, indexOfLastProduct);
 
     const pageNumbers = [];
-    
     if(typeof allComponents[0] !== 'string'){
         for (let i = 1; i <= cantPages; i++){
             pageNumbers.push(
@@ -80,6 +79,7 @@ function Pages({ productsPerPage, allComponents, refresh }) {
                           likes = {prod.likes}
                           status = {prod.status}
                           cant={prod.cant}
+                          seller={prod.sellerInfo}
                           />)
                   })
                   :
