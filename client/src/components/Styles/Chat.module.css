@@ -1,0 +1,45 @@
+.containerChat {
+  width: 90%;
+  background-color: white;
+  margin: auto;
+  padding: 10px;
+}
+/* .containerMessages { */
+  /* width: ; */
+/* } */
+.containerChat ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+}
+.containerChat ul li {
+  padding: 0;
+  margin: 2px 0px;
+  width: auto;
+}
+.from {
+  text-align: end;
+  display: inline-block;
+  /* width: 100px; */
+}
+.to {
+  text-align: start;
+}
+.from div, .to div {
+  display: inline-block;
+  padding: 5px 9px;
+  -webkit-border-radius: 20px;
+-moz-border-radius: 20px;
+border-radius: 20px;
+max-width: 80%;
+text-align: start;
+}
+.from div {
+  background-color: #f1f1f1;
+  
+}
+.to div{
+  background-color: #d6d6d6;
+
+}

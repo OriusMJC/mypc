@@ -29,6 +29,7 @@ import {
 	CHANGE_ACTUAL_PAGE,
 	NOTI_VIEW,
 	DELETE_NOTI,
+	GET_USERS_BY_ID,
 } from "../actions";
 // import { Products } from '../../../types';
 
@@ -76,8 +77,8 @@ const initialState = {
 	suggestions: {},
 	orders: [],
 	actualPage: 1,
+	listUsers: [],
 };
-
 export default function rootReducer(state = initialState, action: any) {
 	switch (action.type) {
 		case GET_ALL_COMPONENTS:
@@ -152,6 +153,7 @@ export default function rootReducer(state = initialState, action: any) {
 			return {
 				...state,
 				userDetails: {},
+				listUsers: [],
 			};
 		case GET_PRODUCT_CART:
 			return {
@@ -336,6 +338,11 @@ export default function rootReducer(state = initialState, action: any) {
 					...state,
 					userDetails : {...state.userDetails, noti: newArrNoti}
 				}
+			}
+			case GET_USERS_BY_ID:
+			return {
+				...state,
+				listUsers: action.payload
 			}
 		default:
 			return state;

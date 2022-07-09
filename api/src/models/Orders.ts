@@ -49,7 +49,10 @@ module.exports = (sequelize:any) => {
     user: {
       type: DataTypes.STRING,
       allowNull: false
-    }
+    },
+    // seller: {
+    //   type: DataTypes.JSON,
+    // }
     },{
     timestamps: false
   });

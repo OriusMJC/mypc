@@ -26,7 +26,6 @@ function Pages({ productsPerPage, allComponents, refresh }) {
     const currentProduct = allComponents?.slice(indexOfFirstProduct, indexOfLastProduct);
 
     const pageNumbers = [];
-    
     if(typeof allComponents[0] !== 'string'){
         for (let i = 1; i <= cantPages; i++){
             pageNumbers.push(
@@ -39,7 +38,6 @@ function Pages({ productsPerPage, allComponents, refresh }) {
         setCurrentPage(1)
         dispatch(changeActualPage(1))
     }
-
     const products = useSelector((state:any) => state.allComponents)
     const user = useSelector((state:any) => state.userDetails)
 
@@ -81,7 +79,7 @@ function Pages({ productsPerPage, allComponents, refresh }) {
                           likes = {prod.likes}
                           status = {prod.status}
                           cant={prod.cant}
-                          sellerInfo={{id: prod.sellerInfo.id,email: prod.sellerInfo.email}}
+                          seller={prod.sellerInfo}
                           />)
                   })
                   :

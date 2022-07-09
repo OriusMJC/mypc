@@ -1,0 +1,28 @@
+.containerChatList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  list-style: none;
+}
+.containerChatList li {
+  cursor: pointer;
+  height: 200px;
+  width: 200px;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: black;
+}
+.containerChatList li img {
+  height: 50%;
+  /* margin: auto; */
+}
+.containerChatList h1, .containerChatList h4 {
+  padding: 0;
+  margin: 0;
+}
+.containerChatList a {
+
+  text-decoration: none;
+}
