@@ -92,13 +92,22 @@ module.exports = (sequelize:any) => {
     allownull: false
     },
     fav: {
-    type: DataTypes.ARRAY(DataTypes.JSON),
+      type: DataTypes.ARRAY(DataTypes.JSON),
     },
     buy: {
       type: DataTypes.ARRAY(DataTypes.JSON),
     },
+    noti:{
+      type: DataTypes.ARRAY(DataTypes.JSON),
+    },
+    longitude: {
+      type: DataTypes.STRING(500),
+    },
+    latitude: {
+      type: DataTypes.STRING(500),
+    }
     },{
-    timestamps: false
+    timestamps: true
   });
 };
 

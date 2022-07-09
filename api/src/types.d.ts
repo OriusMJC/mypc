@@ -48,7 +48,7 @@ export interface User {
     avatar?:string,
     fav?: Array<basicProductInfo>,
     buy?: Array<basicProductInfo>,
-    sell?: Products[]
+    sell?: Products[],
 }
 
 export interface Products{
@@ -57,6 +57,7 @@ export interface Products{
     photo:string,
     price:number,
     type: PcTypes,
+    stockInitial?:number,
     description?:string,
     likes:number,
     comments?: Array<{
@@ -66,5 +67,7 @@ export interface Products{
     }>,
     status: PcStatus,
     sell:boolean,
-    sellerInfo: NonSensitiveUserInfo
+    sellerInfo: NonSensitiveUserInfo,
+    longitude: string,
+    latitude: string,
 }

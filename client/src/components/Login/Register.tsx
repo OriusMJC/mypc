@@ -11,14 +11,14 @@ interface User {
   name: string
   email: string
   password: string
- phone: string
+  phone: string
 }
 
 function validate(user){
   let errors: User = {
-   phone: "",
+    phone: "",
     name:"",
-    email: "",
+    email: "", 
     password: ""
   } 
   
@@ -76,16 +76,16 @@ export default function Register(){
     e.preventDefault()
     try {
       const userData: any = await userRegister(user.email, user.password)
-      dispatch(createUser({
-        ...user,
-        avatar: user.avatar.length ? user.avatar : AvatarImgDefault,
-        id: userData.user.uid
-      }));
       swal({
         title: "Felicidades",
         text: "Tu perfil fue creado correctamente",
         icon: "success",
       }); 
+      dispatch(createUser({
+        ...user,
+        avatar: user.avatar.length ? user.avatar : AvatarImgDefault,
+        id: userData.user.uid
+      }));   
       navigate("/login")      
     } catch (error) {
      if(error.code === "auth/email-already-in-use") setuserValidate("Email already in use.. pls try another")   

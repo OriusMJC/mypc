@@ -18,8 +18,8 @@
     flex-direction: column;
     max-width: 600px;
     width: 80%;
-    height: 250px;
     margin: 10px 0px;
+    border-radius: 6px;
 }
 .prodFav a{
     overflow-wrap: break-word;

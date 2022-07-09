@@ -10,6 +10,7 @@
     background-color: var(--gray-dark);
     display: flex;
     justify-content: center;
+    gap: 25px;
 }
 
 #contProdDetails{
@@ -33,12 +34,15 @@
     display: flex;
     align-items: center;
     flex-direction: column;
-    width: 60%;
+    justify-content: center;
+    width: 50%;
     min-width: 400px;
+    height: 500px;
 }
 #detailsImage img{
-    max-width: 500px;
+    max-width: 600px;
     max-height: 500px;
+    border-radius: 10px;
 }
 
 #detailsData{
@@ -131,8 +135,127 @@
     transform: scale(1.02);
     color: rgba(255, 255, 255, 0.762)
 }
+.sellerDiv {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    border-radius: 10px;
+    min-width: 20%;
+    height: 150px;
+    margin-top: 40px;
+    background-color: var(--gray-light)
+}
+.imgSellerDiv{
+    min-width: 25%;
+    margin-left: 5%;
+}
+.sellerImg{
+    margin-top: 5px;
+    border-radius: 15px;
+    width: 110%;
+}
+.sellerData{
+    min-width: 70%;
+}
+.sellerData label{
+    margin-left: 30px;
+    font-size: 15px;
+    font-style: italic;
+    color: grey;
+}
+.sellerData div{
+    line-height: 15px;
+}
+.sellerData h2{
+    margin-left: 30px;
+    font-family: "Helvetica";
+}
+.sellerData p{
+    margin-left: 30px;
+}
+.prodContainer {
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: 20%;
+    height: 550px;
+    background-color: var(--gray-light);
+    border-radius: 10px;
+}
+.h2Prod{
+    min-width: 100%;
+    display: flex;
+    justify-content: center;
+}
+.prodContainer h2{
+    min-width: 80%;
+    height: 40px;
+    border-bottom: 1px solid grey;
+    text-align: center;
+}
+.prodDetails {
+    min-width: 90%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    border-bottom: 1px solid grey;
+}
+.prodImg{
+    width: 150px;
+    height: 100px;
+    margin-left: 5%;
+    transition: .2s
+}
+.prodImg:hover{
+    transform: scale(1.05)
+}
+.prodD{
+    min-width: 60%;
+    line-height: 20px;
+}
+.prodD h3{
+    margin-left: 35px;
+    font-weight: bold;
+    font-size: 20px;
+}
+.prodD h4{
+    margin-left: 35px;
+}
+.prodD h5{
+    margin-left: 35px;
+    color: grey;
+    font-style: italic;
+}
 
 .contDescription{
     width: 70%;
     margin: 0% 15%;
+}
+.photoDiv {
+    width: 50px;
+    margin-left: 50px;
+    height: 300px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-top: 10px;
+}
+.imgButton{
+    width: 60px;
+    height: 60px;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+    transition: .2s
+}
+.imgButton:hover{
+    transform: scale(1.05)
+}
+.photoDiv button img {
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    height: 100%;
 }

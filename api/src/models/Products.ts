@@ -16,11 +16,15 @@ module.exports = (sequelize:any) => {
       allownull: false
     },
     photo: {
-      type: DataTypes.STRING,
+      type: DataTypes.ARRAY(DataTypes.STRING),
       allownull: false
     },
     price: {
       type: DataTypes.FLOAT,
+      allownull: false
+    },
+    stockInitial: {
+      type: DataTypes.INTEGER,
       allownull: false
     },
     cant: {

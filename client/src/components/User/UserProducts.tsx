@@ -1,10 +1,13 @@
 import { useEffect, useLayoutEffect, useState } from 'react';
 import {useSelector} from 'react-redux';
 import { Link } from 'react-router-dom';
-import { deleteProduct, getAllComponents } from '../../redux/actions/index'
+import { deleteProduct, getAllComponents, getAllOrders, getAllUsers, getOrders } from '../../redux/actions/index'
 import { useAppDispatch } from '../../config/config'
 import Graphic from '../Graphics/Graphic';
+import GraphicUsers from '../Graphics/GraphicUsers';
 import s from '../Styles/UserProducts.module.css'
+import s2 from "../Styles/userDetails.module.css";
+import sBtn from "../Styles/userDetails.module.css";
 import fav from '../Styles/Fav.module.css'
 import Loading from '../Loading/Loading';
 import swal from 'sweetalert';
@@ -12,6 +15,8 @@ import swal from 'sweetalert';
 function UserProducts() {
   const dispatch = useAppDispatch();
   const products = useSelector((state:any) => state.allComponents);
+  const orders = useSelector((state:any) => state.orders);
+  const allUsers = useSelector((state:any)=> state.allUsers)
   const user = useSelector((state:any) => state.userDetails);
   const [refresh,setRefresh] = useState(1)
   let productsCreated = [];
@@ -24,7 +29,11 @@ function UserProducts() {
   
   useEffect(() => {
     dispatch(getAllComponents())
-  }, []);
+    if(user.admin){
+      dispatch(getAllOrders())
+      dispatch(getAllUsers())
+    }
+  }, [user]);
 
   function handleDelete(e){
     swal({         
@@ -44,23 +53,49 @@ function UserProducts() {
   // let publicaciones =[8,25,13,14,9,23,5,3,6,25,15,12]
   const [ventas,setVentas] = useState([0,0,0,0,0,0,0,0,0,0,0,0])
   const [publicaciones,setPublicaciones] = useState([0,0,0,0,0,0,0,0,0,0,0,0])
+  const [cantUsers,setCantUsers] = useState([0,0,0,0,0,0,0,0,0,0,0,0])
   const months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec']
   
-  function estadisticas(){
+  function estadisticas(admin){
     let newVe = [...ventas]
     let newPubl = [...publicaciones]
-    productsCreated.forEach((prod:any)=>{
-      let num = Number(prod.createdAt.slice(5,7))
-      newPubl[num -1] = newPubl[num -1] + 1
-      if(prod.sell){
-        newVe[num -1]= newVe[num -1] + 1
-      }
-      setVentas(newVe)
-      setPublicaciones(newPubl)
-    })
+    if(admin){
+      products.forEach((prod:any)=>{
+        let num = Number(prod.createdAt.slice(5,7))
+        newPubl[num -1] = newPubl[num -1] + prod.stockInitial
+        if(prod.sell){
+          newVe[num -1]= newVe[num -1] + (prod.stockInitial - prod.cant)
+        }
+      })
+    }else{
+      productsCreated.forEach((prod:any)=>{
+        let num = Number(prod.createdAt.slice(5,7))
+        newPubl[num -1] = newPubl[num -1] + prod.stockInitial
+        if(prod.sell){
+          newVe[num -1]= newVe[num -1] + (prod.stockInitial - prod.cant)
+        }
+      })
+    }
+    setVentas(newVe)
+    setPublicaciones(newPubl)
     setRefresh(refresh+1)
   }
-  if(productsCreated.length && refresh < 2) estadisticas();
+  function statsAllUsers(){
+    let usersPerMonths = [...cantUsers]
+      allUsers.forEach((user:any)=>{
+        let num = Number(user.createdAt?.slice(5,7))
+       usersPerMonths[num -1] = usersPerMonths[num -1] + 1
+      })
+    
+    setCantUsers(usersPerMonths)
+    setRefresh(refresh+1)
+  }
+  if(!user.admin && productsCreated.length && refresh < 2){
+    estadisticas(false)
+  }else if(user.admin && allUsers.length && refresh < 2){
+    estadisticas(true)
+    statsAllUsers()
+  }
   
 
   return (
@@ -72,12 +107,21 @@ function UserProducts() {
       </Link>
       {
         user && user.id ?
-          !productsCreated.length 
-          ?
-            <Loading load='Cargando' msgError='No hay productos creados!' time={1500} />
+          !productsCreated.length && !user.admin
+            ?   
+            // swal({
+            //   title: "No tienes ningun producto para vender",            
+            //   icon: "warning",
+            //   timer: 1500,
+            // }) &&
+            <Loading load='Cargando' msgError={<Link to = "/user/createProduct">
+              <button className={sBtn.buttonButton}>
+                Vender
+              </button>
+            </Link>}  time={1500} />
             :
             <div className={s.prodAndGrapCont}>
-              <h2>Mis Estadísticas</h2>
+              <h2>{!user.admin ? 'Mis Estadísticas' : 'Estadísticas de MyPc'}</h2>
               <div className={s.graphicContainer}>
                 <Graphic 
                   labels={months} 
@@ -87,13 +131,23 @@ function UserProducts() {
                   text2='Publicados'
                   />
               </div>
+              {user.admin &&
+                <div className={s.graphicContainer}>
+                  <GraphicUsers 
+                    labels={months} 
+                    score={cantUsers} 
+                    text='Usuarios'
+                    />
+                </div>
+              }
               {/* <div className={s.graphicContainer}>
                 <Graphic labels={months} score={publicaciones} text='Mis Publicaciones'/>
               </div> */}
               <div className={s.prodContainer}>
-                <h2>Mis productos</h2>
-                <b>Cant: {productsCreated.length}</b>
+                <h2>{!user.admin ? 'Mis productos' : 'Todas las ordenes'}</h2>
+                <b>Cant: {!user.admin? productsCreated.length : orders.length}</b>
                 { 
+                  !user.admin?
                   productsCreated.map(prod => {
                     return (
                         <div className={fav.prodFav}>
@@ -116,6 +170,7 @@ function UserProducts() {
                           </div>
                           <div className={fav.extra}>
                             <h4>{prod.status}</h4>
+                            <p>Stock: {prod.cant + '/' + prod.stockInitial}</p>
                             <div className={fav.buttons}>
                               <h4 className={prod.sell? s.sellColor: s.publicColor}>{
                                   prod.sell? 'Vendido' : 'Publicado'
@@ -128,7 +183,32 @@ function UserProducts() {
                           </div>
                         </div>
                       )
-                })}
+                })
+                :
+                orders.map((c) => {
+                  return (
+                    <>
+                      <hr></hr>
+                      <div className={s2.orderCard}>
+                        <div>
+                          <b>Nro de compra</b>
+                          <p>{c.id}</p>
+                          <h5>Fecha: {c.date? c.date: null}</h5>
+                        </div>
+                        <div>
+                          <h3>Monto: $ {c.fullPayment}</h3>
+                            {/* <Link to={`order/${c.id}`}>
+                              <button>
+                                VER DETALLES
+                              </button>
+                            </Link> */}
+                          <h3>Estado: {c.status}</h3>
+                        </div>
+                      </div>
+                    </>
+                  );
+                }) 
+              }
               </div>
             </div>
           :

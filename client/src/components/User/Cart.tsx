@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { useAppDispatch } from "src/config/config";
-import { delProductCart, getProductsLHtoCart } from "src/redux/actions";
+import { delProductCart, getProductsLHtoCart, postNoti } from "src/redux/actions";
 import StripeCheckout from "react-stripe-checkout";
 import s from "../Styles/Cart.module.css";
 import axios from "axios";
@@ -23,7 +23,6 @@ export default function Cart() {
 			return prod;
 		}
 	});
-
 	// ==============================================
 	// ============== LOGICA DE STRIPE ==============
 	// ==============================================
@@ -31,9 +30,8 @@ export default function Cart() {
 	// 	price: 200,
 	// });
 	let priceForStripe = precioTotal * 100;
-	let tokenKey =
-		"pk_test_51LGmEQFUyCKJpzqxqIy615cuo6fzw9piBYzGS7ek5KQkW55LDarHinS2GrBB7gIstqMSkMgVDfc57lpol4q7BYvB00RWv3BVxJ";
-
+	let tokenKey = "pk_test_51LGmEQFUyCKJpzqxqIy615cuo6fzw9piBYzGS7ek5KQkW55LDarHinS2GrBB7gIstqMSkMgVDfc57lpol4q7BYvB00RWv3BVxJ";
+		
 	let payNow = async (token) => {
 		try {
 			let purchaseData = {
@@ -45,15 +43,11 @@ export default function Cart() {
 				token,
         purchaseData,
 			});
-			// await axios.post("users/test", {
-			// 	amount: priceForStripe,
-			// 	// token,
-      //   purchaseData,
-			// });
 			if (response.status === 200) {
-        productsCart.map(e => handleKickCart(e.id)) 
-        setPrecioTotal(0);
-        setListPrice([]);
+				productsCart.map(e => handleKickCart(e.id)) 
+				await handleNotiSeller()
+				setPrecioTotal(0);
+				setListPrice([]);
 			}
 		} catch (error) {
 			console.log(error);
@@ -61,7 +55,22 @@ export default function Cart() {
 	};
 	// ==============================================
 	// ==============================================
-
+	async function handleNotiSeller(){
+		await productsCart.forEach(async (p:any)=>{
+			let msg = {
+				prodId: p.id,
+				url: `/user/userProducts`,
+				photo: p.photo[0],
+				title: 'Vendido!',
+				msg: 'Has vendido este producto!',
+				date: Date().slice(4,24),
+				sellerId: p.sellerInfo.id,
+				buyer: user?.id,
+				viewed: false,
+			}
+			await dispatch(postNoti(p.sellerInfo.id,msg))
+		})
+	}
 	function handlePrice(e: any) {
 		let list = [];
 		let price = 0;
@@ -101,21 +110,18 @@ export default function Cart() {
 		let list = [];
 		let price = 0;
 		productsCart.forEach((p: any) => {
-			list.push({ id: p.id, price: p.price, cant: 1, title: p.title, photo: p.photo, type: p.type, status: p.status });
+			list.push({ id: p.id, price: p.price, cant: 1, stock: p.cant, title: p.title, photo: p.photo, type: p.type, status: p.status });
 			price = price + p.price;
 		});
 		setListPrice(list);
 		setPrecioTotal(price);
 	}
-let demo = () => {
-	console.log("Hola")
-}
 	function handleKickCart(id) {
 		dispatch(delProductCart(id));
 		handleDeletePrice(id);
 	}
 	useEffect(() => {
-		dispatch(getProductsLHtoCart());
+		dispatch(getProductsLHtoCart())
 	}, []);
 	useEffect(() => {
 		getPrice();
@@ -129,7 +135,7 @@ let demo = () => {
 							<div className={s.containerProduct}>
 								<Link to={`/detail/${prod.id}`}>
 									<div className={s.imgProdFav}>
-										<img src={prod.photo} alt="" />
+										<img src={prod.photo[0]} alt="" />
 									</div>
 								</Link>
 								<div className={s.infoProduct}>
@@ -150,7 +156,7 @@ let demo = () => {
 									name={prod.price}
 									type="number"
 									min="1"
-									max={Number(prod.cant)}
+									max={String(prod.cant)}
 									onChange={handlePrice}
 								/>
 								<button
@@ -181,7 +187,7 @@ let demo = () => {
 				{user && products === true ? (
 					user.id ? (
 						// <Link to="/buy">
-							/* <button className={s.button}>Comprar</button> */
+							/* <button className={s.button}>Comprar</button> */							
 							<StripeCheckout
 								stripeKey={tokenKey}
 								label="Pagar ahora"
@@ -190,11 +196,10 @@ let demo = () => {
 								shippingAddress
 								amount={priceForStripe}
 								description={`Tu total es de ${precioTotal}`}
-								// token={tokenKey}
 								token={payNow}
 								image={logo}
-								
 							/>
+							
 						// </Link>
 					) : (
 						<Link to="/login">

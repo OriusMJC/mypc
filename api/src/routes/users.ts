@@ -11,11 +11,17 @@ import {
 	userFavProduct,
 	userDelFavProduct,
 	updateEmailUser,
+	addNewNoti,
+	notiViewTrue,
+	deleteNoti,
 } from "../services/usersServices";
 import * as types from "../types";
 import { addOrder, getUserOrders, getAllOrders } from "../services/orderServices";
+import cloudinary from "../services/cloudinarySettings"
 const Stripe = require("stripe")(process.env.SECRET_KEY);
 const router = Router();
+
+
 
 //obtener a todos los usuarios
 router.get("/", async (_req, res, next) => {
@@ -62,7 +68,23 @@ router.post(
 			return res.status(404).json({ errors: errors.array() });
 		} else {
 			try {
-				const response = await addNewUser(req.body);
+				if(req.body.avatar) {
+					let newImg = ""; 
+					await cloudinary.uploader.upload(req.body.avatar, (error:any, result:any) => {
+						if(!error) {
+							newImg = result.url;
+						}
+					});
+					req.body.avatar = newImg
+				}
+				let altitudeAndLatitude = {}
+				if(!req.body.altitude || !req.body.altitude) {
+					altitudeAndLatitude = {
+						latitude: "",
+						altitude: "",
+					}
+				}
+				const response = await addNewUser({...req.body, ...altitudeAndLatitude});
 				res.send(response);
 			} catch (err) {
 				return next(err);
@@ -95,6 +117,7 @@ router.put(
 			const newDataUser = req.body;
 			try {
 				let response = await updateDataUser(newDataUser);
+				// console.log(response)
 				res.json(response);
 			} catch (err) {
 				return next(err);
@@ -132,6 +155,34 @@ router.put("/buy/:idUser", async (req, res, next) => {
 		next(error);
 	}
 });
+router.post("/newNoti/:idUser", async (req, res, next) => {
+	try {
+		const { idUser } = req.params;
+		const notiData = req.body;
+		const response = await addNewNoti(idUser, notiData);
+		res.json(response);
+	} catch (error) {
+		next(error);
+	}
+});
+router.put("/updateNoti/:idUser", async (req, res, next) => {
+	try {
+		const { idUser } = req.params;
+		const response = await notiViewTrue(idUser);
+		res.json(response);
+	} catch (error) {
+		next(error);
+	}
+});
+router.delete("/deleteNoti/:idUser/:idNoti", async (req, res, next) => {
+	try {
+		const { idUser, idNoti } = req.params;
+		const response = await deleteNoti(idUser,idNoti);
+		res.json(response);
+	} catch (error) {
+		next(error);
+	}
+});
 router.put(
 	"/:id/email",
 	[
@@ -160,13 +211,14 @@ router.put(
 router.post("/payments", async (req, res) => {
 	let { amount, token, purchaseData } = req.body;
 	try {
-		await Stripe.charges.create({
+		let data = await Stripe.charges.create({
 			source: token.id,
 			amount,
 			currency: "usd",
 		});
-		await addOrder(amount, token, purchaseData);
-		res.send(true);
+		console.log(purchaseData)
+		await addOrder(amount / 100, token, purchaseData);
+		res.send(data);
 	} catch (error) {
 		res.send(false);
 	}
@@ -176,9 +228,31 @@ router.post("/orders/:id", async (req, res) => {
 	const orders = await getUserOrders(id);
 	res.send(orders);	
 });
+router.post("/orders", async (_req, res) => {
+	// let { id } = req.params;
+	const orders = await getAllOrders();
+	res.send(orders);	
+});
 router.post("/test", async (_req, res) => {
+	// =========================
+	// PRUEBA PARA GUARDAR IMG
+	// =========================
+	// let {img} = _req.body
+	// let resp = await cloudinary.uploader.upload(img, (error:any, result:any) => {
+	// 	console.log(result, error)
+	// 	return result
+	// });
+	// res.send(resp)
+	// =========================
+
+
+	// =========================
+	// PRUEBA PARA TRAER TODAS LAS ORDENES 
+	// =========================
 	let test = await getAllOrders();
 	res.send(test)
+	// =========================
+
 })
 /* 
 router.get('/:idUser/orders', getUserOrders)
