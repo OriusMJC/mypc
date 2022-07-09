@@ -51,11 +51,11 @@ function ChatList() {
 			<ul className={styles.containerChatList}>
 				{usersChats.length
 					? usersChats.map((e) => (
-							<Link to={`/chat/${userId}/${e.id}`}>
+							<Link to={`/chat/${userId}/${e?.id}`}>
 								<li>
-									<img src={e.avatar} alt="" />
-									<h1>{e.name}</h1>
-									<h4>{e.email}</h4>
+									<img src={e?.avatar} alt="" />
+									<h1>{e?.name}</h1>
+									<h4>{e?.email}</h4>
 								</li>
 							</Link>
 					  ))

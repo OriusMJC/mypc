@@ -87,7 +87,7 @@ export default function UserDetail() {
               <div className={s.userProducts}>
                   <h2>COMPRADO</h2>
                   {orders.length ?
-                    orders.map((c) => {
+                    orders.reverse().map((c) => {
                       return (
                         <>
                           <hr></hr>
