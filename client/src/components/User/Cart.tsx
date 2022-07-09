@@ -64,11 +64,11 @@ export default function Cart() {
 				title: 'Vendido!',
 				msg: 'Has vendido este producto!',
 				date: Date().slice(4,24),
-				sellerId: p.sellerInfo.id,
+				sellerId: p.seller?.id,
 				buyer: user?.id,
 				viewed: false,
 			}
-			await dispatch(postNoti(p.sellerInfo.id,msg))
+			await dispatch(postNoti(p.seller?.id,msg))
 		})
 	}
 	function handlePrice(e: any) {
