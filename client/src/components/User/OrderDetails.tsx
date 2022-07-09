@@ -37,7 +37,7 @@ export default function OrderDetails(){
                         <section id={s.headOrder}>
                             <div>
                                 <b>Nro de compra</b>
-                                <p>{order[0].id}</p>
+                                <p>{order[0]?.id}</p>
                             </div>
                             <div>
                                 <h5>Fecha: {order[0].date? order[0].date: null}</h5>
@@ -46,7 +46,7 @@ export default function OrderDetails(){
                         <h1>Productos</h1>
                         <section id={s.allProductsOrder}>
                             {
-                                order[0].product?.map((p:any)=>{
+                                order[0].product.length && order[0].product?.map((p:any)=>{
                                     return(
                                         <>
                                             <hr></hr>
@@ -63,12 +63,12 @@ export default function OrderDetails(){
                                                             VER DIRECCION DE ENTREGA
                                                         </button>
                                                     </Link>
-                                                    <Link to={`/chatbuild/${order[0].user}/${p.seller.id}`} >
+                                                    <Link to={`/chatbuild/${order[0].user}/${p.seller?.id}`} >
                                                         <button>
                                                             Iniciar chat
                                                         </button>
                                                     </Link>
-                                                    <Link to={`/detail/${p.id}`}>
+                                                    <Link to={`/detail/${p?.id}`}>
                                                         <button>
                                                         VER DETALLES
                                                         </button>
