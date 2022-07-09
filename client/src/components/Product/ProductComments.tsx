@@ -6,7 +6,7 @@ import { userData as userData1 } from "src/services/userFirebase";
 import s from '../Styles/ProductComments.module.css'
 import swal from 'sweetalert';
 
-export default function ProductComments({idProd,comments, boolean, idProduct}){
+export default function ProductComments({idProd,comments, boolean, idProduct, funcCommUser, funcCommSeller}){
   const dispatch = useAppDispatch()
 
   useEffect(() => {
@@ -53,6 +53,7 @@ export default function ProductComments({idProd,comments, boolean, idProduct}){
         dispatch(addProductComment(idProd,{id: id, userId: userId, name:userData.name,avatar:userData.avatar,comment: newComment,sellerResponse: sellerResponse, date: actualDate()}))
         swal({text: "comentario agregado", icon: "success", timer: 1000})
         setNewComment('');
+        funcCommUser()
       }else{
         e.preventDefault();
         // alert('Debes inciar sesión para poder comentar')
@@ -97,6 +98,7 @@ export default function ProductComments({idProd,comments, boolean, idProduct}){
   }
 
   function handleSellerResponse(e){
+
     setSellerResponse({
       ...sellerResponse,
       [e.target.name]: e.target.value,
@@ -124,7 +126,6 @@ export default function ProductComments({idProd,comments, boolean, idProduct}){
     }))
     dispatch(getAllDetails(idProduct));
     dispatch(getAllDetails(idProduct));
-    dispatch(getAllDetails(idProduct));
   }
 })
   }
@@ -138,6 +139,8 @@ export default function ProductComments({idProd,comments, boolean, idProduct}){
       response: true,
       date: actualDate(),
     }))
+    let comment = comments.find((c:any)=> c.id === Number(actualPosition[1]))
+    funcCommSeller(comment.userId)
     // swal({text: "respuesta enviada", icon:"success", timer: 1000})
     dispatch(getAllDetails(idProduct))
     dispatch(getAllDetails(idProduct))
@@ -158,36 +161,29 @@ export default function ProductComments({idProd,comments, boolean, idProduct}){
         <input name="comment" type='text' value={newComment} onChange={handleChange}/>
         <button className={s.btnSend} type="submit">Enviar</button>
       </form>
+      <div>
       {
           //visualizacion respuesta
           actualPosition[0] !== null &&
-          <div className = {s.sellerContainer}>
-            <div className = {s.sellerCont}>
-              <button onClick = {handleCancelResp} className = {s.xButton}>X</button>
-            <div className = {s.resp3}>
-              <label>Respondiendo al comentario de: {comments[actualPosition[0]].name}</label>
-              <p>{comments[actualPosition[0]].comment}</p>
-            </div>
-            {
+          <div>
+          <button onClick = {handleCancelResp}>X</button>
+          <h4>respondiendo al comentario: {comments[actualPosition[0]].comment}</h4>
+          {
+          <div>
+            <img src = {comments[actualPosition[0]].sellerResponse.avatar && comments[actualPosition[0]].sellerResponse.avatar}></img>
             <div>
-              <div className = {s.resp}>
-                <div className = {s.resp1}>
-                <img src = {comments[actualPosition[0]].sellerResponse.avatar && comments[actualPosition[0]].sellerResponse.avatar}></img>
-                </div>
-                  <div className = {s.resp2}>
-                    <h4>{comments[actualPosition[0]].sellerResponse.name && comments[actualPosition[0]].sellerResponse.name}</h4>
-                    <p>{sellerResponse.comment}</p>
-                  </div>
-                </div>
-                <form onSubmit = {handleResponseSubmit}>
-                  <input name = "comment" value = {sellerResponse.comment} onChange = {handleSellerResponse} placeholder = " Tu respuesta.."/>
-                  <button type = 'submit'>Enviar</button>
-                </form>
+              <h4>{comments[actualPosition[0]].sellerResponse.name && comments[actualPosition[0]].sellerResponse.name}</h4>
+              <p>{sellerResponse.comment}</p>
+              <form onSubmit = {handleResponseSubmit}>
+              <input name = "comment" value = {sellerResponse.comment} onChange = {handleSellerResponse} />
+              <button type = 'submit'>Enviar</button>
+              </form>
               </div>
-            }
             </div>
+          }
           </div>
-       }
+        }
+      </div>
       <div id={s.commentsContainer}>
         {
           typeof comments !== null && refresh.length && comments.length? comments.map((obj:any, i:number)=>{
@@ -198,7 +194,6 @@ export default function ProductComments({idProd,comments, boolean, idProduct}){
             <div className={s.comments}>
               <img src={obj.avatar && obj.avatar} alt={obj.name}/>
               <div>
-                <p className = {s.date}>{obj.date}</p>
                 <h4>{obj.name}</h4>
                 <p>{obj.comment}</p>
               {
@@ -221,11 +216,11 @@ export default function ProductComments({idProd,comments, boolean, idProduct}){
               }
             </div>
               {
+                
                 obj.sellerResponse.response &&
                   <div className={`${s.comments} ${s.sellerResponse}`}>
                     <img src = {obj.sellerResponse.avatar && obj.sellerResponse.avatar}></img>
                     <div>
-                      <p className = {s.dateSeller}>{obj.sellerResponse.date && obj.sellerResponse.date}</p>
                       <h5>Vendedor</h5>
                       <h4>{obj.sellerResponse.name && obj.sellerResponse.name}</h4>
                       <p>{obj.sellerResponse.comment && obj.sellerResponse.comment}</p>

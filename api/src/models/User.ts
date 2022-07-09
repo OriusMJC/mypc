@@ -97,6 +97,9 @@ module.exports = (sequelize:any) => {
     buy: {
       type: DataTypes.ARRAY(DataTypes.JSON),
     },
+    noti:{
+      type: DataTypes.ARRAY(DataTypes.JSON),
+    },
     longitude: {
       type: DataTypes.STRING(500),
     },

@@ -34,6 +34,8 @@ export const UPDATE_EMAIL = "UPDATE_EMAIL";
 export const SEARCH_SUGGESTIONS = "SEARCH_SUGGESTIONS";
 // export const ADD_FAV = "ADD_FAV";
 export const DEL_FAV = "DEL_FAV";
+export const NOTI_VIEW = "NOTI_VIEW";
+export const DELETE_NOTI = "DELETE_NOTI";
 export const GET_ORDERS = "GET_ORDERS"
 export const SELLER_PROD = "SELLER_PROD";
 export const CHANGE_ACTUAL_PAGE = "CHANGE_ACTUAL_PAGE"
@@ -350,13 +352,42 @@ export function getAllOrders() {
 		}
 	}
 }
+export function postNoti(idUser,noti) {
+	return async () => {
+		try {
+			await axios.post(`/users/newNoti/${idUser}`,noti)
+		} catch (error) {
+			console.log(error)
+		}
+	}
+}
+export function viewedNoti(idUser) {
+	return async (dispatch: Dispatch<Action>) => {
+		try {
+			await axios.put(`/users/updateNoti/${idUser}`)
+			dispatch({type: NOTI_VIEW, payload: idUser})
+		} catch (error) {
+			console.log(error)
+		}
+	}
+}
+export function deleteNoti(idUser,idNoti) {
+	return async (dispatch: Dispatch<Action>) => {
+		try {
+			await axios.delete(`/users/deleteNoti/${idUser}/${idNoti}`)
+			dispatch({type: DELETE_NOTI, payload: {idUser,idNoti}})
+		} catch (error) {
+			console.log(error)
+		}
+	}
+}
 export function getUsersById(arrayUsers) {
 	return async (dispatch: Dispatch<Action>) => {
 		try {
 			let users = await axios.post("/users/users-list", arrayUsers);
 			dispatch({type: GET_USERS_BY_ID, payload: users.data})
-		} catch (error) {
-			console.log(error)
+		} catch (err) {
+			console.log(err)
 		}
 	}
 }
