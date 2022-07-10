@@ -54,8 +54,10 @@ function ChatList() {
 							<Link to={`/chat/${userId}/${e?.id}`}>
 								<li>
 									<img src={e?.avatar} alt="" />
-									<h1>{e?.name}</h1>
-									<h4>{e?.email}</h4>
+									<div>
+										<h1>{e?.name}</h1>
+										<h4>{e?.email}</h4>
+									</div>
 								</li>
 							</Link>
 					  ))

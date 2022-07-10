@@ -60,7 +60,7 @@ export default function OrderDetails(){
                                                 <div>
                                                     <Link to={`/direction/${p.id}`}>
                                                         <button>
-                                                            VER DIRECCION DE ENTREGA
+                                                            Ver dirección de entrega
                                                         </button>
                                                     </Link>
                                                     <Link to={`/chatbuild/${order[0].user}/${p.seller?.id}`} >
@@ -70,7 +70,7 @@ export default function OrderDetails(){
                                                     </Link>
                                                     <Link to={`/detail/${p?.id}`}>
                                                         <button>
-                                                        VER DETALLES
+                                                            Ver detalles
                                                         </button>
                                                     </Link>
                                                 </div>

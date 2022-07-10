@@ -32,11 +32,14 @@ export default function ProductDetails(){
    const {idProduct} = useParams()
    const navigate = useNavigate();
    let product = useSelector((state:any) => state.productDetails)
+   const user = useSelector((store:any)=> store.userDetails)
    const idUser = useSelector((store:any)=> store.userDetails?.id)
    const admin = useSelector((store:any)=> store.userDetails?.admin)
    const productSellerId = product.sellerInfo && product.sellerInfo.id
    const boolean = productSellerId && productSellerId === idUser && true
    const [pos, setPos] = useState(0);
+   let [favClicks,setFavCliks] = useState(0)
+
    
    function handleNotiSellerComment(){
       let msg = {
@@ -79,6 +82,7 @@ export default function ProductDetails(){
             likes: product.likes, 
             status: product.status
          }))
+         setFavCliks(favClicks + 1)        
       }else{
          swal({
             title: "No estas Logueado",
@@ -88,6 +92,10 @@ export default function ProductDetails(){
          //  alert('Debes iniciar sesión para poder agregar productos a favoritos!')
       }
   }
+  function handleDelet(){
+   dispatch(delFavUser(user?.id, product.id));
+   setFavCliks(0)
+ }  
 
    function handleCart(){
       if(boolean){
@@ -97,6 +105,7 @@ export default function ProductDetails(){
             icon: "warning",
          })
       }else{
+         console.log(product)
          dispatch(addProductCart({
             key: product.key, 
             id: product.id,
@@ -105,7 +114,9 @@ export default function ProductDetails(){
             price: product.price, 
             type: product.type, 
             likes: product.likes, 
-            status: product.status
+            status: product.status,
+            cant: product.cant,
+            seller: product.sellerInfo
          }))
       } 
    }
@@ -125,7 +136,9 @@ export default function ProductDetails(){
             price: product.price, 
             type: product.type, 
             likes: product.likes, 
-            status: product.status
+            status: product.status,
+            cant: product.cant,
+            seller: product.sellerInfo
          }))
          navigate('/cart')
       }
@@ -177,8 +190,15 @@ export default function ProductDetails(){
    function handlePos(e){
       setPos(e.target.value)
    }
-  
-
+   useEffect(() => {
+      user.fav?.map((c:any) =>{
+        if(c.id === product.id){
+          setFavCliks(favClicks + 1)
+        }
+      })
+      
+    }, [user,idUser,product])
+console.log(favClicks)
    
    return(
       <div id={s.prodContainer}>
@@ -226,9 +246,17 @@ export default function ProductDetails(){
                   <img src={product && product.photo && product.photo[pos]} alt={product?.title}></img>
                </div>
                <div id={s.detailsData}>
-                  <button onClick={handleFav} id={s.buttonFav}>
-                     <img src={nolike}/>
-                  </button>
+               {
+                  user?.id && favClicks
+                     ?
+                     <button onClick={handleDelet} id={s.buttonFav} >
+                        <i className="fa-solid fa-heart"></i>
+                     </button>
+                     :
+                     <button onClick={handleFav} id={s.buttonFav} >
+                        <i className="fa fa-heart-o"></i>
+                     </button>
+               }
                   <h3>Precio: ${product?.price}</h3>
                   <h4>Estado: {product?.status}</h4>
                   <h4>Likes: {product?.likes}</h4>
