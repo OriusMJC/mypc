@@ -46,12 +46,12 @@
 .inputNumber:hover{
     box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
 }
-.inputNumber::-webkit-inner-spin-button,
+/* .inputNumber::-webkit-inner-spin-button,
 .inputNumber::-webkit-outer-spin-button { 
     -webkit-appearance: none; 
     margin: 0; 
   }
-.inputNumber{-moz-appearance:textfield;}    
+.inputNumber{-moz-appearance:textfield;}     */
 
 .form select{
     margin: 20px 0;

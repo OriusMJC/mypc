@@ -60,7 +60,7 @@ export default function NavButtons() {
             <button onClick={(event) => handleShowNoti(event)}>
               {
                 notiView === true? 
-                <i className="fa-solid fa-bell" style={{color:'red'}}>!</i>
+                <i className="fa-solid fa-bell">!</i>
                 :
                 <i className="fa-solid fa-bell"></i>
               }

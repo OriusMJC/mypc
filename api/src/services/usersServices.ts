@@ -105,9 +105,9 @@ export const addNewNoti = async (
 	notification:any
 ): Promise<string> => {
 	let user = await User.findByPk(idUser);
-	let allIdsNoti = user.noti?.length? user.noti.map((n:any)=> n.id? n.id : 0) : 1
+	let allIdsNoti = user?.noti?.length? user.noti.map((n:any)=> n.id? n.id : 0) : 1
 	let maxId = Math.max(allIdsNoti) + 1
-	let newNotiArr = user.noti?.length ? [{id:maxId,...notification},...user.noti] : [{id:maxId,...notification}];
+	let newNotiArr = user?.noti?.length ? [{id:maxId,...notification},...user.noti] : [{id:maxId,...notification}];
 	await User.update({ noti: newNotiArr }, { where: { id: idUser } });
 	return "Notificacion agregada con exito";
 };

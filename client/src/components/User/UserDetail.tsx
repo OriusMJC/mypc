@@ -59,6 +59,11 @@ export default function UserDetail() {
                   Estadisticas
                 </button>
               </Link>
+              <Link to={`/list/chats/${user.id}`}>
+                <button className={s.buttonButton}>
+                  Chats
+                </button>
+              </Link>
               {
                 user.admin && user.email === 'mypcecommerce@gmail.com'?
                   <Link to = '/user/admin'>
@@ -82,7 +87,7 @@ export default function UserDetail() {
               <div className={s.userProducts}>
                   <h2>COMPRADO</h2>
                   {orders.length ?
-                    orders.map((c) => {
+                    orders.reverse().map((c) => {
                       return (
                         <>
                           <hr></hr>

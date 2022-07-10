@@ -34,7 +34,6 @@ export default function Home() {
   //     dispatch(loginUser(resId))
   //   }
   // }
-
   useEffect(() => {
     let res = userData();
     // isUserLogin()

@@ -45,6 +45,20 @@ router.get("/:idUser", async (req, res) => {
 		res.status(404).json({ msg: `User doesn't exist` });
 	}
 });
+router.post("/users-list", async (req, res) => {
+	const arrayUsers = req.body;
+	try {
+		let users = [];
+		for (const userId of arrayUsers) {
+			const aux = await getUserById(userId);
+			users.push(aux)
+		}
+		
+		res.send(users);
+	} catch (error) {
+		res.send([])
+	}
+})
 
 //crear nuevo usuario en DB con los datos por body
 router.post(
@@ -217,7 +231,6 @@ router.post("/payments", async (req, res) => {
 			amount,
 			currency: "usd",
 		});
-		console.log(purchaseData)
 		await addOrder(amount / 100, token, purchaseData);
 		res.send(data);
 	} catch (error) {
