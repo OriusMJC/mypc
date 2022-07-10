@@ -57,6 +57,7 @@ export default function Cart() {
 	// ==============================================
 	async function handleNotiSeller(){
 		await productsCart.forEach(async (p:any)=>{
+			console.log(p)
 			let msg = {
 				prodId: p.id,
 				url: `/user/userProducts`,

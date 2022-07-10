@@ -97,6 +97,7 @@ export default function ProductDetails(){
             icon: "warning",
          })
       }else{
+         console.log(product)
          dispatch(addProductCart({
             key: product.key, 
             id: product.id,
@@ -105,7 +106,9 @@ export default function ProductDetails(){
             price: product.price, 
             type: product.type, 
             likes: product.likes, 
-            status: product.status
+            status: product.status,
+            cant: product.cant,
+            seller: product.sellerInfo
          }))
       } 
    }
@@ -125,7 +128,9 @@ export default function ProductDetails(){
             price: product.price, 
             type: product.type, 
             likes: product.likes, 
-            status: product.status
+            status: product.status,
+            cant: product.cant,
+            seller: product.sellerInfo
          }))
          navigate('/cart')
       }

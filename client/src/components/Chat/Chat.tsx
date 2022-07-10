@@ -71,7 +71,7 @@ function Chat() {
 console.log(user.id ,chat)
 	return (
 		<div className={styles.containerChat}>
-			<div className={"styles.containerMessages"}>
+			<div className={styles.containerMessages}>
 				<ul>
 					{chat?.messages[0].message ? (
 						chat.messages.map((e, i) => {
@@ -91,13 +91,13 @@ console.log(user.id ,chat)
 					)}
 				</ul>
 			</div>
-			<form onSubmit={handleSubmit}>
+			<form onSubmit={handleSubmit} id={styles.inputMsg}>
 				<input
 					type="text"
 					value={text}
 					onChange={(event) => handleChange(event)}
 				/>
-				<button type="submit">Enviar</button>
+				<button type="submit"><i className="fa-solid fa-paper-plane"></i></button>
 			</form>
 		</div>
 	);
