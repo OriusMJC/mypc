@@ -3,19 +3,28 @@
   flex-direction: column;
   align-items: center;
   list-style: none;
+  min-height: 78vh;
 }
 .containerChatList li {
-  cursor: pointer;
-  height: 200px;
-  width: 200px;
+  color: black;
   background-color: white;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  justify-content: space-around;
   align-items: center;
-  color: black;
+  height: 120px;
+  width: 500px;
+  margin: 5px 0px;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: .2s;
+}
+.containerChatList li:hover {
+  transform: scale(1.02);
 }
 .containerChatList li img {
-  height: 50%;
+  height: 70%;
+  border-radius: 50%;
   /* margin: auto; */
 }
 .containerChatList h1, .containerChatList h4 {
@@ -23,6 +32,5 @@
   margin: 0;
 }
 .containerChatList a {
-
   text-decoration: none;
 }
