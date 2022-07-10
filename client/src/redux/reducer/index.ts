@@ -29,6 +29,7 @@ import {
 	CHANGE_ACTUAL_PAGE,
 	NOTI_VIEW,
 	DELETE_NOTI,
+	CHANGE_LANGUAGE,
 } from "../actions";
 // import { Products } from '../../../types';
 
@@ -76,6 +77,7 @@ const initialState = {
 	suggestions: {},
 	orders: [],
 	actualPage: 1,
+	spanish: true,
 };
 
 export default function rootReducer(state = initialState, action: any) {
@@ -336,6 +338,11 @@ export default function rootReducer(state = initialState, action: any) {
 					...state,
 					userDetails : {...state.userDetails, noti: newArrNoti}
 				}
+			}
+		case CHANGE_LANGUAGE:
+			return {
+				...state,
+				spanish: state.spanish === true ? false : true,
 			}
 		default:
 			return state;

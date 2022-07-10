@@ -13,6 +13,7 @@ import { changeActualPage } from "src/redux/actions";
 
 function Pages({ productsPerPage, allComponents, refresh }) {
     const dispatch = useAppDispatch();
+    const spanish = useSelector((state: any) => state.spanish);
 
     useEffect(() => {
         dispatch(getAllComponents())
@@ -65,7 +66,7 @@ function Pages({ productsPerPage, allComponents, refresh }) {
             //   </div> 
              
            
-            <Loading load='Cargando productos' msgError='No hay ningún producto cargado... Logueate para crear uno!' time={3000}/>                        
+            <Loading load={spanish ? 'Cargando productos' : "Loading products"} msgError={spanish ? "No hay ningún producto cargado... Logueate para crear uno!" : "There are no loaded products... Login to create one!"} time={3000}/>                        
               :            
               refresh && currentProduct.length?
               typeof allComponents[0] !== 'string'?
@@ -90,7 +91,7 @@ function Pages({ productsPerPage, allComponents, refresh }) {
               :
                           
               // <Loading/>
-              <Loading load='Buscando producto' msgError='No se a encontrado ningun producto' time={3000}/>
+              <Loading load={spanish ? 'Buscando producto' : "Searching product"} msgError={spanish ? 'No se ha encontrado ningún producto' : "No product found"} time={3000}/>
           }      
           </div>
       </section>

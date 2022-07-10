@@ -9,6 +9,7 @@ function Chat() {
 	let [msg, setMsg] = useState([]);
 	let [text, setText] = useState("");
 	let user = useSelector((state: any) => state.userDetails);
+	const spanish = useSelector((state: any) => state.spanish);
 
 	// useEffect(() => {
 		// if (state !== 1) {
@@ -68,7 +69,7 @@ function Chat() {
 						}
 					})
 				) : (
-					<li>No tienes mensajes</li>
+					<li>{spanish ? "No tienes mensajes" : "You have no messages"}</li>
 				)}
 			</ul>
 			<form onSubmit={handleSubmit}>
@@ -77,7 +78,7 @@ function Chat() {
 					value={text}
 					onChange={(event) => handleChange(event)}
 				/>
-				<button type="submit">Enviar</button>
+				<button type="submit">{spanish ? "Enviar" : "Send"}</button>
 			</form>
 		</div>
 	);
