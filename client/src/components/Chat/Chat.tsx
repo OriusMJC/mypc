@@ -3,7 +3,7 @@ import { db as database } from "src/firebase/client";
 import styles from "../Styles/Chat.module.css";
 import { ref, set, onValue } from "firebase/database";
 import { useSelector } from "react-redux";
-import { useLocation, useParams } from "react-router-dom";
+import { Link, useLocation, useParams } from "react-router-dom";
 
 function Chat() {
 	let { from, to } = useParams();
@@ -71,6 +71,9 @@ function Chat() {
 console.log(user.id ,chat)
 	return (
 		<div className={styles.containerChat}>
+			<Link to={`/list/chats/${user.id}`}>
+				<button>Volver</button>
+			</Link>
 			<div className={styles.containerMessages}>
 				<ul>
 					{chat?.messages[0].message ? (

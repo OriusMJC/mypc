@@ -16,6 +16,17 @@
   margin: auto;
   padding: 10px;
 }
+.containerChat button{
+  margin: 10px 0px;
+  height: 30px;
+  width: 60px;
+  border: none;
+  border-radius: 5px;
+}
+.containerChat button:hover{
+  background-color: var(--gray-medium);
+  transform: scale(1.05);
+}
 .containerMessages {
   background-color: var(--color-primary);
   width: 600px;
@@ -26,7 +37,7 @@
   list-style: none;
   display: flex;
   flex-direction: column;
-  padding: 0;
+  padding: 0px 5px;
   scroll-behavior: unset;
 }
 .containerChat ul li {
