@@ -38,7 +38,8 @@ export const NOTI_VIEW = "NOTI_VIEW";
 export const DELETE_NOTI = "DELETE_NOTI";
 export const GET_ORDERS = "GET_ORDERS"
 export const SELLER_PROD = "SELLER_PROD";
-export const CHANGE_ACTUAL_PAGE = "CHANGE_ACTUAL_PAGE"
+export const CHANGE_ACTUAL_PAGE = "CHANGE_ACTUAL_PAGE";
+export const ADD_VISITED = "ADD_VISITED";
 
 type Action = {
 	type: string;
@@ -374,6 +375,16 @@ export function deleteNoti(idUser,idNoti) {
 		try {
 			await axios.delete(`/users/deleteNoti/${idUser}/${idNoti}`)
 			dispatch({type: DELETE_NOTI, payload: {idUser,idNoti}})
+		} catch (error) {
+			console.log(error)
+		}
+	}
+}
+export function addVisited(idUser, product){
+	return async (dispatch: Dispatch<Action>) => {
+		try {
+			await axios.put(`/${idUser}/visited`, product)
+			dispatch ({type: ADD_VISITED, payload: {idUser, product}})
 		} catch (error) {
 			console.log(error)
 		}

@@ -22,6 +22,7 @@ function FavedProducts() {
         return 0
     }).slice(0, 5)
 
+
  return (
     <div className = {s.container}>
         <h1>Productos mas likeados</h1>

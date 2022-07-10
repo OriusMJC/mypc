@@ -22,6 +22,7 @@ export const getBasicUserInfo = async (
 	id: string
 ): Promise<types.NonSensitiveUserInfo | string> => {
 	let userData = await User.findByPk(id);
+	console.log(userData);
 	const user = {
 		id: userData?.dataValues.id,
 		name: userData?.dataValues.name,
@@ -30,6 +31,7 @@ export const getBasicUserInfo = async (
 		phone: userData?.dataValues.phone,
 		latitude: userData?.dataValues.latitude,
 		longitude: userData?.dataValues.longitude,
+		visited: userData?.dataValues.visited
 	};
 	return user;
 };
@@ -132,3 +134,19 @@ export const deleteNoti = async (
 	await User.update({ noti: newNotiArr }, { where: { id: idUser } });
 	return "Notificacion agregada con exito";
 };
+export const updateVisitedProducts = async (
+	idUser: string,
+	product: types.basicProductInfo
+):Promise <string> => {
+	let user = await User.findByPk(idUser);
+	let visitedProducts:any = [];
+	if(user.visited.length <= 50) {
+		visitedProducts.unshift(product)
+	}else{
+		visitedProducts.pop();
+		visitedProducts.unshift(product)
+
+	}
+	await User.update({visited: visitedProducts }, { where: { id: idUser }})
+	return 'Producto agregado'
+}

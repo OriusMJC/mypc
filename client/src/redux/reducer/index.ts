@@ -29,6 +29,7 @@ import {
 	CHANGE_ACTUAL_PAGE,
 	NOTI_VIEW,
 	DELETE_NOTI,
+	ADD_VISITED,
 } from "../actions";
 // import { Products } from '../../../types';
 
@@ -76,6 +77,7 @@ const initialState = {
 	suggestions: {},
 	orders: [],
 	actualPage: 1,
+	visited: [],
 };
 
 export default function rootReducer(state = initialState, action: any) {
@@ -335,6 +337,19 @@ export default function rootReducer(state = initialState, action: any) {
 				return {
 					...state,
 					userDetails : {...state.userDetails, noti: newArrNoti}
+				}
+			}
+			case ADD_VISITED: {
+				let visitedProducts = [];
+				if(visitedProducts.length <= 50){
+					visitedProducts.unshift(action.payload.product)
+				}else{
+					visitedProducts.pop();
+					visitedProducts.unshift(action.payload.product)
+				}
+				return {
+					...state,
+					visited: visitedProducts,
 				}
 			}
 		default:

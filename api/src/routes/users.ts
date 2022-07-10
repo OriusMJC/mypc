@@ -14,6 +14,7 @@ import {
 	addNewNoti,
 	notiViewTrue,
 	deleteNoti,
+	updateVisitedProducts,
 } from "../services/usersServices";
 import * as types from "../types";
 import { addOrder, getUserOrders, getAllOrders } from "../services/orderServices";
@@ -261,5 +262,14 @@ router.get('/:idUser/orders/:idOrder', getUserOrder)
 
 router.get('/:idUser/cart/payment')
 */
-
+router.put('/visitedProducts/:idUser', async(req, res, next) => {
+	const { idUser }= req.params;
+	const { product } = req.body;
+	try {
+		const response = await updateVisitedProducts(idUser, product);
+		res.json(response);
+	} catch (error) {
+		next(error)
+	}
+})
 module.exports = router;
