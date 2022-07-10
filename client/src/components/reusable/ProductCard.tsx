@@ -7,8 +7,7 @@ import s from "../Styles/ProductsCards.module.css";
 import swal from 'sweetalert';
 import { useCallback, useEffect, useState } from "react";
 
-
-export default function ProductCard({id,title, photo, price, type, likes, status, cant,sellerInfo}){
+export default function ProductCard({id,title, photo, price, type, likes, status, cant, seller}){
   const dispatch = useAppDispatch()
   const spanish = useSelector((state: any) => state.spanish);
     const user = useSelector((store:any)=> store.userDetails)
@@ -16,7 +15,7 @@ export default function ProductCard({id,title, photo, price, type, likes, status
   
   function handleFav(){
         if(user){
-          dispatch(addFavUser(user?.id,{id,title, photo, price, type, likes, status}))
+          dispatch(addFavUser(user?.id,{id,title, photo, price, type, likes, status, seller}))
           setFavCliks(favClicks + 1)        
         }else{
           swal({
@@ -28,7 +27,7 @@ export default function ProductCard({id,title, photo, price, type, likes, status
         }
       }    
     function handleCart(){
-        dispatch(addProductCart({id,title, photo, price, type, likes, status, cant,sellerInfo}))
+        dispatch(addProductCart({id,title, photo, price, type, likes, status, cant, seller}))
     }
     function handleDelet(){
       dispatch(delFavUser(user?.id, id));
@@ -36,7 +35,7 @@ export default function ProductCard({id,title, photo, price, type, likes, status
     }   
     
     useEffect(() => {
-      user.fav.map((c:any) =>{
+      user.fav?.map((c:any) =>{
         if(c.id === id){
           setFavCliks(favClicks + 1)
         }

@@ -10,6 +10,7 @@ import s from "../Styles/Fav.module.css";
 export default function Fav() {
   const dispatch = useAppDispatch();
   const user = useSelector((store: any) => store.userDetails);
+  const spanish = useSelector((state: any) => state.spanish);
 
   const prueba = useCallback((idUser, idProd) => {
     dispatch(delFavUser(idUser, idProd));
@@ -47,7 +48,7 @@ export default function Fav() {
                           <h2>{prod.title}</h2>
                         </Link>
                         <div className={s.infoDetailsProduct}>
-                          <h3>Price: ${prod.price}</h3>
+                          <h3>{spanish ? "Precio: $" : "Price: $"}{prod.price}</h3>
                           <h4>Likes: {prod.likes}</h4>
                         </div>
                       </div>
@@ -95,7 +96,7 @@ export default function Fav() {
           )
         ) : (
           <div className={s.textInfo}>
-            <h1>Aún no has inciado sesión. Inicia sesión para ver tu lista de favoritos!</h1>
+            <h1>Aún no has iniciado sesión. Inicia sesión para ver tu lista de favoritos!</h1>
             <Link to="/login">
               <button className={s.button}>Login</button>
             </Link>

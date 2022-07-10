@@ -11,10 +11,7 @@ import {
 	updateEmail,
 } from "firebase/auth";
 import { emailUpdateUser, loginUser } from "src/redux/actions";
-// import { createContext, useContext } from 'react';
-import { auth, db } from "../firebase/client";
-// import { getAuth } from 'firebase/auth';
-// import { getDatabase, ref, set, child, get, onValue } from "firebase/database";
+import { auth } from "../firebase/client";
 
 export const verifyEmail = () => {
 	return auth.currentUser.emailVerified;
@@ -111,31 +108,3 @@ export const updateEmailUser = async (
 		})
 		.catch((err) => console.log(err));
 };
-
-// const dbRef = ref(getDatabase());
-// get(child(dbRef, `chat/1`)).then((snapshot) => {
-//   if (snapshot.exists()) {
-//     console.log(snapshot.val(), "SNAPSHOT");
-//   } else {
-//     console.log("No data available");
-//   }
-// }).catch((error) => {
-//   console.error(error);
-// });
-
-// export let writeUserData = (id) => {
-// 	const db = getDatabase();
-// 	set(ref(db, `chat/${id}`), {
-// 		user: "yo",
-// 		otro: "otro",
-// 	});
-// };
-
-// export const updateDatabaseData = () => {
-// 	const starCountRef = ref(db, `chat/`);
-// 	onValue(starCountRef, (snapshot) => {
-// 		const data = snapshot.val();
-// 		return data
-// 		console.log(data, "DATAAAAAAAAAAAAAAAA");
-// 	});
-// };

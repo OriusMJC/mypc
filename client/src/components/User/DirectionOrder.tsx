@@ -8,7 +8,7 @@ import s from '../Styles/Direction.module.css'
 
 
 function DirectionOrder() {
-  
+  const spanish = useSelector((state: any) => state.spanish);
   let {id} = useParams();
   let dispatch = useAppDispatch()
   let product = useSelector((state:any) => state.productDetails);
@@ -19,7 +19,7 @@ function DirectionOrder() {
   if(product.id) {
     return (
       <div className={s.directionContainer}>
-        <h1>Localizaciones de los vendedores</h1>
+        <h1>{spanish ? "Localizaciones de los vendedores" : "Sellers locations"}</h1>
         <MapView user={[product.sellerInfo]}/>  
       </div>
     )

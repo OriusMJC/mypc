@@ -29,7 +29,11 @@ import {
 	CHANGE_ACTUAL_PAGE,
 	NOTI_VIEW,
 	DELETE_NOTI,
+<<<<<<< HEAD
 	CHANGE_LANGUAGE,
+=======
+	GET_USERS_BY_ID,
+>>>>>>> development
 } from "../actions";
 // import { Products } from '../../../types';
 
@@ -77,9 +81,12 @@ const initialState = {
 	suggestions: {},
 	orders: [],
 	actualPage: 1,
+<<<<<<< HEAD
 	spanish: true,
+=======
+	listUsers: [],
+>>>>>>> development
 };
-
 export default function rootReducer(state = initialState, action: any) {
 	switch (action.type) {
 		case GET_ALL_COMPONENTS:
@@ -154,6 +161,7 @@ export default function rootReducer(state = initialState, action: any) {
 			return {
 				...state,
 				userDetails: {},
+				listUsers: [],
 			};
 		case GET_PRODUCT_CART:
 			return {
@@ -339,10 +347,17 @@ export default function rootReducer(state = initialState, action: any) {
 					userDetails : {...state.userDetails, noti: newArrNoti}
 				}
 			}
+<<<<<<< HEAD
 		case CHANGE_LANGUAGE:
 			return {
 				...state,
 				spanish: state.spanish === true ? false : true,
+=======
+			case GET_USERS_BY_ID:
+			return {
+				...state,
+				listUsers: action.payload
+>>>>>>> development
 			}
 		default:
 			return state;
