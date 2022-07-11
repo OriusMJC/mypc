@@ -69,4 +69,16 @@
 	.slider {     
         width: 100%;          
 	}   
+        .sliderv img{
+        width: 100%;         
+                
+        }
+.slider ul{
+        width: 100%;         
+
+}
+.slider li{
+        width: 100%;         
+
+}
   }
