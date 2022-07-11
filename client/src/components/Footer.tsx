@@ -9,6 +9,8 @@ import logo from '../media/logo1.png'
 function Footer() {
   return (
     <div className = {s.container}>
+      <div className={s.son}>
+
         <Link to = "/contact" className = {s.contact}>
             Contactanos!
         </Link>
@@ -17,6 +19,7 @@ function Footer() {
         </p>        
         <p>Powered by ©My-Pc</p>
         <img src = {logo} width="60px" height="60px"></img>
+      </div>
     </div>
   )
 }

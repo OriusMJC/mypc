@@ -46,3 +46,14 @@
     font-size: 12px;
     color: #d30808;
 }
+@media screen and (max-width: 420px) {
+    .formLoginContainer{
+        width: 100%;       
+    }	
+}
+
+@media screen and (max-width: 860px) {
+        .formLoginContainer{
+            width: 100%;           
+        }	
+}

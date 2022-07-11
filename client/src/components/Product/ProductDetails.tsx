@@ -297,7 +297,10 @@ console.log(favClicks)
                      {product?.description}
                   </p>
                </div>
+               <div className={s.ProdComents}>
                <ProductComments idProd={product.id} comments={product.comments} boolean = {boolean} idProduct={idProduct} funcCommUser={handleNotiSellerComment} funcCommSeller={handleNotiUserComment}/>    
+
+               </div>
             </section>
          </div>
       </div>

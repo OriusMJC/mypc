@@ -84,4 +84,27 @@ h1 {
     transform: scale(1.1);
 }
 
+@media screen and (max-width: 420px) {
+    .contactContainer{
+        width: 99%;       
+    }
+    .contactContainer input {
+        width: 90%;
+    }
+    .form textarea{
+        width: 100%;
+    }
+  
+  }
+  @media screen and (max-width: 860px) {
+    .contactContainer{
+        width: 97%;       
+    }
+    .contactContainer input {
+        width: 90%;
+    }
+    .form textarea{
+        width: 100%;
+    }
+}
 

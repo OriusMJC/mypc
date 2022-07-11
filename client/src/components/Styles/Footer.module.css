@@ -21,3 +21,14 @@
 .contact:visited{
     color: #000;
 }
+@media screen and (max-width: 420px) {	
+	.container {	      
+    display: inline-block;
+    padding-right: 5px;
+    width: 98%;      
+    bottom: 1%;
+    text-align: center;
+    margin: 5px;
+	}   
+		
+  }

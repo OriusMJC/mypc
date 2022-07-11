@@ -41,3 +41,15 @@
   color: #000;
   text-decoration: none;
 }
+@media screen and (max-width: 420px) {
+  .searchBarContainer{
+   width: 100%;
+  } 
+}
+@media screen and (max-width: 860px) {
+  .searchBarContainer{
+   width: 100%;
+  }
+ 
+  
+}
