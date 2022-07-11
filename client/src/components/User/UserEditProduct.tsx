@@ -8,6 +8,7 @@ import swal from 'sweetalert';
 import Loading from '../Loading/Loading';
 
 function UserEditProduct() {
+    const spanish = useSelector((state: any) => state.spanish);
     const dispatch = useAppDispatch();
     const navigate = useNavigate();
     const {idProduct} = useParams();
@@ -51,12 +52,12 @@ function UserEditProduct() {
     function handleSubmit(e){
         e.preventDefault();
         swal({            
-            text: "Estas seguro de actualizar tu producto?",
+            text: spanish ? "Estas seguro de actualizar tu producto?" : "Are you sure to update your product?",
             icon: "warning",
-            buttons: ["No", "Si"]
+            buttons: ["No", spanish ? "Si" : "Yes"]
           }).then(response=>{
             if(response){
-                swal({text: "producto actualizado", icon: "success"})
+                swal({text: spanish ? "producto actualizado" : "updated product", icon: "success"})
                 dispatch(updateProduct(idProduct, prod));
                 navigate('/user/userProducts');
             }
@@ -77,15 +78,15 @@ function UserEditProduct() {
                 <div>
                     <Link to= '/user/userProducts'>
                     <button  className={s.btnBack}>
-                        Rgresar
+                        {spanish ? "Regresar" : "Return"}
                     </button>
                     </Link>
                     </div>
                     <div className={s.container}>
                     <form className={s.form} onSubmit = {handleSubmit}>
-                    <h1>Editar producto</h1>
+                    <h1>{spanish ? "Editar producto" : "Edit product"}</h1>
 
-                    <label>Imagen: </label>
+                    <label>{spanish ? "Imagen: " : "Image: "}</label>
                     <input
                     type = 'url'
                     name = 'photo'
@@ -93,7 +94,7 @@ function UserEditProduct() {
                     onChange = {handleChange}
                     />
 
-                    <label>Título: </label>
+                    <label>{spanish ? "Título: " : "Title: "}</label>
                     <input
                     type = 'text'
                     name = 'title'
@@ -101,7 +102,7 @@ function UserEditProduct() {
                     onChange = {handleChange}
                     />
 
-                    <label>Precio: </label>
+                    <label>{spanish ? "Precio: " : "Price: "}</label>
                     <input 
                     type = 'number'
                     name = 'price'
@@ -110,7 +111,7 @@ function UserEditProduct() {
                     onChange = {handleChange}	
                     />
 
-                    <label>Tipo: </label>
+                    <label>{spanish ? "Tipo: " : "Type: "}</label>
                     <select name="type" onChange={handleType}>
                         {types?.map(t => (
                             <option key={t} value={t}>
@@ -119,10 +120,10 @@ function UserEditProduct() {
                         ))}
                     </select>
 
-                    <label>Estado: </label>
+                    <label>{spanish ? "Estado: " : "State: "}</label>
                     <select name="status" onChange = {handleStatus}>
-                        <option value="nuevo">nuevo</option>
-                        <option value="usado">usado</option>
+                        <option value="nuevo">{spanish ? "nuevo" : "new"}</option>
+                        <option value="usado">{spanish ? "usado" : "used"}</option>
                     </select>
 
                     <label>Stock: </label>
@@ -135,7 +136,7 @@ function UserEditProduct() {
                     onChange = {handleChange}	
                     />
 
-                    <label>Descripción: </label>
+                    <label>{spanish ? "Descripción: " : "Description: "}</label>
                     <textarea
                     className={s.descriptionInput}
                     name = 'description'
@@ -144,7 +145,7 @@ function UserEditProduct() {
                     />
                     <div className={s.button}>
                     <button type = 'submit'>
-                        Editar producto
+                        {spanish ? "Editar producto" : "Edit product"}
                     </button>
                     </div>
                     </form>
@@ -164,7 +165,7 @@ function UserEditProduct() {
                 </div>
             </>
             :
-            <Loading load='Buscando producto para editar' msgError='No se ha encontrado el producto' time={3000}/>
+            <Loading load={spanish ? 'Buscando producto para editar' : "Searching product to edit"} msgError={spanish ? 'No se ha encontrado el producto' : "Product not found"} time={3000}/>
         }
     </div>
   )

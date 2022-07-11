@@ -13,6 +13,7 @@ import Loading from '../Loading/Loading';
 import swal from 'sweetalert';
 
 function UserProducts() {
+  const spanish = useSelector((state: any) => state.spanish);
   const dispatch = useAppDispatch();
   const products = useSelector((state:any) => state.allComponents);
   const orders = useSelector((state:any) => state.orders);
@@ -37,12 +38,12 @@ function UserProducts() {
 
   function handleDelete(e){
     swal({         
-      text: "Estas seguro de eliminar el producto?",
+      text: spanish ? "Estas seguro de eliminar el producto?" : "Are you sure to delete the product?",
       icon: "warning",
-      buttons: ["No", "Si"]
+      buttons: ["No", spanish ? "Si" : "Yes"]
     }).then(respuesta =>{
       if(respuesta){
-         swal({text: "Producto eliminado correctamente" , icon: "success"})
+         swal({text: spanish ? "Producto eliminado correctamente" : "Product removed successfully" , icon: "success"})
          dispatch(deleteProduct(e.target.value))
          dispatch(getAllComponents());
       }
@@ -102,7 +103,7 @@ function UserProducts() {
     <div className={s.userProducstContainer}>
       <Link to ='/user/detail' className={s.buttonHome}>
         <button>
-          Regresar
+          {spanish ? "Regresar" : "Go back"}
         </button>
       </Link>
       {
@@ -114,21 +115,21 @@ function UserProducts() {
             //   icon: "warning",
             //   timer: 1500,
             // }) &&
-            <Loading load='Cargando' msgError={<Link to = "/user/createProduct">
+            <Loading load={spanish ? 'Cargando' : "Loading"} msgError={<Link to = "/user/createProduct">
               <button className={sBtn.buttonButton}>
-                Vender
+                {spanish ? "Vender" : "Sell"}
               </button>
             </Link>}  time={1500} />
             :
             <div className={s.prodAndGrapCont}>
-              <h2>{!user.admin ? 'Mis Estadísticas' : 'Estadísticas de MyPc'}</h2>
+              <h2>{!user.admin ? spanish ? 'Mis Estadísticas' : "My Stats" : spanish ? 'Estadísticas de MyPc' : "Stats of MyPC"}</h2>
               <div className={s.graphicContainer}>
                 <Graphic 
                   labels={months} 
                   score={ventas} 
-                  text='Vendidos'
+                  text={spanish ? 'Vendidos' : "Sold"}
                   score2={publicaciones} 
-                  text2='Publicados'
+                  text2={spanish ? 'Publicados' : "Published"}
                   />
               </div>
               {user.admin &&
@@ -136,7 +137,7 @@ function UserProducts() {
                   <GraphicUsers 
                     labels={months} 
                     score={cantUsers} 
-                    text='Usuarios'
+                    text={spanish ? 'Usuarios' : "Users"}
                     />
                 </div>
               }
@@ -144,8 +145,8 @@ function UserProducts() {
                 <Graphic labels={months} score={publicaciones} text='Mis Publicaciones'/>
               </div> */}
               <div className={s.prodContainer}>
-                <h2>{!user.admin ? 'Mis productos' : 'Todas las ordenes'}</h2>
-                <b>Cant: {!user.admin? productsCreated.length : orders.length}</b>
+                <h2>{!user.admin ? spanish ? 'Mis productos' : "My products" : spanish ? 'Todas las órdenes' : "All orders"}</h2>
+                <b>{spanish ? "Cant: " : "Qty: "}{!user.admin? productsCreated.length : orders.length}</b>
                 { 
                   !user.admin?
                   productsCreated.map(prod => {
@@ -163,7 +164,7 @@ function UserProducts() {
                                 <h2>{prod.title}</h2>
                               </Link>
                               <div className={fav.infoDetailsProduct}>
-                                <h3>Precio: ${prod.price}</h3>
+                                <h3>{spanish ? "Precio: $" : "Price: $"}{prod.price}</h3>
                                 <h4>Likes: {prod.likes}</h4>
                               </div>
                             </div>
@@ -173,11 +174,11 @@ function UserProducts() {
                             <p>Stock: {prod.cant + '/' + prod.stockInitial}</p>
                             <div className={fav.buttons}>
                               <h4 className={prod.sell? s.sellColor: s.publicColor}>{
-                                  prod.sell? 'Vendido' : 'Publicado'
+                                  prod.sell? spanish ? 'Vendido' : "Sold" : spanish ? 'Publicado' : "Published"
                                 }</h4>
                               <button onClick = {handleDelete} value={prod.id} className={s.button}>X</button>
                               <Link to ={`/user/userEditProduct/${prod.id}`}>
-                                <button className={s.button}>EDITAR</button>
+                                <button className={s.button}>{spanish ? "EDITAR" : "EDIT"}</button>
                               </Link>
                             </div>
                           </div>
@@ -191,18 +192,18 @@ function UserProducts() {
                       <hr></hr>
                       <div className={s2.orderCard}>
                         <div>
-                          <b>Nro de compra</b>
+                          <b>{spanish ? "Nro de compra" : "Purchase Number: "}</b>
                           <p>{c.id}</p>
-                          <h5>Fecha: {c.date? c.date: null}</h5>
+                          <h5>{spanish ? "Fecha: " : "Date: "}{c.date? c.date: null}</h5>
                         </div>
                         <div>
-                          <h3>Monto: $ {c.fullPayment}</h3>
+                          <h3>{spanish ? "Monto: $ " : "Amount: $ "}{c.fullPayment}</h3>
                             {/* <Link to={`order/${c.id}`}>
                               <button>
                                 VER DETALLES
                               </button>
                             </Link> */}
-                          <h3>Estado: {c.status}</h3>
+                          <h3>{spanish ? "Estado: " : "State: "}{c.status}</h3>
                         </div>
                       </div>
                     </>
@@ -212,7 +213,7 @@ function UserProducts() {
               </div>
             </div>
           :
-          <Loading load='Cargando' msgError='Debes loguearte para ver tus estadísticas!' time={3000} />
+          <Loading load={spanish ? 'Cargando' : "Loading"} msgError={spanish ? 'Debes loguearte para ver tus estadísticas!' : "You must login to see your stats!"} time={3000} />
       }
     </div>
   )

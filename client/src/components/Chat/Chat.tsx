@@ -73,7 +73,7 @@ console.log(user.id ,chat)
 	return (
 		<div className={styles.containerChat}>
 			<Link to={`/list/chats/${user.id}`}>
-				<button>Volver</button>
+				<button>{spanish ? "Volver" : "Return"}</button>
 			</Link>
 			<div className={styles.containerMessages}>
 				<ul>
@@ -91,7 +91,7 @@ console.log(user.id ,chat)
 							}
 						})
 					) : (
-						<li>No tienes mensajes</li>
+						<li>{spanish ? "No tienes mensajes" : "You have no messages"}</li>
 					)}
 				</ul>
 			</div>

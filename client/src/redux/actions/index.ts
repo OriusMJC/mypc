@@ -38,13 +38,9 @@ export const NOTI_VIEW = "NOTI_VIEW";
 export const DELETE_NOTI = "DELETE_NOTI";
 export const GET_ORDERS = "GET_ORDERS"
 export const SELLER_PROD = "SELLER_PROD";
-<<<<<<< HEAD
-export const CHANGE_ACTUAL_PAGE = "CHANGE_ACTUAL_PAGE";
-export const CHANGE_LANGUAGE = "CHANGE_LANGUAGE";
-=======
 export const CHANGE_ACTUAL_PAGE = "CHANGE_ACTUAL_PAGE"
 export const GET_USERS_BY_ID = "GET_USERS_BY_ID";
->>>>>>> development
+export const CHANGE_LANGUAGE = "CHANGE_LANGUAGE";
 
 type Action = {
 	type: string;
@@ -386,13 +382,11 @@ export function deleteNoti(idUser,idNoti) {
 		}
 	}
 }
-<<<<<<< HEAD
 export function changeLanguage(){
 	return {
 		type: CHANGE_LANGUAGE
 	}
 }
-=======
 export function getUsersById(arrayUsers) {
 	return async (dispatch: Dispatch<Action>) => {
 		try {
@@ -403,4 +397,3 @@ export function getUsersById(arrayUsers) {
 		}
 	}
 }
->>>>>>> development

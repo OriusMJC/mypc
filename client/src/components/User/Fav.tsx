@@ -88,17 +88,17 @@ export default function Fav() {
             )
           ) : (
             <div className={s.textInfo}>
-              <h1>Aún no has añadido nada a Favoritos!</h1>
+              <h1>{spanish ? "Aún no has añadido nada a Favoritos!" : "You haven't added anything to Favorites yet!"}</h1>
               <Link to="/">
-                <button className={s.button}>Volver al Inicio</button>
+                <button className={s.button}>{spanish ? "Volver al Inicio" : "Back to start"}</button>
               </Link>
             </div>
           )
         ) : (
           <div className={s.textInfo}>
-            <h1>Aún no has iniciado sesión. Inicia sesión para ver tu lista de favoritos!</h1>
+            <h1>{spanish ? "Aún no has iniciado sesión. Inicia sesión para ver tu lista de favoritos!" : "You are not logged in yet. Login to see your favorites list!"}</h1>
             <Link to="/login">
-              <button className={s.button}>Login</button>
+              <button className={s.button}>{spanish ? "Ingresar" : "Login"}</button>
             </Link>
           </div>
         )

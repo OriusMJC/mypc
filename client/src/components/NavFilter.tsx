@@ -67,7 +67,7 @@ export default function NavFilter({refresh,setRefresh,setProductsPerPage,product
                     <label>{spanish ? "Precio " : "Price "}</label>
                     <select onChange={e => handleOrderPrice(e)} className = {s.filters}>
                         <option value="All" key="All">{spanish ? "Todo" : "All"}</option>
-                        <option value="More price" key="More price">{spanish ? "Mayor precio" : "Greater price"}</option>
+                        <option value="More price" key="More price">{spanish ? "Mayor precio" : "Higher price"}</option>
                         <option value="Lower price" key="Lower price">{spanish ? "Menor precio" : "Lower price"}</option>
                     </select>
                 </div>
