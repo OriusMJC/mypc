@@ -57,6 +57,7 @@ export default function Cart() {
 	// ==============================================
 	async function handleNotiSeller(){
 		await productsCart.forEach(async (p:any)=>{
+			console.log(p)
 			let msg = {
 				prodId: p.id,
 				url: `/user/userProducts`,
@@ -64,11 +65,11 @@ export default function Cart() {
 				title: 'Vendido!',
 				msg: 'Has vendido este producto!',
 				date: Date().slice(4,24),
-				sellerId: p.sellerInfo.id,
+				sellerId: p.seller?.id,
 				buyer: user?.id,
 				viewed: false,
 			}
-			await dispatch(postNoti(p.sellerInfo.id,msg))
+			await dispatch(postNoti(p.seller?.id,msg))
 		})
 	}
 	function handlePrice(e: any) {
@@ -110,7 +111,7 @@ export default function Cart() {
 		let list = [];
 		let price = 0;
 		productsCart.forEach((p: any) => {
-			list.push({ id: p.id, price: p.price, cant: 1, stock: p.cant, title: p.title, photo: p.photo, type: p.type, status: p.status });
+			list.push({ seller: p.seller ,id: p.id, price: p.price, cant: 1, stock: p.cant, title: p.title, photo: p.photo, type: p.type, status: p.status });
 			price = price + p.price;
 		});
 		setListPrice(list);
@@ -186,8 +187,6 @@ export default function Cart() {
 				</Link>
 				{user && products === true ? (
 					user.id ? (
-						// <Link to="/buy">
-							/* <button className={s.button}>Comprar</button> */							
 							<StripeCheckout
 								stripeKey={tokenKey}
 								label="Pagar ahora"
@@ -199,8 +198,6 @@ export default function Cart() {
 								token={payNow}
 								image={logo}
 							/>
-							
-						// </Link>
 					) : (
 						<Link to="/login">
 							<button className={s.button}>Loguearse</button>

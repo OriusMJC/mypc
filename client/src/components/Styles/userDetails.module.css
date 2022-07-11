@@ -11,7 +11,7 @@
     flex-direction: row;
     text-align: center;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
     background-color: var(--gray-dark);
     min-height: 80vh;
 }
@@ -36,8 +36,7 @@
     border-radius: 15px;
     height: 300px;
     width: 200px;
-    margin-left: -150px;
-    margin-right: 50px;
+    margin: 150px 50px 0px -150px;
 }
 .contOptions button{
     background-color: var(--gray-light);
