@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { getName, getAllComponents } from "../../redux/actions/index";
+import { getName, getAllComponents, changeLanguage } from "../../redux/actions/index";
 import { useAppDispatch } from "../../config/config";
 import { Link, useNavigate } from "react-router-dom";
 import s from "../Styles/NavBar.module.css";
@@ -11,6 +11,7 @@ export default function NavBar() {
 	const navigate = useNavigate();
 	const [title, setTitle] = useState("");
 	const suggestions = useSelector((state: any) => state.suggestions);
+	const spanish = useSelector((state: any) => state.spanish);
 
 	function handleInputChange(e) {
 		e.preventDefault();
@@ -27,6 +28,12 @@ export default function NavBar() {
 		dispatch(getAllComponents());
 		navigate("/");
 	}
+
+	function handleClick(e){
+		e.preventDefault();
+		dispatch(changeLanguage())
+	}
+
 	return (
 		<nav className={s.searchBarContainer}>
 			<div className={s.contain}>
@@ -40,7 +47,7 @@ export default function NavBar() {
 						<input
 							value={title}
 							type="text"
-							placeholder="Buscar..."
+							placeholder={spanish ? "Buscar..." : "Search..."}
 							onChange={(e) => handleInputChange(e)}
 						/>
 						<div className={s.dropdown}>
@@ -76,6 +83,9 @@ export default function NavBar() {
 					</button>
 				</form>
 				<NavButtons />
+				<button value={spanish} onClick={handleClick}>
+					{spanish? 'Español' : 'English'}
+				</button>
 			</div>
 		</nav>
 	);

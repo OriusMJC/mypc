@@ -40,6 +40,7 @@ export const GET_ORDERS = "GET_ORDERS"
 export const SELLER_PROD = "SELLER_PROD";
 export const CHANGE_ACTUAL_PAGE = "CHANGE_ACTUAL_PAGE"
 export const GET_USERS_BY_ID = "GET_USERS_BY_ID";
+export const CHANGE_LANGUAGE = "CHANGE_LANGUAGE";
 
 type Action = {
 	type: string;
@@ -379,6 +380,11 @@ export function deleteNoti(idUser,idNoti) {
 		} catch (error) {
 			console.log(error)
 		}
+	}
+}
+export function changeLanguage(){
+	return {
+		type: CHANGE_LANGUAGE
 	}
 }
 export function getUsersById(arrayUsers) {
