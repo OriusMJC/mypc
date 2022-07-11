@@ -136,7 +136,7 @@ export default function Register(){
 
         <label>{spanish ? "Contraseña" : "Password"}</label>
          {error.password && (<p className={s.error}> {error.password}</p>)}
-        <input type="password" required minLength={6} maxLength={12}  placeholder = {spanish ? "Ingrese la contraseña" : "Enter password"} name ="password" value = {user.password} onChange={handleChange}/>
+        <input type="password" required minLength={7} maxLength={12}  placeholder = {spanish ? "Ingrese la contraseña" : "Enter password"} name ="password" value = {user.password} onChange={handleChange}/>
 
         <button type="submit">{spanish ? "Registrarse" : "Register"}</button>
        

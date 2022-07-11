@@ -21,3 +21,23 @@
     justify-content: space-evenly;
     width: 70%;
 }
+/* cambiar despues de que se actualize el home
+ filtors para celular  */
+@media screen and (max-width: 420px) {	
+	.filterContent {
+        display: flex;
+        flex-direction: column;
+       width: 10%;     
+        padding-left: 5px;                   
+	}
+		
+}
+@media screen and (max-width: 860px) {	
+	.filterContent {
+        display: flex;
+        flex-direction: column;
+       width: 10%;     
+        padding-left: 5px;                   
+	}
+		
+  }

@@ -101,11 +101,13 @@ function UserProducts() {
 
   return (
     <div className={s.userProducstContainer}>
+      <div className={s.btnhome}>
       <Link to ='/user/detail' className={s.buttonHome}>
         <button>
           {spanish ? "Regresar" : "Go back"}
         </button>
       </Link>
+      </div>
       {
         user && user.id ?
           !productsCreated.length && !user.admin
@@ -172,6 +174,7 @@ function UserProducts() {
                           <div className={fav.extra}>
                             <h4>{prod.status}</h4>
                             <p>Stock: {prod.cant + '/' + prod.stockInitial}</p>
+                            <div className={s.publish}>
                             <div className={fav.buttons}>
                               <h4 className={prod.sell? s.sellColor: s.publicColor}>{
                                   prod.sell? spanish ? 'Vendido' : "Sold" : spanish ? 'Publicado' : "Published"
@@ -180,6 +183,7 @@ function UserProducts() {
                               <Link to ={`/user/userEditProduct/${prod.id}`}>
                                 <button className={s.button}>{spanish ? "EDITAR" : "EDIT"}</button>
                               </Link>
+                            </div>
                             </div>
                           </div>
                         </div>

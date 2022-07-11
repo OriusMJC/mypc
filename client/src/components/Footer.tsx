@@ -11,6 +11,8 @@ function Footer() {
   const spanish = useSelector((state: any) => state.spanish);
   return (
     <div className = {s.container}>
+      <div className={s.son}>
+
         <Link to = "/contact" className = {s.contact}>
             {spanish ? "Contactanos!" : "Contact us!"}
         </Link>
@@ -19,6 +21,7 @@ function Footer() {
         </p>        
         <p>Powered by ©My-Pc</p>
         <img src = {logo} width="60px" height="60px"></img>
+      </div>
     </div>
   )
 }

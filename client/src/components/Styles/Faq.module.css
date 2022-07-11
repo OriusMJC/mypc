@@ -3,3 +3,14 @@
     margin: 10px 50px;
 }
 
+@media screen and (max-width: 420px) {
+    .container{
+        width: 99%;
+    }	
+  }
+  
+@media screen and (max-width: 860px) {
+    .container{
+        width: 99%;
+    }	
+  }

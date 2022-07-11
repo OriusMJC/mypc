@@ -62,4 +62,16 @@
 .haveAccount:hover{
     transform: scale(1.05);
 }
+@media screen and (max-width: 420px) {
+ .formRegisterContainer{
+    width: 95%;
+ }   
+  
+}
+@media screen and (max-width: 860px) {
+    .formRegisterContainer{
+       width: 98%;
+    }  
+     
+   }
     
