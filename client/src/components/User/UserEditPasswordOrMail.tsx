@@ -14,7 +14,7 @@ export default function UserEditData() {
 	let handleChanges = (event) => {
 		setNewEmail(event.target.value);
 	};
-
+	const spanish = useSelector((state: any) => state.spanish);
 	const handleSubmit = async (event) => {
 		event.preventDefault();
 
@@ -30,11 +30,11 @@ export default function UserEditData() {
 			<div className={styles.containerEdit}>
 				<form onSubmit={handleSubmit}>
 					<Link to = '/user/detail'>
-						<button>Atras</button>
+						<button>{spanish ? "Atrás" : "Back"}</button>
 					</Link>
 					<div className={styles.containerInputs}>
-						<p>Se enviará un enlace a su correo electrónico para cambiar su contraseña</p>
-						<button type="submit">Cambiar Contraseña</button>
+						<p>{spanish ? "Se enviará un enlace a su correo electrónico para cambiar su contraseña" : "A link will be sent to your email to change your password"}</p>
+						<button type="submit">{spanish ? "Cambiar Contraseña" : "Change Password"}</button>
 					</div>
 				</form>
 			</div>
@@ -44,17 +44,17 @@ export default function UserEditData() {
 			<div className={styles.containerEdit}>
 				<form onSubmit={handleSubmit}>
 					<Link to = '/user/detail'>
-						<button>Atras</button>
+						<button>{spanish ? "Atras" : "Back"}</button>
 					</Link>
 					<div className={styles.containerInputs}>
 						<input
 							name="newMail"
 							type="text"
-							placeholder="Escriba su nuevo email"
+							placeholder={spanish ? "Escriba su nuevo email" : "Write your new email"}
 							defaultValue={newEmail}
 							onChange={(event) => handleChanges(event)}
 						/>
-						<button type="submit">Cambiar Email</button>
+						<button type="submit">{spanish ? "Cambiar Email" : "Change Email"}</button>
 					</div>
 				</form>
 			</div>

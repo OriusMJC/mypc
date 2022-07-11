@@ -9,6 +9,7 @@ import { useCallback, useEffect, useState } from "react";
 
 export default function ProductCard({id,title, photo, price, type, likes, status, cant, seller}){
   const dispatch = useAppDispatch()
+  const spanish = useSelector((state: any) => state.spanish);
     const user = useSelector((store:any)=> store.userDetails)
     let [favClicks,setFavCliks] = useState(0)
   
@@ -18,8 +19,8 @@ export default function ProductCard({id,title, photo, price, type, likes, status
           setFavCliks(favClicks + 1)        
         }else{
           swal({
-            title: "No estas Logueado",
-            text: "Debes iniciar sesión para poder agregar productos a favoritos!",
+            title: spanish ? "No estas logueado" : "You are not logged",
+            text: spanish ? "Debes iniciar sesión para poder agregar productos a favoritos!" : "You must be logged in to add products to favorites!",
             icon: "warning",
           })
             // alert('Debes iniciar sesión para poder agregar productos a favoritos!')

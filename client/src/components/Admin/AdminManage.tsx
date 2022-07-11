@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { useAppDispatch } from "src/config/config";
 import {
 	deleteProduct,
+	deleteUser,
 	filterUser,
 	getAllComponents,
 	getAllUsers,
@@ -22,6 +23,7 @@ export default function AdminManage() {
 	const allComponents = useSelector((store: any) => store.components);
 	const [btnView, setBtnView] = useState("products");
 	const [refresh, setRefresh] = useState(1);
+	const spanish = useSelector((state: any) => state.spanish);
 	// console.log(allUsers);
 	useEffect(() => {
 		dispatch(getAllUsers());
@@ -44,6 +46,12 @@ export default function AdminManage() {
 		dispatch(getName(""));
 		dispatch(filterUser(""));
 	}
+	async function handleDeleteUser(id) {
+		await deleteUser(id)
+		dispatch(getAllUsers())
+		dispatch(getAllComponents())
+	}
+
 
 	let locals = allUsers.filter((local) => local.latitude && local.longitude);
 
@@ -159,7 +167,7 @@ export default function AdminManage() {
 												)}
 												{!user.admin ? (
 													<td>
-														<button>❌</button>
+														<button onClick={event => handleDeleteUser(user.id)}>❌</button>
 													</td>
 												) : (
 													<></>
@@ -174,8 +182,8 @@ export default function AdminManage() {
 				</div>
 			) : (
 				<Loading
-					load="Verificando que seas Admin"
-					msgError="No eres admin, no debes de estar aca"
+					load={spanish ? "Verificando que seas Admin" : "Verifying that you are an Admin"}
+					msgError={spanish ? "No eres admin, no debes de estar aca" : "You're not an admin, you shouldn't be here"}
 					time={3000}
 				/>
 			)}
