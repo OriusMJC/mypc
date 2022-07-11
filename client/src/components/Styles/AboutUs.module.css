@@ -28,12 +28,9 @@
     height: 200px; 
     margin-top: -15px;  
 }
-.eachOfUs img:hover{
-    width: 205px;
-    height: 205px;
-    transition: 0.2s;  
-    border: 5px solid #c3c3d2;
-    border-radius: 15px;
+.eachOfUs:hover{
+    width: 530px;    
+    transition: 0.2s;          
 }
 .name{
     display: flex;
