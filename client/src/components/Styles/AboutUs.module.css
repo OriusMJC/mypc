@@ -8,6 +8,7 @@
     grid-gap: 1rem;
     margin-bottom: 30px;
 }
+
 .eachOfUs{
     text-align: center;
     display: flex;
@@ -18,9 +19,14 @@
     border-radius: 15px;
     width: 500px;
 }
+.eachOfUs p{
+    font-size: 24px;
+    margin: 0px 10px;
+}
 .eachOfUs img{
     width: 200px;
-    height: 200px;   
+    height: 200px; 
+    margin-top: -15px;  
 }
 .eachOfUs img:hover{
     width: 205px;
@@ -28,5 +34,8 @@
     transition: 0.2s;  
     border: 5px solid #c3c3d2;
     border-radius: 15px;
-
+}
+.name{
+    display: flex;
+    flex-direction: row;
 }

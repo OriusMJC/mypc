@@ -13,6 +13,7 @@ interface usData {
     name: string
     date: number
     image: string
+    description: string
 }
 
 
@@ -21,32 +22,38 @@ const aboutUsDate: Array<usData> =[
     {
         name: "Lauti",
         date:  1980,
-        image: lauti    
+        image: lauti,   
+        description : "aca tu description" 
     },
     {
         name: "Mati",
         date:  1980,
-        image:  mati          
+        image:  mati,   
+        description : "aca tu description"
     },
     {
         name: "Nico",
         date:  1980,
-        image: nico   
+        image: nico,   
+        description : "aca tu description"
     },
     {
         name: "Tobias",
         date:  1980,
-        image: tobias   
+        image: tobias,   
+        description : "aca tu description"
     },
     {
         name: "Angel",
         date:  1980,
-        image: angel    
+        image: angel,   
+        description : "aca tu description"
     },
     {
         name: "Santi",
         date:  1980,
-        image: santi  
+        image: santi,   
+        description : "aca tu description"
     }
 ] 
 
@@ -61,8 +68,12 @@ function AboutUs() {
                 aboutUsDate.map(user => {
                     return(
                         <div className={s.eachOfUs}>
-                            <p>{user.name}</p>
-                            <p>{user.date}</p>
+                            <div className={s.name}>
+                                <p>{user.name}</p>
+                                <p>{user.date}</p>
+                            </div>
+                                <p>{user.description}</p>
+
                             <img src={user.image} alt={user.name}/>
                         </div>
                     )
