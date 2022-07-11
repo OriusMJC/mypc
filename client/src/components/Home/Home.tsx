@@ -32,7 +32,7 @@ export default function Home() {
   //   if(resId){
   //     dispatch(loginUser(resId))
   //   }
-  // }
+  // }) 
   useEffect(() => {
     let res = userData();
     // isUserLogin()

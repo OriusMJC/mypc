@@ -1,5 +1,5 @@
 import * as types from '../types'
-import { addLikes, deleteLike } from './productServices';
+import { addLikes, deleteLike, deleteUserProducts } from './productServices';
 const { User } = require('../db');
 const {DB_EMAIL} = process.env;
 
@@ -132,3 +132,8 @@ export const deleteNoti = async (
 	await User.update({ noti: newNotiArr }, { where: { id: idUser } });
 	return "Notificacion agregada con exito";
 };
+export const deleteUser = async (id:string) => {
+	let user = await User.destroy({where: {id}})
+	await deleteUserProducts(id);
+	return !!user
+}
