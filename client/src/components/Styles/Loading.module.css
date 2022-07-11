@@ -19,3 +19,8 @@
         transform: rotate(360deg)
     }
 }
+@media screen and (max-width: 420px) {
+		.loadContainer{
+            width: 100%;
+        }
+  }

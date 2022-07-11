@@ -53,3 +53,14 @@
     color: grey;
     font-style: italic;
 }
+@media screen and (max-width: 420px) { 
+   .prodContainer{
+    width: 100%;
+   }
+  
+}
+@media screen and (max-width: 860px) { 
+    .prodContainer{
+     width: 100%;
+    }   
+ }

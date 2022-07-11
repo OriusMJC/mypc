@@ -266,3 +266,17 @@
         margin: 5px 0px;
     }		
   }
+  @media screen and (max-width: 860px) {	
+	.container {   
+    display: flex;
+    flex-direction: column;        
+    height: 100%;      
+	}
+    .form{        
+        width: 100%;
+    }
+    .products{        
+        width: 100%;        
+        margin: 5px 0px;
+    }		
+  }

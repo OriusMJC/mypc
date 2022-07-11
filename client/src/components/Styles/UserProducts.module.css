@@ -111,3 +111,40 @@
     }
     
   }
+  @media screen and (max-width: 860px) {
+    .userProducstContainer{       
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;        
+    }
+    .prodAndGrapCont{        
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+    }
+    .graphicContainer{
+        width: 100%;
+    }
+    .prodContainer{
+        width: 100%;
+    }
+    .btnhome{
+        width: 100%;
+        margin-left: 5%;
+        margin-top: -5%;        
+    }
+    .buttonHome{
+        width: 100%;
+
+    }
+    .publish{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 10%;
+    }
+    
+  }

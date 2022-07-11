@@ -44,3 +44,16 @@
     75%{margin-left: -300%;}
     100%{margin-left: -300%;}
 } */
+
+@media screen and (max-width: 420px) {
+.homeContainer{
+    width: 100%;
+   
+}	
+  }
+  @media screen and (max-width: 860px) {
+    .homeContainer{
+        width: 100%;
+       
+    }	
+      }

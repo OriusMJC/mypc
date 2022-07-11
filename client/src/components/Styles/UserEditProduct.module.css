@@ -179,3 +179,37 @@
     box-shadow: 0px 2px 5px rgb(141, 141, 141);
     transform: scale(1.02)
 }
+@media screen and (max-width: 420px) {
+    .containerBtn{
+        width: 100%;
+    }
+    .container{
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        width: 100%;
+    }
+    .form{
+        width: 100%;
+    }
+    .view{
+        width: 100%;
+    }
+  }
+  @media screen and (max-width: 860px) {
+    .containerBtn{
+        width: 100%;
+    }
+    .container{
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        width: 100%;
+    }
+    .form{
+        width: 100%;
+    }
+    .view{
+        width: 100%;
+    }
+  }

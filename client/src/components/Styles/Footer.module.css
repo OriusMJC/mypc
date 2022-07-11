@@ -23,15 +23,12 @@
 }
 @media screen and (max-width: 420px) {	
 	.container {	      
-    position: relative;   
+    display: inline-block;
     padding-right: 5px;
-	}
-    .son{
-        position: absolute;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        flex-direction: row-reverse;
-    }
+    width: 98%;      
+    bottom: 1%;
+    text-align: center;
+    margin: 5px;
+	}   
 		
   }
