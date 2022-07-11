@@ -22,6 +22,7 @@ export default function AdminManage() {
 	const allComponents = useSelector((store: any) => store.components);
 	const [btnView, setBtnView] = useState("products");
 	const [refresh, setRefresh] = useState(1);
+	const spanish = useSelector((state: any) => state.spanish);
 	// console.log(allUsers);
 	useEffect(() => {
 		dispatch(getAllUsers());
@@ -174,8 +175,8 @@ export default function AdminManage() {
 				</div>
 			) : (
 				<Loading
-					load="Verificando que seas Admin"
-					msgError="No eres admin, no debes de estar aca"
+					load={spanish ? "Verificando que seas Admin" : "Verifying that you are an Admin"}
+					msgError={spanish ? "No eres admin, no debes de estar aca" : "You're not an admin, you shouldn't be here"}
 					time={3000}
 				/>
 			)}

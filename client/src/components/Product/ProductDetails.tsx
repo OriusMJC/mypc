@@ -266,13 +266,13 @@ console.log(favClicks)
                   {
                      admin || product.cant === 0?
                      <>
-                        <input value='Comprar' type='button' id={s.buttonBuy}  onClick={handleBuy} disabled/>
-                        <input value='Añadir al carrito'type='button' className={s.btnSend} onClick={handleCart} disabled/>
+                        <input value={spanish ? 'Comprar' : "Buy"} type='button' id={s.buttonBuy}  onClick={handleBuy} disabled/>
+                        <input value={spanish ? 'Añadir al carrito' : "Add To Cart"}type='button' className={s.btnSend} onClick={handleCart} disabled/>
                      </>
                      :
                      <>
-                        <input value='Comprar' type='button' id={s.buttonBuy}  onClick={handleBuy}/>
-                        <input value='Añadir al carrito'type='button' className={s.btnSend} onClick={handleCart}/>
+                        <input value={spanish ? 'Comprar' : "Buy"} type='button' id={s.buttonBuy}  onClick={handleBuy}/>
+                        <input value={spanish ? 'Añadir al carrito' : "Add To Cart"}type='button' className={s.btnSend} onClick={handleCart}/>
                      </>
                   }
                   {
