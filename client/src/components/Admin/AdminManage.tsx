@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { useAppDispatch } from "src/config/config";
 import {
 	deleteProduct,
+	deleteUser,
 	filterUser,
 	getAllComponents,
 	getAllUsers,
@@ -44,6 +45,12 @@ export default function AdminManage() {
 		dispatch(getName(""));
 		dispatch(filterUser(""));
 	}
+	async function handleDeleteUser(id) {
+		await deleteUser(id)
+		dispatch(getAllUsers())
+		dispatch(getAllComponents())
+	}
+
 
 	let locals = allUsers.filter((local) => local.latitude && local.longitude);
 
@@ -159,7 +166,7 @@ export default function AdminManage() {
 												)}
 												{!user.admin ? (
 													<td>
-														<button>❌</button>
+														<button onClick={event => handleDeleteUser(user.id)}>❌</button>
 													</td>
 												) : (
 													<></>
