@@ -1,0 +1,32 @@
+
+
+
+.gridcontainer{
+    display: grid; 
+    grid-template-columns: 1fr 1fr 1fr;     
+    grid-auto-rows: auto;     
+    grid-gap: 1rem;
+    margin-bottom: 30px;
+}
+.eachOfUs{
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    border: 3px solid #c3c3d2;
+    border-radius: 15px;
+    width: 500px;
+}
+.eachOfUs img{
+    width: 200px;
+    height: 200px;   
+}
+.eachOfUs img:hover{
+    width: 205px;
+    height: 205px;
+    transition: 0.2s;  
+    border: 5px solid #c3c3d2;
+    border-radius: 15px;
+
+}
