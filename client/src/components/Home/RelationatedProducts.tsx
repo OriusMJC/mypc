@@ -34,7 +34,7 @@ function RelationatedProducts() {
   });
   const relationated = arr.slice(0, 5)  
 
-  if(user.id && relationated.length > 2){
+  if(user.id && visitedProducts.length > 3){
     return (
       <div className = {s.container}>
       <h1>En base a tus ultimas visitas</h1>
