@@ -99,8 +99,8 @@ function AboutUs() {
                                   <p>Edad: {user.age}</p>
                                   <p>{user.description}</p>
                                   <div className={s.redes}>
-                                  <Link  to={user.linkedIn}><i className='fa fa-linkedin-square' ></i></Link>                                  
-                                  <Link to={user.gitHub}><i className='fa fa-github-square'></i></Link>                                
+                                  <a  href={user.linkedIn}><i className='fa fa-linkedin-square' ></i></a>                                  
+                                  <a href={user.gitHub}><i className='fa fa-github-square'></i></a>                                
                                   </div>
                               <img src={user.imageBack} alt={user.name}/>
                             </div>
