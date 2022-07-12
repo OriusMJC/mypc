@@ -4,10 +4,14 @@ import angel from '../media/AboutUsImg/angel.png'
 import lauti from '../media/AboutUsImg/lauti.png'
 import mati from '../media/AboutUsImg/mati.png'
 import nico from '../media/AboutUsImg/nico.png'
-import Nico from '../media/AboutUsImg/Nico.jpeg'
-import santi from '../media/AboutUsImg/santi.png'
 import tobias from '../media/AboutUsImg/tobias.png'
-import { Link } from 'react-router-dom';
+import santi from '../media/AboutUsImg/santi.png'
+import Nico from '../media/AboutUsImg/Nico.jpeg'
+import Angel from '../media/AboutUsImg/Angel.jpeg'
+import Mati from '../media/AboutUsImg/Mati.jpeg'
+import Lauti from '../media/AboutUsImg/Lauti.jpeg'
+import Tobias from '../media/AboutUsImg/Tobias.jpeg'
+import Santi from '../media/AboutUsImg/Santi.jpeg'
 
 
 interface usData {    
@@ -27,7 +31,7 @@ const aboutUsDate: Array<usData> =[
         name: "Lauti",
         age:  1980,
         imageBack: lauti,
-        imageFront: "",   
+        imageFront: Lauti,   
         description : "aca tu description" ,
         linkedIn: "mi linkedin",
         gitHub: "mi git"
@@ -36,7 +40,7 @@ const aboutUsDate: Array<usData> =[
         name: "Mati",
         age:  1980,
         imageBack: mati,
-        imageFront: "",   
+        imageFront: Mati,   
         description : "aca tu description",
         linkedIn: "mi linkedin",
         gitHub: "mi git"
@@ -54,7 +58,7 @@ const aboutUsDate: Array<usData> =[
         name: "Tobias",
         age:  1980,
         imageBack: tobias,
-        imageFront: "",    
+        imageFront: Tobias,    
         description : "aca tu description",
         linkedIn: "mi linkedin",
         gitHub: "mi git"
@@ -63,7 +67,7 @@ const aboutUsDate: Array<usData> =[
         name: "Angel",
         age:  1980,
         imageBack: angel,
-        imageFront: "",   
+        imageFront: Angel,   
         description : "aca tu description",
         linkedIn: "mi linkedin",
         gitHub: "mi git"
@@ -72,7 +76,7 @@ const aboutUsDate: Array<usData> =[
         name: "Santi",
         age:  1980,
         imageBack: santi,
-        imageFront: "",   
+        imageFront: Santi,   
         description : "aca tu description",
         linkedIn: "mi linkedin",
         gitHub: "mi git"
