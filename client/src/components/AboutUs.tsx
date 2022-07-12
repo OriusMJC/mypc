@@ -42,7 +42,7 @@ const aboutUsDate: Array<usData> =[
         gitHub: "mi git"
     },
     {
-        name: "Nico",
+        name: "Nicolás Rojo",
         age:  35,
         imageBack: nico,
         imageFront: Nico,   
@@ -95,9 +95,8 @@ function AboutUs() {
                                 <h3>{user.name}</h3>
                                 <img src={user.imageFront} alt="foto caripela"/>
                             </div>
-                            <div className={`${s.face} ${s.back}`}>                                
-                                  <p>{user.name}</p>
-                                  <p>{user.age}</p>
+                            <div className={`${s.face} ${s.back}`}>                                                                  
+                                  <p>Edad: {user.age}</p>
                                   <p>{user.description}</p>
                                   <div className={s.redes}>
                                   <Link  to={user.linkedIn}><i className='fa fa-linkedin-square' ></i></Link>                                  
