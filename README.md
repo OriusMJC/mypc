@@ -20,7 +20,7 @@
 <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/javascript/javascript-original.svg" alt="javascript" width="40" height="40"/> 
 </a>  -->
 <h3>FrontEnd: </h2>
-<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank" rel="noreferrer"> 
+<a href="https://es.wikipedia.org/wiki/TypeScript" target="_blank" rel="noreferrer"> 
 <img src="https://www.vectorlogo.zone/logos/typescriptlang/typescriptlang-icon.svg" alt="typescript" width="40" height="40"/> 
 </a> 
 <a href="https://reactjs.org/" target="_blank" rel="noreferrer"> 
@@ -44,10 +44,10 @@
 <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/mysql/mysql-original-wordmark.svg" alt="mysql" width="40" height="40"/> 
 </a>  -->
 <h3>BackEnd: </h2>
-<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank" rel="noreferrer"> 
+<a href="https://es.wikipedia.org/wiki/TypeScript" target="_blank" rel="noreferrer"> 
 <img src="https://www.vectorlogo.zone/logos/typescriptlang/typescriptlang-icon.svg" alt="typescript" width="40" height="40"/> 
 </a> 
-<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank" rel="noreferrer"> 
+<a href="https://expressjs.com/es/" target="_blank" rel="noreferrer"> 
 <img src="https://www.vectorlogo.zone/logos/expressjs/expressjs-icon.svg" alt="express" width="40" height="40"/> 
 </a> 
 <a href="https://www.postgresql.org" target="_blank" rel="noreferrer"> 
@@ -59,14 +59,14 @@
 <img src="https://www.vectorlogo.zone/logos/stripe/stripe-icon.svg" alt="stripe" width="40" height="40"/> 
 </a>  -->
 <h3>Testing: </h2>
-<a href="https://postman.com" target="_blank" rel="noreferrer"> 
+<a href="https://jestjs.io" target="_blank" rel="noreferrer"> 
 <img src="https://www.vectorlogo.zone/logos/jestjsio/jestjsio-icon.svg" alt="jest" width="40" height="40"/> 
 </a> 
 <h3>Deploy: </h2>
-<a href="https://postman.com" target="_blank" rel="noreferrer"> 
+<a href="https://dashboard.heroku.com" target="_blank" rel="noreferrer"> 
 <img src="https://www.vectorlogo.zone/logos/heroku/heroku-icon.svg" alt="heroku" width="40" height="40"/> 
 </a> 
-<a href="https://postman.com" target="_blank" rel="noreferrer"> 
+<a href="https://vercel.com" target="_blank" rel="noreferrer"> 
 <img src="https://www.svgrepo.com/show/327408/logo-vercel.svg" alt="vercel" width="40" height="40"/> 
 </a> 
 <!-- <a href="https://getbootstrap.com" target="_blank" rel="noreferrer"> 
