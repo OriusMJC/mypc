@@ -41,7 +41,7 @@ export default function UserDetail() {
             <div className={s.buttonContainer}>
               <Link to="/">
                 <button className={s.buttonButton}>
-                  {spanish ? "Inicio" : "Start"}
+                  {spanish ? "Inicio" : "To Home"}
                 </button>
               </Link>
               {
