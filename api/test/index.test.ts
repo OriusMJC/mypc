@@ -35,7 +35,6 @@ describe('POST /users',()=>{
             .send(user)
             .expect(200)
             .expect("Usuario guardado con éxito")
-        // console.log(response)
     })
     test('should respond with a 404 status code and a msg Error',async ()=>{
         //user without key "name".
@@ -90,7 +89,6 @@ describe('POST /products',()=>{
             .send(product)
             .expect(200)
             .expect('"Producto creado con éxito"')
-        // console.log(response)
     })
     test('should respond with a 404 status code and a msg Error',async ()=>{
         //user without key "title".
