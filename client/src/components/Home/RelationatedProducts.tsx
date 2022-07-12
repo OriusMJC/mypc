@@ -1,6 +1,6 @@
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-import s from '../Styles/RelationatedProducts.module.css';
+import s from '../Styles/MostFaved.module.css'
 
 function RelationatedProducts() {
   const user = useSelector((store:any) => store.userDetails);
@@ -34,7 +34,7 @@ function RelationatedProducts() {
   });
   const relationated = arr.slice(0, 5)  
 
-  if(user.id && relationated.length > 2){
+  if(user?.id && relationated.length > 2){
     return (
       <div className = {s.container}>
       <h1>En base a tus ultimas visitas</h1>

@@ -51,7 +51,9 @@
     justify-content: center;
     align-items: center;  
     position: absolute;
-    bottom: 1px;          
+    bottom: 0;
+    left: 0; 
+           
 }   
 .son{
     display: flex;

@@ -105,7 +105,6 @@ export default function ProductDetails(){
             icon: "warning",
          })
       }else{
-         console.log(product)
          dispatch(addProductCart({
             key: product.key, 
             id: product.id,

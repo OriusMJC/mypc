@@ -20,7 +20,7 @@ function DirectionOrder() {
     return (
       <div className={s.directionContainer}>
         <h1>{spanish ? "Localizaciones de los vendedores" : "Sellers locations"}</h1>
-        <MapView user={[product.sellerInfo]}/>  
+        <MapView user={[product.sellerInfo]} manually={false}/>  
       </div>
     )
   }

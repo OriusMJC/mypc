@@ -24,7 +24,6 @@ export default function AdminManage() {
 	const [btnView, setBtnView] = useState("products");
 	const [refresh, setRefresh] = useState(1);
 	const spanish = useSelector((state: any) => state.spanish);
-	// console.log(allUsers);
 	useEffect(() => {
 		dispatch(getAllUsers());
 		dispatch(getAllComponents());
