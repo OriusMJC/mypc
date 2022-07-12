@@ -17,7 +17,7 @@
     gap: 10px;
 }
 .containerDiv{
-    width: 100%;
+    width: 200px;
     height: 300px;
     display: flex;
     flex-direction: column;

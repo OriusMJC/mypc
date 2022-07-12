@@ -150,9 +150,7 @@ export const updateVisitedProducts = async (
 	}else {
 		visitedProducts = [product]
 	}
-	console.log(visitedProducts.length);
 	await User.update({visited: visitedProducts }, { where: { id: idUser }})
-	console.log(user);
 	return 'Producto agregado'
 }
 export const deleteUser = async (id:string) => {

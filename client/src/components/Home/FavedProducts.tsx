@@ -25,7 +25,7 @@ function FavedProducts() {
 
  return (
     <div className = {s.container}>
-        <h1>Productos mas likeados</h1>
+        <h1>{filteredComponents.length? 'Productos mas likeados' : null}</h1>
         <div className = {s.container2}>
         {filteredComponents.length && 
          filteredComponents.map((comp:any) => {
