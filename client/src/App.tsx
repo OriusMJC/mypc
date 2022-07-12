@@ -133,9 +133,10 @@ function App() {
 
 				{/* CONTACT */}
 				<Route path="/contact" element={<Contact />} />
-				{/* ABOUT US */}
+
+				{/* About Us  */}
 				<Route path="/aboutus" element={<AboutUs />} />
-				
+
 			</Routes>
 			<Footer />
 		</div>

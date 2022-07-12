@@ -7,6 +7,8 @@ import s from "../Styles/Home.module.css";
 import { userData } from "src/services/userFirebase";
 import NavFilter from '../NavFilter'
 import Slider from "./Slider";
+import FavedProducts from './FavedProducts'
+import RelationatedProducts from './RelationatedProducts'
 
 // import { Link } from 'react-router-dom';
 // import { Products } from '../../types'
@@ -32,7 +34,7 @@ export default function Home() {
   //   if(resId){
   //     dispatch(loginUser(resId))
   //   }
-  // }
+  // }) 
   useEffect(() => {
     let res = userData();
     // isUserLogin()
@@ -44,6 +46,8 @@ export default function Home() {
       <div>       
         <NavFilter refresh={refresh} setRefresh={setRefresh} setProductsPerPage={setProductsPerPage} products={true} lengthAll={allComponents?.length}/>
         <Slider/>
+        <FavedProducts/>
+        <RelationatedProducts/>
         <Pages
           productsPerPage={productsPerPage}
           allComponents={allComponents}

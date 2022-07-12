@@ -3,7 +3,7 @@ import Contact from './Contact'
 import s from './Styles/Footer.module.css'
 import logo from '../media/logo1.png'
 import { useSelector } from 'react-redux';
-import AboutUs from './AboutUs';
+
 
 
 
@@ -21,12 +21,12 @@ function Footer() {
         <p>
           {spanish ? "Necesitas alguna " : "Do you need any "} <Link to = "/help" className={s.help}>{spanish ? "Ayuda?" : "Help?"}</Link>  
         </p>        
-        <p>Powered by ©My-Pc</p>
-        <img src = {logo} width="60px" height="60px"></img>
-      </div>
-      <Link to = "/aboutus" className={s.aboutus}>
-            {spanish ? "Sobre nosotros!" : "About us!"}
+        <Link to = "/aboutus" className = {s.aboutus}>
+          {spanish ? "Sobre nosotros!" : "About us!"}
         </Link>
+        <p>Powered by ©My-Pc</p>
+        <img src = {logo} width="60px" height="60px" alt="logo"></img>
+      </div>     
     </div>
   )
 }

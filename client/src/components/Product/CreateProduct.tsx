@@ -219,7 +219,10 @@ function CreateProduct() {
         </form>
         <div className = {s.products}>
             <div className = {s.imgPContainer}>
+            <div className = {s.containerr}>
+            {typeof product.photo[0] === 'string' && <button value={product.photo[0]} onClick = {handleDeleteImage} className = {s.buttonPrincipal}>X</button>}
             <img src={typeof product.photo[0] === 'string' && product.photo[0]} className={s.pImage}></img>
+            </div>
             <div className = {s.ultraContainer}>
             {product.photo.length > 1 && 
                 product.photo.map((photo, i) => {
