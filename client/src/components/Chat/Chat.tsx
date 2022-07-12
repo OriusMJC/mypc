@@ -69,7 +69,6 @@ function Chat() {
 			}
 		});
 	}, []);
-console.log(user.id ,chat)
 	return (
 		<div className={styles.containerChat}>
 			<Link to={`/list/chats/${user.id}`}>

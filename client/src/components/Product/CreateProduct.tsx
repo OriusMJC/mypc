@@ -1,11 +1,10 @@
-import { useState} from 'react';
+import { useEffect, useState} from 'react';
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom'
 import { useAppDispatch } from '../../config/config';
-import { createProduct} from '../../redux/actions/index';
+import { createProduct, getUsersById} from '../../redux/actions/index';
 import s from '../Styles/CreateProduct.module.css'
 import swal from 'sweetalert';
-
 
  interface Product {
     title: string
@@ -54,7 +53,7 @@ function CreateProduct() {
         stockInitial: 1,
         status: "",
         sell: false,
-    });  
+    });
     
     function validate(product){
         let errors: Product = {
@@ -173,6 +172,34 @@ function CreateProduct() {
         }
     }
 
+    useEffect(() => {    
+        dispatch(getUsersById(user.id))
+        console.log(user);
+        if (!user.seller) {
+            swal({
+                title: "No eres vendedor",
+                text: "Necesitas activar tu cuenta con tu ibucacion para poder vender!",
+                icon: "warning",
+                buttons: [
+                  'No, cancelar!',
+                  'Quiero ser vendedor!'
+                ],
+                dangerMode: true,
+            }).then(function(isConfirm) {
+                if (isConfirm) {
+                    navigate('/user/direction')
+                //   swal({
+                //     title: 'Shortlisted!',
+                //     text: 'Candidates are successfully shortlisted!',
+                //     icon: 'success'
+                //   })
+                } else {
+                    navigate('/')
+                }
+            })
+        }
+    }, [])
+
   return (
     <div>
          <div className={s.errorCode}>
@@ -219,7 +246,10 @@ function CreateProduct() {
         </form>
         <div className = {s.products}>
             <div className = {s.imgPContainer}>
+            <div className = {s.containerr}>
+            {typeof product.photo[0] === 'string' && <button value={product.photo[0]} onClick = {handleDeleteImage} className = {s.buttonPrincipal}>X</button>}
             <img src={typeof product.photo[0] === 'string' && product.photo[0]} className={s.pImage}></img>
+            </div>
             <div className = {s.ultraContainer}>
             {product.photo.length > 1 && 
                 product.photo.map((photo, i) => {

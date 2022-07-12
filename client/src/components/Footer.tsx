@@ -19,12 +19,12 @@ function Footer() {
         <p>
           {spanish ? "Necesitas alguna " : "Do you need any "} <Link to = "/help" className={s.help}>{spanish ? "Ayuda?" : "Help?"}</Link>  
         </p>        
+        <Link to = "/aboutus" className = {s.aboutus}>
+          {spanish ? "Sobre nosotros!" : "About us!"}
+        </Link>
         <p>Powered by ©My-Pc</p>
         <img src = {logo} width="60px" height="60px"></img>
       </div>
-      <Link to = "/aboutus" className = {s.aboutus}>
-            Sobre nosotros
-        </Link>
     </div>
   )
 }

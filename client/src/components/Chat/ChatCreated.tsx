@@ -16,9 +16,7 @@ function ChatCreated() {
 
   useEffect(() => {
     get(starCountRef).then(snapshot => {
-      // console.log(snapshot.val(), chatId, "VAL SNAPSHOT")
       const data = snapshot.val()
-      console.log("SE HIZO GET", data)
       if(!data) {
         set(ref(database, `chat/${0}`), {
           users: [from, to],
@@ -33,7 +31,6 @@ function ChatCreated() {
             return e
           }
         })
-        console.log(chat)
         if(chat.length) {
           navigate(`/chat/${from}/${to}`, {state: chat})
         } else {

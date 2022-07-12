@@ -14,6 +14,7 @@ import {
 	addNewNoti,
 	notiViewTrue,
 	deleteNoti,
+	updateVisitedProducts,
 	deleteUser,
 } from "../services/usersServices";
 import * as types from "../types";
@@ -132,7 +133,6 @@ router.put(
 			const newDataUser = req.body;
 			try {
 				let response = await updateDataUser(newDataUser);
-				// console.log(response)
 				res.json(response);
 			} catch (err) {
 				return next(err);
@@ -249,17 +249,17 @@ router.post("/orders", async (_req, res) => {
 });
 router.delete("/:id",async (req, res) => {
 	let { id } = req.params
-	// let product = await deleteUserProducts(id)
 	let user = await deleteUser(id);
-	// console.log(user)
 	res.send(user) 
 })
-/* 
-router.get('/:idUser/orders', getUserOrders)
-
-router.get('/:idUser/orders/:idOrder', getUserOrder)
-
-router.get('/:idUser/cart/payment')
-*/
-
+router.put('/visitedProducts/:idUser', async(req, res, next) => {
+	const  idUser= req.params.idUser;
+	const product = req.body;
+	try {
+		const response = await updateVisitedProducts(idUser, product);
+		res.json(response);
+	} catch (error) {
+		next(error)
+	}
+})
 module.exports = router;
