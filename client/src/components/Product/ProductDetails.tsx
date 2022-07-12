@@ -1,8 +1,8 @@
-import { useEffect, useState, useCallback } from "react"
+import React, { useEffect, useState, useCallback, JSXElementConstructor, ReactElement } from "react"
 import { useSelector} from "react-redux"
 import { Link, useParams, useNavigate } from "react-router-dom"
 import { useAppDispatch } from "src/config/config"
-import { addFavUser, addProductCart, getAllDetails, resetProductDetail, deleteProduct, delFavUser, delProductCart, postNoti } from "src/redux/actions"
+import { addFavUser, addProductCart, getAllDetails, resetProductDetail, deleteProduct, delFavUser, delProductCart, postNoti, addVisited } from "src/redux/actions"
 import ProductComments from "./ProductComments"
 import SellerProducts from './SellerProducts'
 import s from '../Styles/ProductDetails.module.css'
@@ -28,19 +28,18 @@ import swal from 'sweetalert';
 //    }
 // }
 export default function ProductDetails(){
+   let product = useSelector((store:any) => store.productDetails)
+   const idUser = useSelector((store:any)=> store.userDetails?.id)
+   const user = useSelector((state: any) => state.userDetails)
    const dispatch = useAppDispatch()
    const {idProduct} = useParams()
    const navigate = useNavigate();
-   let product = useSelector((state:any) => state.productDetails)
-   const user = useSelector((store:any)=> store.userDetails)
-   const idUser = useSelector((store:any)=> store.userDetails?.id)
    const admin = useSelector((store:any)=> store.userDetails?.admin)
    const productSellerId = product.sellerInfo && product.sellerInfo.id
    const boolean = productSellerId && productSellerId === idUser && true
    const [pos, setPos] = useState(0);
    const spanish = useSelector((state: any) => state.spanish);
    let [favClicks,setFavCliks] = useState(0)
-
    
    function handleNotiSellerComment(){
       let msg = {
@@ -199,7 +198,7 @@ export default function ProductDetails(){
       })
       
     }, [user,idUser,product])
-console.log(favClicks)
+
    
    return(
       <div id={s.prodContainer}>

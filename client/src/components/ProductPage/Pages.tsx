@@ -44,9 +44,6 @@ function Pages({ productsPerPage, allComponents, refresh }) {
 
     return(
       <section className={s.pageContainer}>
-          <div className={s.buttonsPage}>
-              {pageNumbers}
-          </div>
           <div className={s.containerProdCards}>
           {
               !products.length ? 
@@ -83,6 +80,7 @@ function Pages({ productsPerPage, allComponents, refresh }) {
                           seller={prod.sellerInfo}
                           />)
                   })
+                  
                   :
                   <h2>{allComponents}</h2>
 
@@ -91,6 +89,9 @@ function Pages({ productsPerPage, allComponents, refresh }) {
               // <Loading/>
               <Loading load={spanish ? 'Buscando producto' : "Searching product"} msgError={spanish ? 'No se ha encontrado ningún producto' : "No product found"} time={3000}/>
           }      
+          </div>
+          <div className={s.buttonsPage}>
+              {pageNumbers}
           </div>
       </section>
       

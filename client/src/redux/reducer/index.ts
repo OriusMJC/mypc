@@ -29,6 +29,7 @@ import {
 	CHANGE_ACTUAL_PAGE,
 	NOTI_VIEW,
 	DELETE_NOTI,
+	ADD_VISITED,
 	CHANGE_LANGUAGE,
 	GET_USERS_BY_ID,
 } from "../actions";
@@ -71,7 +72,7 @@ const initialState = {
 	],
 	allUsers: [],
 	users: [],
-	userDetails: { fav: [] , noti: []},
+	userDetails: { fav: [] , noti: [], visited: []},
 	productDetails: { comments: [] },
 	// productsCreated: [],
 	cart: [],
@@ -339,6 +340,24 @@ export default function rootReducer(state = initialState, action: any) {
 				return {
 					...state,
 					userDetails : {...state.userDetails, noti: newArrNoti}
+				}
+			}
+			case ADD_VISITED: {
+				let visitedProducts = [...state.userDetails.visited];
+				if(visitedProducts.length){
+					if(visitedProducts.length < 50){
+						visitedProducts.push(action.payload)
+					}else{
+						visitedProducts.shift();
+						visitedProducts = [...visitedProducts, action.payload]
+					}
+				}else{
+					visitedProducts = [action.payload]
+				}
+				let newArrVisited = {...state.userDetails, visited: visitedProducts}
+				return {
+					...state,
+					userDetails: newArrVisited,
 				}
 			}
 		case CHANGE_LANGUAGE:
