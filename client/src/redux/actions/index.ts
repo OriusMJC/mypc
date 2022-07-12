@@ -42,6 +42,7 @@ export const CHANGE_ACTUAL_PAGE = "CHANGE_ACTUAL_PAGE"
 export const GET_USERS_BY_ID = "GET_USERS_BY_ID";
 export const CHANGE_LANGUAGE = "CHANGE_LANGUAGE";
 export const DELETE_USER = "DELETE_USER";
+export const EDIT_USER = "EDIT_USER";
 
 type Action = {
 	type: string;
@@ -113,12 +114,14 @@ export function getUserData(id) {
 	};
 }
 export function editUserData(id: string, newDataUser: object) {
-	return async () => {
+	return async (dispatch: Dispatch<Action>) => {
 		try {
+			// let resp = await axios(`/users/${id}`);
 			let resp = await axios.put(`/users/${id}`, newDataUser);
-			return resp.data;
-		} catch (err) {
-			console.log(err);
+			// return resp.data;
+			dispatch({ type: EDIT_USER, payload: resp.data });
+		} catch (error) {
+			console.log(error);
 		}
 	};
 }

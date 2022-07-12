@@ -95,7 +95,7 @@ function App() {
 				{/* MAPAS */}
 				<Route path="/user/direction" element={<Direction/>} />
 				<Route path="/direction/:id" element={<DirectionOrder/>}/>
-				<Route path="/user/admin/map" element={<MapView user={null}/>} />
+				<Route path="/user/admin/map" element={<MapView user={null} manually={false}/>} />
 
 				{/* ADMIN */}
 				<Route path="/user/admin" element={<AdminManage />} />

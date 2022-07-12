@@ -20,7 +20,7 @@ export default function UserDetail() {
   }, [user])
 
   
-
+console.log(user)
   return (
     <div className={s.container}>
       {
@@ -45,11 +45,17 @@ export default function UserDetail() {
                   {spanish ? "Inicio" : "Start"}
                 </button>
               </Link>
-              <Link to="/user/direction">
-                <button className={s.buttonButton}>
-                  {spanish ? "Dirección" : "Address"}
-                </button>
-              </Link>
+              {
+                user.seller ? (
+                  <Link to="/user/direction">
+                    <button className={s.buttonButton}>
+                      {spanish ? "Dirección" : "Address"}
+                    </button>
+                  </Link>
+                ) : (
+                  null
+                )
+              }
               <Link to = "/user/createProduct">
                 <button className={s.buttonButton}>
                   {spanish ? "Vender" : "Sell"}

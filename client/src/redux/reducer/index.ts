@@ -31,6 +31,7 @@ import {
 	DELETE_NOTI,
 	CHANGE_LANGUAGE,
 	GET_USERS_BY_ID,
+	EDIT_USER
 } from "../actions";
 // import { Products } from '../../../types';
 
@@ -351,6 +352,11 @@ export default function rootReducer(state = initialState, action: any) {
 				...state,
 				listUsers: action.payload
 			}
+			case EDIT_USER: 
+				return {
+					...state,
+					userDetails: action.payload
+				}
 		default:
 			return state;
 	}

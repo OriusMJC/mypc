@@ -105,6 +105,10 @@ module.exports = (sequelize:any) => {
     },
     latitude: {
       type: DataTypes.STRING(500),
+    },
+    seller: {
+      type: DataTypes.BOOLEAN,
+      defaultValue: false,
     }
     },{
     timestamps: true
