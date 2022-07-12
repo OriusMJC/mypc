@@ -336,7 +336,6 @@ export function getOrders(id: string) {
 	return async (dispatch: Dispatch<Action>) => {
 		try {
 			let orders = await axios.post(`/users/orders/${id}`)
-			console.log(orders, "=============")
 			dispatch({type: GET_ORDERS, payload: orders.data})
 		} catch (error) {
 			console.log(error)
@@ -382,11 +381,11 @@ export function deleteNoti(idUser,idNoti) {
 		}
 	}
 }
-export function addVisited(idUser, product){
+export function addVisited(idUser:any, product:any){
 	return async (dispatch: Dispatch<Action>) => {
 		try {
-			await axios.put(`/${idUser}/visited`, product)
-			dispatch ({type: ADD_VISITED, payload: {idUser, product}})
+			await axios.put(`/users/visitedProducts/${idUser}`, product)
+			dispatch ({type: ADD_VISITED, payload: product})
 		} catch (error) {
 			console.log(error)
 		}

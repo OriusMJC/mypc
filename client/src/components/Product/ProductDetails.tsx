@@ -1,4 +1,4 @@
-import { useEffect, useState, useCallback } from "react"
+import React, { useEffect, useState, useCallback, JSXElementConstructor, ReactElement } from "react"
 import { useSelector} from "react-redux"
 import { Link, useParams, useNavigate } from "react-router-dom"
 import { useAppDispatch } from "src/config/config"
@@ -28,16 +28,9 @@ import swal from 'sweetalert';
 //    }
 // }
 export default function ProductDetails(){
-   let product = useSelector((state:any) => state.productDetails)
+   let product = useSelector((store:any) => store.productDetails)
    const idUser = useSelector((store:any)=> store.userDetails?.id)
    const user = useSelector((state: any) => state.userDetails)
-
-   useEffect(() => {
-      dispatch(addVisited(idUser, product))
-   }, [])
-
-   console.log(user)
-
    const dispatch = useAppDispatch()
    const {idProduct} = useParams()
    const navigate = useNavigate();
@@ -46,7 +39,6 @@ export default function ProductDetails(){
    const boolean = productSellerId && productSellerId === idUser && true
    const [pos, setPos] = useState(0);
    let [favClicks,setFavCliks] = useState(0)
-
    
    function handleNotiSellerComment(){
       let msg = {
@@ -205,7 +197,7 @@ export default function ProductDetails(){
       })
       
     }, [user,idUser,product])
-console.log(favClicks)
+
    
    return(
       <div id={s.prodContainer}>

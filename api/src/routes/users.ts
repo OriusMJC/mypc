@@ -276,8 +276,8 @@ router.get('/:idUser/orders/:idOrder', getUserOrder)
 router.get('/:idUser/cart/payment')
 */
 router.put('/visitedProducts/:idUser', async(req, res, next) => {
-	const { idUser }= req.params;
-	const { product } = req.body;
+	const  idUser= req.params.idUser;
+	const product = req.body;
 	try {
 		const response = await updateVisitedProducts(idUser, product);
 		res.json(response);

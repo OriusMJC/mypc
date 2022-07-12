@@ -43,9 +43,6 @@ function Pages({ productsPerPage, allComponents, refresh }) {
 
     return(
       <section className={s.pageContainer}>
-          <div className={s.buttonsPage}>
-              {pageNumbers}
-          </div>
           <div className={s.containerProdCards}>
           {
               !products.length ? 
@@ -91,6 +88,9 @@ function Pages({ productsPerPage, allComponents, refresh }) {
               // <Loading/>
               <Loading load='Buscando producto' msgError='No se a encontrado ningun producto' time={2000}/>
           }      
+          </div>
+          <div className={s.buttonsPage}>
+              {pageNumbers}
           </div>
       </section>
       

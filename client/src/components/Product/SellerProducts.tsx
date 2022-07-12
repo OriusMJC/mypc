@@ -16,8 +16,8 @@ function SellerProducts(){
     const seller = useSelector((state:any) => state.productDetails?.sellerInfo)
     const components = useSelector((store:any) => store.allComponents)
     const sellerId = seller && seller.id
-    const sProducts = components.filter((p) => p.sellerInfo.id === sellerId)
-    const finalP = sProducts.filter((p) => p.id !== product.id)
+    const sProducts = components.filter((p) => p.sellerInfo?.id === sellerId)
+    const finalP = sProducts.filter((p) => p.id !== product?.id)
 
     let random1 = Math.floor(Math.random()*(finalP.length ? (finalP.length/2) : 1))
     let random2 = Math.floor(Math.random()*50)

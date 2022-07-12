@@ -71,14 +71,13 @@ const initialState = {
 	],
 	allUsers: [],
 	users: [],
-	userDetails: { fav: [] , noti: []},
+	userDetails: { fav: [] , noti: [], visited: []},
 	productDetails: { comments: [] },
 	// productsCreated: [],
 	cart: [],
 	suggestions: {},
 	orders: [],
 	actualPage: 1,
-	visited: [],
 	listUsers: [],
 };
 export default function rootReducer(state = initialState, action: any) {
@@ -342,16 +341,21 @@ export default function rootReducer(state = initialState, action: any) {
 				}
 			}
 			case ADD_VISITED: {
-				let visitedProducts = [];
-				if(visitedProducts.length <= 50){
-					visitedProducts.unshift(action.payload.product)
+				let visitedProducts = [...state.userDetails.visited];
+				if(visitedProducts.length){
+					if(visitedProducts.length < 50){
+						visitedProducts.push(action.payload)
+					}else{
+						visitedProducts.shift();
+						visitedProducts = [...visitedProducts, action.payload]
+					}
 				}else{
-					visitedProducts.pop();
-					visitedProducts.unshift(action.payload.product)
+					visitedProducts = [action.payload]
 				}
+				let newArrVisited = {...state.userDetails, visited: visitedProducts}
 				return {
 					...state,
-					visited: visitedProducts,
+					userDetails: newArrVisited,
 				}
 			}
 			case GET_USERS_BY_ID:

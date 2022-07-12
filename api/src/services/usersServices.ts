@@ -22,7 +22,6 @@ export const getBasicUserInfo = async (
 	id: string
 ): Promise<types.NonSensitiveUserInfo | string> => {
 	let userData = await User.findByPk(id);
-	console.log(userData);
 	const user = {
 		id: userData?.dataValues.id,
 		name: userData?.dataValues.name,
@@ -139,14 +138,19 @@ export const updateVisitedProducts = async (
 	product: types.basicProductInfo
 ):Promise <string> => {
 	let user = await User.findByPk(idUser);
-	let visitedProducts:any = [];
-	if(user.visited.length <= 50) {
-		visitedProducts.unshift(product)
-	}else{
-		visitedProducts.pop();
-		visitedProducts.unshift(product)
-
+	let visitedProducts:any = user.dataValues.visited !== null && [...user.dataValues.visited];
+	if(visitedProducts.length){
+		if(visitedProducts.length < 50){
+			visitedProducts.push(product)
+		}else{
+			visitedProducts.shift();
+			visitedProducts.push(product);
+		}
+	}else {
+		visitedProducts = [product]
 	}
+	console.log(visitedProducts.length);
 	await User.update({visited: visitedProducts }, { where: { id: idUser }})
+	console.log(user);
 	return 'Producto agregado'
 }

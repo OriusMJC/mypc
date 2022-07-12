@@ -8,6 +8,7 @@ import { userData } from "src/services/userFirebase";
 import NavFilter from '../NavFilter'
 import Slider from "./Slider";
 import FavedProducts from './FavedProducts'
+import RelationatedProducts from './RelationatedProducts'
 
 // import { Link } from 'react-router-dom';
 // import { Products } from '../../types'
@@ -46,6 +47,7 @@ export default function Home() {
         <NavFilter refresh={refresh} setRefresh={setRefresh} setProductsPerPage={setProductsPerPage} products={true} lengthAll={allComponents?.length}/>
         <Slider/>
         <FavedProducts/>
+        <RelationatedProducts/>
         <Pages
           productsPerPage={productsPerPage}
           allComponents={allComponents}
