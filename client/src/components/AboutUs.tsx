@@ -78,8 +78,8 @@ const aboutUsDate: Array<usData> =[
         imageBack: santi,
         imageFront: Santi,   
         description : "aca tu description",
-        linkedIn: "mi linkedin",
-        gitHub: "mi git"
+        linkedIn: "https://www.linkedin.com/in/santiago-rivanegra-159474177",
+        gitHub: "https://github.com/SantiagoRivanegra"
     }
 ] 
 
