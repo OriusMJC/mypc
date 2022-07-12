@@ -30,6 +30,7 @@ export const getBasicUserInfo = async (
 		phone: userData?.dataValues.phone,
 		latitude: userData?.dataValues.latitude,
 		longitude: userData?.dataValues.longitude,
+		visited: userData?.dataValues.visited
 	};
 	return user;
 };
@@ -132,6 +133,27 @@ export const deleteNoti = async (
 	await User.update({ noti: newNotiArr }, { where: { id: idUser } });
 	return "Notificacion agregada con exito";
 };
+export const updateVisitedProducts = async (
+	idUser: string,
+	product: types.basicProductInfo
+):Promise <string> => {
+	let user = await User.findByPk(idUser);
+	let visitedProducts:any = user.dataValues.visited !== null && [...user.dataValues.visited];
+	if(visitedProducts.length){
+		if(visitedProducts.length < 50){
+			visitedProducts.push(product)
+		}else{
+			visitedProducts.shift();
+			visitedProducts.push(product);
+		}
+	}else {
+		visitedProducts = [product]
+	}
+	console.log(visitedProducts.length);
+	await User.update({visited: visitedProducts }, { where: { id: idUser }})
+	console.log(user);
+	return 'Producto agregado'
+}
 export const deleteUser = async (id:string) => {
 	let user = await User.destroy({where: {id}})
 	await deleteUserProducts(id);
