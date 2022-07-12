@@ -223,3 +223,55 @@
     color: grey;
     margin-top: 0;
 }
+@media screen and (max-width: 420px) {	
+	#sectionComments{
+        width: 90%;       
+        padding: 0;
+        margin: 0;
+    }
+    #sectionComments form input{
+        width: 100%;   
+    }
+  
+    #commentsContainer{
+        width: 100%;       
+        padding: 0;
+        margin: 0;
+    }
+    .sellerResponse {
+        width: 90%;
+    }
+    .comments{
+        width: 90%;     
+    }
+    .btnsComSeller{
+        display: inline; 
+    }
+		
+  }
+  @media screen and (max-width: 860px) {	
+	#sectionComments{
+        width: 90%;       
+        padding: 0;
+        margin: 0;
+    }
+    #sectionComments form input{
+        width: 100%;   
+    }
+  
+    #commentsContainer{
+        width: 100%;       
+        padding: 0;
+        margin: 0;
+    }
+    .sellerResponse {
+        width: 90%;
+    }
+    .comments{
+        width: 90%;     
+    }
+    .btnsComSeller{
+        display: inline; 
+    }
+		
+  }

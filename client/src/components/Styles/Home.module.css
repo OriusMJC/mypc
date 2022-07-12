@@ -1,5 +1,5 @@
 .homeContainer{
-    background-color: rgb(234, 234, 234);
+     background-color: #d6d6d6;
     width: 100vw;
     margin: 0;
     padding: 0;
@@ -44,3 +44,16 @@
     75%{margin-left: -300%;}
     100%{margin-left: -300%;}
 } */
+
+@media screen and (max-width: 420px) {
+.homeContainer{
+    width: 100%;
+   
+}	
+  }
+  @media screen and (max-width: 860px) {
+    .homeContainer{
+        width: 100%;
+       
+    }	
+      }

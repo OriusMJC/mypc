@@ -41,6 +41,8 @@ export const SELLER_PROD = "SELLER_PROD";
 export const CHANGE_ACTUAL_PAGE = "CHANGE_ACTUAL_PAGE";
 export const ADD_VISITED = "ADD_VISITED";
 export const GET_USERS_BY_ID = "GET_USERS_BY_ID";
+export const CHANGE_LANGUAGE = "CHANGE_LANGUAGE";
+export const DELETE_USER = "DELETE_USER";
 
 type Action = {
 	type: string;
@@ -391,6 +393,11 @@ export function addVisited(idUser:any, product:any){
 		}
 	}
 }
+export function changeLanguage(){
+	return {
+		type: CHANGE_LANGUAGE
+	}
+}
 export function getUsersById(arrayUsers) {
 	return async (dispatch: Dispatch<Action>) => {
 		try {
@@ -400,4 +407,28 @@ export function getUsersById(arrayUsers) {
 			console.log(err)
 		}
 	}
+}
+export async function deleteUser(id) {
+	try {
+		let response = await axios.delete(`/users/${id}`);
+		if(response) {
+			return response
+			// let users = await getAllUsers()
+			// console.log(users)
+		}		
+	} catch (error) {
+		console.log(error)		
+	}
+	// return async (dispatch: Dispatch<Action>) => {
+	// 	try {
+	// 		let response = await axios.delete(`/users/${id}`);
+	// 		if(response) {
+	// 			// let users = await getAllUsers()
+	// 			// console.log(users)
+	// 			dispatch({type: DELETE_USER, payload: ""})
+	// 		}
+	// 	} catch (err) {
+	// 		console.log(err)
+	// 	}
+	// }
 }

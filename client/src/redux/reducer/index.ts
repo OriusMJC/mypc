@@ -30,6 +30,7 @@ import {
 	NOTI_VIEW,
 	DELETE_NOTI,
 	ADD_VISITED,
+	CHANGE_LANGUAGE,
 	GET_USERS_BY_ID,
 } from "../actions";
 // import { Products } from '../../../types';
@@ -78,6 +79,7 @@ const initialState = {
 	suggestions: {},
 	orders: [],
 	actualPage: 1,
+	spanish: true,
 	listUsers: [],
 };
 export default function rootReducer(state = initialState, action: any) {
@@ -357,6 +359,11 @@ export default function rootReducer(state = initialState, action: any) {
 					...state,
 					userDetails: newArrVisited,
 				}
+			}
+		case CHANGE_LANGUAGE:
+			return {
+				...state,
+				spanish: state.spanish === true ? false : true,
 			}
 			case GET_USERS_BY_ID:
 			return {

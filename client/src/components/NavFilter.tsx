@@ -10,6 +10,7 @@ import s from './Styles/NavFilter.module.css'
 export default function NavFilter({refresh,setRefresh,setProductsPerPage,products,lengthAll}){
     const dispatch = useAppDispatch();
     const types = useSelector((state:any)=> state.types)
+    const spanish = useSelector((state: any) => state.spanish);
 
      //filtrado y ordenamiento
     function value(e){
@@ -51,48 +52,48 @@ export default function NavFilter({refresh,setRefresh,setProductsPerPage,product
                 {
                     products?
                     <div>
-                        <label>Productos</label>
+                        <label>{spanish ? "Productos " : "Products "}</label>
                         <select onChange={e => setProductsPerPage(+e.target.value)} className = {s.filters}>
                             <option value="12" key="12">12</option>
                             <option value="24" key="24">24</option>
                             <option value="48" key="48">48</option>
-                            <option value={lengthAll} key="All">Todos</option>
+                            <option value={lengthAll} key="All">{spanish ? "Todos" : "All"}</option>
                         </select>
                     </div>
                     :
                     <></>
                 }
                 <div>
-                    <label>Precio</label>
+                    <label>{spanish ? "Precio " : "Price "}</label>
                     <select onChange={e => handleOrderPrice(e)} className = {s.filters}>
-                        <option value="All" key="All">Todo</option>
-                        <option value="More price" key="More price">Mayor precio</option>
-                        <option value="Lower price" key="Lower price">Menor precio</option>
+                        <option value="All" key="All">{spanish ? "Todo" : "All"}</option>
+                        <option value="More price" key="More price">{spanish ? "Mayor precio" : "Higher price"}</option>
+                        <option value="Lower price" key="Lower price">{spanish ? "Menor precio" : "Lower price"}</option>
                     </select>
                 </div>
                 <div>
-                    <label>Popularidad</label>
+                    <label>{spanish ? "Popularidad " : "Popularity "}</label>
                     <select onChange ={e => handleOrderPopularity(e)} className = {s.filters}>
-                        <option value = "All" key="All">All</option>
-                        <option value="More Popularity" key="More Popularity">Mayor popularidad</option>
-                        <option value="Lower Popularity" key="Lower Popularity">Menor popularidad</option>
+                        <option value = "All" key="All">{spanish ? "Todos" : "All"}</option>
+                        <option value="More Popularity" key="More Popularity">{spanish ? "Mayor popularidad" : "Most popular"}</option>
+                        <option value="Lower Popularity" key="Lower Popularity">{spanish ? "Menor popularidad" : "Less popular"}</option>
                     </select>
                 </div>
                 <div>
-                    <label>Categoria</label>
+                    <label>{spanish ? "Categoria " : "Category "}</label>
                     <select onChange = {e => handleFilter(e)} className = {s.filters}>
-                        <option value = "All" key="All">Todo</option>
+                        <option value = "All" key="All">{spanish ? "Todo" : "All"}</option>
                         {types && types.map(t => (
                             <option value ={t} key={t}>{t}</option>
                         ))}
                     </select>
                 </div>
                 <div>
-                    <label>Estado</label>
+                    <label>{spanish ? "Estado " : "State "}</label>
                     <select onChange={e => handleFilterState(e)} className = {s.filters}> 
-                        <option value="All" key="All">Todo</option>
-                        <option value="nuevo" key="nuevo">Nuevo</option>
-                        <option value="usado" key="usado">Usado</option>
+                        <option value="All" key="All">{spanish ? "Todo" : "All"}</option>
+                        <option value="nuevo" key="nuevo">{spanish ? "Nuevo" : "New"}</option>
+                        <option value="usado" key="usado">{spanish ? "Usado" : "Used"}</option>
                     </select>
                 </div>
             </section>

@@ -15,6 +15,7 @@ import {
 	notiViewTrue,
 	deleteNoti,
 	updateVisitedProducts,
+	deleteUser,
 } from "../services/usersServices";
 import * as types from "../types";
 import { addOrder, getUserOrders, getAllOrders } from "../services/orderServices";
@@ -247,26 +248,12 @@ router.post("/orders", async (_req, res) => {
 	const orders = await getAllOrders();
 	res.send(orders);	
 });
-router.post("/test", async (_req, res) => {
-	// =========================
-	// PRUEBA PARA GUARDAR IMG
-	// =========================
-	// let {img} = _req.body
-	// let resp = await cloudinary.uploader.upload(img, (error:any, result:any) => {
-	// 	console.log(result, error)
-	// 	return result
-	// });
-	// res.send(resp)
-	// =========================
-
-
-	// =========================
-	// PRUEBA PARA TRAER TODAS LAS ORDENES 
-	// =========================
-	let test = await getAllOrders();
-	res.send(test)
-	// =========================
-
+router.delete("/:id",async (req, res) => {
+	let { id } = req.params
+	// let product = await deleteUserProducts(id)
+	let user = await deleteUser(id);
+	// console.log(user)
+	res.send(user) 
 })
 /* 
 router.get('/:idUser/orders', getUserOrders)

@@ -49,3 +49,14 @@
     font-style: italic;
     color: #d6d6d6;
 }
+
+@media screen and (max-width: 420px) { 
+    .productCards{
+        width: auto;   
+   } 
+}
+@media screen and (max-width: 860px) { 
+    .productCards{
+        width: auto;   
+   } 
+}

@@ -1,0 +1,39 @@
+
+
+
+.gridcontainer{
+    display: grid; 
+    grid-template-columns: 1fr 1fr 1fr;     
+    grid-auto-rows: auto;     
+    grid-gap: 1rem;
+    margin-bottom: 30px;
+    min-height: 68vh;
+}
+
+.eachOfUs{
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    border: 3px solid #c3c3d2;
+    border-radius: 15px;
+    width: 500px;
+}
+.eachOfUs p{
+    font-size: 24px;
+    margin: 0px 10px;
+}
+.eachOfUs img{
+    width: 200px;
+    height: 200px; 
+    margin-top: -15px;  
+}
+.eachOfUs:hover{
+    width: 530px;    
+    transition: 0.2s;          
+}
+.name{
+    display: flex;
+    flex-direction: row;
+}

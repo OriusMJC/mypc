@@ -10,6 +10,7 @@ import logo from '../../media/logo1.png'
 // import ProductsCards from "./ProductsCards"
 
 export default function Cart() {
+	const spanish = useSelector((state: any) => state.spanish);
 	const dispatch = useAppDispatch();
 	const [listPrice, setListPrice] = useState([]);
 	const user = useSelector((store: any) => store.userDetails);
@@ -62,8 +63,8 @@ export default function Cart() {
 				prodId: p.id,
 				url: `/user/userProducts`,
 				photo: p.photo[0],
-				title: 'Vendido!',
-				msg: 'Has vendido este producto!',
+				title: spanish ? 'Vendido!' : "Sold!",
+				msg: spanish ? 'Has vendido este producto!' : "You have sold this product!",
 				date: Date().slice(4,24),
 				sellerId: p.seller?.id,
 				buyer: user?.id,
@@ -144,7 +145,7 @@ export default function Cart() {
 										<h2>{prod.title}</h2>
 									</Link>
 									<div className={s.infoDetailsProduct}>
-										<h3>Precio: ${prod.price}</h3>
+										<h3>{spanish ? "Precio: " : "Price: "}${prod.price}</h3>
 										<h4>Likes: {prod.likes}</h4>
 									</div>
 								</div>
@@ -174,33 +175,33 @@ export default function Cart() {
 					))
 				) : (
 					<div>
-						<h1>Aún no has agregado nada al carrito!</h1>
+						<h1>{spanish ? "Aún no has agregado nada al carrito!" : "You haven't added anything to the cart yet!"}</h1>
 						{(products = false)}
 					</div>
 				)}
 			</section>
 			<section className={s.sectionButtons}>
 				<b>Total: ${precioTotal}</b>
-				<b>IVA incluido.</b>
+				<b>{spanish ? "IVA incluido." : "IVA included."}</b>
 				<Link to="/">
-					<button className={s.button}>Seguir comprando</button>
+					<button className={s.button}>{spanish ? "Seguir comprando" : "Continue shopping"}</button>
 				</Link>
 				{user && products === true ? (
 					user.id ? (
 							<StripeCheckout
 								stripeKey={tokenKey}
-								label="Pagar ahora"
-								name="Pagar con tarjeta de crédito"
+								label={spanish ? "Pagar ahora" : "Pay now"}
+								name={spanish ? "Pagar con tarjeta de crédito" : "Pay by credit card"}
 								billingAddress
 								shippingAddress
 								amount={priceForStripe}
-								description={`Tu total es de ${precioTotal}`}
+								description={spanish ? `Tu total es de ${precioTotal}` : `Your total is ${precioTotal}`}
 								token={payNow}
 								image={logo}
 							/>
 					) : (
 						<Link to="/login">
-							<button className={s.button}>Loguearse</button>
+							<button className={s.button}>{spanish ? "Loguearse" : "Login"}</button>
 						</Link>
 					)
 				) : null}

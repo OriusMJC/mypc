@@ -6,6 +6,7 @@ import { deleteNoti, singOutUser, viewedNoti } from '../../redux/actions/index';
 import s from "../Styles/NavButtons.module.css";
 
 export default function NavButtons() {
+  const spanish = useSelector((state: any) => state.spanish);
   const dispatch = useAppDispatch();
   const user = useSelector((store: any) => store.userDetails);
   const notifications = useSelector((store: any) => store.userDetails?.noti);
@@ -88,7 +89,7 @@ export default function NavButtons() {
                       )
                     })
                     :
-                    <h1>Aún no hay notificaciones</h1>
+                    <h1>{spanish ? "Aún no hay notificaciones" : "There are no notifications yet"}</h1>
                 }
               </ul>
             </div>
@@ -112,13 +113,13 @@ export default function NavButtons() {
                 <li onClick={handleShowMenu}>
                   <Link to="/user/detail">
                     <i className="fa-solid fa-user"></i>
-                    <span>Acount</span>
+                    <span>{spanish ? "Cuenta" : "Acount"}</span>
                   </Link>
                 </li>
                 <li onClick={handleSingOut}>
                   <Link to="/">
                     <i className="fa-solid fa-arrow-right-from-bracket"></i>
-                    <span>Sign Out</span>
+                    <span>{spanish ? "Salir" : "Sign Out"}</span>
                   </Link>
                 </li>
               </ul>
@@ -150,13 +151,13 @@ export default function NavButtons() {
                 <li onClick={handleOutMenu}>
                   <Link to="/register">
                     <i className="fa-solid fa-address-card"></i>
-                    <span>Register</span>
+                    <span>{spanish ? "Registrarse" : "Register"}</span>
                   </Link>
                 </li>
                 <li onClick={handleSingOut}>
                   <Link to="/login">
                     <i className="fa-solid fa-arrow-right-from-bracket"></i>
-                    <span>Login</span>
+                    <span>{spanish ? "Ingresar" : "Login"}</span>
                   </Link>
                 </li>
               </ul>

@@ -11,6 +11,7 @@ export default function UserDetail() {
   const user = useSelector((state: any) => state.userDetails);
   const orders = useSelector((state: any) => state.orders?.reverse());
   let dispatch = useAppDispatch();
+  const spanish = useSelector((state: any) => state.spanish);
 
   useEffect(() => {
     if(user) {
@@ -27,13 +28,13 @@ export default function UserDetail() {
         <>
           <div className={s.contOptions}>
             <Link to="/user/detail/edit">
-              <button>Editar perfil</button>
+              <button>{spanish ? "Editar perfil" : "Edit profile"}</button>
             </Link>
             <Link to="/user/detail/password">
-              <button>Cambiar contraseña</button>
+              <button>{spanish ? "Cambiar contraseña" : "Change password"}</button>
             </Link>
             <Link to="/user/detail/mail">
-              <button>Cambiar email</button>
+              <button>{spanish ? "Cambiar email" : "Change email"}</button>
             </Link>
             {/* <button>a</button> */}
           </div>
@@ -41,22 +42,22 @@ export default function UserDetail() {
             <div className={s.buttonContainer}>
               <Link to="/">
                 <button className={s.buttonButton}>
-                  Inicio
+                  {spanish ? "Inicio" : "Start"}
                 </button>
               </Link>
               <Link to="/user/direction">
                 <button className={s.buttonButton}>
-                  Dirección
+                  {spanish ? "Dirección" : "Address"}
                 </button>
               </Link>
               <Link to = "/user/createProduct">
                 <button className={s.buttonButton}>
-                  Vender
+                  {spanish ? "Vender" : "Sell"}
                 </button>
               </Link>
               <Link to ='/user/userProducts'>
                 <button className={s.buttonButton}> 
-                  Estadisticas
+                  {spanish ? "Estadisticas" : "Stats"}
                 </button>
               </Link>
               <Link to={`/list/chats/${user.id}`}>
@@ -79,13 +80,13 @@ export default function UserDetail() {
                 <div className={s.userDetails}>
                   <h1>{user && user.name}</h1>
                   <p>Email: {user && user.email}</p>
-                  <p>Contraseña: {user && "***" + user.password?.slice(-3)}</p>
-                  <p>Teléfono: {user && user.phone}</p>
+                  <p>{spanish ? "Contraseña: " : "Password: "}{user && "***" + user.password?.slice(-3)}</p>
+                  <p>{spanish ? "Teléfono: " : "Phone: "}{user && user.phone}</p>
                 </div>
                 <img src={user && user.avatar} alt={user.name} />
               </div>
               <div className={s.userProducts}>
-                  <h2>COMPRADO</h2>
+                  <h2>{spanish ? "COMPRADO" : "PURCHASED"}</h2>
                   {orders.length ?
                     orders.reverse().map((c) => {
                       return (
@@ -93,15 +94,15 @@ export default function UserDetail() {
                           <hr></hr>
                           <div className={s.orderCard}>
                             <div>
-                              <b>Nro de compra</b>
+                              <b>{spanish ? "Nro de compra" : "Purchase Number"}</b>
                               <p>{c.id}</p>
-                              <h5>Fecha: {c.date? c.date: null}</h5>
+                              <h5>{spanish ? "Fecha: " : "Date: "}{c.date? c.date: null}</h5>
                             </div>
                             <div>
-                              <h3>Monto: $ {c.fullPayment}</h3>
+                              <h3>{spanish ? "Monto: $" : "Amount: $"} {c.fullPayment}</h3>
                                 <Link to={`order/${c.id}`}>
                                   <button>
-                                    VER DETALLES
+                                    {spanish ? "VER DETALLES" : "SEE DETAILS"}
                                   </button>
                                 </Link>
                             </div>
@@ -110,12 +111,12 @@ export default function UserDetail() {
                       );
                     }) 
                     : 
-                    <p>Aún no compraste nada</p>}
+                    <p>{spanish ? "Aún no compraste nada" : "You haven't bought anything yet"}</p>}
               </div>
             </div>
         </>
         :
-          <Loading load='Cargando' msgError='No estas logueado! Logueate para ver los detalles de tu cuenta.' time={3000}/>
+          <Loading load={spanish ? 'Cargando' : "Loading"} msgError={spanish ? 'No estas logueado! Logueate para ver los detalles de tu cuenta.' : "You are not logged in! Log in to see your account details."} time={3000}/>
         }
       </div>
   );

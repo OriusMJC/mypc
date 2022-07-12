@@ -105,3 +105,7 @@ export const deleteProduct = async(idProduct:string):Promise<string> =>{
     await Product.destroy({where: {id: idProduct}});
     return idProduct;
 }
+export const deleteUserProducts = async (id:string) => {
+    let products = await Product.destroy({where: {sellerInfo: {id: id} }})
+    return !!products
+}

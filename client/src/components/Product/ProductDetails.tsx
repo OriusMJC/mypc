@@ -38,6 +38,7 @@ export default function ProductDetails(){
    const productSellerId = product.sellerInfo && product.sellerInfo.id
    const boolean = productSellerId && productSellerId === idUser && true
    const [pos, setPos] = useState(0);
+   const spanish = useSelector((state: any) => state.spanish);
    let [favClicks,setFavCliks] = useState(0)
    
    function handleNotiSellerComment(){
@@ -45,8 +46,8 @@ export default function ProductDetails(){
          prodId: product.id,
          url: `/detail/${product.id}`,
          photo: product.photo[0],
-         title: 'Nuevo Comentario!',
-         msg: 'Han comentado en este producto!',
+         title: spanish ? "Nuevo Comentario!" : "New Comment!",
+         msg: spanish ? "Han comentado sobre este producto!" : "They have commented on this product!",
          date: Date().slice(4,24),
          sellerId: productSellerId,
          userId: idUser,
@@ -59,8 +60,8 @@ export default function ProductDetails(){
          prodId: product.id,
          url: `/detail/${product.id}`,
          photo: product.photo[0],
-         title: 'Respuesta!',
-         msg: 'Han respondido tu comentario!',
+         title: spanish ? 'Respuesta!' : "Response!",
+         msg: spanish ? 'Han respondido tu comentario!' : "Your comment has been answered!",
          date: Date().slice(4,24),
          sellerId: productSellerId,
          userId: id,
@@ -84,8 +85,8 @@ export default function ProductDetails(){
          setFavCliks(favClicks + 1)        
       }else{
          swal({
-            title: "No estas Logueado",
-            text: "Debes iniciar sesión para agregar productos a favoritos",
+            title: spanish ? "No estas logueado" : "You are not logged",
+            text: spanish ? "Debes iniciar sesión para agregar productos a favoritos" : "You must be logged in to add products to favorites",
             icon: "warning",
           });  
          //  alert('Debes iniciar sesión para poder agregar productos a favoritos!')
@@ -99,8 +100,8 @@ export default function ProductDetails(){
    function handleCart(){
       if(boolean){
          swal({
-            title: "Cuidado",
-            text: "No puedes agregar tus productos al carrito!",
+            title: spanish ? "Cuidado" : "Care",
+            text: spanish ? "No puedes agregar tus productos al carrito!" : "You cannot add your products to the cart!",
             icon: "warning",
          })
       }else{
@@ -122,8 +123,8 @@ export default function ProductDetails(){
    async function handleBuy(){
       if(boolean){
          swal({
-            title: "Cuidado",
-            text: "No puedes comprar tus productos!",
+            title: spanish ? "Cuidado" : "Care",
+            text: spanish ? "No puedes comprar tus productos!" : "You can't buy your products!",
             icon: "warning",
          })
       }else{
@@ -167,12 +168,12 @@ export default function ProductDetails(){
 
    const prueba = useCallback(() => {
       swal({         
-         text: "Estas seguro de eliminar el producto?",
+         text: spanish ? "Estas seguro de eliminar el producto?" : "Are you sure to remove the product?",
          icon: "warning",
-         buttons: ["No", "Si"]
+         buttons: ["No", spanish ? "Si" : "Yes"]
        }).then(respuesta =>{
          if(respuesta){
-            swal({text: "Producto eliminado correctamente" , icon: "success"})
+            swal({text: spanish ? "Producto eliminado correctamente" : "Product removed successfully" , icon: "success"})
             dispatch(delFavUser(idUser, idProduct))
             dispatch(delProductCart(idProduct))
             dispatch(deleteProduct(idProduct))
@@ -209,10 +210,10 @@ export default function ProductDetails(){
                <img src={product.sellerInfo.avatar} className = {s.sellerImg}></img>
             </div>
             <div className = {s.sellerData}>
-               <label>Vendedor</label>
+               <label>{spanish ? "Vendedor" : "Seller"}</label>
                <div>
                <h2>{product.sellerInfo.name}</h2>
-               <label>Contacto: </label>
+               <label>{spanish ? "Contacto: " : "Contact: "}</label>
                <p>{product.sellerInfo.email} / {product.sellerInfo.phone}</p>
                </div>
             </div>
@@ -256,21 +257,21 @@ export default function ProductDetails(){
                         <i className="fa fa-heart-o"></i>
                      </button>
                }
-                  <h3>Precio: ${product?.price}</h3>
-                  <h4>Estado: {product?.status}</h4>
+                  <h3>{spanish ? "Precio: $" : "Price: $"}{product?.price}</h3>
+                  <h4>{spanish ? "Estado: " : "State: "}{product?.status}</h4>
                   <h4>Likes: {product?.likes}</h4>
-                  <h4>Categoria: {product?.type}</h4>
+                  <h4>{spanish ? "Categoría: " : "Category: "}{product?.type}</h4>
                   <p>Stock: {product?.cant}</p>
                   {
                      admin || product.cant === 0?
                      <>
-                        <input value='Comprar' type='button' id={s.buttonBuy}  onClick={handleBuy} disabled/>
-                        <input value='Añadir al carrito'type='button' className={s.btnSend} onClick={handleCart} disabled/>
+                        <input value={spanish ? 'Comprar' : "Buy"} type='button' id={s.buttonBuy}  onClick={handleBuy} disabled/>
+                        <input value={spanish ? 'Añadir al carrito' : "Add To Cart"}type='button' className={s.btnSend} onClick={handleCart} disabled/>
                      </>
                      :
                      <>
-                        <input value='Comprar' type='button' id={s.buttonBuy}  onClick={handleBuy}/>
-                        <input value='Añadir al carrito'type='button' className={s.btnSend} onClick={handleCart}/>
+                        <input value={spanish ? 'Comprar' : "Buy"} type='button' id={s.buttonBuy}  onClick={handleBuy}/>
+                        <input value={spanish ? 'Añadir al carrito' : "Add To Cart"}type='button' className={s.btnSend} onClick={handleCart}/>
                      </>
                   }
                   {
@@ -279,11 +280,11 @@ export default function ProductDetails(){
                   <>
                      <Link to ={`/user/userEditProduct/${idProduct}`}>
                         <button className={s.btnSend}>
-                           Editar
+                           {spanish ? "Editar" : "Edit"}
                         </button>
                      </Link>
                      <button onClick = {prueba} className={`${s.btnDelete} ${s.btnSend}`}>
-                        Eliminar
+                        {spanish ? "Eliminar" : "Remove"}
                      </button>
                   </> 
                   }
@@ -291,12 +292,15 @@ export default function ProductDetails(){
             </section>
             <section>
                <div className={s.contDescription}>
-                  <h3>Descripción:</h3>
+                  <h3>{spanish ? "Descripción:" : "Description:"}</h3>
                   <p>
                      {product?.description}
                   </p>
                </div>
+               <div className={s.ProdComents}>
                <ProductComments idProd={product.id} comments={product.comments} boolean = {boolean} idProduct={idProduct} funcCommUser={handleNotiSellerComment} funcCommSeller={handleNotiUserComment}/>    
+
+               </div>
             </section>
          </div>
       </div>

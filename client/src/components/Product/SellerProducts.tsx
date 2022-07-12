@@ -16,8 +16,14 @@ function SellerProducts(){
     const seller = useSelector((state:any) => state.productDetails?.sellerInfo)
     const components = useSelector((store:any) => store.allComponents)
     const sellerId = seller && seller.id
+<<<<<<< HEAD
     const sProducts = components.filter((p) => p.sellerInfo?.id === sellerId)
     const finalP = sProducts.filter((p) => p.id !== product?.id)
+=======
+    const sProducts = components.filter((p) => p.sellerInfo.id === sellerId)
+    const finalP = sProducts.filter((p) => p.id !== product.id)
+    const spanish = useSelector((state: any) => state.spanish);
+>>>>>>> development
 
     let random1 = Math.floor(Math.random()*(finalP.length ? (finalP.length/2) : 1))
     let random2 = Math.floor(Math.random()*50)
@@ -33,7 +39,7 @@ function SellerProducts(){
         sProducts.length > 1 && 
         <div className = {s.prodContainer}>
                <div className = {s.h2Prod}>
-               <h2>Mas productos del vendedor</h2>
+               <h2>{spanish ? "Más productos del vendedor" : "More products from the seller"}</h2>
                </div>
                {sellerProducts.length && sellerProducts.map((prod:any) => (
                     <div className = {s.prodDetails}>
