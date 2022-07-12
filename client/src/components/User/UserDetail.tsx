@@ -20,7 +20,6 @@ export default function UserDetail() {
   }, [user])
 
   
-console.log(user)
   return (
     <div className={s.container}>
       {
