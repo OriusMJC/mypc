@@ -6,6 +6,7 @@ import { editUserData } from "src/redux/actions";
 import styles from "./../Styles/UserEditDetail.module.css";
 
 export default function UserEditDetails() {
+	const spanish = useSelector((state: any) => state.spanish);
 	let dataUser = useSelector((state: any) => state.userDetails);
 	let [editDataUser, setEditDataUser] = useState({
 		name: dataUser.name,
@@ -40,7 +41,7 @@ export default function UserEditDetails() {
 			<div className={styles.containerEdit}>
 				<form action="" onSubmit={handleSubmit}>
 					<Link to = '/user/detail'>
-						<button>Atras</button>
+						<button>{spanish ? "Atrás" : "Back"}</button>
 					</Link>
 					<div className={styles.containerInputs}>
 						<input
@@ -67,7 +68,7 @@ export default function UserEditDetails() {
 							id="avatar"
 							onChange={(event) => handleDataChange(event)}
 						/>
-						<button type="submit">Cambiar datos</button>
+						<button type="submit">{spanish ? "Cambiar datos" : "Change data"}</button>
 					</div>
 					<div className={styles.previewAvatar}>
 							<img src={editDataUser.avatar} alt="profile" />

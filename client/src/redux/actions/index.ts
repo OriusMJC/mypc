@@ -38,8 +38,12 @@ export const NOTI_VIEW = "NOTI_VIEW";
 export const DELETE_NOTI = "DELETE_NOTI";
 export const GET_ORDERS = "GET_ORDERS"
 export const SELLER_PROD = "SELLER_PROD";
-export const CHANGE_ACTUAL_PAGE = "CHANGE_ACTUAL_PAGE"
+export const CHANGE_ACTUAL_PAGE = "CHANGE_ACTUAL_PAGE";
+export const ADD_VISITED = "ADD_VISITED";
 export const GET_USERS_BY_ID = "GET_USERS_BY_ID";
+export const CHANGE_LANGUAGE = "CHANGE_LANGUAGE";
+export const DELETE_USER = "DELETE_USER";
+export const EDIT_USER = "EDIT_USER";
 
 type Action = {
 	type: string;
@@ -111,12 +115,14 @@ export function getUserData(id) {
 	};
 }
 export function editUserData(id: string, newDataUser: object) {
-	return async () => {
+	return async (dispatch: Dispatch<Action>) => {
 		try {
+			// let resp = await axios(`/users/${id}`);
 			let resp = await axios.put(`/users/${id}`, newDataUser);
-			return resp.data;
-		} catch (err) {
-			console.log(err);
+			// return resp.data;
+			dispatch({ type: EDIT_USER, payload: resp.data });
+		} catch (error) {
+			console.log(error);
 		}
 	};
 }
@@ -335,7 +341,6 @@ export function getOrders(id: string) {
 	return async (dispatch: Dispatch<Action>) => {
 		try {
 			let orders = await axios.post(`/users/orders/${id}`)
-			console.log(orders, "=============")
 			dispatch({type: GET_ORDERS, payload: orders.data})
 		} catch (error) {
 			console.log(error)
@@ -381,6 +386,21 @@ export function deleteNoti(idUser,idNoti) {
 		}
 	}
 }
+export function addVisited(idUser:any, product:any){
+	return async (dispatch: Dispatch<Action>) => {
+		try {
+			await axios.put(`/users/visitedProducts/${idUser}`, product)
+			dispatch ({type: ADD_VISITED, payload: product})
+		} catch (error) {
+			console.log(error)
+		}
+	}
+}
+export function changeLanguage(){
+	return {
+		type: CHANGE_LANGUAGE
+	}
+}
 export function getUsersById(arrayUsers) {
 	return async (dispatch: Dispatch<Action>) => {
 		try {
@@ -390,4 +410,28 @@ export function getUsersById(arrayUsers) {
 			console.log(err)
 		}
 	}
+}
+export async function deleteUser(id) {
+	try {
+		let response = await axios.delete(`/users/${id}`);
+		if(response) {
+			return response
+			// let users = await getAllUsers()
+			// console.log(users)
+		}		
+	} catch (error) {
+		console.log(error)		
+	}
+	// return async (dispatch: Dispatch<Action>) => {
+	// 	try {
+	// 		let response = await axios.delete(`/users/${id}`);
+	// 		if(response) {
+	// 			// let users = await getAllUsers()
+	// 			// console.log(users)
+	// 			dispatch({type: DELETE_USER, payload: ""})
+	// 		}
+	// 	} catch (err) {
+	// 		console.log(err)
+	// 	}
+	// }
 }

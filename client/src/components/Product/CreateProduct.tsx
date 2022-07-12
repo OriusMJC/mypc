@@ -1,11 +1,10 @@
-import { useState} from 'react';
+import { useEffect, useState} from 'react';
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom'
 import { useAppDispatch } from '../../config/config';
-import { createProduct} from '../../redux/actions/index';
+import { createProduct, getUsersById} from '../../redux/actions/index';
 import s from '../Styles/CreateProduct.module.css'
 import swal from 'sweetalert';
-
 
  interface Product {
     title: string
@@ -14,27 +13,28 @@ import swal from 'sweetalert';
     status: string 
    }
   
-  function validate(product){
-    let errors: Product = {
-        title: "",
-        photo: "",       
-        description: "",
-        status: "",
-    }     
-    if(!product.title){
-        errors.title ="*Title"
-    }else if(!product.photo){
-        errors.photo ="*Image"
-    }else if(!product.description){
-        errors.description ="*Description " 
-    }else if(!product.status){
-        errors.status ="*status"
-        }  
-    return errors;
-}
+//   function validate(product){
+//     let errors: Product = {
+//         title: "",
+//         photo: "",       
+//         description: "",
+//         status: "",
+//     }     
+//     if(!product.title){
+//         errors.title ="*Title"
+//     }else if(!product.photo){
+//         errors.photo ="*Image"
+//     }else if(!product.description){
+//         errors.description ="*Description " 
+//     }else if(!product.status){
+//         errors.status ="*status"
+//         }  
+//     return errors;
+// }
   
 
 function CreateProduct() {
+    const spanish = useSelector((state: any) => state.spanish);
     const dispatch = useAppDispatch();
     const navigate = useNavigate();
     const user = useSelector((state:any) => state.userDetails);
@@ -53,7 +53,26 @@ function CreateProduct() {
         stockInitial: 1,
         status: "",
         sell: false,
-    });    
+    });
+    
+    function validate(product){
+        let errors: Product = {
+            title: "",
+            photo: "",       
+            description: "",
+            status: "",
+        }     
+        if(!product.title){
+            errors.title =spanish ? "*Título" : "*Title"
+        }else if(!product.photo){
+            errors.photo =spanish ? "*Imagen" : "*Image"
+        }else if(!product.description){
+            errors.description =spanish ? "*Descripción " : "*Description " 
+        }else if(!product.status){
+            errors.status =spanish ? "*Estado" : "*State"
+            }  
+        return errors;
+    }
 
     const [error, setError] = useState<Product>({
         title: "",
@@ -91,8 +110,8 @@ function CreateProduct() {
         if(product.title && product.photo && product.type && product.description.length >=5 && product.description.length <= 500 &&(product.status === "nuevo" || product.status === "usado")){
             e.preventDefault();
             swal({
-                title: "Felicidades",
-                text: "Tu producto fue creado",
+                title: spanish ? "Felicidades" : "Congratulations",
+                text: spanish ? "Tu producto fue creado" : "Your product was created",
                 icon: "success",
               });                
             dispatch(createProduct(id, product));
@@ -102,7 +121,7 @@ function CreateProduct() {
             e.preventDefault();
             swal({
                 title: "Error",
-                text: "Te faltan datos para completar el formulario",
+                text: spanish ? "Te faltan datos para completar el formulario" : "Missing data to complete the form",
                 icon: "error",
               });
             }
@@ -147,11 +166,39 @@ function CreateProduct() {
         }else{
             swal({
                 title: "Error",
-                text: "No puedes subir mas de cuatro fotos!",
+                text: spanish ? "No puedes subir mas de cuatro fotos!" : "You cannot upload more than four photos!",
                 icon: "error",
               }); 
         }
     }
+
+    useEffect(() => {    
+        dispatch(getUsersById(user.id))
+        console.log(user);
+        if (!user.seller) {
+            swal({
+                title: "No eres vendedor",
+                text: "Necesitas activar tu cuenta con tu ibucacion para poder vender!",
+                icon: "warning",
+                buttons: [
+                  'No, cancelar!',
+                  'Quiero ser vendedor!'
+                ],
+                dangerMode: true,
+            }).then(function(isConfirm) {
+                if (isConfirm) {
+                    navigate('/user/direction')
+                //   swal({
+                //     title: 'Shortlisted!',
+                //     text: 'Candidates are successfully shortlisted!',
+                //     icon: 'success'
+                //   })
+                } else {
+                    navigate('/')
+                }
+            })
+        }
+    }, [])
 
   return (
     <div>
@@ -163,19 +210,19 @@ function CreateProduct() {
            </div>
      <div className = {s.container}> 
         <form onSubmit={handleSubmit} className = {s.form}>
-            <h1>Crear Producto</h1>
-            <label>Imagen </label>
+            <h1>{spanish ? "Crear Producto" : "Create Product"}</h1>
+            <label>{spanish ? "Imagen" : "Image"} </label>
             <input type="file" name="photo" onChange={uploadImage} className ={s.inputImg}></input>
 
-            <label>Título </label>
+            <label>{spanish ? "Título " : "Title "}</label>
             <input type="text" name="title" value={product.title} onChange={handleChange}></input>
             
-            <label>Precio </label>
+            <label>{spanish ? "Precio " : "Price "}</label>
                 <input type="number" onKeyDown={handleDot} min="1"  name="price" value={product.price || 1}  onChange={handleChange} className = {s.inputNumber}></input>
 
-            <label>Tipo </label>
+            <label>{spanish ? "Tipo " : "Type "}</label>
             <select onChange={handleType} className={s.selectType}>
-                <option hidden>Seleccionar Tipo</option>
+                <option hidden>{spanish ? "Seleccionar Tipo" : "Select Type"}</option>
                 {types?.map((t) => (
                     <option key={t} value={t}>
                         {t}
@@ -183,23 +230,26 @@ function CreateProduct() {
                 ))}
             </select>
 
-            <label>Estado: </label>
+            <label>{spanish ? "Estado: " : "State: "}</label>
             <select onChange={handleStatus} required>
-                <option hidden>Seleccionar Estado</option>
-                <option value="nuevo">nuevo</option>
-                <option value="usado">usado</option>
+                <option hidden>{spanish ? "Seleccionar Estado" : "Select State"}</option>
+                <option value="nuevo">{spanish ? "nuevo" : "new"}</option>
+                <option value="usado">{spanish ? "usado" : "used"}</option>
             </select>   
             <label>Stock </label>
                 <input type="number"  onKeyDown={handleDot} min="1" name="stockInitial" value={product.stockInitial || 1} onChange={handleChange} className = {s.inputNumber}></input>
-            <label>Descripción </label>
+            <label>{spanish ? "Descripción " : "Description "}</label>
             <textarea name="description" value={product.description} onChange={handleChange} className={s.descriptionInput} required/>
         <div className = {s.button}>
-            <button type="submit">Crear Producto</button>
+            <button type="submit">{spanish ? "Crear Producto" : "Create Product"}</button>
         </div>
         </form>
         <div className = {s.products}>
             <div className = {s.imgPContainer}>
+            <div className = {s.containerr}>
+            {typeof product.photo[0] === 'string' && <button value={product.photo[0]} onClick = {handleDeleteImage} className = {s.buttonPrincipal}>X</button>}
             <img src={typeof product.photo[0] === 'string' && product.photo[0]} className={s.pImage}></img>
+            </div>
             <div className = {s.ultraContainer}>
             {product.photo.length > 1 && 
                 product.photo.map((photo, i) => {

@@ -97,11 +97,16 @@ export const productSelled = async(idProduct:string,cant:number):Promise<string>
     await Product.update({sell: true},{where: {id: idProduct}})
     const product = await Product.findByPk(idProduct);
     let newCant = product?.cant - cant
-    await Product.update({cant: newCant}, {where: {id: idProduct}})
+    let newCantSell = product?.cantSell + cant
+    await Product.update({cant: newCant, cantSell: newCantSell}, {where: {id: idProduct}})
     return 'Producto vendido con éxito'
 }
 
 export const deleteProduct = async(idProduct:string):Promise<string> =>{
     await Product.destroy({where: {id: idProduct}});
     return idProduct;
+}
+export const deleteUserProducts = async (id:string) => {
+    let products = await Product.destroy({where: {sellerInfo: {id: id} }})
+    return !!products
 }

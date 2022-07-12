@@ -6,16 +6,6 @@ const products = require('./products')
 
 const router = Router();
 
-
-// Configurar los routers
-// Ejemplo: router.use('/auth', authRouter);
-
-// router.get('/',(_req,res:any)=>{
-//     console.log('funciona')
-//     res.send('funcionando')
-// })
-
-
 router.use('/users',users)
 router.use('/products',products)
 

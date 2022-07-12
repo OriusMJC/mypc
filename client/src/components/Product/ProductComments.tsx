@@ -8,6 +8,7 @@ import swal from 'sweetalert';
 
 export default function ProductComments({idProd,comments, boolean, idProduct, funcCommUser, funcCommSeller}){
   const dispatch = useAppDispatch()
+  const spanish = useSelector((state: any) => state.spanish);
 
   useEffect(() => {
     let res = userData1();
@@ -19,7 +20,6 @@ export default function ProductComments({idProd,comments, boolean, idProduct, fu
   let userId = userData && userData.id
   const admin = useSelector((state:any)=> state.userDetails?.admin)
 
-  // console.log(userData);
   
   function actualDate(){
     const d = new Date();
@@ -51,22 +51,22 @@ export default function ProductComments({idProd,comments, boolean, idProduct, fu
     if(newComment.length){
       if(userData.id && userData.name && userData.avatar){
         dispatch(addProductComment(idProd,{id: id, userId: userId, name:userData.name,avatar:userData.avatar,comment: newComment,sellerResponse: sellerResponse, date: actualDate()}))
-        swal({text: "comentario agregado", icon: "success", timer: 1000})
+        swal({text: spanish ? "comentario agregado" : "comment added", icon: "success", timer: 1000})
         setNewComment('');
         funcCommUser()
       }else{
         e.preventDefault();
         // alert('Debes inciar sesión para poder comentar')
         swal({
-          title: "No estas Logueado",
-          text: "Debes inciar sesión para poder comentar",
+          title: spanish ? "No estas Logueado" : "You are not logged",
+          text: spanish ? "Debes inciar sesión para poder comentar" : "You must be logged in to comment",
           icon: "warning",
         });  
       }
     }else{
       swal({
         title: "Error",
-        text: "No puedes enviar un comentario vacio",
+        text: spanish ? "No puedes enviar un comentario vacío" : "You can't send an empty comment",
         icon: "error",
       })     
       // alert('No puedes enviar un comentario vacio')  
@@ -76,13 +76,13 @@ export default function ProductComments({idProd,comments, boolean, idProduct, fu
   function handleDeleteComment(e){
     e.preventDefault();   
     swal({
-      title: "Cuidado",
-      text: "Estas seguro de eliminar tu comentario?",
+      title: spanish ? "Cuidado" : "Care",
+      text: spanish ? "Estas seguro de eliminar tu comentario?" : "Are you sure you want to delete your comment?",
       icon: "warning",
-      buttons: ["No", "Si"]
+      buttons: ["No", spanish ? "Si" : "Yes"]
     }).then(response =>{
         if(response){
-          swal({text: "comentario eliminado", icon: "success", timer: 1000})
+          swal({text: spanish ? "comentario eliminado" : "deleted comment", icon: "success", timer: 1000})
           dispatch(deleteProductComment(idProduct, Number(e.target.value)))
         }
     })
@@ -111,13 +111,13 @@ export default function ProductComments({idProd,comments, boolean, idProduct, fu
 
   function handleDeleteResp(id){     
     swal({
-      title: "Cuidado",
-      text: "Estas seguro de eliminar tu respuesta?",
+      title: spanish ? "Cuidado" : "Care",
+      text: spanish ? "Estas seguro de eliminar tu respuesta?" : "Are you sure to delete your answer?",
       icon: "warning",
-      buttons: ["No", "Si"]
+      buttons: ["No", spanish ? "Si" : "Yes"]
     }).then(response =>{
         if(response){
-          swal({text: "respuesta eliminado", icon: "success", timer: 1000})         
+          swal({text: spanish ? "respuesta eliminada" : "answer deleted", icon: "success", timer: 1000})         
           dispatch(deleteSellerResp(idProduct, {
             ...sellerResponse,
             id: Number(id),
@@ -156,10 +156,10 @@ export default function ProductComments({idProd,comments, boolean, idProduct, fu
 
   return (
     <section id={s.sectionComments}>
-        <h3>Haz tu pregunta aquí</h3>
+        <h3>{spanish ? "Haz tu pregunta aquí" : "Make your question here"}</h3>
       <form onSubmit={handleSubmit}>
         <input name="comment" type='text' value={newComment} onChange={handleChange}/>
-        <button className={s.btnSend} type="submit">Enviar</button>
+        <button className={s.btnSend} type="submit">{spanish ? "Enviar" : "Send"}</button>
       </form>
       <div>
       {
@@ -167,7 +167,7 @@ export default function ProductComments({idProd,comments, boolean, idProduct, fu
           actualPosition[0] !== null &&
           <div>
           <button onClick = {handleCancelResp}>X</button>
-          <h4>respondiendo al comentario: {comments[actualPosition[0]].comment}</h4>
+          <h4>{spanish ? "respondiendo al comentario: " : "replying to comment: "}{comments[actualPosition[0]].comment}</h4>
           {
           <div>
             <img src = {comments[actualPosition[0]].sellerResponse.avatar && comments[actualPosition[0]].sellerResponse.avatar}></img>
@@ -176,7 +176,7 @@ export default function ProductComments({idProd,comments, boolean, idProduct, fu
               <p>{sellerResponse.comment}</p>
               <form onSubmit = {handleResponseSubmit}>
               <input name = "comment" value = {sellerResponse.comment} onChange = {handleSellerResponse} />
-              <button type = 'submit'>Enviar</button>
+              <button type = 'submit'>{spanish ? "Enviar" : "Send"}</button>
               </form>
               </div>
             </div>
@@ -203,7 +203,7 @@ export default function ProductComments({idProd,comments, boolean, idProduct, fu
                   <button value={obj.id} onClick = {handleDeleteComment}>X</button>
                   <button value={arr} 
                   onClick = {handleActualPos}>
-                    Responder
+                    {spanish ? "Responder" : "Answer"}
                   </button>
                 </div>
               }
@@ -221,7 +221,7 @@ export default function ProductComments({idProd,comments, boolean, idProduct, fu
                   <div className={`${s.comments} ${s.sellerResponse}`}>
                     <img src = {obj.sellerResponse.avatar && obj.sellerResponse.avatar}></img>
                     <div>
-                      <h5>Vendedor</h5>
+                      <h5>{spanish ? "Vendedor" : "Seller"}</h5>
                       <h4>{obj.sellerResponse.name && obj.sellerResponse.name}</h4>
                       <p>{obj.sellerResponse.comment && obj.sellerResponse.comment}</p>
                       <div className={s.btnsComSeller}>
@@ -238,7 +238,7 @@ export default function ProductComments({idProd,comments, boolean, idProduct, fu
             )
           })
           :
-          <h4> Aún no hay comentarios. Sé el primero en hacer uno!</h4>
+          <h4> {spanish ? "Aún no hay comentarios. Sé el primero en hacer uno!" : "No comments yet. Be the first to make one!"}</h4>
         }
 
       </div>

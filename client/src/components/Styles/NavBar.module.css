@@ -48,7 +48,7 @@
 	cursor: pointer;
 	font-size: 17px;
 	padding: 6px;
-	width: 60px;
+	width: 60px;	
 }
 .contLogo {
 	font-size: 20px;
@@ -102,4 +102,40 @@
 	height: 40px;
 	padding: 0;
 	/* display: none; */
+}
+@media screen and (max-width: 420px) {
+	.searchBarContainer{
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		margin: 0;
+		width: 100%;
+	}	
+	.contain {
+	display: flex;
+	flex-direction: column;	
+			
+	}
+	.searchBar button{
+		margin: 5px 0px;		
+	}		
+  }
+@media screen and (max-width: 860px) {
+	.searchBarContainer{
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		margin: 0;
+		width: 100%;
+	}	
+	.contain {
+	display: flex;
+	flex-direction: column;	
+			
+	}
+	.searchBar button{
+		margin: 5px 0px;		
+	}		
 }

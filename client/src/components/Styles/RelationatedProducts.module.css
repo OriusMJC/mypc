@@ -1,0 +1,98 @@
+.container {
+    display: flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    width: 60%;
+    height: 400px;
+    margin: 50px auto 0px;
+}
+.container2{
+    display: flex;
+    flex-direction: row;
+    align-items:center;
+    justify-content:center;
+    width: 100%;
+    height: 90%;
+    gap: 10px;
+}
+.containerDiv{
+    width: 200px;
+    height: 300px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items:center;
+    background-color: white;
+    border-radius: 5px;
+    box-shadow: 1px 1px 4px rgba(162, 162, 162, 0.3);
+    cursor: pointer;
+    transition: .2s;
+    text-decoration: none;
+}
+.link{
+    text-decoration: none
+}
+.containerDiv:hover{
+    box-shadow: 5px 5px 10px rgba(83, 83, 83, 0.3);
+}
+.containerImg{
+    width: 100%;
+    height: 180px;
+    display: flex;
+    align-items:center;
+    justify-content: center;
+    border-bottom: 1px solid grey;
+}
+.containerDiv img{
+    width: 90%;
+    height: 170px;
+    border-radius: 2px;
+    margin-bottom: 20px;
+} 
+.containerDetails {
+    width: 100%;
+    height: 70px;
+    display: flex;
+    flex-direction: column;
+    align-items:center;
+    justify-content: center;
+    line-height: 15px;
+    text-decoration: none;
+    margin-top: 10px;
+}
+.containerDetails h3{
+    text-decoration: none;
+    width: 100%;
+    margin-left: 20px;
+    font-family: 'Nunito';
+    font-weight: normal;
+    font-size: 20px;
+    border: none;
+}
+.containerDetails p{
+    width: 100%;
+    text-align: center;
+    text-decoration: none;
+    margin-bottom: 30px;
+    font-size: 12px;
+}
+.containerButtons {
+    width: 100%;
+    height: 30px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+} 
+.containerButtons button {
+    border:none;
+    height: 25px;
+    width: 30px;
+    border-radius: 5px;
+    transition: .2s;
+    cursor: pointer
+}
+.containerButtons button:hover {
+    transform: scale(1.1)
+}
