@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import s from '../Styles/MostFaved.module.css'
 
 function FavedProducts() {
+    const spanish = useSelector((state: any) => state.spanish);
     const allComponents = useSelector ((state:any) => state.allComponents)
     const filteredComponents = allComponents?.map((obj:any) => {
         return {
@@ -25,7 +26,7 @@ function FavedProducts() {
 
  return (
     <div className = {s.container}>
-        <h1>{filteredComponents.length? 'Productos mas likeados' : null}</h1>
+        <h1>{filteredComponents.length? spanish ? 'Productos mas likeados' : "Most liked products" : null}</h1>
         <div className = {s.container2}>
         {filteredComponents.length && 
          filteredComponents.map((comp:any) => {

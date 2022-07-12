@@ -1,39 +1,122 @@
 
-
+.container{
+    background-image: url(https://i.pinimg.com/originals/bb/e2/93/bbe29399884c9150a643e28cb72fff32.jpg);
+    width: 100%;
+    height: 90%;
+}
+.container h1{
+    margin: 0;
+    text-align: center;
+    color: rgb(209, 209, 209);    
+}
 
 .gridcontainer{
     display: grid; 
-    grid-template-columns: 1fr 1fr 1fr;     
-    grid-auto-rows: auto;     
-    grid-gap: 1rem;
-    margin-bottom: 30px;
-    min-height: 68vh;
+    grid-template-columns: 1fr 1fr 1fr;   
+    justify-items: center;
+    grid-template-rows: 380px;
+    gap: -50px;         
+    /* margin-bottom: 50px;                                */
+    
+    /* min-height: 90vh;     */
+    /* display: flex;
+    align-items: center;
+    justify-content: center;  */
+     min-height: 80vh;      
+ /*background-color: rgb(100, 3, 160); */
+    /* align-items: center;
+    justify-items: center; */   
 }
 
-.eachOfUs{
+
+.card {
+    position: relative;
+    width: 260px;
+    height: 330px;
+    margin: 20px;
+    margin-left: 13px;
+    background-color: aqua;
+}
+.card .face{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    border-radius: 10px;
+    overflow: hidden;
+    transition: .5s;
+}
+.card .front{
+    transform: perspective(600px) rotateX(0deg);
+    box-shadow: 0 5px 10px #000;
+}
+.card .front img{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.card .front h3{
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 45px;
+    line-height: 45px;
+    color: #fff;
+    background: rgba(0,0,0,.4);
     text-align: center;
+    z-index: 1;
+}
+.card .back{
+    transform: perspective(600px) rotateY(180deg);
+    background: rgb(3, 35, 54);
+    padding: 15px;
+    color: #f3f3f3;
     display: flex;
-    justify-content: center;
-    align-items: center;
     flex-direction: column;
-    border: 3px solid #c3c3d2;
-    border-radius: 15px;
-    width: 500px;
+    justify-content: space-between;
+    text-align: center;
+    box-shadow: 0 5px 10px #000;
 }
-.eachOfUs p{
-    font-size: 24px;
-    margin: 0px 10px;
+.back img{
+    margin-top: 0;
+    margin: 0;
+   padding: 0;   
 }
-.eachOfUs img{
-    width: 200px;
-    height: 200px; 
-    margin-top: -15px;  
+
+.card .back h3{
+    font-size: 30px;
+    margin-top: 20px;
+    letter-spacing: 2px;
 }
-.eachOfUs:hover{
-    width: 530px;    
-    transition: 0.2s;          
+.card .back p{
+    letter-spacing: 1px;
 }
-.name{
+
+.card:hover .front{
+    transform: perspective(600px) rotateX(180deg);
+}
+.card:hover .back{
+    transform: perspective(600px) rotateX(360deg);    
+  
+}
+.redes{
     display: flex;
-    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;   
+    margin: 0;
+    padding: 0;   
 }
+
+.redes a{
+    color: #fff;
+    width: 50px;
+}
+
+.redes a:visited{
+    color: #fff;
+}
+
+
+
+

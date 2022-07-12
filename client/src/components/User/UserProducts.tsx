@@ -65,7 +65,7 @@ function UserProducts() {
         let num = Number(prod.createdAt.slice(5,7))
         newPubl[num -1] = newPubl[num -1] + prod.stockInitial
         if(prod.sell){
-          newVe[num -1]= newVe[num -1] + (prod.stockInitial - prod.cant)
+          newVe[num -1]= newVe[num -1] + prod.cantSell
         }
       })
     }else{
@@ -73,7 +73,7 @@ function UserProducts() {
         let num = Number(prod.createdAt.slice(5,7))
         newPubl[num -1] = newPubl[num -1] + prod.stockInitial
         if(prod.sell){
-          newVe[num -1]= newVe[num -1] + (prod.stockInitial - prod.cant)
+          newVe[num -1]= newVe[num -1] + prod.cantSell
         }
       })
     }
@@ -104,7 +104,7 @@ function UserProducts() {
       <div className={s.btnhome}>
       <Link to ='/user/detail' className={s.buttonHome}>
         <button>
-          {spanish ? "Regresar" : "Go back"}
+          {spanish ? "Regresar" : "Return"}
         </button>
       </Link>
       </div>

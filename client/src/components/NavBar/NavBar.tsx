@@ -19,6 +19,7 @@ export default function NavBar() {
 	}
 
 	function handleSubmit(e) {
+		navigate('/')
 		e.preventDefault();
 		dispatch(getName(title));
 		// setTitle("");
