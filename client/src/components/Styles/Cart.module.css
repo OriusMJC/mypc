@@ -192,15 +192,19 @@
         display: flex;
         flex-direction: column;
         width: 100%;
+     background-color: #d6d6d6;
+
     }
-
-/* .imgProdFav {
-    width: 40px;
-    /* padding: 0px 30px; */         
-
-/* .favContainer h1, h2, h3, h4 , p, span{
-    font-size: 10px;
-} */
 }
+@media screen and (max-width: 1220px) {
+    .favContainer{
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+     background-color: #d6d6d6;
+
+    }
+}
+
 
 

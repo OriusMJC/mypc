@@ -84,7 +84,7 @@ export default function NavBar() {
 				</form>
 				<NavButtons />
 				<button value={spanish} onClick={handleClick}>
-					{spanish? 'Español' : 'English'}
+					{spanish? 'EN' : 'ES'}
 				</button>
 			</div>
 		</nav>

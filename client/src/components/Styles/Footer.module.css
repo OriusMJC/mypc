@@ -1,12 +1,16 @@
 .container {
-    background-color: #fff;
+    background-color: #fff;    
+    min-height: 10vh;
+    bottom: 1px;
+    width: 100%;
+    padding: 10px; 
+    position: relative;   
+}
+.son{
     display: flex;
     flex-direction: row-reverse;
     justify-content: space-around;
-    align-items: center;
-    min-height: 10vh;
-    bottom: 5px;
-    width: 100%;
+    align-items: center;    
 }
 
 .contact {
@@ -19,16 +23,51 @@
     transform: scale(1.1)
 }
 .contact:visited{
-    color: #000;
+    color: #000;    
 }
-@media screen and (max-width: 420px) {	
-	.container {	      
-    display: inline-block;
+.aboutus{
+    text-decoration: none;
+    transition: .2s;
+    font-size: 18px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+.aboutus:visited{
+    color: #111;
+    
+}
+.aboutus:hover{
+    transform: scale(1.1)
+}
+
+@media screen and (max-width: 860px) {	
+	.container {	         
     padding-right: 5px;
     width: 98%;      
     bottom: 1%;
     text-align: center;
     margin: 5px;
-	}   
-		
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;  
+    position: absolute;
+    bottom: 1px;          
+}   
+.son{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;  
+    height: 100%;
+    margin: 20px;  
+    padding: 10px 0px;            
+    }
+    .son p{
+        margin-top: 3px;
+    }		
+    .aboutus{
+        position: absolute;
+        bottom: 10px;
+        right: 15px;
+    }
   }

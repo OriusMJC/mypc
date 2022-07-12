@@ -45,6 +45,7 @@ import MapView from "./components/Map/MapView";
 import Chat from "./components/Chat/Chat";
 import ChatList from "./components/Chat/ChatList";
 import ChatCreated from "./components/Chat/ChatCreated";
+import AboutUs from "./components/AboutUs";
 
 
 // import NavButtons from './components/NavButtons'
@@ -132,6 +133,9 @@ function App() {
 
 				{/* CONTACT */}
 				<Route path="/contact" element={<Contact />} />
+
+				{/* About Us  */}
+				<Route path="/aboutus" element={<AboutUs />} />
 
 			</Routes>
 			<Footer />
