@@ -17,7 +17,6 @@ function Direction() {
 			if (!user.latitude && !user.altitude) {
 				navigator.geolocation.getCurrentPosition(
 					function (position) {
-						// console.log(position);
 						let newData = {
 							...user,
 							longitude: `${position.coords.longitude}`,

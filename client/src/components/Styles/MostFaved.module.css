@@ -17,7 +17,7 @@
     gap: 10px;
 }
 .containerDiv{
-    width: 100%;
+    width: 200px;
     height: 300px;
     display: flex;
     flex-direction: column;
@@ -31,13 +31,14 @@
     text-decoration: none;
 }
 .link{
+    color: #000;
     text-decoration: none
 }
 .containerDiv:hover{
     box-shadow: 5px 5px 10px rgba(83, 83, 83, 0.3);
 }
 .containerImg{
-    width: 100%;
+    max-width: 100%;
     height: 180px;
     display: flex;
     align-items:center;
@@ -45,7 +46,6 @@
     border-bottom: 1px solid grey;
 }
 .containerDiv img{
-    width: 90%;
     height: 170px;
     border-radius: 2px;
     margin-bottom: 20px;
