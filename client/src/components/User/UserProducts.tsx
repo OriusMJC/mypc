@@ -104,7 +104,7 @@ function UserProducts() {
       <div className={s.btnhome}>
       <Link to ='/user/detail' className={s.buttonHome}>
         <button>
-          {spanish ? "Regresar" : "Go back"}
+          {spanish ? "Regresar" : "Return"}
         </button>
       </Link>
       </div>
