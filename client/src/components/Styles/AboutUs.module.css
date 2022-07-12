@@ -108,6 +108,14 @@
     padding: 0;   
 }
 
+.redes a{
+    color: #fff;
+    width: 50px;
+}
+
+.redes a:visited{
+    color: #fff;
+}
 
 
 

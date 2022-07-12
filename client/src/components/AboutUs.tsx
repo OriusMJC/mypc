@@ -38,12 +38,12 @@ const aboutUsDate: Array<usData> =[
     },
     {
         name: "Mati",
-        age:  1980,
+        age:  20,
         imageBack: mati,
         imageFront: Mati,   
-        description : "aca tu description",
-        linkedIn: "mi linkedin",
-        gitHub: "mi git"
+        description : "Me gustan los jueguitos de computadora",
+        linkedIn: "https://www.linkedin.com/in/matias-jesus-contreras-fullstack-developer/",
+        gitHub: "https://github.com/OriusMJC"
     },
     {
         name: "Nicolás Rojo",
@@ -103,8 +103,8 @@ function AboutUs() {
                                   <p>Edad: {user.age}</p>
                                   <p>{user.description}</p>
                                   <div className={s.redes}>
-                                  <a  href={user.linkedIn}><i className='fa fa-linkedin-square' ></i></a>                                  
-                                  <a href={user.gitHub}><i className='fa fa-github-square'></i></a>                                
+                                  <a  href={user.linkedIn} target='_blank'><i className='fa fa-linkedin-square' ></i></a>                                  
+                                  <a href={user.gitHub} target='_blank'><i className='fa fa-github-square'></i></a>                                
                                   </div>
                               <img src={user.imageBack} alt={user.name}/>
                             </div>
