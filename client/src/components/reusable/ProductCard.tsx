@@ -36,7 +36,7 @@ export default function ProductCard({id,title, photo, price, type, likes, status
     }
     
     useEffect(() => {
-      user.fav?.map((c:any) =>{
+      user?.fav?.map((c:any) =>{
         if(c.id === id){
           setFavCliks(favClicks + 1)
         }
