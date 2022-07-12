@@ -35,8 +35,7 @@
     width: 260px;
     height: 330px;
     margin: 20px;
-    margin-left: 13px;
-    background-color: aqua;
+    margin-left: 13px;    
 }
 .card .face{
     position: absolute;
@@ -107,6 +106,16 @@
     align-items: center;   
     margin: 0;
     padding: 0;   
+}
+@media screen and (max-width: 860px) {	
+	.gridcontainer {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;   
+        background-image: url(https://i.pinimg.com/originals/bb/e2/93/bbe29399884c9150a643e28cb72fff32.jpg);              
+	}
+		
 }
 
 

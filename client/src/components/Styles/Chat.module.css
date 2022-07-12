@@ -93,3 +93,16 @@ text-align: start;
 #inputMsg button:hover{
   background-color: var(--gray-dark);
 }
+
+@media screen and (max-width: 860px){
+ .containerChat{
+  width: 100%;
+}
+  
+}
+@media screen and (max-width: 420px){
+  .containerChat{
+   width: 100%;
+ }
+   
+ }

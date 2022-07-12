@@ -33,17 +33,17 @@ const aboutUsDate: Array<usData> =[
         imageBack: lauti,
         imageFront: Lauti,   
         description : "aca tu description" ,
-        linkedIn: "mi linkedin",
-        gitHub: "mi git"
+        linkedIn: "https://www.linkedin.com/in/lautaro-agustin-arnay-2348421b7/",
+        gitHub: "https://github.com/lautaro2021"
     },
     {
-        name: "Mati",
+        name: "Matias Jesús Contreras",
         age:  1980,
         imageBack: mati,
         imageFront: Mati,   
         description : "aca tu description",
-        linkedIn: "mi linkedin",
-        gitHub: "mi git"
+        linkedIn: "https://www.linkedin.com/in/matias-jesus-contreras-fullstack-developer/",
+        gitHub: "https://github.com/OriusMJC"
     },
     {
         name: "Nicolás Rojo",
@@ -56,12 +56,12 @@ const aboutUsDate: Array<usData> =[
     },
     {
         name: "Tobias",
-        age:  1980,
+        age:  42,
         imageBack: tobias,
         imageFront: Tobias,    
-        description : "aca tu description",
-        linkedIn: "mi linkedin",
-        gitHub: "mi git"
+        description : "Apasionado por las nuevas tecnologías y el aprendizaje diario",
+        linkedIn: "https://www.linkedin.com/in/tob%C3%ADas-daniel-alvarez-lockmann-224900220/",
+        gitHub: "https://github.com/alemant"
     },
     {
         name: "Angel",
