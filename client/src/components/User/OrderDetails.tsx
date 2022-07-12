@@ -25,7 +25,7 @@ export default function OrderDetails(){
                     <div id={s.containButtons}>
                         <Link to="/">
                             <button className={s.buttonButton}>
-                            {spanish ? "Inicio" : "Start"}
+                            {spanish ? "Inicio" : "To Home"}
                             </button>
                         </Link>
                         <Link to="/user/detail">

@@ -20,7 +20,6 @@ export default function UserDetail() {
   }, [user])
 
   
-console.log(user)
   return (
     <div className={s.container}>
       {
@@ -42,7 +41,7 @@ console.log(user)
             <div className={s.buttonContainer}>
               <Link to="/">
                 <button className={s.buttonButton}>
-                  {spanish ? "Inicio" : "Start"}
+                  {spanish ? "Inicio" : "To Home"}
                 </button>
               </Link>
               {
