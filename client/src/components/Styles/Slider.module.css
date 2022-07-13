@@ -1,15 +1,14 @@
 .slider{
  width: 100%;
- max-width: 1200px;
- height: 300px;
+ max-width: 1500px;
+ height: 400px;
  margin: auto;
  margin-top: 30px;
  overflow: hidden;
  background-color: #d6d6d6;
 }
 .slider img {
- object-fit: cover;
- object-position: 0px -100px;
+ object-fit: center;
  
 }
 /* .slider{
@@ -30,6 +29,7 @@
  height:100%;
  flex-direction: row;
  justify-content: space-between;
+ transition: .2s;
  
 }
 
