@@ -1,6 +1,8 @@
 .containerMap {
   display: flex;
   justify-content: center;
+  align-items: center;
+  min-height: 79.5vh;
 }
 /* .containerMap .leaflet-container {
   width: 600px;

@@ -66,16 +66,16 @@ export default function AdminManage() {
 						lengthAll={allComponents?.length}
 					/>
 					<div>
-						<button onClick={() => setBtnView("products")}>Productos</button>
-						<button onClick={() => handleRefresh()}>Refresh</button>
-						<button onClick={() => setBtnView("user")}>Usuarios</button>
+						<button onClick={() => setBtnView("products")} className={s.buttonAdmin}>Productos</button>
+						<button onClick={() => handleRefresh()} className={s.buttonAdmin}>Refresh</button>
+						<button onClick={() => setBtnView("user")} className={s.buttonAdmin}>Usuarios</button>
 						<Link
 							to={"/user/admin/map"}
 							state={{
 								locals,
 							}}
 						>
-							<button>Locales</button>
+							<button className={s.buttonAdmin}>Locales</button>
 						</Link>
 					</div>
 					<SearchbarAdmin btnView={btnView} />
