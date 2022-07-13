@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useSelector} from 'react-redux';
 import { useAppDispatch } from "src/config/config"
 import { getAllComponents} from "src/redux/actions"
@@ -9,7 +9,7 @@ function SellerProducts(){
     const dispatch = useAppDispatch();
 
     useEffect(() => {
-        dispatch(getAllComponents())
+      dispatch(getAllComponents())
     }, [])
 
     const product = useSelector((state:any) => state.productDetails)
@@ -19,13 +19,13 @@ function SellerProducts(){
     const sProducts = components.filter((p) => p.sellerInfo.id === sellerId)
     const finalP = sProducts.filter((p) => p.id !== product.id)
     const spanish = useSelector((state: any) => state.spanish);
+    const [random3, setRandom3] = useState(Math.floor(Math.random()*(finalP.length ? (finalP.length/2) : 1)))
+    const [random4, setRandom4] = useState(Math.floor(Math.random()*50))
 
-    let random1 = Math.floor(Math.random()*(finalP.length ? (finalP.length/2) : 1))
-    let random2 = Math.floor(Math.random()*50)
     let actualComponents = [];
-    if(random1 > random2) actualComponents = finalP.slice(random2, random1);
-    else if(random2 > random1) actualComponents = finalP.slice(random1, random2);
-    else actualComponents = finalP.slice(random1, random2 + 3)
+    if(random3 > random4) actualComponents = finalP.slice(random4, random3);
+    else if(random4 > random3) actualComponents = finalP.slice(random3, random4);
+    else actualComponents = finalP.slice(random3, random4 + 3)
     let sellerProducts = actualComponents.filter((p:any) => p.sellerInfo.id === sellerId).slice(0, 3)
 
   return (

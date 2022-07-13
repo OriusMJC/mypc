@@ -30,12 +30,12 @@ interface usData {
 const aboutUsDate: Array<usData> =[
     {
         name: "Lauti",
-        age:  1980,
+        age:  23,
         imageBack: lauti,
         imageFront: Lauti,   
-        description : "aca tu description" ,
-        linkedIn: "mi linkedin",
-        gitHub: "mi git"
+        description : "googleador profesional" ,
+        linkedIn: "https://www.linkedin.com/in/lautaro-agustin-arnay-2348421b7/",
+        gitHub: "https://github.com/lautaro2021"
     },
     {
         name: "Mati",
