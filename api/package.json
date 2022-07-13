@@ -41,11 +41,11 @@
     "stripe": "^9.11.0",
     "ts-node": "^10.8.1"
   },
-  "jest":{
+  "jest": {
     "preset": "ts-jest",
     "testEnvironment": "node",
     "collectCoverage": true,
-    "coveragePathIgnorePatterns":[
+    "coveragePathIgnorePatterns": [
       "/node_modules/",
       "/test/",
       "/dist/",
