@@ -103,6 +103,19 @@
 	padding: 0;
 	/* display: none; */
 }
+
+#buttonLang{
+	background-color: var(--gray-medium);
+	border: none;
+	border-radius: 10px;
+	height: 25px;
+	width: 34px;
+	font-weight: 600;
+}
+#buttonLang:hover{
+	background-color: var(--gray-dark);
+}
+
 @media screen and (max-width: 420px) {
 	.searchBarContainer{
 		display: flex;
