@@ -35,7 +35,6 @@
     height: 330px;
     margin: 20px;
     margin-left: 13px;
-    background-color: aqua;
 }
 .card .face{
     position: absolute;
@@ -47,7 +46,7 @@
     transition: .5s;
 }
 .card .front{
-    transform: perspective(600px) rotateX(0deg);
+    transform: perspective(600px) rotateY(0deg);
     box-shadow: 0 5px 10px #000;
 }
 .card .front img{
@@ -70,7 +69,6 @@
 .card .back{
     transform: perspective(600px) rotateY(180deg);
     background: rgb(3, 35, 54);
-    padding: 15px;
     color: #f3f3f3;
     display: flex;
     flex-direction: column;
@@ -94,10 +92,10 @@
 }
 
 .card:hover .front{
-    transform: perspective(600px) rotateX(180deg);
+    transform: perspective(600px) rotateY(180deg);
 }
 .card:hover .back{
-    transform: perspective(600px) rotateX(360deg);    
+    transform: perspective(600px) rotateY(360deg);    
   
 }
 .redes{
