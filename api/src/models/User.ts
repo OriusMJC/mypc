@@ -100,11 +100,18 @@ module.exports = (sequelize:any) => {
     noti:{
       type: DataTypes.ARRAY(DataTypes.JSON),
     },
+    visited: {
+      type: DataTypes.ARRAY(DataTypes.JSON),
+    },
     longitude: {
       type: DataTypes.STRING(500),
     },
     latitude: {
       type: DataTypes.STRING(500),
+    },
+    seller: {
+      type: DataTypes.BOOLEAN,
+      defaultValue: false,
     }
     },{
     timestamps: true

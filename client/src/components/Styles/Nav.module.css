@@ -40,5 +40,10 @@
 	.navContainer{
        width: 100%;
         }
+}
 
-  }
+@media screen and (max-width: 860px) {
+	.navContainer{
+       width: 100%;
+        }
+}

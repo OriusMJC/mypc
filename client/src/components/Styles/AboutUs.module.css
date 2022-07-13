@@ -78,11 +78,7 @@
     text-align: center;
     box-shadow: 0 5px 10px #000;
 }
-.back img{
-    margin-top: 0;
-    margin: 0;
-   padding: 0;   
-}
+
 
 .card .back h3{
     font-size: 30px;

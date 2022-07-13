@@ -31,6 +31,10 @@ module.exports = (sequelize:any) => {
       type: DataTypes.INTEGER,
       allownull: false
     },
+    cantSell: {
+      type: DataTypes.INTEGER,
+      defaultValues: 0
+    },
     type: {
       type: DataTypes.ENUM('full', 'motherboard', 'procesador', 'grafica', 'ram', 'ssd', 'hdd', 'cooler', 'monitor', 'mouse', 'teclado', 'cables', 'fuente')
     },

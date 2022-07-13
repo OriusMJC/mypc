@@ -26,12 +26,8 @@
     color: #000;    
 }
 .aboutus{
-    font-size: 1em;
     text-decoration: none;
     transition: .2s;
-    position: absolute;    
-    right: 50%;
-    bottom: 2px;
     font-size: 18px;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
@@ -52,8 +48,8 @@
     height: 100px;
     display: flex;
     justify-content: center;
-    align-items: center;      
-    bottom: 1px;          
+    align-items: center;     
+           
 }   
 .son{
     display: flex;

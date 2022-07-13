@@ -4,6 +4,8 @@
     flex-direction: column;
     margin: 10px 50px;
     min-height: 80vh;
+    background-color: #d6d6d6;
+
 }
 
 .container a{
