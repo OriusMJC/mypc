@@ -107,7 +107,7 @@ export default function AdminManage() {
 													<td>{prod.id}</td>
 													<td>{prod.sellerInfo.id}</td>
 													<td>
-														<img src={prod.photo} />
+														<img src={prod.photo[0]} />
 													</td>
 													<td>{prod.title}</td>
 													<td>{prod.cant}</td>

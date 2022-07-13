@@ -40,7 +40,7 @@
     height: 500px;
 }
 #detailsImage img{
-    max-width: 600px;
+    max-width: 500px;
     max-height: 500px;
     border-radius: 10px;
 }
