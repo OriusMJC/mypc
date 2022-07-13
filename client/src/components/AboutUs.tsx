@@ -105,8 +105,8 @@ function AboutUs() {
                                   <p>{spanish ? "Edad: " : "Age: "}{user.age}</p>
                                   <p>{user.description}</p>
                                   <div className={s.redes}>
-                                  <a  href={user.linkedIn} target='_blank'><i className='fa fa-linkedin-square' ></i></a>                                  
-                                  <a href={user.gitHub} target='_blank'><i className='fa fa-github-square'></i></a>                                
+                                  <a  href={user.linkedIn} rel='noreferrer' target='_blank'><i className='fa fa-linkedin-square' ></i></a>                                  
+                                  <a href={user.gitHub} rel='noreferrer' target='_blank'><i className='fa fa-github-square'></i></a>                                
                                   </div>
                               <img src={user.imageBack} alt={user.name}/>
                             </div>
