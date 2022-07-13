@@ -9,7 +9,6 @@ function Types({types, spanish, refresh, setRefresh}) {
     const dispatch = useAppDispatch();
 
     function value(e){
-        console.log(e.target.value)
         return e.target.value
     }
 

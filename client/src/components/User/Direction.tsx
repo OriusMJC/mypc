@@ -91,7 +91,6 @@ function Direction() {
 	}, [user]);
 
 	if(user) {
-		console.log(position)
 		if(user.id && user.seller && user.latitude && user.longitude) {
 			return (
 				<>
