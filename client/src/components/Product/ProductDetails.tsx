@@ -190,7 +190,7 @@ export default function ProductDetails(){
       setPos(e.target.value)
    }
    useEffect(() => {
-      user.fav?.map((c:any) =>{
+      user?.fav?.map((c:any) =>{
         if(c.id === product.id){
           setFavCliks(favClicks + 1)
         }
