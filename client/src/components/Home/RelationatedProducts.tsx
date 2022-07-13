@@ -5,8 +5,12 @@ import s from '../Styles/MostFaved.module.css'
 function RelationatedProducts() {
   const spanish = useSelector((state: any) => state.spanish);
   const user = useSelector((store:any) => store.userDetails);
+  const userId = user && user.id
   const allComponents = useSelector((state:any) => state.allComponents);
   const visitedProducts = user && user.visited && user.visited.slice(-10);
+  const length = visitedProducts && visitedProducts.length
+
+  console.log(visitedProducts)
 
   const busqueda = (array) => {
     let variable = 0;
@@ -35,7 +39,7 @@ function RelationatedProducts() {
   });
   const relationated = arr.slice(0, 5)  
 
-  if(user.id && visitedProducts.length > 3){
+  if(userId && length > 3){
     return (
       <div className = {s.container}>
       <h1>{spanish ? "En base a tus ultimas visitas" : "Based on your last visits"}</h1>

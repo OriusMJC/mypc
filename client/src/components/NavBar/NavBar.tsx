@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { getName, getAllComponents, changeLanguage } from "../../redux/actions/index";
+import { getName, getAllComponents, changeLanguage} from "../../redux/actions/index";
 import { useAppDispatch } from "../../config/config";
 import { Link, useNavigate } from "react-router-dom";
 import s from "../Styles/NavBar.module.css";
