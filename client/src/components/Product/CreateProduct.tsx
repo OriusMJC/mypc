@@ -1,11 +1,10 @@
-import { useState} from 'react';
+import { useEffect, useState} from 'react';
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom'
 import { useAppDispatch } from '../../config/config';
-import { createProduct} from '../../redux/actions/index';
+import { createProduct, getUsersById} from '../../redux/actions/index';
 import s from '../Styles/CreateProduct.module.css'
 import swal from 'sweetalert';
-
 
  interface Product {
     title: string
@@ -54,7 +53,7 @@ function CreateProduct() {
         stockInitial: 1,
         status: "",
         sell: false,
-    });  
+    });
     
     function validate(product){
         let errors: Product = {
@@ -172,6 +171,34 @@ function CreateProduct() {
               }); 
         }
     }
+
+    useEffect(() => {    
+        dispatch(getUsersById(user.id))
+        console.log(user);
+        if (!user.seller) {
+            swal({
+                title: spanish ? "No eres vendedor" : "You are not a seller",
+                text: spanish ? "Necesitas activar tu cuenta con tu ubicación para poder vender!" : "You need to activate your account with your location to be able to sell!",
+                icon: "warning",
+                buttons: [
+                  spanish ? 'No, cancelar!' : "No, cancel!",
+                  spanish ? 'Quiero ser vendedor!' : "I want to be a seller!"
+                ],
+                dangerMode: true,
+            }).then(function(isConfirm) {
+                if (isConfirm) {
+                    navigate('/user/direction')
+                //   swal({
+                //     title: 'Shortlisted!',
+                //     text: 'Candidates are successfully shortlisted!',
+                //     icon: 'success'
+                //   })
+                } else {
+                    navigate('/')
+                }
+            })
+        }
+    }, [])
 
   return (
     <div>

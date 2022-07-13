@@ -19,6 +19,7 @@ export default function NavBar() {
 	}
 
 	function handleSubmit(e) {
+		navigate('/')
 		e.preventDefault();
 		dispatch(getName(title));
 		// setTitle("");
@@ -33,7 +34,7 @@ export default function NavBar() {
 		e.preventDefault();
 		dispatch(changeLanguage())
 	}
-
+console.log(suggestions)
 	return (
 		<nav className={s.searchBarContainer}>
 			<div className={s.contain}>
@@ -58,8 +59,7 @@ export default function NavBar() {
 										const titleProduc = item.toLowerCase();
 										return (
 											searchSug &&
-											titleProduc.startsWith(searchSug) &&
-											titleProduc !== searchSug
+											titleProduc.includes(searchSug)
 										);
 									})
 									.slice(0, 10)

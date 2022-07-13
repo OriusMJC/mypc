@@ -49,7 +49,8 @@ export const updateDataUser = async (
 	newUserData: types.User
 ): Promise<string> => {
 	await User.update(newUserData, { where: { id: newUserData.id } });
-	return "Cambios hechos correctamente";
+	let newUser = await User.findByPk(newUserData.id)
+	return newUser;
 };
 export const updateEmailUser = async (id: any, newEmail:string) => {
 	let user = await User.findByPk(id);
@@ -149,9 +150,7 @@ export const updateVisitedProducts = async (
 	}else {
 		visitedProducts = [product]
 	}
-	console.log(visitedProducts.length);
 	await User.update({visited: visitedProducts }, { where: { id: idUser }})
-	console.log(user);
 	return 'Producto agregado'
 }
 export const deleteUser = async (id:string) => {

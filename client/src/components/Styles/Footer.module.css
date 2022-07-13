@@ -49,8 +49,7 @@
     height: 100px;
     display: flex;
     justify-content: center;
-    align-items: center;  
-    position: absolute;
+    align-items: center;
     bottom: 1px;          
 }   
 .son{
@@ -66,7 +65,6 @@
         margin-top: 3px;
     }		
     .aboutus{
-        position: absolute;
         bottom: 10px;
         right: 15px;
     }

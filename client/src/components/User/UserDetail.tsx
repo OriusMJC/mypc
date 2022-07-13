@@ -20,7 +20,6 @@ export default function UserDetail() {
   }, [user])
 
   
-
   return (
     <div className={s.container}>
       {
@@ -42,14 +41,20 @@ export default function UserDetail() {
             <div className={s.buttonContainer}>
               <Link to="/">
                 <button className={s.buttonButton}>
-                  {spanish ? "Inicio" : "Start"}
+                  {spanish ? "Inicio" : "To Home"}
                 </button>
               </Link>
-              <Link to="/user/direction">
-                <button className={s.buttonButton}>
-                  {spanish ? "Dirección" : "Address"}
-                </button>
-              </Link>
+              {
+                user.seller ? (
+                  <Link to="/user/direction">
+                    <button className={s.buttonButton}>
+                      {spanish ? "Dirección" : "Address"}
+                    </button>
+                  </Link>
+                ) : (
+                  null
+                )
+              }
               <Link to = "/user/createProduct">
                 <button className={s.buttonButton}>
                   {spanish ? "Vender" : "Sell"}
