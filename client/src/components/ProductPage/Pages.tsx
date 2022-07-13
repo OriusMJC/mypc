@@ -93,9 +93,6 @@ function Pages({ productsPerPage, allComponents, refresh }) {
               <Loading load={spanish ? 'Buscando producto' : "Searching product"} msgError={spanish ? 'No se ha encontrado ningún producto' : "No product found"} time={3000}/>
           }      
           </div>
-          <div className={s.buttonsPage}>
-              {pageNumbers}
-          </div>
       </section>
       
   )
