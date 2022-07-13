@@ -253,7 +253,7 @@ export default function rootReducer(state = initialState, action: any) {
 			};
 
 		case FILTER_STATE:
-			const allState = [...state.allComponents];
+			const allState = [...state.components];
 			if (action.payload) {
 				var filteredStates = allState.filter(
 					(state) => state.status === action.payload
