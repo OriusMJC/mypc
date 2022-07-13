@@ -30,7 +30,8 @@
 
 .productCards h2{
     margin-top: 35px;
-    height: 5%;
+    height: 3%;
+    text-overflow: ellipsis;
 }
 
 .cardInfo {
