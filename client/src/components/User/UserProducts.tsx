@@ -158,7 +158,7 @@ function UserProducts() {
                           <div className={fav.containerProduct}>
                             <Link to={`/detail/${prod.id}`}>
                               <div className={fav.imgProdFav}>
-                                <img src={prod.photo} alt="" />
+                                <img src={prod.photo[0]} alt="" />
                               </div>
                             </Link>
                             <div className={fav.infoProduct}>
