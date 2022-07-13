@@ -10,6 +10,7 @@
 .slider img {
  object-fit: cover;
  object-position: 0px -100px;
+ 
 }
 /* .slider{
  width: 100%;
@@ -29,12 +30,14 @@
  height:100%;
  flex-direction: row;
  justify-content: space-between;
+ 
 }
 
 .slider li{
  /* width: 100%; */
  min-height: 100%;
  list-style: none;
+ transition: .2s;
  /* margin-left: 100%; */
 }
 .slider li:nth-child(1) {

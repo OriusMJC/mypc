@@ -10,7 +10,7 @@
   align-items: center;
   display: flex;
   flex-direction: column;
-  margin: 20px 0px;
+  margin: 20px auto;
   min-height: 75vh;
   padding-top: 20px;
   width: 1500px;
