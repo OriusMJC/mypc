@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { getName, getAllComponents, changeLanguage } from "../../redux/actions/index";
+import { getName, getAllComponents, changeLanguage} from "../../redux/actions/index";
 import { useAppDispatch } from "../../config/config";
 import { Link, useNavigate } from "react-router-dom";
 import s from "../Styles/NavBar.module.css";
@@ -19,6 +19,7 @@ export default function NavBar() {
 	}
 
 	function handleSubmit(e) {
+		navigate('/')
 		e.preventDefault();
 		dispatch(getName(title));
 		// setTitle("");
@@ -83,7 +84,7 @@ export default function NavBar() {
 					</button>
 				</form>
 				<NavButtons />
-				<button value={spanish} onClick={handleClick}>
+				<button id={s.buttonLang} value={spanish} onClick={handleClick}>
 					{spanish? 'EN' : 'ES'}
 				</button>
 			</div>

@@ -91,7 +91,6 @@ function Direction() {
 	}, [user]);
 
 	if(user) {
-		console.log(position)
 		if(user.id && user.seller && user.latitude && user.longitude) {
 			return (
 				<>
@@ -105,20 +104,20 @@ function Direction() {
 			return (
 				<div className={s.optionsContainer}>
 					<h3 className={s.title}>
-					¿Cómo quieres mostrar tu ubicación?
+					{spanish ? "¿Cómo quieres mostrar tu ubicación?" : "How would you like to show your location?"}
 					</h3>
 					<div className={s.options} onClick={positionAutomatic}>
 							<div className={s.card}>
 								<div className={`${s.faceFront} ${s.face}`}>
-									<h3>Automático</h3>
+									<h3>{spanish ? "Automático" : "Automatic"}</h3>
 									<i className="fa-solid fa-satellite"></i>
 								</div>
 								<div className={`${s.faceBack} ${s.face}`}>
-									<p>Debes permitir tu ubicación al navegador, ¡los datos se tomarán automáticamente!</p>
+									<p>{spanish ? "Debes permitir tu ubicación al navegador. ¡Los datos se tomarán automáticamente!" : "You must allow your location to the browser. The data will be taken automatically!"}</p>
 								</div>
 							</div>
 					</div>
-					<h5>Ó</h5>
+					<h5>{spanish ? "Ó" : "Or"}</h5>
 					<div className={s.options}>
 						{/* <Link to="/"> */}
 							<div className={s.card} onClick={positionManually}>
@@ -127,7 +126,7 @@ function Direction() {
 									<i className="fa-solid fa-map-location-dot"></i>
 								</div>
 								<div className={`${s.faceBack} ${s.face}`}>
-									<p>Debes marcar la ubicación de tu tienda en el mapa</p>
+									<p>{spanish ? "Debes marcar la ubicación de tu tienda en el mapa" : "You must mark the location of your store on the map"}</p>
 								</div>
 							</div>
 					</div>

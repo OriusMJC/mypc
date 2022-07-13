@@ -174,15 +174,14 @@ function CreateProduct() {
 
     useEffect(() => {    
         dispatch(getUsersById(user.id))
-        console.log(user);
         if (!user.seller) {
             swal({
-                title: "No eres vendedor",
-                text: "Necesitas activar tu cuenta con tu ibucacion para poder vender!",
+                title: spanish ? "No eres vendedor" : "You are not a seller",
+                text: spanish ? "Necesitas activar tu cuenta con tu ubicación para poder vender!" : "You need to activate your account with your location to be able to sell!",
                 icon: "warning",
                 buttons: [
-                  'No, cancelar!',
-                  'Quiero ser vendedor!'
+                  spanish ? 'No, cancelar!' : "No, cancel!",
+                  spanish ? 'Quiero ser vendedor!' : "I want to be a seller!"
                 ],
                 dangerMode: true,
             }).then(function(isConfirm) {

@@ -3,7 +3,8 @@ import { Link } from 'react-router-dom';
 import s from '../Styles/MostFaved.module.css'
 
 function FavedProducts() {
-    const allComponents = useSelector ((state:any) => state.allComponents)
+    const spanish = useSelector((state: any) => state.spanish);
+    const allComponents = useSelector ((state:any) => state.allComponents);
     const filteredComponents = allComponents?.map((obj:any) => {
         return {
             id: obj.id,
@@ -23,29 +24,31 @@ function FavedProducts() {
     }).slice(0, 5)
 
 
- return (
-    <div className = {s.container}>
-        <h1>{filteredComponents.length? 'Productos mas likeados' : null}</h1>
-        <div className = {s.container2}>
-        {filteredComponents.length && 
-         filteredComponents.map((comp:any) => {
-            return(
-            <Link to = {`/detail/${comp.id}`} className = {s.link}>
-            <div className = {s.containerDiv}>
-                <div className = {s.containerImg}>
-                    <img src={comp.photo && comp.photo} className = {s.img}></img>
+if(filteredComponents.length){
+    return (
+        <div className = {s.container}>
+            <h1>{filteredComponents.length? spanish ? 'Productos mas likeados' : "Most liked products" : null}</h1>
+            <div className = {s.container2}>
+            {filteredComponents.length && 
+             filteredComponents.map((comp:any) => {
+                return(
+                <Link to = {`/detail/${comp.id}`} className = {s.link}>
+                <div className = {s.containerDiv}>
+                    <div className = {s.containerImg}>
+                        <img src={comp.photo && comp.photo} className = {s.img}></img>
+                    </div>
+                    <div className = {s.containerDetails}>
+                        <h3>$ {comp.price}</h3>
+                        <p>{comp.description}</p>
+                    </div>
                 </div>
-                <div className = {s.containerDetails}>
-                    <h3>$ {comp.price}</h3>
-                    <p>{comp.description}</p>
-                </div>
+                </Link>
+             )})
+            }
             </div>
-            </Link>
-         )})
-        }
         </div>
-    </div>
-  )
+      )
+}
 }
 
 export default FavedProducts;

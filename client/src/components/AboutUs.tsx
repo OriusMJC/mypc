@@ -12,6 +12,7 @@ import Mati from '../media/AboutUsImg/Mati.jpeg'
 import Lauti from '../media/AboutUsImg/Lauti.jpeg'
 import Tobias from '../media/AboutUsImg/Tobias.jpeg'
 import Santi from '../media/AboutUsImg/Santi.jpeg'
+import { useSelector } from 'react-redux';
 
 
 interface usData {    
@@ -29,10 +30,10 @@ interface usData {
 const aboutUsDate: Array<usData> =[
     {
         name: "Lauti",
-        age:  1980,
+        age:  23,
         imageBack: lauti,
         imageFront: Lauti,   
-        description : "aca tu description" ,
+        description : "googleador profesional" ,
         linkedIn: "https://www.linkedin.com/in/lautaro-agustin-arnay-2348421b7/",
         gitHub: "https://github.com/lautaro2021"
     },
@@ -55,30 +56,30 @@ const aboutUsDate: Array<usData> =[
         gitHub: "https://github.com/Nicostudent"
     },
     {
-        name: "Tobias",
+        name: "Tobías",
         age:  42,
         imageBack: tobias,
         imageFront: Tobias,    
-        description : "Apasionado por las nuevas tecnologías y el aprendizaje diario",
+        description : "Fan de la tecnología",
         linkedIn: "https://www.linkedin.com/in/tob%C3%ADas-daniel-alvarez-lockmann-224900220/",
         gitHub: "https://github.com/alemant"
     },
     {
         name: "Angel",
-        age:  1980,
+        age:  20,
         imageBack: angel,
         imageFront: Angel,   
-        description : "aca tu description",
-        linkedIn: "mi linkedin",
-        gitHub: "mi git"
+        description : "sé hacer un chat",
+        linkedIn: "https://www.linkedin.com/in/angel-vega-6820b91b6/",
+        gitHub: "https://github.com/AngelVega-0816"
     },
     {
         name: "Santi",
         age:  1980,
         imageBack: santi,
         imageFront: Santi,   
-        description : "aca tu description",
-        linkedIn: "https://www.linkedin.com/in/santiago-rivanegra-159474177",
+        description : "gallardo trae un 9 que haga goles",
+        linkedIn: "https://www.linkedin.com/in/santiago-rivanegra-159474177/",
         gitHub: "https://github.com/SantiagoRivanegra"
     }
 ] 
@@ -86,9 +87,10 @@ const aboutUsDate: Array<usData> =[
 
 
 function AboutUs() {
+    const spanish = useSelector((state: any) => state.spanish);
     return (
         <div className={s.container}>
-             <h1>About us</h1>
+             <h1>{spanish ? "Acerca de nosotros" : "About us"}</h1>
         <div className={s.gridcontainer}>
            
             {
@@ -100,7 +102,7 @@ function AboutUs() {
                                 <img src={user.imageFront} alt="foto caripela"/>
                             </div>
                             <div className={`${s.face} ${s.back}`}>                                                                  
-                                  <p>Edad: {user.age}</p>
+                                  <p>{spanish ? "Edad: " : "Age: "}{user.age}</p>
                                   <p>{user.description}</p>
                                   <div className={s.redes}>
                                   <a  href={user.linkedIn} rel='noreferrer' target='_blank'><i className='fa fa-linkedin-square' ></i></a>                                  

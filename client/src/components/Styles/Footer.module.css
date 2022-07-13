@@ -48,8 +48,8 @@
     height: 100px;
     display: flex;
     justify-content: center;
-    align-items: center;     
-           
+    align-items: center;
+    bottom: 1px;          
 }   
 .son{
     display: flex;
@@ -63,7 +63,7 @@
     .son p{
         margin-top: 3px;
     }		
-    .aboutus{      
+    .aboutus{
         bottom: 10px;
         right: 15px;
     }
