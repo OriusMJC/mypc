@@ -34,7 +34,7 @@ export default function NavBar() {
 		e.preventDefault();
 		dispatch(changeLanguage())
 	}
-console.log(suggestions)
+
 	return (
 		<nav className={s.searchBarContainer}>
 			<div className={s.contain}>

@@ -1,18 +1,21 @@
 .container{
-    width: 100%;
+    width: 770px;
     display: flex;
     flex-direction: row;
-    height: 100%;
+    flex-wrap: wrap;
+    height: 110px;
     justify-content: center;
     border-radius: 5px;
 }
 .container button{
-    width: 50%;
-    border: none;
+    /* width: 50%; */
+    width: 110px;
+    height: 80px;
     background-color: white;
-    border-right: 0.5px solid grey;
+    border: .2px solid #dfdfdf;
     cursor: pointer;
     transition: .1s;
+    /* margin: 1px; */
 }
 .container button:hover{
     background-color: rgb(148, 145, 145);

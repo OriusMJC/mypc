@@ -18,9 +18,11 @@
 .filterContent{
     display: flex;
     flex-direction: column;
-    justify-content: space-evenly;
+    justify-content: space-between;
     align-items: center;
     width: 85%;
+    max-width: 1200px;
+    height: 250px;
 }
 .container2{
     display: flex;
@@ -28,7 +30,8 @@
     align-items: center;
     justify-content: space-around;
     margin-top: 10px;
-    width: 57%;
+    /* width: 57%; */
+    width: 770px;
     height: 60px;
     background-color: white;
     border-radius: 5px;

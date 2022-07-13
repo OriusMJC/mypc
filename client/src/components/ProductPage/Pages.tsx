@@ -44,9 +44,9 @@ function Pages({ productsPerPage, allComponents, refresh }) {
 
     return(
       <section className={s.pageContainer}>
-          <div className={s.buttonsPage}>
+          {/* <div className={s.buttonsPage}>
               {pageNumbers}
-          </div>
+          </div> */}
           <div className={s.containerProdCards}>
           {
               !products.length ? 

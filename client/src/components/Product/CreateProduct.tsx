@@ -174,7 +174,6 @@ function CreateProduct() {
 
     useEffect(() => {    
         dispatch(getUsersById(user.id))
-        console.log(user);
         if (!user.seller) {
             swal({
                 title: spanish ? "No eres vendedor" : "You are not a seller",
