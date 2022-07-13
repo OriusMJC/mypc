@@ -47,8 +47,9 @@
 }
 .containerDiv img{
     height: 170px;
-    border-radius: 2px;
+    border-radius: 5px;
     margin-bottom: 20px;
+    max-width: 90%;
 } 
 .containerDetails {
     width: 100%;
