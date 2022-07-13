@@ -1,0 +1,40 @@
+.container{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    height: 100%;
+    justify-content: center;
+    border-radius: 5px;
+}
+.container button{
+    width: 50%;
+    border: none;
+    background-color: white;
+    border-right: 0.5px solid grey;
+    cursor: pointer;
+    transition: .1s;
+}
+.container button:hover{
+    background-color: rgb(148, 145, 145);
+    color: white
+}
+.buttons{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+    justify-content: center;
+}
+.buttonsImg{
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    align-items: center;
+    justify-content: center;
+}
+.buttonsImg img{
+    pointer-events: none;
+}
+.buttons span{
+    pointer-events: none;
+}
