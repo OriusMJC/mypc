@@ -59,7 +59,8 @@ export default function NavBar() {
 										const titleProduc = item.toLowerCase();
 										return (
 											searchSug &&
-											titleProduc.includes(searchSug)
+											titleProduc.startsWith(searchSug) &&
+											titleProduc !== searchSug
 										);
 									})
 									.slice(0, 10)
