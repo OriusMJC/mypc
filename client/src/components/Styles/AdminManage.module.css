@@ -29,10 +29,10 @@
 #adminContainer div{
     display: flex;
     justify-content: space-evenly;
-    width: 100%;
+    width: 770px;
     margin: 20px 0px;
 }
-#adminContainer div button{
+.buttonAdmin{
     height: 35px;
     width: 100px;
     border: none;
@@ -41,7 +41,7 @@
     background-color: white;
     cursor: pointer;
 }
-#adminContainer div button:hover{
+.buttonAdmin:hover{
     background-color: rgb(148, 145, 145);
     color: white;
 }

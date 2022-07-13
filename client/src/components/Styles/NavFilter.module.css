@@ -7,19 +7,51 @@
 }
 
 .navFilter{
-    background-color: var(--gray-medium);
     display: flex;
     justify-content: center;
     align-items: center;
     width: 100%;
     margin-bottom: 5px;
     padding: 5px;
+    margin-top: 50px;
 }
 .filterContent{
     display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    width: 85%;
+    max-width: 1200px;
+    height: 250px;
+}
+.container2{
+    display: flex;
     flex-direction: row;
-    justify-content: space-evenly;
-    width: 70%;
+    align-items: center;
+    justify-content: space-around;
+    margin-top: 10px;
+    /* width: 57%; */
+    width: 770px;
+    height: 60px;
+    background-color: white;
+    border-radius: 5px;
+    box-shadow: 1px 1px 4px rgba(162, 162, 162, 0.3);
+}
+.filters{
+    height: 35px;
+    width: 150px;
+    text-align: center;
+    font-family: "Helvetica";
+    border-radius: 5px;
+}
+
+.types{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 100px;
+    align-items: center;
+    justify-content: center;
 }
 /* cambiar despues de que se actualize el home
  filtors para celular  */

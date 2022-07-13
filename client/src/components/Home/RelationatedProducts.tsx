@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import s from '../Styles/MostFaved.module.css'
 
 function RelationatedProducts() {
+  const spanish = useSelector((state: any) => state.spanish);
   const user = useSelector((store:any) => store.userDetails);
   const allComponents = useSelector((state:any) => state.allComponents);
   const visitedProducts = user && user.visited && user.visited.slice(-10);
@@ -34,10 +35,10 @@ function RelationatedProducts() {
   });
   const relationated = arr.slice(0, 5)  
 
-  if(user?.id && relationated.length > 2){
+  if(user?.id && visitedProducts?.length > 3){
     return (
       <div className = {s.container}>
-      <h1>En base a tus ultimas visitas</h1>
+      <h1>{spanish ? "En base a tus ultimas visitas" : "Based on your last visits"}</h1>
       <div className = {s.container2}>
         {relationated.length && 
           relationated.map((prod:any) => (

@@ -47,7 +47,12 @@ function ChatList() {
 	}, []);
 
 	return (
-		<div>
+		<div className={styles.containerChatList}>
+			<Link to='/user/detail'>
+				<button>
+					Volver
+				</button>
+			</Link>
 			<ul className={styles.containerChatList}>
 				{usersChats.length
 					? usersChats.map((e) => (

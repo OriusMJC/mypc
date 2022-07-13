@@ -3,13 +3,14 @@
  max-width: 1200px;
  height: 300px;
  margin: auto;
- /* margin-top: 100px; */
+ margin-top: 30px;
  overflow: hidden;
  background-color: #d6d6d6;
 }
 .slider img {
  object-fit: cover;
  object-position: 0px -100px;
+ 
 }
 /* .slider{
  width: 100%;
@@ -29,12 +30,14 @@
  height:100%;
  flex-direction: row;
  justify-content: space-between;
+ 
 }
 
 .slider li{
  /* width: 100%; */
  min-height: 100%;
  list-style: none;
+ transition: .2s;
  /* margin-left: 100%; */
 }
 .slider li:nth-child(1) {

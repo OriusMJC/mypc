@@ -8,7 +8,7 @@ export default function Contact(){
         <div className={s.contactContainer}>
             <div className= {s.div}>
                 <Link to='/'>
-                    <button>{spanish ? "Inicio" : "Start"}</button>
+                    <button>{spanish ? "Inicio" : "To Home"}</button>
                 </Link>
                 <h1>{spanish ? "Contacta con nosotros" : "Contact us"}</h1>
                 <form className= {s.form}

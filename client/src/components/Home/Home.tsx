@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
-import { getAllComponents } from "../../redux/actions";
+import { getAllComponents} from "../../redux/actions";
 import { useAppDispatch } from "../../config/config";
 import Pages from "../ProductPage/Pages";
 import s from "../Styles/Home.module.css";
@@ -42,12 +42,17 @@ export default function Home() {
   }, []);
 
   return (
+    <>
     <div className={s.homeContainer}>
       <div>       
-        <NavFilter refresh={refresh} setRefresh={setRefresh} setProductsPerPage={setProductsPerPage} products={true} lengthAll={allComponents?.length}/>
         <Slider/>
-        <FavedProducts/>
-        <RelationatedProducts/>
+        {allComponents && allComponents.length > 1 &&
+        <div>
+          <FavedProducts/>
+          <RelationatedProducts/>
+        </div>
+        } 
+        <NavFilter refresh={refresh} setRefresh={setRefresh} setProductsPerPage={setProductsPerPage} products={true} lengthAll={allComponents?.length}/>
         <Pages
           productsPerPage={productsPerPage}
           allComponents={allComponents}
@@ -55,5 +60,6 @@ export default function Home() {
         />
       </div>
     </div>
+    </>
   );
 }
