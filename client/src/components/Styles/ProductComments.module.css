@@ -57,12 +57,16 @@
     padding: 0px 15px;
     width: 500px;
 }
+.deleteCom{
+    width: 30px!important;
+    height: 20px!important;
+}
 .deleteCUser {
     border: none;
     background-color: white;
     width: 30px;
     height: 20px;
-    margin-left: 200px;
+    margin-left: 0px;
     border-radius: 5px;
     cursor: pointer;
     transition: .2s;
