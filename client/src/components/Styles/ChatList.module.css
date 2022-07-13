@@ -46,3 +46,14 @@
 .containerChatList a {
   text-decoration: none;
 }
+
+@media screen and (max-width: 420px) {
+  .containerChatList{
+    width: 100%;
+  }
+}
+@media screen and (max-width: 860px) {
+  .containerChatList{
+    width: 100%;
+  }
+}

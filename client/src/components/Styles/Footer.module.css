@@ -42,8 +42,7 @@
 @media screen and (max-width: 860px) {	
 	.container {	         
     padding-right: 5px;
-    width: 98%;      
-    bottom: 1%;
+    width: 98%;  
     text-align: center;
     margin: 5px;
     height: 100px;
