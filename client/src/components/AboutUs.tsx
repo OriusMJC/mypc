@@ -75,7 +75,7 @@ const aboutUsDate: Array<usData> =[
     },
     {
         name: "Santi",
-        age:  1980,
+        age:  26,
         imageBack: santi,
         imageFront: Santi,   
         description : "gallardo trae un 9 que haga goles",
