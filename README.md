@@ -1,24 +1,9 @@
-<h1 align="center">MyPC! 💻</h1>
+<a href='https://mypc.vercel.app'><h1 align="center">MyPC! 💻</h1></a>
 <h3 align="center">MarketPlace de Componentes de PC  💃</h3>
-
-<!-- ## 🙋‍♂️ Sobre mi
-
-- 🔭 Actualmente trabajando en [Puppy Point](https://puppypoint.vercel.app/)
-
-- 🌱 I’m currently learning **styled-components**
-
-- 📫 How to reach me **leomoralesarce@gmail.com**
-
-- ⚡ Fun fact **I play videogames.**
-
-<br/> -->
 
 ## ⚙️ Lenguajes y herramientas utilizadas:
 
-<p align="left"> 
-<!-- <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank" rel="noreferrer"> 
-<img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/javascript/javascript-original.svg" alt="javascript" width="40" height="40"/> 
-</a>  -->
+<p align="left">
 <h3>FrontEnd: </h2>
 <a href="https://es.wikipedia.org/wiki/TypeScript" target="_blank" rel="noreferrer"> 
 <img src="https://www.vectorlogo.zone/logos/typescriptlang/typescriptlang-icon.svg" alt="typescript" width="40" height="40"/> 
@@ -40,9 +25,6 @@
 <a href="https://www.w3schools.com/css/" target="_blank" rel="noreferrer"> 
 <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/css3/css3-original-wordmark.svg" alt="css3" width="40" height="40"/> 
 </a>
-<!-- <a href="https://www.mysql.com/" target="_blank" rel="noreferrer"> 
-<img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/mysql/mysql-original-wordmark.svg" alt="mysql" width="40" height="40"/> 
-</a>  -->
 <h3>BackEnd: </h2>
 <a href="https://es.wikipedia.org/wiki/TypeScript" target="_blank" rel="noreferrer"> 
 <img src="https://www.vectorlogo.zone/logos/typescriptlang/typescriptlang-icon.svg" alt="typescript" width="40" height="40"/> 
@@ -54,10 +36,7 @@
 <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/postgresql/postgresql-original-wordmark.svg" alt="postgresql" width="40" height="40"/> 
 </a>
 <a href="https://firebase.google.com/" target="_blank" rel="noreferrer"> 
-<img src="https://www.vectorlogo.zone/logos/firebase/firebase-icon.svg" alt="firebase" width="40" height="40"/> </a> 
-<!-- <a href="https://postman.com" target="_blank" rel="noreferrer"> 
-<img src="https://www.vectorlogo.zone/logos/stripe/stripe-icon.svg" alt="stripe" width="40" height="40"/> 
-</a>  -->
+<img src="https://www.vectorlogo.zone/logos/firebase/firebase-icon.svg" alt="firebase" width="40" height="40"/> </a>
 <h3>Testing: </h2>
 <a href="https://jestjs.io" target="_blank" rel="noreferrer"> 
 <img src="https://www.vectorlogo.zone/logos/jestjsio/jestjsio-icon.svg" alt="jest" width="40" height="40"/> 
@@ -69,9 +48,6 @@
 <a href="https://vercel.com" target="_blank" rel="noreferrer"> 
 <img src="https://www.svgrepo.com/show/327408/logo-vercel.svg" alt="vercel" width="40" height="40"/> 
 </a> 
-<!-- <a href="https://getbootstrap.com" target="_blank" rel="noreferrer"> 
-<img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/bootstrap/bootstrap-plain-wordmark.svg" alt="bootstrap" width="40" height="40"/> 
-</a>  -->
 </p>
 
 <br/>
@@ -82,7 +58,6 @@
 </a>
 is a MarketPlace where you can view, buy and sell PC components. As a common user you can see their details, ask questions before buying, have a list of favorites and a cart. As a seller, you have a statistics section on your account, sales and publications for better monitoring of them. A chat between buyer and seller to coordinate details, accompanied by notifications within the App.<br/>
 We also provide an Admin account, which has a panel to manage and track accounts, products, vendors and more, with page statistics in general.
-<!-- Countries App is a SPA (Single Page Application) in which all the countries of the world and their respective tourist activities can be viewed. -->
 <br/>
 <br/>
 
@@ -92,14 +67,8 @@ We also provide an Admin account, which has a panel to manage and track accounts
 </a>
 es un MarketPlace en el cual puedes ver, comprar y vender componentes de PC. Como usuario común puedes ver los detalles de los mismos, hacer preguntas antes de comprar, tener una lista de favoritos y un carrito. Como vendedor tiene un apartado de estadísitcas sobre tu cuenta, ventas y publicaciones para un mejor seguimiento de las mismas. Un chat entre comprador y vendedor para coordinar detalles, acompañado de notificaciones dentro de la App.<br/>
 También proveemos una cuenta Admin, el cual cuenta con un panel para manejar y tener seguimiento de las cuentas, productos, vendedores y demás, con estadísticas de la página en general.
-<!-- Countries App is a SPA (Single Page Application) in which all the countries of the world and their respective tourist activities can be viewed. -->
 <br/>
 <br/>
-<!-- 
-- Frontend: JS, React JS, Redux, React-router-DOM, Redux Thunk, HTML, CSS.
-- Backend: Node JS, Express JS, Sequelize, Postgres, Axios.
-- DataBase: SQL.
-- Deploy: Vercel, Heroku. -->
 
 <br/>
 <p align='center'>
@@ -110,27 +79,17 @@ También proveemos una cuenta Admin, el cual cuenta con un panel para manejar y 
   <img width=48% src='./imgs/Stats.png'  alt="Stats seller" />
   <img width=48% src='./imgs/AdminPanel.png'  alt="Admin Panel" />
 </p>
-<!-- <p align='center'>
-  <img width=22% src='./img/menuLandingResponsive.png'  alt="MENU'S HOME" />
-  <img width=22% src='./img/menuHomeResponsive.png'  alt="MENU'S HOME" />
-  <img width=22% src='./img/menuHomeResNav.png'  alt="MENU'S HOME" />
-</p> -->
-<!-- 
 
-<!-- ## 📊 My Github Stats
+## LocalHost:
+- Clonar el repositorio.
+- Hacer el comando "npm install" en las carpetas client y api para instalar las dependencias necesarias.
+- Crear base de datos llamada "mypc".
+- Crear archivo .env y reemplazar los valores en las siguientes variables:                   
+  | DB_USER=postgresUser | 
+  DB_PASSWORD= postgresPassword |
+  DB_HOST=localhost | DB_EMAIL: adminEmail
+- En client y api hacer el comando "npm start". El servidor se abrirá en el puerto http://localhost:3001 y el Front se abrirá en http://localhost:3000
 
-
- <img align="center" src="https://github-readme-stats.vercel.app/api?username=oriusmjc&show_icons=true&count_private=true&theme=react&hide_border=true&bg_color=0D1117" alt="lemorles" />
-
-  <img align="left" src="https://github-readme-stats.vercel.app/api/top-langs/?username=oriusmjc&langs_count=8&count_private=true&layout=compact&theme=react&hide_border=true&bg_color=0D1117" alt="lemorles" />
-
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/> -->
 
 ## Connect with us:
 
