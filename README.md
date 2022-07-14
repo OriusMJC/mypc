@@ -102,11 +102,14 @@ También proveemos una cuenta Admin, el cual cuenta con un panel para manejar y 
 - Deploy: Vercel, Heroku. -->
 
 <br/>
-<!-- <p align='center'>
-  <img width=96% src='./img/menuLanding.png'  alt="MENU'S LANDING" />
-  <img width=48% src='./img/menuHome.png'  alt="MENU'S HOME" />
-  <img width=48% src='./img/menuDetail.png'  alt="MENU'S DETAIL" />
-</p> -->
+<p align='center'>
+  <img width=96.5% src='./imgs/Home.png'  alt="HOME" />
+  <img width=48% src='./imgs/HomeUltVist.png'  alt="Home Visited" />
+  <img width=48% src='./imgs/Prods.png'  alt="Home Products" />
+  <img width=96.5% src='./imgs/ProdDetails.png'  alt="Product Details" />
+  <img width=48% src='./imgs/Stats.png'  alt="Stats seller" />
+  <img width=48% src='./imgs/AdminPanel.png'  alt="Admin Panel" />
+</p>
 <!-- <p align='center'>
   <img width=22% src='./img/menuLandingResponsive.png'  alt="MENU'S HOME" />
   <img width=22% src='./img/menuHomeResponsive.png'  alt="MENU'S HOME" />
